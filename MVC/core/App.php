@@ -23,7 +23,7 @@ protected $routes;
         if (isset($arr[0])) {
             if (file_exists("./MVC/controllers/" . ucfirst($arr[0]) . ".php")) {
                 $this->controller = ucfirst($arr[0]);
-                // echo"". $this->controller ."";
+               
                 unset($arr[0]);
                 require_once "./MVC/controllers/" . $this->controller . ".php";
                 $this->controller = new $this->controller();

@@ -16,6 +16,13 @@ class Home extends controller
    { 
       echo "1";
    }
+
+   function trangchu(){
+      $tc = $this->model("TrangChuKHModel");
+      $tl = $this->model("TheloaiModel");
+      
+      $this->view("trangchu/Trangchu",["TC" => $tc->GetTrangChuKHModel(),"TL"=>$tl->GetTheLoaiModel()]);
+  }
 }
 ?> 
 
