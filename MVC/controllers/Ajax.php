@@ -81,6 +81,45 @@ class Ajax extends controller{
             $this->GetAllSP();
         }
     }
+    function TimSP(){
+        if(isset($_POST['tensp'])){
+            $tensp=$_POST['tensp'];
+            $ds = $this->TrangChuKHModel->TimSP($tensp);
+            if ($ds->num_rows > 0) {
+                while ($row = $ds->fetch_assoc()) {
+                    echo    '
+                        <section class="product__item">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+                                <div class="product__img-wrap">
+                                    <img
+                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+                                        alt=""
+                                        class="product__img"
+                                    />
+                                    <span class="product__img-sale"
+                                        >-50%</span
+                                    >
+                                </div>
+    
+                                <div class="product__content">
+                                    <div class="product__content-price">'
+                                    .$row["GiaSanPham"].'VND
+                                    </div>
+                                    <p class="product__content-title">'
+                                        .$row["TenSanPham"].'
+                                    </p>
+                                </div>
+                            </a>
+                        </section>';
+                }
+            }
+            else
+            {
+                $this->GetAllSP();
+            }
+        }
+       
+    }
 
 }
 ?>

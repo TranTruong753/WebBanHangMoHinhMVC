@@ -14,6 +14,13 @@ class TrangChuKHModel extends DB{
         return $this->con->query($qr);
     }
 
+    public function TimSP($tensp){
+        $qr = 'SELECT sanpham.MaSanPham ,sanpham.TenSanPham,sanpham.GiaSanPham, chitietsanpham.HinhAnh 
+        FROM chitietsanpham INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  WHERE sanpham.TenSanPham LIKE "%'.$tensp.'%" GROUP BY sanpham.MaSanPham ';
+        // $row=mysqli_query($this->con, $qr);
+        return $this->con->query($qr);
+    }
+
     
 
 }

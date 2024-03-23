@@ -263,13 +263,18 @@
                         <form action="" class="search-form">
                             <input
                                 type="text"
+                                id ="search-form__input" 
                                 class="search-form__input"
                                 placeholder="Tìm kiếm ..."
                             />
                             <!-- Submit button -->
-                            <button type="submit" class="search-form__btn">
+                            <button onclick="showAlert()" class="search-form__btn" type="button">
+                            
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
+                            <script>
+                                
+                            </script>
 
                             <!-- Clear button -->
                             <button type="reset" class="search-form__clear">
@@ -909,4 +914,5 @@
         </footer>
     </body>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/trangchu.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/timkiem.js"></script>
 </html>
