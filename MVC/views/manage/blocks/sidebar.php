@@ -4,15 +4,15 @@
 <div class="sidebar-container">
     <ul>
 
-        <li>
-            <a href="http://localhost/Web_2/admin/container/1" class="none-decoration">
+    <li>
+            <a href="<?php echo Root?>admin/container/1" class="none-decoration">
                 <i class='bx bx-shopping-bag'></i>
                 <span>Quản lý sản phẩm</span>
             </a>
 
         </li>
         <li>
-            <a href="http://localhost/Web_2/admin/container/2" class="none-decoration">
+            <a href="<?php echo Root?>admin/container/2" class="none-decoration">
                 <i class='bx bxs-user-detail'></i>
                 <span>Quản lý nhân sự</span>
             </a>

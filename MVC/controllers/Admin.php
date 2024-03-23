@@ -1,24 +1,18 @@
 <?php
 
-class Admin extends controller 
+class Admin extends controller
 {
-    protected $data=[];
+    protected $data = [];
 
-    function container($page="1")
+    function default($page = "1")
     {
         if ($page == "1") {
 
             $this->data["page"] = "PermissionPage";
-            
+        } else if ($page == "2") {
+            $this->data["page"] = "ProductPage";
         }
-        else if ($page == "2") {
-            $this->data["page"]  = "ProductPage";
-        }
-        $this->view("manage/manage",$this->data);
-
+        $this->view("manage/manage", $this->data);
     }
-
-
-
 
 }

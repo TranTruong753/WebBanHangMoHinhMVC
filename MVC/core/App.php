@@ -1,17 +1,29 @@
 <?php
 class App
 {
-    protected $controller = "Home";
-    protected $action = "default";
-    protected $params = [];
+    protected $controller ;
+    protected $action ;
+    protected $params ;
+protected $routes;  
     function __construct()
     {
+        $this->routes = new Route();
+        global $__routes;
+        if(!empty($__routes))
+        {
+            $this->controller = $__routes["default_controller"];
+        }
+        $this->action = "default";
+        $this->params = [];
+
+        echo $this->controller;  
+        
         $arr = $this->urlProcess();
-        //xử lý controller
+        //xử lý controller 
         if (isset($arr[0])) {
             if (file_exists("./MVC/controllers/" . ucfirst($arr[0]) . ".php")) {
                 $this->controller = ucfirst($arr[0]);
-                echo"". $this->controller ."";
+                // echo"". $this->controller ."";
                 unset($arr[0]);
                 require_once "./MVC/controllers/" . $this->controller . ".php";
                 $this->controller = new $this->controller();
@@ -37,6 +49,7 @@ class App
     //hàm xử lý url
     function urlProcess()
     {
+        $this->routes->handleRouted();
         if (isset($_GET["url"])) {
             return explode("/", filter_var(trim($_GET["url"], "/")));
         } else {

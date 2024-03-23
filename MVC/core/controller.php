@@ -12,8 +12,8 @@ class controller{
     {
         if(is_array($data))
         {
+            //chuyển tất cả các key của mảng thành biến
             extract($data);
-
         }
         require_once "./MVC/views/$view.php";
     
