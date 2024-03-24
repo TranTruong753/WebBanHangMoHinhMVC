@@ -88,7 +88,7 @@ class Ajax extends controller{
             if ($ds->num_rows > 0) {
                 while ($row = $ds->fetch_assoc()) {
                     echo    '
-                        <section class="product__item">
+                        <section class="product__item product__item-hot">
                             <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
                                 <div class="product__img-wrap">
                                     <img

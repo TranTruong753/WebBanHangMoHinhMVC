@@ -1,0 +1,234 @@
+
+a {
+    color: blue;
+}
+
+/* chung */
+.form-input-wrap {
+    margin-top: 15px;
+}
+
+.login__wrap {
+    background: url("../img/hero-img02.jpg");
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 80px;
+}
+
+
+.login__main {
+    background: #fff;
+    padding: 30px;
+    width: calc(376px + 60px);
+}
+
+.login__main-wrap {
+    width: 100%;;
+    overflow: hidden;
+}
+
+.login__title-wrap {
+    text-align: center;
+}
+
+.login__desc {
+    margin-top: 10px;
+}
+
+.login__form {
+    margin-top: 30px;
+}
+
+
+.form__save-wrap {
+   margin: 30px 0;
+   display: flex;
+   align-items: center;
+}
+
+.login__formLabel {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login__formLabel-save {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    gap: 8px;
+}
+
+.error-wrap {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.error-text {
+    font-size: 1.3rem;
+    opacity: 0;
+}
+
+.error-wrap a {
+    --color-link : #00f;
+    font-size: 1.6rem;
+    color: var(--color-link);
+    line-height: 1.5;
+}
+
+.text-link {
+    --color-link : #000;
+}
+
+.error-text {
+    margin-top: 5px;
+}
+
+.form__save-wrap span {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 6px; 
+    transition: 0.4s;
+}
+
+
+.form__save-wrap span::after {
+    opacity: 0;
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+}
+
+.login__formCheckBox[type='checkbox']:checked ~ .login__formLabel-save span{
+    border-color: var(--color-btn-light);
+    background: var(--color-btn-light);
+}
+
+
+.login__formCheckBox[type='checkbox']:checked ~ .login__formLabel-save span::after{
+    opacity: 1;
+}
+
+.login__formInput {
+    padding: 13px;
+    min-width: 100%;
+    border: 1px solid #ddd;
+    background: #fff;
+  
+}
+
+.login-btn {
+    --width-btn: 100%;
+}
+
+.login-line {
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+}
+
+.crossline {
+    width: 100%;
+    height: 1px;
+}
+
+.login-line span {
+    padding: 8px;
+    font-size: 1.4rem;
+}
+
+.social-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.social-btn {
+    cursor: pointer;
+    padding: 6px 0;
+    background: transparent;
+    border: 2px solid #ddd;
+    min-width: 183px;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.login__footer {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Đăng kí */
+.signup-form-label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.signup-radio-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.signup__radio-label {
+    position: relative;
+}
+
+.radio-wrap span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    transition: 0.4s;
+}
+
+.radio-wrap span::after {
+    opacity: 1;
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 7px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg);
+    margin-bottom: 2px;
+}
+
+.signup__radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.signup__raido-input[type='radio']:checked ~ .signup__radio-label span {
+    background: var(--color-btn-light);
+    border-color: var(--color-btn-light);
+   
+}
+
+.signup__raido-input[type='radio']:checked ~ .signup__radio-label span::after {
+    opacity: 1;
+}
+
+

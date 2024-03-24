@@ -16,7 +16,7 @@ protected $routes;
         $this->action = "default";
         $this->params = [];
 
-        echo $this->controller;  
+        
         
         $arr = $this->urlProcess();
         //xử lý controller 
