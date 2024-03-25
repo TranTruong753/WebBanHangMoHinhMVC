@@ -15,10 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
     <!-- link css -->
-    <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/style.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/grid.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/sidebar.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/table.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/sidebar.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/style.css">
+
 
     <title>Trang Quản trị</title>
 </head>
@@ -36,7 +37,7 @@
                     require_once "blocks/sidebar.php";
                     ?>
                 </div>
-                <div class="container col l-9">
+                <div class="container col l-9" >
                     <?php $this->view("manage/pages/$page");?>
                 </div>
             </div>

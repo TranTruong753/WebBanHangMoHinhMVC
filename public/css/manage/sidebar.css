@@ -1,4 +1,4 @@
-/* .header-sidebar{
+.header-sidebar{
     text-align: center;
     padding-top: 30px ;
     font-size: 30px;
@@ -37,7 +37,7 @@
      height: 100vh;
      list-style: none;
      padding-left:0px ;
-     /* padding: 100px 25px 0px 0px; */
+     padding: 100px 25px 0px 0px;
  }
  
  ul li{
@@ -82,4 +82,4 @@
      border: 4px rgb(47, 49, 45) solid;
  }
  
-  */
+ 
