@@ -34,13 +34,10 @@
         <table>
          
         <tr>
-                
                 <th>ID</th>
                 <th>Tên</th>
-                <th>Giá</th>
+                <th></th>
                 <th>SL Tồn</th>
-                <th>SL Nhập</th>
-                <th>Giá Nhập</th>
                 <th>Hiển thị</th>
                 <th>Tác vụ</th>
             </tr>

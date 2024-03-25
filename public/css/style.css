@@ -278,6 +278,57 @@ button {
     font-size: 2rem;
 }
 
+/* Cart btn */
+.cart-btn {
+    position: relative;
+    /* margin-left: auto; */
+    font-size: 20px;
+  }
+  
+  .cart-btn:hover .cart-preview {
+    opacity: 1;
+    visibility: visible;
+    scale: 1;
+  }
+  
+  /* Cart preview */
+  .cart-preview {
+    position: absolute;
+    top: 46px;
+    right: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    min-width: 250px;
+    min-height: 120px;
+    padding: 10px;
+    border-radius: 3px;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+    background: #fff;
+  
+    transform-origin: 93% top;
+    scale: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s, scale 0.2s;
+  }
+  
+  /* Cart arrow top */
+  .cart-preview::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    right: 8px;
+    border: 10px solid;
+    border-color: transparent transparent #fff;
+  }
+  
+  .cart-message {
+    color: #333;
+    font-size: 14px;
+  }
+
 /* nav right */
 .nav__right {
     grid-area: column04;
@@ -342,6 +393,10 @@ button {
     font-size: 23px;
     font-weight: bold;
     margin-bottom: 10px;
+}
+
+.product__title-left {
+    text-align: left;
 }
 
 .product__list {
@@ -646,9 +701,9 @@ button {
 .footer__bottom-wrap {
     padding: 0 15px;
 }
-
+/*
 @media only screen and (max-width: 768px) {
-    /* CSS cho thiết bị có độ rộng tối đa 768px */
+    /* CSS cho thiết bị có độ rộng tối đa 768px 
     .container__nav {
         --width-container: 768px;
     }
@@ -656,12 +711,12 @@ button {
     .nav__list {
         display: block;
     }
-}
+}*/
 
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-    /* CSS cho thiết bị có độ rộng từ 769px đến 1024px */
+/* @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* CSS cho thiết bị có độ rộng từ 769px đến 1024px 
 }
 
 @media only screen and (min-width: 1025px) {
-    /* CSS cho thiết bị có độ rộng từ 1025px trở lên */
-}
+    /* CSS cho thiết bị có độ rộng từ 1025px trở lên 
+} */

@@ -83,7 +83,7 @@
                 <div class="footer__row-center">
                     <div class="footer__column">
                         <a href="#">
-                            <img src="./assets/img/logo.png" alt="" class="footer__logo" />
+                            <img src="<?php echo Root ?>public/img/logo.png" alt="" class="footer__logo" />
                         </a>
                         <ul>
                             <li class="footer__item-center">
@@ -199,7 +199,7 @@
                     </div>
                     <div class="footer__column">
                         <a href="#!" class="footer__bottom-wrap">
-                            <img src="./assets/img/footer-img.png" alt="" class="footer__bottom-link" />
+                            <img src="<?php echo Root ?>public/img/footer-img.png" alt="" class="footer__bottom-link" />
                         </a>
                     </div>
                 </div>

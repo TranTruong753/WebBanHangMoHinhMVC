@@ -16,6 +16,10 @@ protected $routes;
         $this->action = "default";
         $this->params = [];
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> aab3287f82940441208610d7c3269ae0155f9a94
         
         $arr = $this->urlProcess();
         //xử lý controller 

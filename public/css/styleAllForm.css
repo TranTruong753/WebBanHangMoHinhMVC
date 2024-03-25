@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color-white: #fff;
+    --text-color-black: #333;
+    --header-color: #292929;
+    --color-nav: #333;
+    --color-btn: #b31f2a;
+    --color-btn-light:#ff2c00;
+    --color-btn-dark:#a8a8a8;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Poppins", sans-serif;
+    background: var(--primary-color);
+}
+/* Common */
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Sora", sans-serif;
+}
+
+input,
+textarea,
+select,
+button {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+input {
+    background-color: transparent;
+    outline-color: var(--color-btn-light);
+    border: none;
+}
+
+.container {
+    --width-container: 1255px;
+    width: var(--width-container);
+    max-width: calc(100% - 48px);
+    margin: 0 auto;
+}
+
+
+.btn {
+    --width-btn: 120px;
+    cursor: pointer;
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: bold;
+    background: #fff;
+    max-height: 42px;
+    min-height: 42px;
+    width: var(--width-btn);
+}
+
+.btn--primary {
+    color: #fff !important;
+    background: var(--color-btn-light) !important;
+    border: none !important;
+}
+
+
+.btn--noActivate {
+    color: #fff !important;
+    background: var(--color-btn-dark) !important;
+    border: none !important;
+}
+
+.heading-title {
+    font-family: sora, sans-serif;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+
+}
+
+.heading-desc {
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.importan {
+    color: var(--color-btn-light);
+}
+
