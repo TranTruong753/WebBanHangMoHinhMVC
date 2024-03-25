@@ -97,8 +97,8 @@
             referrerpolicy="no-referrer"
         />
         <!-- link css -->
-        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/reset.css" />
-        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/style.css" />
+        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
+        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
         <!-- link js -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         
@@ -758,6 +758,6 @@
             </div>
         </footer>
     </body>
-    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/trangchu.js"></script>
-    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/timkiem.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/timkiem.js"></script>
 </html>

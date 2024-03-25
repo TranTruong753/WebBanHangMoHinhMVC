@@ -10,15 +10,15 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- link css -->
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/reset.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/style.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/chitietsanpham.css" />
+    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
+    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
+    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/chitietsanpham.css" />
 </head>
 
 <body>
     <?php 
-require_once "./MVC/views/trangchu/block/header.php";
-require('./MVC/views/trangchu/block/navbar.php');
+// require_once "./MVC/views/trangchu/block/header.php";
+// require('./MVC/views/trangchu/block/navbar.php');
     
 ?>
     <div class="grid-container">

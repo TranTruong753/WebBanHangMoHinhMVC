@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/reset.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/styleAllForm.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/style.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/login.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
 </head>
 
 <body>
