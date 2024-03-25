@@ -31,12 +31,12 @@
                 <form action="<?php echo Root ?>Dangki/dangkiDB" class="login__form" method="post" autocapitalize="off" id="my_form">
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="UserName">Họ và tên <span class="importan">*</span></label>
-                            <input type="text" name="UserName" id="UserName" class="login__formInput" placeholder="Nhập họ và tên..." onkeyup="checkKeyUser()" required>
+                            <input type="text" name="UserName" id="UserName" class="login__formInput" placeholder="Nhập họ và tên..."  required>
                             <div id="error-message-user"></div>
                     </div>
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="phone">Số điện thoại <span class="importan">*</span></label>
-                            <input type="tel" name="phone" id="phone" class="login__formInput" placeholder="Nhập mã số điện thoại..." onkeyup="checkKeyPhone()" pattern="^(0|\+?84)(3|5|7|8|9)[0-9]{8}$" required>
+                            <input type="tel" name="phone" id="phone" class="login__formInput" placeholder="Nhập mã số điện thoại..." required>
                             <div id="error-message-phone"></div>
                            
                     </div>
@@ -57,7 +57,7 @@
 
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="email">Email</label>
-                            <input type="email" name="email" id="email" class="login__formInput" placeholder="Nhập email..." onkeyup="checkKeyEmail()" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            <input type="email" name="email" id="email" class="login__formInput" placeholder="Nhập email..." required>
                             <div id="error-message-email"></div>
                     </div>
 
@@ -119,18 +119,18 @@
 
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="codePIN">Nhập mã PIN <span class="importan">*</span></label>
-                            <input type="password" name="codePIN" id="codePIN" class="login__formInput" placeholder="Nhập mã PIN..."  minlength="6" maxlength="6"  onkeyup="checkPassword()" required>
+                            <input type="password" name="codePIN" id="codePIN" class="login__formInput" placeholder="Nhập mã PIN..."  minlength="6" maxlength="6"   required>
                             <div class="" id="error-message-pin"></div>
                     </div>
 
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="reCodePIN">Nhập lại mã PIN <span class="importan">*</span></label>
-                            <input type="password" name="reCodePIN" id="reCodePIN" class="login__formInput error__rePass" placeholder="Nhập lại mã PIN..." minlength="6" maxlength="6"  onkeyup="checkPassword()" required>
+                            <input type="password" name="reCodePIN" id="reCodePIN" class="login__formInput error__rePass" placeholder="Nhập lại mã PIN..." minlength="6" maxlength="6"   required>
                             <div class="" id="error-message-repin"></div>
                     </div>
   
                     <div class="form-input-wrap">
-                        <button type="button" onclick="my_submit()" class="btn login-btn btn--noActivate " id="btn">Hoàn thành</button>
+                        <button type="button" class="btn login-btn btn--noActivate " id="btn" >Hoàn thành</button>
                     </div>
 
                    
@@ -153,70 +153,58 @@
 
     ?>
     <script>
-        function my_submit(){
-            var error ="";
-            var radios = document.getElementsByName("sex");
-            var userName = document.getElementsByName("UserName").value;
-            var phone = document.getElementsByName("phone").value;
-            var email = document.getElementsByName("email").value;
-
-            var pin = document.getElementsByName("codePIN")[0].value;
-            var repin = document.getElementsByName("reCodePIN")[0].value;
-          
-
-            var formValid = false;
-            var checkRadio = false;
-            // for(var i = 0; i < radios.length; i++) {
-            //     if(radios[i].checked) {
-            //         checkRadio = true;
-            //         break;
-            //     }
-            // }
-   
-            // if(pin===repin){
-            //     // document.getElementById("error-message").style.display = "none"; 
-            //     formValid = true;
-            // }else {
-            //     var element = document.getElementById("error-message");
-            //     element.classList.add("error-message");
-            //     // document.getElementById("error-message").style.display = "block";   
-            //     // element.innerHTML ="Mật khẩu không trùng khớp!"
-            //     formValid = false;
-            // }
-            
-           
-
-            // if (!checkRadio) {
-            //     document.getElementById("error").style.opacity = "1";
-            //     document.getElementById("error").innerHTML = "Vui lòng chọn giới tính!";
-            //     return false;
-            // } else {
-               
-            //     document.getElementById("error").innerHTML = "";            
-            // }
-
-            if(formValid){
+    
+        function changeButton(){
+            button = document.getElementById("btn");    
+            if(checkAllInput()){              
+                button.classList.remove("btn--noActivate");
+                button.classList.add("btn--primary");
                 button = document.getElementById("btn").type = "submit";
-                // my_form = document.getElementById("my_form");
-				// my_form.submit();
+                // return true;
+                
+            }else { 
+                button.classList.remove("btn--primary");
+                button.classList.add("btn--noActivate");  
+                button = document.getElementById("btn").type = "button";
+                // return false;         
             }
-            // button = document.getElementById("btn").type = "submit";
+
         }
+     
+   
 
         function checkKeyUser() {
             var userName = document.getElementById("UserName").value;
-
             var message_user = document.getElementById("error-message-user");
-
             if(userName.length > 0){
-                message_user.classList.remove("error-message");
-                message_user.innerHTML =""
-            } else if (userName.length <= 0){
+                if(checkPatternUser(userName)){
+                    message_user.classList.remove("error-message");
+                    message_user.innerHTML ="";
+                }else {
+                    message_user.classList.add("error-message"); 
+                    message_user.innerHTML ="Chỉ chứa chữ, không chứa số & ký tự đặc biệt!"
+                }
+     
+            }else if (userName.length <= 0){
                 message_user.classList.add("error-message"); 
                 message_user.innerHTML ="Không được để trống!"
+          
             }
 
         }
+
+        function checkPatternUser(userName){
+            // var pattern = /^[a-zA-Z]+$/;
+            // var pattern = /^[a-zA-ZÀ-ÿ\u0080-\uFFFF]+$/;
+            // var pattern = /^[a-zA-ZÀ-ÿ\s]+$/;
+            // var pattern = /^[0-9!@#\$%\^\&*\)\(+=._-]+$/;
+            var pattern = /^[a-zA-Z\xC0-\u1EF9\s]+$/;
+
+
+
+            return pattern.test(userName);
+        }
+
 
         function checkKeyPhone() {
             var phone = document.getElementById("phone").value;
@@ -224,9 +212,10 @@
             var message_phone = document.getElementById("error-message-phone");
 
             if(phone.length > 0){
-                if(checkPatterPhone(phone)){
+                if(checkPatternPhone(phone)){
                     message_phone.classList.remove("error-message");
                     message_phone.innerHTML ="";
+                    return true;
                 }else {
                     message_phone.classList.add("error-message"); 
                     message_phone.innerHTML ="Số điện thoại không đúng định dạng!"
@@ -235,13 +224,12 @@
             }else if (phone.length <= 0){
                 message_phone.classList.add("error-message"); 
                 message_phone.innerHTML ="Không được để trống!"
-                
-      
             }
+            return false;
 
         }
 
-        function checkPatterPhone(phone) {
+        function checkPatternPhone(phone) {
             var pattern = /^(0|\+?84)(3|5|7|8|9)[0-9]{8}$/;
             return pattern.test(phone);
         }
@@ -253,9 +241,10 @@
             var message_email = document.getElementById("error-message-email");
 
             if(email.length > 0){
-                if(checkPatterEmail(email)){
+                if(checkPatternEmail(email)){
                     message_email.classList.remove("error-message");
                     message_email.innerHTML ="";
+                    return true;
                 }else {
                     message_email.classList.add("error-message"); 
                     message_email.innerHTML ="Email sai định dạng!"
@@ -266,9 +255,11 @@
                 message_email.innerHTML ="Không được để trống!"
             }
 
+            return false;
+
         }
 
-        function checkPatterEmail(email) {
+        function checkPatternEmail(email) {
             var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
             return pattern.test(email);
         }
@@ -284,9 +275,14 @@
             var message_pin = document.getElementById("error-message-pin");
    
 
-            if(password.length > 0){
-                message_pin.classList.remove("error-message");
-                message_pin.innerHTML =""       
+            if(password.length > 0){            
+                if(checkPatterPin(password)){
+                    message_pin.classList.remove("error-message");
+                    message_pin.innerHTML =""  
+                } else {
+                    message_pin.classList.add("error-message");
+                    message_pin.innerHTML =" Mã PIN phải đủ 6 ký tự và chỉ chứa các ký tự số!"  
+                }     
             }   
             else if (password.length == 0){
                 message_pin.classList.add("error-message"); 
@@ -294,16 +290,21 @@
                    
             }
 
-
-            if (password.length === confirmPassword) {
-                
+        
+            if (password === confirmPassword) {              
                 message_repin.classList.remove("error-message");
                 message_repin.innerHTML =""
-               
-            } else {
-                if(confirmPassword.length > 0) {
-                    message_repin.classList.add("error-message"); 
-                    message_repin.innerHTML ="Mật khẩu không trùng khớp!"
+                return true;
+            } 
+            else {
+                if(confirmPassword.length > 0) {                  
+                    if(checkPatterPin(confirmPassword)){
+                        message_repin.classList.add("error-message"); 
+                        message_repin.innerHTML ="Mật khẩu không trùng khớp!"
+                    } else {
+                        message_repin.classList.add("error-message");
+                        message_repin.innerHTML =" Mã PIN phải đủ 6 ký tự và chỉ chứa các ký tự số!"  
+                    }     
                 } 
                 else{
                     message_repin.classList.add("error-message"); 
@@ -312,10 +313,86 @@
             
             
             }
+
+            return false;
         }
 
+        function checkPatterPin(pin) {
+            var pattern = /^\d{6}$/;
+            return pattern.test(pin);
+        }
 
      
+
+        // add event 
+    
+        var eventUserInput = document.getElementById("UserName");
+        eventUserInput.addEventListener("keyup", checkKeyUser);
+        eventUserInput.addEventListener("blur", checkKeyUser);
+
+        var eventPhoneInput = document.getElementById("phone");
+        eventPhoneInput.addEventListener("keyup", checkKeyPhone);
+        eventPhoneInput.addEventListener("blur", checkKeyPhone);
+
+        var eventEmailInput = document.getElementById("email");
+        eventEmailInput.addEventListener("keyup", checkKeyEmail);
+        eventEmailInput.addEventListener("blur", checkKeyEmail);
+
+        var eventPinInput = document.getElementById("codePIN");
+        eventPinInput.addEventListener("keyup", checkPassword);
+        eventPinInput.addEventListener("blur", checkPassword);
+
+        var eventRePinInput = document.getElementById("reCodePIN");
+        eventRePinInput.addEventListener("keyup", checkPassword);
+        eventRePinInput.addEventListener("blur", checkPassword);
+
+        var eventform = document.getElementById("my_form");
+        eventform.addEventListener("keyup", changeButton);
+        eventform.addEventListener("blur", changeButton);
+
+        // var eventBtn = document.getElementById("btn");
+        // eventBtn.addEventListener("click", my_submit);
+
+        function checkAllInput(){
+            var check = true ;
+            var userName = document.getElementById("UserName").value;
+        
+            if(userName.length == 0 && !checkPatternUser(userName)){
+                check = false;           
+            }
+            
+
+            var phone = document.getElementById("phone").value;
+
+
+            if(phone.length == 0 && !checkPatternPhone(phone)){
+                check = false;      
+            }
+
+            var email = document.getElementById("email").value;
+
+
+            if(email.length == 0 && !checkPatternEmail(email)){
+                check = false;    
+
+            }
+
+
+            var password = document.getElementById("codePIN").value;
+
+            var confirmPassword = document.getElementById("reCodePIN").value;
+        
+            if(password.length < 6 && confirmPassword.length < 6){
+                check = false                       
+            }
+            if (password != confirmPassword) {                             
+                    check = false;
+            }   
+               
+            return check;
+           
+        }
+       
 
     </script>
 

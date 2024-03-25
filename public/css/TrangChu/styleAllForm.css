@@ -70,6 +70,7 @@ input {
 }
 
 .btn--primary {
+    pointer-events: auto !important;
     color: #fff !important;
     background: var(--color-btn-light) !important;
     border: none !important;
@@ -77,6 +78,7 @@ input {
 
 
 .btn--noActivate {
+    pointer-events: none !important;
     color: #fff !important;
     background: var(--color-btn-dark) !important;
     border: none !important;
