@@ -10,6 +10,7 @@ class Home extends controller
     function showManage()
    { 
       $this->view("manage/manage",["a"=> "a","b"=> "b"]);
+      
    }
 
    function showManage1()

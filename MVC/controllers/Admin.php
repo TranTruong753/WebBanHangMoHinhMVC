@@ -4,15 +4,15 @@ class Admin extends controller
 {
     protected $data = [];
 
-    function default($page = "1")
+    function default($page = "ProductPage")
     {
-        if ($page == "1") {
-
-            $this->data["page"] = "PermissionPage";
-        } else if ($page == "2") {
+        if ($page == "ProductPage") {
             $this->data["page"] = "ProductPage";
+        } else if ($page == "PermissionPage") {
+            $this->data["page"] = "PermissionPage";
+        }else if ($page == "AddProductPage") {
+            $this->data["page"]= "AddProductPage";
         }
         $this->view("manage/manage", $this->data);
     }
-
 }

@@ -16,7 +16,6 @@ protected $routes;
         $this->action = "default";
         $this->params = [];
 
-        echo $this->controller;  
         
         $arr = $this->urlProcess();
         //xử lý controller 
@@ -49,7 +48,6 @@ protected $routes;
     //hàm xử lý url
     function urlProcess()
     {
-        $this->routes->handleRouted();
         if (isset($_GET["url"])) {
             return explode("/", filter_var(trim($_GET["url"], "/")));
         } else {

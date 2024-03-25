@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/style.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/grid.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/sidebar.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/styles/manage/table.css">
 
     <title>Trang Quản trị</title>
 </head>
@@ -36,18 +37,13 @@
                     ?>
                 </div>
                 <div class="container col l-9">
-
-                    <?php $this->view("manage/pages/$page");  ?>
+                    <?php $this->view("manage/pages/$page");?>
                 </div>
             </div>
 
         </div>
 
-
-        <div class="footer">
-            <p>______________________________________________</p>
-            <h1>footer</h1>
-        </div>
+        <script src="<?php echo Root."public/script/manage/main.js"?>"></script>
     </div>
 
 

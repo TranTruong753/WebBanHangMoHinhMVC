@@ -1,0 +1,42 @@
+*{
+    box-sizing: 0px;
+}
+
+
+.title-table{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.title-table > * {
+    flex-grow: 1;
+    margin: 0 5px;
+    height: 40px;
+}
+
+.Table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.Table th {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #000;
+}
+
+.Table td {
+    padding: 10px;
+    border: 2px solid #000;
+    text-align: center;
+}
+
+.Table img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
