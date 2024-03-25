@@ -67,8 +67,12 @@
                                 <i class="fa-solid fa-circle-xmark"></i>
                             </button>
                         </form>
-                        <a href="#!" class="cart-shopping">
+                        <a href="#!" class="cart-shopping cart-btn">
                             <i class="fa-solid fa-cart-shopping"></i>
+                            <!-- Cart preview -->
+                            <div class="cart-preview">
+                                    <p class="cart-message">Chưa Có Sản Phẩm</p>
+                            </div>
                         </a>
                     </div>
                     <!-- login logout -->
