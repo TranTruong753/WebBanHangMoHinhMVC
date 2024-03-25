@@ -5,6 +5,7 @@ a {
 
 /* chung */
 .form-input-wrap {
+    position: relative;
     margin-top: 15px;
 }
 
@@ -25,7 +26,6 @@ a {
 
 .login__main-wrap {
     width: 100%;;
-    overflow: hidden;
 }
 
 .login__title-wrap {
@@ -62,15 +62,18 @@ a {
 }
 
 .error-wrap {
-    margin: 15px 0;
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .error-text {
+    color: #f00;
+    margin-top: 5px;
     font-size: 1.3rem;
     opacity: 0;
+    height: 13px;
 }
 
 .error-wrap a {
@@ -82,10 +85,6 @@ a {
 
 .text-link {
     --color-link : #000;
-}
-
-.error-text {
-    margin-top: 5px;
 }
 
 .form__save-wrap span {
@@ -230,5 +229,52 @@ a {
 .signup__raido-input[type='radio']:checked ~ .signup__radio-label span::after {
     opacity: 1;
 }
+
+
+/* thông báo lỗi */
+.error-message {
+    text-align: center;
+    padding: 5px 2px;
+    z-index: 2;
+    bottom: -30px;
+    color: #f00;
+    font-size: 1.4rem;
+    right: 0;
+    position: absolute;
+    border: 1px solid #f00;
+    background: #fff;
+}
+
+.error-message::before {
+    top: 0px;
+    content: "";
+    z-index: 2;
+    width: 0;
+    height: 0;
+    border-bottom: 6px solid #fff;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    right: 20%;
+    position: absolute;
+    -webkit-transform: translateY(-100%) translateX(50%);
+    -moz-transform: translateY(-100%) translateX(50%);
+    transform: translateY(-100%) translateX(50%);
+}
+
+.error-message::after {
+    content: "";
+    width: 0;
+    height: 0;
+    top: -0.8px;
+    border-bottom: 6px solid #dc3545;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    right: 20%;
+    position: absolute;
+    -webkit-transform: translateY(-100%) translateX(50%);
+    -moz-transform: translateY(-100%) translateX(50%);
+    transform: translateY(-100%) translateX(50%);
+} 
+
 
 
