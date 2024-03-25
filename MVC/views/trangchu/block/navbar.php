@@ -72,6 +72,7 @@
                             <!-- Cart preview -->
                             <div class="cart-preview">
                                     <p class="cart-message">Chưa Có Sản Phẩm</p>
+                                    <!-- <img src="<?php echo Root ?>public/img/logo.png"> -->
                             </div>
                         </a>
                     </div>

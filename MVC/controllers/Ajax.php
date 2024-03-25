@@ -120,6 +120,10 @@ class Ajax extends controller{
         }
        
     }
+    function GioHang(){
+    }
+
+
 
 }
 ?>

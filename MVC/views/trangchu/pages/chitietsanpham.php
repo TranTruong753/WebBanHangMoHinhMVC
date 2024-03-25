@@ -66,7 +66,7 @@
                                 while ($row = $data['imgmain']->fetch_assoc()) {
                                         
                                     echo '
-                                        <div class="content__img-main-wrap"><img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt=""
+                                        <div class="content__img-main-wrap"><img  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt=""
                                             class="content__img-main" id="largeImage"></div>';
                                 }
                             }
@@ -88,15 +88,7 @@
                         }
                     </script> -->
                     <script>
-                        const largeImage = document.getElementById('largeImage');
-                        const smallImages = document.querySelectorAll('.content__img-item');
-
-                        // Xử lý sự kiện khi nhấn vào ảnh nhỏ
-                        smallImages.forEach((smallImage) => {
-                            smallImage.addEventListener('click', () => {
-                                largeImage.src = smallImage.src;
-                            });
-                        });
+                        
                     </script>
                     <div class="content__info">
                         <div class="content__info-inner">
@@ -106,8 +98,8 @@
                             if ($data['thongtin']->num_rows > 0) {
                                 while ($row = $data['thongtin']->fetch_assoc()) {
                                         echo    '
-                                        <h2 class="content__info-title">'.$row['TenSanPham'].'</h2>
-                                        <p class="content__info-price">'.$row['GiaSanPham'].'</p>';
+                                        <h2 class="content__info-title" id ="content__info-title">'.$row['TenSanPham'].'</h2>
+                                        <p class="content__info-price" id ="content__info-price">'.$row['GiaSanPham'].'</p>';
                                     }
                             }
                             ?>
@@ -118,7 +110,7 @@
                                 if ($data['mausac']->num_rows > 0) {
                                     while ($row = $data['mausac']->fetch_assoc()) {
                                             echo  '<label class="content__input-label" for="'.$row['TenMauSac'].'"></label>
-                                                   <input type="radio" name="" id="'.$row['TenMauSac'].'">';
+                                                   <input type="radio" name="mausac" id="'.$row['MaMauSac'].'">'.$row['TenMauSac'];
                                     }
                                 }
                                 ?>
@@ -131,9 +123,9 @@
                                     <label class="content__input-label" for="red"></label>
                                     <input type="radio" name="" id="red"> -->
                                 </div>
-
+                                
                                 <div class="content__input">
-                                    <select name="" id="" class="content__input-select">
+                                    <select name="" id="content__input-select" class="content__input-select">
                                         <!-- <option value="sizeS">S</option>
                                         <option value="sizeL">L</option>
                                         <option value="sizeM">M</option> -->
@@ -141,17 +133,52 @@
                                         if ($data['kichco']->num_rows > 0) {
                                             while ($row = $data['kichco']->fetch_assoc()) {
                                                     echo    '
-                                                    <option value="'.$row['TenKichCo'].'">'.$row['TenKichCo'].'</option>';
+                                                    <option value="'.$row['MaKichCo'].'">'.$row['TenKichCo'].'</option>';
                                                 }
                                         }
                                         ?>
                                     </select>
+                                    
 
-                                    <input type="number" name="" id="" class="content__input-number" value="0">
+                                    <input type="number" name="" id="content__input-number" class="content__input-number" value="0">
                                 </div>
 
-                                <div class="content__input"><button class="btn btn--primary">Thêm vào giỏ hàng</button>
+                                <div class="content__input"><button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
                                 </div>
+                                <script>
+                                    const largeImage = document.getElementById('largeImage');
+                                    const smallImages = document.querySelectorAll('.content__img-item');
+
+                                        // Xử lý sự kiện khi nhấn vào ảnh nhỏ
+                                        smallImages.forEach((smallImage) => {
+                                            smallImage.addEventListener('click', () => {
+                                                largeImage.src = smallImage.src;
+                                            });
+                                        });
+                                    function addgiohang() {
+                                        
+                                        const imageSource = largeImage.src;
+                                        const fileName = imageSource.split("/").pop();
+                                        const name = document.getElementById('content__info-title').textContent;
+                                        const price = document.getElementById('content__info-price').textContent;
+                                        // var radioButtons = document.getElementsByName("mausac");
+                                        // for (var i = 0; i < radioButtons.length; i++) {
+                                        //     if (radioButtons[i].checked === true) {
+                                        //         alert("Giới tính đã chọn: " + radioButtons[i].value);
+                                        //     }
+                                        // }
+                                        var mausac = "den"; 
+                                        const selectElement = document.getElementById("content__input-select");
+                                        const selectedValue = selectElement.value;
+                                        //alert("Giá trị của option được chọn: " + selectedValue);
+                                        const sl = document.getElementById('content__input-number').value;
+                                        alert("Giá trị của option được chọn: " + sl);
+                                        
+                                        };
+                                        //const largeImage = document.getElementById('largeImage');
+                                        
+                                            
+                                    </script>
 
                                 <div class="content__input"><button class="btn ">Mua ngay</button></div>
                             </form>
@@ -162,7 +189,7 @@
         </div>
 
     </div>
-
+     
     <div class="grid-item item5">
         <?php 
 
