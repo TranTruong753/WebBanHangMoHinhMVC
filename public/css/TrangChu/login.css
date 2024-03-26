@@ -10,7 +10,7 @@ a {
 }
 
 .login__wrap {
-    background: url("../img/hero-img02.jpg");
+    /* background: url("../img/hero-img02.jpg"); */
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;

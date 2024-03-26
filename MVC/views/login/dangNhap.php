@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../../../assets/css/TrangChu/reset.css">
-    <link rel="stylesheet" href="../../../assets/css/TrangChu/styleAllForm.css">
-    <link rel="stylesheet" href="../../../assets/css/TrangChu/style.css">
-    <link rel="stylesheet" href="../../../assets/css/TrangChu/login.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
 </head>
 
 <body>
     <?php
-        require('../Home/header.php');
-        require('../Home/navbar.php');
+        // require('./MVC/views/trangchu/block/header.php');
+        // require('./MVC/views/trangchu/block/navbar.php');
 ?>
-    <div class="login__wrap">
+    <div class="login__wrap" style="background: url(<?php echo Root ?>public/img/hero-img02.jpg);">
         <!-- <div class="login__hero">
             <img src="../../../assets/img/hero-img02.jpg" alt="" class="login__hero-img">
         </div> -->
@@ -28,19 +28,26 @@
                          <a href="#!">Đăng kí ngay</a>
                         </p>
                 </div>
-                <form action="" class="login__form" method="post" autocapitalize="off">
-                    <div class="login__form-wrap">
+                <form action="" class="login__form" method="post" autocapitalize="off" id="my_form">
+                    <!-- <div class="login__form-wrap">
                             <label class="login__formLabel" for="">Số điện thoại</label>
                             <input type="text" name="User" id="User" class="login__formInput" placeholder="Nhập số điện thoại">
                             <div class="error-text">Lỗi!</div>
+                    </div> -->
+                    <div class="form-input-wrap">
+                            <label class="login__formLabel" for="email">Email</label>
+                            <input type="email" name="email" id="email" class="login__formInput" placeholder="Nhập email..." required >
+                            <div id="error-message-email"></div>
+                            <!-- <div class="error-text">Lỗi!</div> -->
                     </div>
-                    <div class="login__form-wrap">
+                    <div class="form-input-wrap">
                             <label class="login__formLabel" for="">Mã PIN</label>
-                            <input type="password" name="Password" id="Password" class="login__formInput" placeholder="Nhập mã PIN">
-                            <div class="error-wrap">
+                            <input type="password" name="Password" id="Password" class="login__formInput" placeholder="Nhập mã PIN" required minlength="6" maxlength="6">
+                            <div id="error-message-pin"></div>
+                    </div>
+                    <div class="error-wrap">
                                 <div class="error-text">Lỗi!</div>
                                 <a href="#!">Quên mã PIN</a>
-                            </div>
                     </div>
                     <div class="form-input-wrap form__save-wrap">
                         <input type="checkbox" name="saveUser" id="saveUser" class="login__formCheckBox" hidden>
@@ -50,7 +57,7 @@
                         
                     </div>
                     <div class="login__form-wrap">
-                        <button type="submit" class="btn login-btn btn--primary">Đăng nhập</button>
+                        <button type="submit" class="btn login-btn btn--noActivate" id="btn_login">Đăng nhập</button>
                     </div>
                     <div class="login-line">
                         <hr class="crossline">
@@ -59,7 +66,7 @@
                     </div>
                     <div class="login__form-wrap">
                         <div class="social-wrap">
-                            <button class="social-btn">
+                            <button class="social-btn" type="button">
                          
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25px"
                                     height="25px" viewBox="126.445 2.281 589 589"
@@ -73,7 +80,7 @@
                            
                                 <span>Facebook</span>
                             </button>
-                            <button class="social-btn">
+                            <button class="social-btn" type="button">
                          
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25px"
                                     height="25px" preserveAspectRatio="xMidYMid"
@@ -104,17 +111,43 @@
            </div>
         </div>
        
-
-
-
-
     </div>
 
     <?php
-        require('../Home/footer.php');
+        require('./MVC/views/trangchu/block/footer.php');
 
-?>
+    ?>
+    <!-- <script>
+        function checkKeyEmail() {
+            var email = document.getElementById("email").value;
 
+            var message_email = document.getElementById("error-message-email");
+
+            if(email.length > 0){
+                if(checkPatternEmail(email)){
+                    message_email.classList.remove("error-message");
+                    message_email.innerHTML ="";
+                    return true;
+                }else {
+                    message_email.classList.add("error-message"); 
+                    message_email.innerHTML ="Email sai định dạng!"
+                }
+
+            }else if (email.length <= 0){
+                message_email.classList.add("error-message"); 
+                message_email.innerHTML ="Không được để trống!"
+            }
+
+            return false;
+
+        }
+
+        function checkPatternEmail(email) {
+            var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            return pattern.test(email);
+        }
+    </script> -->
+    <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangNhap.js"></script>
 </body>
 
 </html>

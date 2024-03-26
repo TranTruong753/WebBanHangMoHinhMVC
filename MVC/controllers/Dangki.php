@@ -7,7 +7,7 @@ class Dangki extends controller
       
     $tl = $this->model("TheloaiModel");
     $this->view("trangchu/block/header",[]);
-    // $this->view("trangchu/block/navbar",["TL"=>$tl->GetTheLoaiModel()]);
+    $this->view("trangchu/block/navbar",["TL"=>$tl->GetTheLoaiModel()]);
     $this->view("login/dangki",[]);
   }
 

@@ -1,5 +1,6 @@
 <?php
 class DangKiModel extends DB{
+    
     public function addDangKiKH($email,$ten,$sdt,$gioitinh){
         $qr = "INSERT INTO khachhang
         VALUES ('$email', '$ten','$sdt','$gioitinh','1')";
