@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/chitietsanpham.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -98,7 +99,7 @@
                             if ($data['thongtin']->num_rows > 0) {
                                 while ($row = $data['thongtin']->fetch_assoc()) {
                                         echo    '
-                                        <h2 class="content__info-title" id ="content__info-title">'.$row['TenSanPham'].'</h2>
+                                        <h2 class="content__info-title" name = "content__info-title" id ="'.$row['MaSanPham'].'">'.$row['TenSanPham'].'</h2>
                                         <p class="content__info-price" id ="content__info-price">'.$row['GiaSanPham'].'</p>';
                                     }
                             }
@@ -159,7 +160,8 @@
                                         
                                         const imageSource = largeImage.src;
                                         const fileName = imageSource.split("/").pop();
-                                        const name = document.getElementById('content__info-title').textContent;
+                                        const element = document.getElementsByName('content__info-title')[0];
+                                        const masp=element.id;
                                         const price = document.getElementById('content__info-price').textContent;
                                         // var radioButtons = document.getElementsByName("mausac");
                                         // for (var i = 0; i < radioButtons.length; i++) {
@@ -167,13 +169,21 @@
                                         //         alert("Giới tính đã chọn: " + radioButtons[i].value);
                                         //     }
                                         // }
-                                        var mausac = "den"; 
+                                        var mamausac = "MS1"; 
+                                        var makh="KH001";
                                         const selectElement = document.getElementById("content__input-select");
-                                        const selectedValue = selectElement.value;
+                                        const makichco = selectElement.value;
                                         //alert("Giá trị của option được chọn: " + selectedValue);
                                         const sl = document.getElementById('content__input-number').value;
-                                        alert("Giá trị của option được chọn: " + sl);
-                                        
+                                        //alert(1);
+                                        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
+                                        masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
+
+                                            alert(data);
+
+
+                                            })
+                                            alert(2);
                                         };
                                         //const largeImage = document.getElementById('largeImage');
                                         

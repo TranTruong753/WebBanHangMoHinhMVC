@@ -38,7 +38,7 @@ class chitietspmodel extends DB{
     }
 
     public function Getthongtinsp($masp){
-        $qr = 'SELECT  TenSanPham,GiaSanPham
+        $qr = 'SELECT  MaSanPham,TenSanPham,GiaSanPham
         FROM sanpham  where MaSanPham="'.$masp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;

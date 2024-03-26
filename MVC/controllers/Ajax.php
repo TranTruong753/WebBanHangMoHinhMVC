@@ -6,8 +6,10 @@ class Ajax extends controller{
 
     // Must have SayHi()
     public $TrangChuKHModel;
+    public $GioHang;
     function __construct(){
         $this->TrangChuKHModel= $this->model("TrangChuKHModel");
+        $this->GioHang= $this->model("GioHangModel");
     }
     function GetAllSP(){
         $tc = $this->TrangChuKHModel->GetTrangChuKHModel();
@@ -121,6 +123,15 @@ class Ajax extends controller{
        
     }
     function GioHang(){
+        
+        $makh=$_POST['makh'];
+        $masp=$_POST['masp'];
+        $mamausac=$_POST['mamausac'];
+        $makichco=$_POST['makichco'];
+        $sl=$_POST['sl'];
+        $this->GioHang->addGioHang($makh,$masp,$mamausac,$makichco,$sl);
+        //echo $makh." ".$masp." ".$mamausac." ".$makichco." ".$sl;
+
     }
 
 
