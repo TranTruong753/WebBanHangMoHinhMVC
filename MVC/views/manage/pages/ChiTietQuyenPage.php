@@ -1,7 +1,7 @@
 <table class="table">
 <style></style>
 <div style="text-align: center;">
-<h1 >Quản Lý Chất Liệu</h1>
+<h1 style=" margin-bottom: 20px;">Quản Lý Chất Liệu</h1>
 </div>
   <thead>
     <tr>
@@ -19,7 +19,7 @@
       <td style="text-align: center;">Mark</td>
       <td style="text-align: center;">Otto</td>
       <td style="text-align: center;">Otto</td>
-      <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a>  <br> <a href="">Sản Phẩm Con</a> </pre></td>
+      <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a> </pre></td>
     </tr>
     
   </tbody>
