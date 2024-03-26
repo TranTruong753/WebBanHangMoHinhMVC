@@ -19,6 +19,18 @@ class NhomQuyenModel extends DB{
         }
         return false;
     }
+
+    public function updateTrangThai($ma,$trangThai)
+    {
+        $qr = "UPDATE nhomquyen set TrangThai = $trangThai where MaNhomQuyen = $ma";
+        if($this->con->query($qr))
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+    }
 }
 
 ?>
