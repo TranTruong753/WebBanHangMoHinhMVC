@@ -48,7 +48,11 @@
     var checkBox=document.getElementById(Ma)
     if(checkBox.checked == true)
     {
-      alert("cc")
+      $.post
+    }
+    else
+    {
+
     }
   }
 </script>

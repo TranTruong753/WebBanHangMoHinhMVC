@@ -6,10 +6,10 @@ class Ajax extends controller{
 
     // Must have SayHi()
     public $TrangChuKHModel;
-    public $GioHang;
+public $GioHang;
     function __construct(){
         $this->TrangChuKHModel= $this->model("TrangChuKHModel");
-        $this->GioHang= $this->model("GioHangModel");
+$this->GioHang= $this->model("GioHangModel");
     }
     function GetAllSP(){
         $tc = $this->TrangChuKHModel->GetTrangChuKHModel();
