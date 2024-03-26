@@ -5,8 +5,5 @@ class TheLoaiModel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
-
-    
-
 }
 ?>

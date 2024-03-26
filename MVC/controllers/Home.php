@@ -20,9 +20,11 @@ class Home extends controller
 
    function trangchu(){
       $tc = $this->model("TrangChuKHModel");
-      $tl = $this->model("TheloaiModel");
+      $cl = $this->model("ChungLoaiModel");
+      $tl = $this->model("TheLoaiModel");
       $this->view("trangchu/block/header",[]);
-      $this->view("trangchu/block/navbar",["TL"=>$tl->GetTheLoaiModel()]);
+      $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
+      
       $this->view("trangchu/Trangchu",["TC" => $tc->GetTrangChuKHModel()]);
   }
 }

@@ -34,23 +34,34 @@
                         <a href="#!" class="nav__item-link">HÀNG MỚI VÈ</a>
                     </li>
                     <?php
-                            if ($data['TL']->num_rows > 0) {
-                                while ($row = $data['TL']->fetch_assoc()) {
+                            if ($data['CL']->num_rows > 0) {
+                                while ($row = $data['CL']->fetch_assoc()) {
                                     echo    '
                                     
                                 <li class="nav__list-items">
-                                    <a href="#!" class="nav__item-link" id = "'.$row["MaTheLoai"].'">'.$row["TenTheLoai"].'</a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="#!" class="sub-link">Item 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#!" class="sub-link">Item 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#!" class="sub-link">Item 3</a>
-                                        </li>
-                                    </ul>
+                                    <a href="#!" class="nav__item-link" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
+                                    <ul class="sub-menu">';
+                                        // <li>
+                                        //     <a href="#!" class="sub-link">Item 1</a>
+                                        // </li>
+                                        // <li>
+                                        //     <a href="#!" class="sub-link">Item 2</a>
+                                        // </li>
+                                        // <li>
+                                        //     <a href="#!" class="sub-link">Item 3</a>
+                                        // </li>
+                                        if ($data['TL']->num_rows > 0) {
+                                            while ($row = $data['TL']->fetch_assoc()) {
+                                                if($row["MaChungLoai"]==$row["MaChungLoai"]){
+                                                    echo'
+                                                    <li>
+                                                        <a href="#!" class="sub-link">'.$row["TenTheLoai"].'</a>
+                                                    </li>
+                                                    ';
+                                                }
+                                            }
+                                        }
+                                    echo '</ul>
                                 </li>';
                                 }
                             }
