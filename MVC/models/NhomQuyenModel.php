@@ -1,16 +1,17 @@
 <?php
 class NhomQuyenModel extends DB{
 
-    public function DanhSachNhomQuyen()
+    public function getDanhSachNhomQuyen()
     {
-        $qr = "SELECT * FROM NhomQuyen Where TrangThai = 1";
-        $row = mysqli_query($this->con,$qr);
-        return $row;
+        $qr = "SELECT * FROM nhomquyen ";
+        // $row = mysqli_query($this->con,$qr);
+        // return $row;
+        return $this->con->query($qr);
     }
 
     public function getNhomQuyenTuTen($ten)
     {
-        $qr = "SELECT * FROM NhomQuyen Where TenNhomQuyen = N\"$ten\"";
+        $qr = "SELECT * FROM nhomquyen Where TenNhomQuyen = N\"$ten\"";
         $row = mysqli_query($this->con,$qr);
         while( $row = mysqli_query($this->con,$qr))
         {

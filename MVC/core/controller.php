@@ -10,11 +10,9 @@ class controller{
 
     public function view($view , $data = [])
     {
-        if(is_array($data))
-        {
+       
             //chuyển tất cả các key của mảng thành biến
-            extract($data);
-        }
+            // extract($data);
         require_once "./MVC/views/$view.php";
     
     }

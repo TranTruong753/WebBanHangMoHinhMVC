@@ -13,6 +13,8 @@ class Admin extends controller
         } else if ($page == "ThemSanPhamPage") {
             $this->data["page"] = "ThemSanPhamPage";
         } else if ($page == "NhomQuyenPage") {
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["DanhSachNhomQuyen"] = $NhomQuyenModel->getDanhSachNhomQuyen();
             $this->data["page"] = "NhomQuyenPage";
         } else if ($page == "ChucNangPage") {
             $this->data["page"] = "ChucNangPage";
@@ -49,6 +51,8 @@ class Admin extends controller
         else if ($page == "ThongKePage") {
             $this->data["page"] = "ThongKePage";
         }
+
+        print_r($this->data);
 
         $this->view("manage/manage", $this->data);
     }
