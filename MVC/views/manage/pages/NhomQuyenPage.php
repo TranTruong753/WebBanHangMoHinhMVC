@@ -14,12 +14,22 @@
   </thead>
   <tbody class="table-group-divider">
 
-    <tr>
-      <th style="text-align: center;" scope="row">1</th>
-      <td style="text-align: center;">Mark</td>
-      <td style="text-align: center;">Otto</td>
+    <?php
+     if($data['DanhSach']->num_rows >0)
+    {
+      while($row = $data['DanhSach']->fetch_assoc())
+      {
+        ?>
+      <tr>
+      <th style="text-align: center;" scope="row"><?php echo $row["MaNhomQuyen"]?></th>
+      <td style="text-align: center;"><?php echo $row["TenNhomQuyen"]?></td>
+      <td style="text-align: center;"><?php echo $row["TrangThai"]?></td>
       <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a></pre></td>
     </tr>
+        <?php
+      }
+    }?>
+   
     
   </tbody>
 </table>
