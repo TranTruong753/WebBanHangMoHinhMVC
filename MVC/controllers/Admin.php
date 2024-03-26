@@ -7,14 +7,17 @@ class Admin extends controller
     function default($page = "SanPhamPage")
     {
         if ($page == "SanPhamPage") {
+            $NhomQuyenModel = $this->model("SanPhamModel");
+            $this->data["DanhSach"] = $NhomQuyenModel->getDanhSach();
             $this->data["page"] = "SanPhamPage";
         } else if ($page == "TaiKhoanPage") {
+            
             $this->data["page"] = "TaiKhoanPage";
         } else if ($page == "ThemSanPhamPage") {
             $this->data["page"] = "ThemSanPhamPage";
         } else if ($page == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");
-            $this->data["DanhSachNhomQuyen"] = $NhomQuyenModel->getDanhSachNhomQuyen();
+            $this->data["DanhSach"] = $NhomQuyenModel->getDanhSach();
             $this->data["page"] = "NhomQuyenPage";
         } else if ($page == "ChucNangPage") {
             $this->data["page"] = "ChucNangPage";

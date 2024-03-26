@@ -1,7 +1,7 @@
 <?php
 class NhomQuyenModel extends DB{
 
-    public function getDanhSachNhomQuyen()
+    public function getDanhSach()
     {
         $qr = "SELECT * FROM nhomquyen ";
         // $row = mysqli_query($this->con,$qr);
