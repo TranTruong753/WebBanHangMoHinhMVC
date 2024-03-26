@@ -2,6 +2,7 @@
     width: 100%;
     display: block;
     padding: 0;
+    padding-right: 10px;
 }
 
 .grid.wide {
@@ -14,6 +15,7 @@
     flex-wrap: wrap;
     margin-left: -4px;
     margin-right: -4px;
+    margin-right: 10px;
 }
 
 .row.no-gutters {

@@ -1,4 +1,4 @@
-.header-sidebar{
+/* .header-sidebar{
     text-align: center;
     padding-top: 30px ;
     font-size: 30px;
@@ -21,7 +21,7 @@
  }
  
  .sidebar{
-     width: 40px;
+     width: 200px;
      height: 100vh;
      box-shadow: rgba(122, 122, 122, 0.3) 0px 0px 10px;
      transition: 0.5s;
@@ -82,4 +82,4 @@
      border: 4px rgb(47, 49, 45) solid;
  }
  
- 
+  */

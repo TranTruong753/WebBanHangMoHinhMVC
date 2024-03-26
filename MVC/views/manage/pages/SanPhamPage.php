@@ -1,57 +1,27 @@
-<script src="https://kit.fontawesome.com/4850ddc62a.js" crossorigin="anonymous"></script>
-
-<div class="title-table">
-    <select name="cars" id="cars">
-        <option value="volvo">volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <input type="text" placeholder="Tìm kiếm">
-    <select name="cars" id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <select name="cars" id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <select name="cars" id="cars">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-    </select>
-    <button type="submit" onclick="AddProductPage()">Lưu</button>
-    <button type="submit" onclick="AddProductPage()">Thêm mới</button>
+<table class="table">
+<style></style>
+<div style="text-align: center;">
+<h1 >Quản Lý Sản Phẩm</h1>
 </div>
-<div class="Table">
-    <table>
+  <thead>
+    <tr>
+      <th scope="col" style="text-align: center;">ID</th>
+      <th scope="col" style="text-align: center;">Tên</th>
+      <th scope="col" style="text-align: center;">Thể Loại</th>
+      <th scope="col" style="text-align: center;">Chất Liệu</th>
+      <th scope="col" style="text-align: center;">Thương Hiệu</th>
+      <th scope="col" style="text-align: center;">Thao Tác</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
 
-        <tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Thể Loại</th>
-            <th>Chất Liệu</th>
-            <th>Thương Hiệu</th>
-            <th>Tác vụ</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-
-
-    </table>
-</div>
-<script src="<?php echo Root . "public/script/manage/main.js" ?>">
-
-</script>
+    <tr>
+      <th style="text-align: center;" scope="row">1</th>
+      <td style="text-align: center;">Mark</td>
+      <td style="text-align: center;">Otto</td>
+      <td style="text-align: center;">@mdo</td>
+      <td style="text-align: center;">@mdo</td>
+      <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a>  <br> <a href="">Sản Phẩm Con</a> </pre></td>
+    </tr>
+  </tbody>
+</table>
