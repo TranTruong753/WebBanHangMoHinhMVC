@@ -183,7 +183,7 @@
 
 
                                             })
-                                            alert(2);
+                                            
                                         };
                                         //const largeImage = document.getElementById('largeImage');
                                         
