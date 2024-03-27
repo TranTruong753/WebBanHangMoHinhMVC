@@ -114,7 +114,7 @@
                         <form action="" class="footer__form">
                             <label for="email" class="footer__form-label">
                                 Đăng ký nhận email khuyến mãi
-                                <input type="email" name="email" id="email" placeholder="Email của bản"
+                                <input type="email" name="email" id="email_bottom" placeholder="Email của bản"
                                     class="footer__form-input" />
                             </label>
                             <button type="submit" class="footer__form-button">

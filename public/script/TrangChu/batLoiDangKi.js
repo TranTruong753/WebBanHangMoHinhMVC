@@ -82,8 +82,8 @@ function checkPatternPhone(phone) {
 
 function checkKeyEmail() {
     var email = document.getElementById("email").value;
-
-
+    // console.log(email);
+    // alert(email);
     var message_email = document.getElementById("error-message-email");
 
     if(email.length > 0){
@@ -105,7 +105,9 @@ function checkKeyEmail() {
 }
 
 function checkPatternEmail(email) {
-    var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+    // var pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$/;
+    // var pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return pattern.test(email);
 }
 
