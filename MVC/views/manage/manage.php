@@ -14,6 +14,8 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
     </script>
+    <!--ajax -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- link css -->
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/sidebar.css">
@@ -37,18 +39,16 @@
                     require_once "blocks/sidebar.php";
                     ?>
                 </div>
-                <div class="container col l-9" >
-                   
-                    <?php   
-                    $this->view("manage/pages/".$data['page'],["DanhSach"=>$data["DanhSach"]]);
-                    
+                <div class="container col l-9">
+                    <?php
+                    $this->view("manage/pages/" . $data['page'], ["DanhSach" => $data["DanhSach"]]);
                     ?>
                 </div>
             </div>
 
         </div>
 
-        <script src="<?php echo Root."public/script/manage/main.js"?>"></script>
+        <script src="<?php echo Root . "public/script/manage/main.js" ?>"></script>
     </div>
 
 
