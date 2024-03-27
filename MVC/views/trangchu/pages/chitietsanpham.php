@@ -11,7 +11,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- link css -->
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
+    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/styleHome.css" />
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/chitietsanpham.css" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>

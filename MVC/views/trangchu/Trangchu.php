@@ -101,51 +101,11 @@
         <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" /> -->
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
-        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleHome.css">
         <!-- link js -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        
-       
     </head>
     <body>
-        <!-- header -->
-        <!-- <header class="header">
-            <div class="container">
-                <div class="header__info">
-                    <div class="header__info-left">
-                        <a href="#!" class="header__info-phone">
-                            <i class="fa-solid fa-phone-flip"></i>
-                            Hotline: 0888.888.888
-                        </a>
-                    </div>
-                    <div class="header__info-right">
-                        <ul class="header__info-list">
-                            <li class="header__info-items">
-                                <a href="#!" class="header__info-link">
-                                    Cách chọn Size
-                                </a>
-                            </li>
-                            <li class="header__info-items">
-                                <a href="#!" class="header__info-link">
-                                    Chính sách khách vip
-                                </a>
-                            </li>
-                            <li class="header__info-items">
-                                <a href="#!" class="header__info-link">
-                                    Giới thiệu
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header> -->
-        <?php
-        //require('./MVC/views/trangchu/block/header.php');
-        // require('./MVC/views/trangchu/block/navbar.php');
-?>
-        <!-- nav -->
-        
         <!-- hero -->
         <section class="hero">
             <div class="hero__inner">
