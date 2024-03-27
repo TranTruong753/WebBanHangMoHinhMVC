@@ -13,9 +13,11 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
+    
     <!-- nav -->
     <nav class="fixed">
         <div class="container container__nav">
@@ -98,11 +100,20 @@
                     <!-- login logout -->
                     <div class="nav__right">
                         <div class="nav__right-wrap">
-                            <a href="<?php echo Root ?>DangNhap/dangNhap" class="nav__signin"
-                                >Đăng nhập</a
-                            >
-                            <span>/</span>
-                            <a href="<?php echo Root ?>Dangki/dangki" class="nav__signup">Đăng ký</a>
+                            <?php
+                                if(isset($_SESSION['email'])){
+                                    echo $_SESSION['email'];
+                                    echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
+                                }
+                                else{ echo '
+                                    <a href="'; echo Root; echo 'DangNhap/dangNhap" class="nav__signin"
+                                    >Đăng nhập</a>
+                                    <span>/</span>
+                                    <a href="'; echo Root; echo 'Dangki/dangki" class="nav__signup">Đăng ký</a>
+                                    ';
+                                }
+                            ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -111,3 +122,4 @@
 </body>
 
 </html>
+<script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>

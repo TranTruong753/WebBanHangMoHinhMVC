@@ -153,8 +153,9 @@
         require('./MVC/views/trangchu/block/footer.php');
 
     ?>
-   
+    <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangKi.js">
+    
     </script>
 
 </body>

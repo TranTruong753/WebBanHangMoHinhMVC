@@ -5,10 +5,10 @@
 class AjaxLogin extends controller{
 
     // Must have SayHi()
-    public $DangKiModel;
+    public $LoginModel;
     
     function __construct(){
-        $this->DangKiModel= $this->model("DangKiModel");
+        $this->LoginModel= $this->model("LoginModel");
         
     }
     function addTaiKhoan(){
@@ -17,14 +17,34 @@ class AjaxLogin extends controller{
         $sdt=$_POST['sdt'];
         $gioitinh=$_POST['gioitinh'];
         $mk=$_POST['mk'];
-        if($this->DangKiModel->addDangKiKH($email,$ten,$sdt,$gioitinh)==true and
-         $this->DangKiModel->addDangKiTK($email,$mk)== true ){
+        if($this->LoginModel->addDangKiKH($email,$ten,$sdt,$gioitinh)==true and
+         $this->LoginModel->addDangKiTK($email,$mk)== true ){
             echo "true";
 
         }
         else echo "false";
                 
 
+    }
+
+    function DangNhap(){
+        $email=$_POST['email'];
+        $mk=$_POST['mk'];
+        $result=$this->LoginModel->TimTK($email,$mk);
+        if ($result->num_rows > 0) {
+            $_SESSION['email']=$email;
+            
+            echo "true";
+        }
+        else echo "false";
+    }
+
+    function Logout(){
+        
+        if(isset($_SESSION['email'])){
+            unset($_SESSION['email']);
+        }
+        
     }
 
 

@@ -18,32 +18,7 @@ function changeButton(){
     }
 
 }
-function onclickbtn(){
-    var email = document.getElementById("email").value;
-    var ten = document.getElementById("UserName").value;
-    var sdt = document.getElementById("phone").value;
-    var mk = document.getElementById("codePIN").value;
-    var radioButtons = document.getElementsByName("sex");
-    var gioitinh="";
-    for (var i = 0; i < radioButtons.length; i++) {
-        if (radioButtons[i].checked === true) {
-           gioitinh= radioButtons[i].value;
-        }
-    }
-    
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/addTaiKhoan",{email : email,
-    ten : ten,sdt : sdt,mk : mk, gioitinh: gioitinh},function(data){
-        var result=data;
-        //alert(typeof(result));
-        if(result.length == 6){
-            alert("Thêm thành công");
-            window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");
 
-        }
-        else {
-            alert("mã khách hàng bị trùng");}
-    })
-}
 
 
 

@@ -1,5 +1,5 @@
 <?php
-class DangKiModel extends DB{
+class LoginModel extends DB{
     
     public function addDangKiKH($email,$ten,$sdt,$gioitinh){
         $qr = "INSERT INTO khachhang
@@ -21,6 +21,16 @@ class DangKiModel extends DB{
         return false;
         
     }
+
+    public function TimTK($email,$mk){
+        
+        $qr ='SELECT * FROM taikhoan where MaNguoiDung="'.$email.'" and MatKhau="'.$mk.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+        
+    }
+
+
 
     
 
