@@ -4,10 +4,10 @@ class Dangki extends controller
    
 
    function dangki(){
-      
+    $cl = $this->model("ChungLoaiModel");
     $tl = $this->model("TheloaiModel");
     $this->view("trangchu/block/header",[]);
-    $this->view("trangchu/block/navbar",["TL"=>$tl->GetTheLoaiModel()]);
+    $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
     $this->view("login/dangki",[]);
   }
 
