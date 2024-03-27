@@ -163,8 +163,9 @@
                     </div>
                     <div class="footer__column">
                         <h3 class="footer__title-center">
-                            KẾT NỐI VỚI 4 MEN
+                            KẾT NỐI VỚI MENSTYLE
                         </h3>
+                        <div class="fb-page" data-href="https://www.facebook.com/TruongDaihocSaiGon.SGU" data-tabs="timeline" data-width="320px" data-height="130px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TruongDaihocSaiGon.SGU" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TruongDaihocSaiGon.SGU">Trường Đại học Sài Gòn</a></blockquote></div>
                     </div>
                 </div>
             </div>
@@ -201,4 +202,7 @@
             </div>
         </div>
     </footer>
+     <!-- lấy giao diện facebook -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="FiyLCZGW"></script>
 

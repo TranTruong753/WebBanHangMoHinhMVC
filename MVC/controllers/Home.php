@@ -26,6 +26,7 @@ class Home extends controller
       $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
       
       $this->view("trangchu/Trangchu",["TC" => $tc->GetTrangChuKHModel()]);
+      $this->view("trangchu/block/footer");
   }
 }
 ?> 

@@ -701,25 +701,6 @@ button {
 .footer__bottom-wrap {
     padding: 0 15px;
 }
-/*
-@media only screen and (max-width: 768px) {
-    /* CSS cho thiết bị có độ rộng tối đa 768px 
-    .container__nav {
-        --width-container: 768px;
-    }
-
-    .nav__list {
-        display: block;
-    }
-}*/
-
-/* @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    /* CSS cho thiết bị có độ rộng từ 769px đến 1024px 
-}
-
-@media only screen and (min-width: 1025px) {
-    /* CSS cho thiết bị có độ rộng từ 1025px trở lên 
-} */
 
 /* map */
 .map {
@@ -736,3 +717,4 @@ button {
     height: 100%;
     border: none;
 }
+

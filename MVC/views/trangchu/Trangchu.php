@@ -97,8 +97,11 @@
             referrerpolicy="no-referrer"
         />
         <!-- link css -->
-        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
-        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
+        <!-- <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
+        <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" /> -->
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
         <!-- link js -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         
@@ -523,7 +526,7 @@
                 </div>
             </section>
         </main>
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="footer__top">
                 <div class="container">
                     <div class="footer__row">
@@ -718,7 +721,7 @@
                         </div>
                         <div class="footer__column">
                             <h3 class="footer__title-center">
-                                KẾT NỐI VỚI 4 MEN
+                                KẾT NỐI VỚI MENSTYLE
                             </h3>
                             <div class="fb-page" data-href="https://www.facebook.com/TruongDaihocSaiGon.SGU" data-tabs="timeline" data-width="320px" data-height="130px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TruongDaihocSaiGon.SGU" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TruongDaihocSaiGon.SGU">Trường Đại học Sài Gòn</a></blockquote></div>
                         </div>
@@ -760,10 +763,10 @@
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
         <!-- lấy giao diện facebook -->
-        <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="FiyLCZGW"></script>
+        <!-- <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="FiyLCZGW"></script> -->
     </body>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/timkiem.js"></script>
