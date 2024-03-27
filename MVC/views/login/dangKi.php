@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
                          <a href="#!">Đăng nhập</a>
                         </p>
                 </div>
-                <form action="<?php echo Root ?>Dangki/dangkiDB" class="login__form" method="post" autocapitalize="off" id="my_form">
+                <form action="" class="login__form" method="" autocapitalize="off" id="my_form">
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="UserName">Họ và tên <span class="importan">*</span></label>
                             <input type="text" name="UserName" id="UserName" class="login__formInput" placeholder="Nhập họ và tên..."  required>
@@ -130,7 +131,7 @@
                     </div>
   
                     <div class="form-input-wrap">
-                        <button type="button" class="btn login-btn btn--noActivate" id="btn" >Hoàn thành</button>
+                        <button type="button" onclick= "onclickbtn()" class="btn login-btn btn--noActivate" id="btn" >Hoàn thành</button>
                     </div>
 
                    
@@ -152,8 +153,9 @@
         require('./MVC/views/trangchu/block/footer.php');
 
     ?>
-   
+    <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangKi.js">
+    
     </script>
 
 </body>

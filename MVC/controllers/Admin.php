@@ -8,7 +8,7 @@ class Admin extends controller
     {
         if ($page == "SanPhamPage") {
             $NhomQuyenModel = $this->model("SanPhamModel");
-            $this->data["DanhSach"] = $NhomQuyenModel->getDanhSach();
+            $this->data["DanhSach"] = $NhomQuyenModel->getDanhSachAdmin();
             $this->data["page"] = "SanPhamPage";
         } else if ($page == "TaiKhoanPage") {
             

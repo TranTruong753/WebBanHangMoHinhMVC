@@ -5,17 +5,17 @@ function changeButton(){
     if(checkAllInput()){              
         button.classList.remove("btn--noActivate");
         button.classList.add("btn--primary");
-        button = document.getElementById("btn").type = "submit";
-        // return true;
+        
         
     }else { 
         button.classList.remove("btn--primary");
         button.classList.add("btn--noActivate");  
-        button = document.getElementById("btn").type = "button";
-        // return false;         
+       
+         
     }
 
 }
+
 
 
 

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
 </head>
 
 <body>
@@ -57,7 +59,7 @@
                         
                     </div>
                     <div class="login__form-wrap">
-                        <button type="submit" class="btn login-btn btn--noActivate" id="btn_login">Đăng nhập</button>
+                        <button type="button" onclick="onclickbtnDN()" class="btn login-btn btn--noActivate" id="btn_login">Đăng nhập</button>
                     </div>
                     <div class="login-line">
                         <hr class="crossline">
@@ -148,6 +150,7 @@
         }
     </script> -->
     <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangNhap.js"></script>
+    <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
 </body>
 
 </html>

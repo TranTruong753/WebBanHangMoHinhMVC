@@ -25,10 +25,10 @@ class NhomQuyenModel extends DB{
         $qr = "UPDATE nhomquyen set TrangThai = $trangThai where MaNhomQuyen = $ma";
         if($this->con->query($qr))
         {
-            return true;
+            echo "Đổi Trạng Thái Thành Công!";
         }else
         {
-            return false;
+            echo "Đổi Trạng Thái Thất Bại!";
         }
     }
 }

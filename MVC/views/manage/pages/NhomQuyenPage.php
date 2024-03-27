@@ -22,15 +22,13 @@
           <th style="text-align: center;" scope="row"><?php echo $row["MaNhomQuyen"] ?></th>
           <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ?></td>
           <td style="text-align: center;">
-            <input onchange="DoiTRangThai(this)" id="<?php echo $row["MaNhomQuyen"] ?>" type="checkbox" value="1" 
-            <?php  if($row["TrangThai"] == 1) 
-            {
-              echo "checked = 'checked'";
-            }
-             ?> />
+            <input onchange="DoiTrangThai(this)" id="<?php echo $row["MaNhomQuyen"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
+                                                                                                                    echo "checked = 'checked'";
+                                                                                                                  }
+                                                                                                                  ?> />
           </td>
           <td style="text-align: center;">
-            <pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a></pre>
+            <pre><a href="">Sửa</a></pre>
           </td>
         </tr>
     <?php
@@ -42,17 +40,26 @@
 </table>
 
 <script>
-  function DoiTRangThai(obj)
-  {
-    var Ma = obj.id;
-    var checkBox=document.getElementById(Ma)
-    if(checkBox.checked == true)
-    {
-      $.post
-    }
-    else
-    {
+  function DoiTrangThai(obj) {
+    var ma = obj.id;
+    var checkBox = document.getElementById(ma)
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
 
+        alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        alert(data);
+      })
     }
   }
 </script>

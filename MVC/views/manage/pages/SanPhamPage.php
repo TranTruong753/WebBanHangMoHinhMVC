@@ -24,9 +24,9 @@ if($data["DanhSach"]->num_rows>0)
  <tr>
       <th style="text-align: center;" scope="row"><?php echo $row["MaSanPham"]?></th>
       <td style="text-align: center;"><?php echo $row["TenSanPham"]?></td>
-      <td style="text-align: center;">Otto</td>
-      <td style="text-align: center;">@mdo</td>
-      <td style="text-align: center;">@mdo</td>
+      <td style="text-align: center;"><?php echo $row["TenTheLoai"]?></td>
+      <td style="text-align: center;"><?php echo $row["TenChatLieu"]?></td>
+      <td style="text-align: center;"><?php echo $row["TenThuongHieu"]?></td>
       <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a>  <br> <a href="">Sản Phẩm Con</a> </pre></td>
     </tr>
 <?php
