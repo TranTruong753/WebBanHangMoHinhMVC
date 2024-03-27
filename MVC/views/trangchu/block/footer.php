@@ -157,6 +157,9 @@
                         <h3 class="footer__title-center">
                             HỆ THỐNG CỬA HÀNG
                         </h3>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669726976175!2d106.67968337593229!3d10.759917089387844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2sSaigon%20University!5e0!3m2!1sen!2s!4v1711552944647!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                     <div class="footer__column">
                         <h3 class="footer__title-center">

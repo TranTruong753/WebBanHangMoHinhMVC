@@ -712,11 +712,15 @@
                             <h3 class="footer__title-center">
                                 HỆ THỐNG CỬA HÀNG
                             </h3>
+                            <div class="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.669726976175!2d106.67968337593229!3d10.759917089387844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f1b7c3ed289%3A0xa06651894598e488!2sSaigon%20University!5e0!3m2!1sen!2s!4v1711552944647!5m2!1sen!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                         <div class="footer__column">
                             <h3 class="footer__title-center">
                                 KẾT NỐI VỚI 4 MEN
                             </h3>
+                            <div class="fb-page" data-href="https://www.facebook.com/TruongDaihocSaiGon.SGU" data-tabs="timeline" data-width="320px" data-height="130px" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TruongDaihocSaiGon.SGU" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TruongDaihocSaiGon.SGU">Trường Đại học Sài Gòn</a></blockquote></div>
                         </div>
                     </div>
                 </div>
@@ -757,6 +761,9 @@
                 </div>
             </div>
         </footer>
+        <!-- lấy giao diện facebook -->
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="FiyLCZGW"></script>
     </body>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/timkiem.js"></script>
