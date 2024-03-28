@@ -6,7 +6,7 @@ class AjaxNhomQuyen extends controller
 {
 
     // Must have SayHi()
-    public $NhomQuyenModel;
+    private $NhomQuyenModel;
     function __construct()
     {
         $this->NhomQuyenModel = $this->model("NhomQuyenModel");

@@ -30,6 +30,8 @@ class Admin extends controller
         } else if ($page == "TheLoaiPage") {
             $this->data["page"] = "TheLoaiPage";
         } else if ($page == "ChatLieuPage") {
+            $ChatLieuModel = $this->model("ChatLieuModel");
+            $this->data["DanhSach"] = $ChatLieuModel->getDanhSach();
             $this->data["page"] = "ChatLieuPage";
         } else if ($page == "KichCoPage") {
             $this->data["page"] = "KichCoPage";
