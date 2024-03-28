@@ -153,9 +153,11 @@
         require('./MVC/views/trangchu/block/footer.php');
 
     ?>
-      <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangKy.js"></script>
+    <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangKy.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
     
+        
 
 </body>
 

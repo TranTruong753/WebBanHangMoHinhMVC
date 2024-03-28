@@ -14,7 +14,7 @@ class LoginModel extends DB{
     public function addDangKiTK($email,$mk){
         $quyen="1";
         $qr = "INSERT INTO taikhoan
-        VALUES ('$email', '$mk','$quyen','1')";
+        VALUES (NULL,'$email',NULL, '$mk','$quyen','1')";
         if($row=mysqli_query($this->con, $qr)){
             return true;
         }
@@ -24,7 +24,7 @@ class LoginModel extends DB{
 
     public function TimTK($email,$mk){
         
-        $qr ='SELECT * FROM taikhoan where MaNguoiDung="'.$email.'" and MatKhau="'.$mk.'"';
+        $qr ='SELECT * FROM taikhoan where (MaNguoiDung="'.$email.'" and MatKhau="'.$mk.'") or (MaNhanVien="'.$email.'" and MatKhau="'.$mk.'")';
         $row=mysqli_query($this->con, $qr);
         return $row;
         

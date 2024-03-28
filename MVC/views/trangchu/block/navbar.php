@@ -33,7 +33,7 @@
                 <!-- nav list -->
                 <ul class="nav__list">
                     <li class="nav__list-items">
-                        <a href="#!" class="nav__item-link">HÀNG MỚI VÈ</a>
+                        <a href="#!" class="nav__item-link" id ="hangmoi">HÀNG MỚI VÈ</a>
                     </li>
                     <?php
                             if ($data['CL']->num_rows > 0) {
@@ -57,7 +57,7 @@
                                                 if($row["MaChungLoai"]==$row["MaChungLoai"]){
                                                     echo'
                                                     <li>
-                                                        <a href="#!" class="sub-link">'.$row["TenTheLoai"].'</a>
+                                                        <span class="sub-link" id = "'.$row["MaTheLoai"].'">'.$row["TenTheLoai"].'</span>
                                                     </li>
                                                     ';
                                                 }

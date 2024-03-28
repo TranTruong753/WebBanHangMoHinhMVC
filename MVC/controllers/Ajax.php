@@ -45,43 +45,84 @@ $this->GioHang= $this->model("GioHangModel");
 
     }
 
-    function GetSPtheoTL(){
-        if(isset($_POST['tl'])){
-        $tl=$_POST['tl'];
-        $tc = $this->TrangChuKHModel->GetspTL($tl);
-        if ($tc->num_rows > 0) {
-            while ($row = $tc->fetch_assoc()) {
-                echo    '
-                    <section class="product__item">
-                        <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
-                            <div class="product__img-wrap">
-                                <img
-                                src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
-                                    alt=""
-                                    class="product__img"
-                                />
-                                <span class="product__img-sale"
-                                    >-50%</span
-                                >
-                            </div>
-
-                            <div class="product__content">
-                                <div class="product__content-price">'
-                                .$row["GiaSanPham"].'VND
+    function GetSPtheoCL(){
+        if(isset($_POST['cl'])){
+            $tl=$_POST['cl'];
+            $cl = $this->TrangChuKHModel->GetspCL($tl);
+            if ($cl->num_rows > 0) {
+                while ($row = $cl->fetch_assoc()) {
+                    echo    '
+                        <section class="product__item">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+                                <div class="product__img-wrap">
+                                    <img
+                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+                                        alt=""
+                                        class="product__img"
+                                    />
+                                    <span class="product__img-sale"
+                                        >-50%</span
+                                    >
                                 </div>
-                                <p class="product__content-title">'
-                                    .$row["TenSanPham"].'
-                                </p>
-                            </div>
-                        </a>
-                    </section>';
+
+                                <div class="product__content">
+                                    <div class="product__content-price">'
+                                    .$row["GiaSanPham"].'VND
+                                    </div>
+                                    <p class="product__content-title">'
+                                        .$row["TenSanPham"].'
+                                    </p>
+                                </div>
+                            </a>
+                        </section>';
+                }
+            }
+            else
+            {
+                $this->GetAllSP();
             }
         }
+        
     }
-    else
-        {
-            $this->GetAllSP();
+
+    function GetSPtheoTL(){
+        if(isset($_POST['tl'])){
+            $tl=$_POST['tl'];
+            $cl = $this->TrangChuKHModel->GetspTL($tl);
+            if ($cl->num_rows > 0) {
+                while ($row = $cl->fetch_assoc()) {
+                    echo    '
+                        <section class="product__item">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+                                <div class="product__img-wrap">
+                                    <img
+                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+                                        alt=""
+                                        class="product__img"
+                                    />
+                                    <span class="product__img-sale"
+                                        >-50%</span
+                                    >
+                                </div>
+
+                                <div class="product__content">
+                                    <div class="product__content-price">'
+                                    .$row["GiaSanPham"].'VND
+                                    </div>
+                                    <p class="product__content-title">'
+                                        .$row["TenSanPham"].'
+                                    </p>
+                                </div>
+                            </a>
+                        </section>';
+                }
+            }
+            else
+            {
+                $this->GetAllSP();
+            }
         }
+        
     }
     function TimSP(){
         if(isset($_POST['tensp'])){

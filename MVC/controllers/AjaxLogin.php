@@ -32,11 +32,16 @@ class AjaxLogin extends controller{
         $mk=$_POST['mk'];
         $result=$this->LoginModel->TimTK($email,$mk);
         if ($result->num_rows > 0) {
-            $_SESSION['email']=$email;
+            while ($row = $result->fetch_assoc()) {
+                if($row['MaNhomQuyen']==1){
+                    $_SESSION['email']=$email;
+                    $KH= 'KH';
+                    return 1;
+                }
+                echo "NV";
             
-            echo "true";
-        }
-        else echo "false";
+            }
+       } else echo "false";
     }
 
     function Logout(){

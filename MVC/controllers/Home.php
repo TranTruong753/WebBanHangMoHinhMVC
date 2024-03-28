@@ -28,6 +28,18 @@ class Home extends controller
       $this->view("trangchu/Trangchu",["TC" => $tc->GetTrangChuKHModel()]);
       $this->view("trangchu/block/footer",[]);
   }
+
+  function XuLyDanhMuc(){
+   
+   $cl = $this->model("ChungLoaiModel");
+   $tl = $this->model("TheLoaiModel");
+   $this->view("trangchu/block/header",[]);
+   $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
+   
+   $this->view("trangchu/pages/ViewDanhMucSP",[]);
+   $this->view("trangchu/block/footer",[]);
+}
+
 }
 ?> 
 

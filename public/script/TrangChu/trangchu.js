@@ -7,11 +7,12 @@ $(document).ready(function(){
 });
 
 $(".nav__list").on("click","a",function(){
-    var theloai = $(this).attr("id");
-    $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetSPtheoTL",{tl : theloai},function(data){
+    // var theloai = $(this).attr("id");
+    // $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetSPtheoTL",{tl : theloai},function(data){
        
-        $("#product__list").html(data);
+    //     $("#product__list").html(data);
 
-    })
+    // })
+    window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc");
 
 });

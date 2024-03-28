@@ -37,14 +37,19 @@ function onclickbtnDN(){
     var mk = document.getElementById("Password").value;
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/DangNhap",{email : email,
     mk : mk},function(data){
-        var result=data;
-        
-        if(result.length == 6){
+        // const obj = JSON.parse(data);
+        // alert(obj);
+       
+        if(data.length== 2){
             alert("DN thành công");
             window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");
         }
-        else {
-            alert("DN that bai");}
+        else if(data.length== 4){
+            alert("DN thành công");
+            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default");
+            
+        }
+        else alert("Thông tin tài khoản hoặc mật khẩu không chính xác");
     });
 
 };
