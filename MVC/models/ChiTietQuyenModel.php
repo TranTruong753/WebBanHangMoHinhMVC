@@ -34,7 +34,6 @@ class ChiTietQuyenModel extends DB{
 
         return 0;
 
-        // return $this->con->query($qr)->num_rows;
     }
 }
 
