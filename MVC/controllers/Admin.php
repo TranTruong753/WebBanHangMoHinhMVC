@@ -67,7 +67,7 @@ class Admin extends controller
             $this->data["page"] = "ThongKePage";
         }
 
-        print_r($this->data);
+        // print_r($this->data); 
 
         $this->view("manage/manage", $this->data);
     }
