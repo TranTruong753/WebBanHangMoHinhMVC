@@ -14,6 +14,7 @@
         referrerpolicy="no-referrer"
     />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -83,14 +84,84 @@
                                 <i class="fa-solid fa-circle-xmark"></i>
                             </button>
                         </form>
-                        <a href="#!" class="cart-shopping cart-btn">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                        <!-- <a href="#!" class="cart-shopping cart-btn">
+                            <i class="fa-solid fa-cart-shopping"></i> -->
                             <!-- Cart preview -->
-                            <div class="cart-preview">
+                            <!-- <div class="cart-preview">
                                     <p class="cart-message">Chưa Có Sản Phẩm</p>
-                                    <!-- <img src="<?php echo Root ?>public/img/logo.png"> -->
+                                    <ul class="cart__list">
+                                        <li class="cart-item">
+                                            <a href="" class="cart-item__link"></a>
+                                        </li>
+                                    </ul> -->
+                                    <!-- <img src=""> -->
+                            <!-- </div>
+                        </a> -->
+                        <button type="button" class="cart-shopping cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                         <!-- Cart preview -->
+                        <div class="cart-preview-wrap">
+                             <div class="cart-preview">         
+                                <div class="cart-message">Có <span class="cart-message__number">2</span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
+                                <ul class="cart__list">
+                                    <!-- item 01 -->
+                                        <li class="cart-item">
+                                            <img src="<?php echo Root ?>public/img/product01.jpg" alt="" class="cart-item__img">
+                                            <div class="cart-item__content">
+                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 01</a>
+                                                <div class="cart-item__info">
+                                                    <div class="cart-item__number">1</div>
+                                                    <span>X</span>
+                                                    <span class="cart-item__price">400.000</span>
+                                                </div>
+                                                <div class="cart-item__icon">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                        <!-- item 02 -->
+                                        <li class="cart-item">
+                                            <img src="<?php echo Root ?>public/img/product02.jpg" alt="" class="cart-item__img">
+                                            <div class="cart-item__content">
+                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 02</a>
+                                                <div class="cart-item__info">
+                                                    <div class="cart-item__number">1</div>
+                                                    <span>X</span>
+                                                    <span class="cart-item__price">400.000</span>
+                                                </div>
+                                                <div class="cart-item__icon">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+    
+                                        <!-- item 03 -->
+                                        <li class="cart-item">
+                                            <img src="<?php echo Root ?>public/img/product03.jpg" alt="" class="cart-item__img">
+                                            <div class="cart-item__content">
+                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 02</a>
+                                                <div class="cart-item__info">
+                                                    <div class="cart-item__number">1</div>
+                                                    <span>X</span>
+                                                    <span class="cart-item__price">400.000</span>
+                                                </div>
+                                                <div class="cart-item__icon">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+    
+                                </ul>
+                                <div class="cart__buy">
+                                    <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">800.000</span></div>
+                                    <a href="#!" class="cart__buy-btn" title="Thanh toán">Thanh toán</a>
+                                </div>           
                             </div>
-                        </a>
+                        </div>
+                    </button>
                     </div>
                     <!-- login logout -->
                     <div class="nav__right">
