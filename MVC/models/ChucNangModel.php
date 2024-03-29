@@ -22,5 +22,15 @@ class ChucNangModel extends DB{
             echo "Dổi trạng thái không thành công!";
         }
     }
+
+    public function getTenTuMa($ma)
+    {
+        $qr = "SELECT * from chucnang where MaChucNang = $ma";
+        while($row  = $this->con->query($qr)->fetch_assoc())
+        {
+            return $row["TenChucNang"];
+        }
+        return "";
+    }
 }
 ?>

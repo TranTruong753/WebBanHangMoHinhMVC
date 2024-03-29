@@ -20,7 +20,7 @@
     ?>
         <tr>
           <th style="text-align: center;" scope="row"><?php echo $row["MaNhomQuyen"] ?></th>
-          <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ?></td>
+          <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ; ?></td>
           <td style="text-align: center;">
             <input onchange="DoiTrangThaiNhomQuyen(this)" id="<?php echo $row["MaNhomQuyen"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
                                                                                                                               echo "checked = 'checked'";

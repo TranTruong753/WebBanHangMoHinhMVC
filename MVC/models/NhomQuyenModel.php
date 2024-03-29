@@ -20,6 +20,23 @@ class NhomQuyenModel extends DB{
         return false;
     }
 
+    public function getTenNhomQuyenTuMa($Ma)
+    {
+        $qr = "SELECT * FROM nhomquyen Where MaNhomQuyen = $Ma";
+       
+        while( $row = $this->con->query($qr)->fetch_assoc())
+        {
+            return $row["TenNhomQuyen"];
+        }
+        return "";
+    }
+
+    public function getDanhSachMaCoTrangThai(){
+        $qr = "SELECT * from nhomquyen where TrangThai = 1";
+        return $this->con->query($qr);
+    }
+
+
     public function updateTrangThai($ma,$trangThai)
     {
         $qr = "UPDATE nhomquyen set TrangThai = $trangThai where MaNhomQuyen = $ma";

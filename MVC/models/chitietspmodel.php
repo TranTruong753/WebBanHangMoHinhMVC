@@ -15,8 +15,6 @@ class chitietspmodel extends DB{
         FROM chitietsanpham where MaSanPham="'.$masp.'" limit 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
-
-        
     }
 
     public function Getkichcosp($masp){
