@@ -211,3 +211,4 @@
 </body>
 
 </html>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>

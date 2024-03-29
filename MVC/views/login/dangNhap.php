@@ -151,6 +151,8 @@
     </script> -->
     <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangNhap.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
+    
 </body>
 
 </html>

@@ -35,7 +35,7 @@
                     <li class="nav__list-items">
                         <a href="#!" class="nav__item-link" id ="hangmoi">HÀNG MỚI VÈ</a>
                     </li>
-                    <?php
+                    <?php   
                             if ($data['CL']->num_rows > 0) {
                                 while ($row = $data['CL']->fetch_assoc()) {
                                     echo    '
@@ -43,26 +43,21 @@
                                 <li class="nav__list-items">
                                     <a href="#!" class="nav__item-link" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
                                     <ul class="sub-menu">';
-                                        // <li>
-                                        //     <a href="#!" class="sub-link">Item 1</a>
-                                        // </li>
-                                        // <li>
-                                        //     <a href="#!" class="sub-link">Item 2</a>
-                                        // </li>
-                                        // <li>
-                                        //     <a href="#!" class="sub-link">Item 3</a>
-                                        // </li>
+                                        
                                         if ($data['TL']->num_rows > 0) {
-                                            while ($row = $data['TL']->fetch_assoc()) {
-                                                if($row["MaChungLoai"]==$row["MaChungLoai"]){
+                                            
+                                            while ($row1 = $data['TL']->fetch_assoc()) {
+                                                
+                                                if($row1["MaChungLoai"]==$row["MaChungLoai"]){
                                                     echo'
                                                     <li>
-                                                        <span class="sub-link" id = "'.$row["MaTheLoai"].'">'.$row["TenTheLoai"].'</span>
+                                                        <span class="sub-link" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
                                                     </li>
                                                     ';
                                                 }
+                                                
                                             }
-                                        }
+                                        }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
                                     echo '</ul>
                                 </li>';
                                 }

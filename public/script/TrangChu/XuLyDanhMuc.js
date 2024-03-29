@@ -1,6 +1,34 @@
 $(document).ready(function(){
-    $(".product__title").html("HÀNG MỚI VỀ");
-    $("#product__list").load("http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP");
+    
+    var chungloai= document.getElementById("test").value;
+    var theloai= document.getElementById("testa").value;
+    var timkiem= document.getElementById("testb").value;
+    var Tensp=timkiem.replaceAll("_", " ");
+    if(chungloai== "none" && theloai != "none"){
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetSPtheoTL",{tl : theloai},function(data){
+           
+          
+        $("#product__list").html(data);
+
+    });
+    }
+    else if(chungloai != "none" && theloai == "none"){
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetSPtheoCL",{cl : chungloai},function(data){
+            
+            $("#product__list").html(data);
+    
+        });
+    }
+    else {
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/TimSP",{tensp : Tensp},function(data){
+        document.getElementById("search-form__input").value = Tensp;
+        $("#product__list").html(data);
+
+    });
+
+    }
+    
+    
 });
 
 $(".nav__list").on("click","a",function(){

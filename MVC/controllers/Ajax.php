@@ -78,8 +78,11 @@ $this->GioHang= $this->model("GioHangModel");
                 }
             }
             else
-            {
+            { if($tl=="hangmoi"){
                 $this->GetAllSP();
+            }
+            else
+                echo "Hiện không có sản phẩm để hiển thị";
             }
         }
         
@@ -119,7 +122,7 @@ $this->GioHang= $this->model("GioHangModel");
             }
             else
             {
-                $this->GetAllSP();
+                echo "Hiện không có sản phẩm để hiển thị";
             }
         }
         
@@ -158,7 +161,7 @@ $this->GioHang= $this->model("GioHangModel");
             }
             else
             {
-                $this->GetAllSP();
+                echo "Hiện không có sản phẩm để hiển thị";
             }
         }
        
