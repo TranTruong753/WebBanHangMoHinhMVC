@@ -101,63 +101,52 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                          <!-- Cart preview -->
                         <div class="cart-preview-wrap">
-                             <div class="cart-preview">         
-                                <div class="cart-message">Có <span class="cart-message__number">2</span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
-                                <ul class="cart__list">
+                             <div class="cart-preview" id="cart-preview">  
+                                <?php
+                                $SL=0;
+                                    if ($data['GH']->num_rows > 0) {
+                                        while ($row = $data['GH']->fetch_assoc()) {
+                                            $SL++;
+                                        }
+                                        $data['GH']->data_seek(0);
+                                    }
+
+                                ?>       
+                                <div class="cart-message">Có <span class="cart-message__number"><?php echo $SL; ?></span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
+                                <ul class="cart__list" id="cart__list">
                                     <!-- item 01 -->
-                                        <li class="cart-item">
-                                            <img src="<?php echo Root ?>public/img/product01.jpg" alt="" class="cart-item__img">
-                                            <div class="cart-item__content">
-                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 01</a>
-                                                <div class="cart-item__info">
-                                                    <div class="cart-item__number">1</div>
-                                                    <span>X</span>
-                                                    <span class="cart-item__price">400.000</span>
+                                    <?php
+                                        $thanhtien=0;
+                                        if ($data['GH']->num_rows > 0) {
+                                            while ($row = $data['GH']->fetch_assoc()) {
+                                                echo    '
+                                                <li class="cart-item">
+                                                <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
+                                                <div class="cart-item__content">
+                                                    <a href="#!" class="cart-item__link">'.$row['TenSanPham'].'</a>
+                                                    <input type="hidden" id ="test" value ="'.$row['MaChiTietSanPham'].'"/>
+                                                    <div class="cart-item__info">
+                                                        <div class="cart-item__number">'.$row['SoLuong'].'</div>
+                                                        <span>X</span>
+                                                        <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                                                    </div>
+                                                    <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
+                                                        <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
+                                                    </div>
+                                                    
                                                 </div>
-                                                <div class="cart-item__icon">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </div>
-                                                
-                                            </div>
-                                        </li>
-                                        <!-- item 02 -->
-                                        <li class="cart-item">
-                                            <img src="<?php echo Root ?>public/img/product02.jpg" alt="" class="cart-item__img">
-                                            <div class="cart-item__content">
-                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 02</a>
-                                                <div class="cart-item__info">
-                                                    <div class="cart-item__number">1</div>
-                                                    <span>X</span>
-                                                    <span class="cart-item__price">400.000</span>
-                                                </div>
-                                                <div class="cart-item__icon">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </div>
-                                                
-                                            </div>
-                                        </li>
-    
-                                        <!-- item 03 -->
-                                        <li class="cart-item">
-                                            <img src="<?php echo Root ?>public/img/product03.jpg" alt="" class="cart-item__img">
-                                            <div class="cart-item__content">
-                                                <a href="#!" class="cart-item__link">TÊN SẢN PHẨM 02</a>
-                                                <div class="cart-item__info">
-                                                    <div class="cart-item__number">1</div>
-                                                    <span>X</span>
-                                                    <span class="cart-item__price">400.000</span>
-                                                </div>
-                                                <div class="cart-item__icon">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </div>
-                                                
-                                            </div>
-                                        </li>
+                                            </li>';
+                                            $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
+                                            }
+                                        }
+                                        else echo "<div > Bạn Chưa Chọn Sản Phẩm </div>";
+                                    ?>
+                                       
     
                                 </ul>
                                 <div class="cart__buy">
-                                    <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">800.000</span></div>
-                                    <a href="#!" class="cart__buy-btn" title="Thanh toán">Thanh toán</a>
+                                    <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price"><?php echo $thanhtien ;?></span></div>
+                                    <span class="cart__buy-btn" id="cart__buy-btn" title="Thanh toán">Thanh toán</span>
                                 </div>           
                             </div>
                         </div>
@@ -168,7 +157,7 @@
                         <div class="nav__right-wrap">
                             <?php
                                 if(isset($_SESSION['email'])){
-                                    echo $_SESSION['email'];
+                                    echo '<input type="button" id="username" value="'.$_SESSION['email'].'" />';
                                     echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
                                 }
                                 else{ echo '

@@ -174,8 +174,105 @@ $this->GioHang= $this->model("GioHangModel");
         $makichco=$_POST['makichco'];
         $sl=$_POST['sl'];
         $this->GioHang->addGioHang($makh,$masp,$mamausac,$makichco,$sl);
-        //echo $makh." ".$masp." ".$mamausac." ".$makichco." ".$sl;
+        $result=$this->GioHang->GetAll();
+        
+        $SL=0;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $SL++;
+                }
+                $result->data_seek(0);
+            }
 
+        echo'       
+        <div class="cart-message">Có <span class="cart-message__number">'.$SL.'</span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
+        <ul class="cart__list">';
+            $thanhtien=0;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo    '
+                    <li class="cart-item">
+                    <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
+                    <div class="cart-item__content">
+                        <a href="#!" class="cart-item__link">'.$row['TenSanPham'].'</a>
+                        <input type="hidden" id ="test" value ="'.$row['MaChiTietSanPham'].'"/>
+                        <div class="cart-item__info">
+                            <div class="cart-item__number">'.$row['SoLuong'].'</div>
+                            <span>X</span>
+                            <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                        </div>
+                        <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
+                            <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
+                        </div>
+                        
+                    </div>
+                </li>';
+                $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
+                }
+            }
+            else echo "<div > Bạn Chưa Chọn Sản Phẩm </div>";
+            
+                
+
+        echo '
+            </ul>
+            <div class="cart__buy">
+                <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'. $thanhtien.'</span></div>
+                <a href="#!" class="cart__buy-btn" title="Thanh toán">Thanh toán</a>
+            </div>';
+        
+
+    }
+
+    function XoaGioHang(){
+        $mactsp=$_POST['mactsp'];
+        $this->GioHang->XoaGioHang($mactsp);
+        $result=$this->GioHang->GetAll();
+        
+        $SL=0;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $SL++;
+                }
+                $result->data_seek(0);
+            }
+
+        echo'       
+        <div class="cart-message">Có <span class="cart-message__number">'.$SL.'</span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
+        <ul class="cart__list">';
+            $thanhtien=0;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo    '
+                    <li class="cart-item">
+                    <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
+                    <div class="cart-item__content">
+                        <a href="#!" class="cart-item__link">'.$row['TenSanPham'].'</a>
+                        <input type="hidden" id ="test" value ="'.$row['MaChiTietSanPham'].'"/>
+                        <div class="cart-item__info">
+                            <div class="cart-item__number">'.$row['SoLuong'].'</div>
+                            <span>X</span>
+                            <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                        </div>
+                        <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
+                            <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
+                        </div>
+                        
+                    </div>
+                </li>';
+                $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
+                }
+            }
+            else echo "<div > Bạn Chưa Chọn Sản Phẩm </div>";
+            
+                
+
+        echo '
+            </ul>
+            <div class="cart__buy">
+                <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'. $thanhtien.'</span></div>
+                <a href="#!" class="cart__buy-btn" title="Thanh toán">Thanh toán</a>
+            </div>';
     }
 
 

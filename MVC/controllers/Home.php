@@ -22,8 +22,9 @@ class Home extends controller
       $tc = $this->model("TrangChuKHModel");
       $cl = $this->model("ChungLoaiModel");
       $tl = $this->model("TheLoaiModel");
+      $gh=  $this->model("GioHangModel");
       $this->view("trangchu/block/header",[]);
-      $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
+      $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel(),"GH"=>$gh->GetAll()]);
       
       $this->view("trangchu/Trangchu",["TC" => $tc->GetTrangChuKHModel()]);
       $this->view("trangchu/block/footer",[]);
@@ -33,8 +34,9 @@ class Home extends controller
    
    $cl = $this->model("ChungLoaiModel");
    $tl = $this->model("TheLoaiModel");
+   $gh=  $this->model("GioHangModel");
    $this->view("trangchu/block/header",[]);
-   $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel()]);
+   $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel(),"GH"=>$gh->GetAll()]);
    
    $this->view("trangchu/pages/ViewDanhMucSP",["cl"=>$CL,"tl"=>$TL,"tk"=>$TK]);
    $this->view("trangchu/block/footer",[]);

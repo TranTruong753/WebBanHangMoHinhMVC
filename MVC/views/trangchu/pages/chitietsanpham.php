@@ -10,6 +10,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- link css -->
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/styleHome.css" />
     <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/chitietsanpham.css" />
@@ -146,50 +147,7 @@
 
                                 <div class="content__input"><button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
                                 </div>
-                                <script>
-                                    const largeImage = document.getElementById('largeImage');
-                                    const smallImages = document.querySelectorAll('.content__img-item');
-
-                                        // Xử lý sự kiện khi nhấn vào ảnh nhỏ
-                                        smallImages.forEach((smallImage) => {
-                                            smallImage.addEventListener('click', () => {
-                                                largeImage.src = smallImage.src;
-                                            });
-                                        });
-                                    function addgiohang() {
-                                        
-                                        const imageSource = largeImage.src;
-                                        const fileName = imageSource.split("/").pop();
-                                        const element = document.getElementsByName('content__info-title')[0];
-                                        const masp=element.id;
-                                        const price = document.getElementById('content__info-price').textContent;
-                                        // var radioButtons = document.getElementsByName("mausac");
-                                        // for (var i = 0; i < radioButtons.length; i++) {
-                                        //     if (radioButtons[i].checked === true) {
-                                        //         alert("Giới tính đã chọn: " + radioButtons[i].value);
-                                        //     }
-                                        // }
-                                        var mamausac = "MS1"; 
-                                        var makh="KH001";
-                                        const selectElement = document.getElementById("content__input-select");
-                                        const makichco = selectElement.value;
-                                        //alert("Giá trị của option được chọn: " + selectedValue);
-                                        const sl = document.getElementById('content__input-number').value;
-                                        //alert(1);
-                                        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
-                                        masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
-
-                                            alert(data);
-
-
-                                            })
-                                            
-                                        };
-                                        //const largeImage = document.getElementById('largeImage');
-                                        
-                                            
-                                    </script>
-
+                                
                                 <div class="content__input"><button class="btn ">Mua ngay</button></div>
                             </form>
                         </div>
@@ -212,3 +170,4 @@
 
 </html>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>
