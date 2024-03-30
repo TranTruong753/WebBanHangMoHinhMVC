@@ -1,9 +1,11 @@
+<div style="text-align: center;">
+    <h1 style=" margin-bottom: 20px;">Quản Lý Nhóm Quyền</h1>
+  </div>
+
+  <input type="submit" onclick="DieuHuong()" value="Thêm">
 <table class="table">
   <style></style>
-  <div style="text-align: center;">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Nhóm Quyền</h1>
-
-  </div>
+ 
   <thead>
     <tr>
       <th scope="col" style="text-align: center;">ID</th>
@@ -65,5 +67,10 @@
       }
     }
 
+  }
+
+  function DieuHuong()
+  {
+    window.location="http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemNhomQuyenPage";
   }
 </script>

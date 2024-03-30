@@ -40,7 +40,7 @@
                 </div>
                 <div class="container col l-9">
                     <?php
-                    $this->view("manage/pages/" . $data['page'], ["DanhSach" => $data["DanhSach"]]);
+                    $this->view("manage/pages/" . $data['page'], ["DanhSach" => $data["Data"]]);
                     ?>
                 </div>
             </div>

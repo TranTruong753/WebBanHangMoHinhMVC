@@ -19,6 +19,15 @@ class AjaxNhomQuyen extends controller
         $this->NhomQuyenModel->updateTrangThai($ma,$trangThai);
     }
 
+   public function ThemDuLieunhomQuyen()
+   {
+    $TenNhomQuyen = $_POST["TenNhomQuyen"];
+    // print_r($_POST);
+    if( $this->NhomQuyenModel->insert($TenNhomQuyen)==true) return false;
+    else echo false;
+   }
+
+
 
 
 

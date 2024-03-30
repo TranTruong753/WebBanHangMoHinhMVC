@@ -1,11 +1,10 @@
 <?php
- $NhomQuyenModel = new NhomQuyenModel();
-  $ChiTietQuyenModel = new ChiTietQuyenModel();
-  $ChucNangModel = new ChucNangModel();
-  // echo $NhomQuyenModel->getTenNhomQuyenTuMa(1);
-  // echo $ChiTietQuyenModel->KiemTraHanhDong(3,6,"Xem");
+$NhomQuyenModel = new NhomQuyenModel();
+$ChiTietQuyenModel = new ChiTietQuyenModel();
+$ChucNangModel = new ChucNangModel();
+// echo $NhomQuyenModel->getTenNhomQuyenTuMa(1);
+// echo $ChiTietQuyenModel->KiemTraHanhDong(3,6,"Xem");
 ?>
-
 <input type="button" onclick="DoiTrangThaiChiTietQuyen()" value="Lưu">
 <table class="table">
   <style></style>
@@ -22,41 +21,28 @@
       <th scope="col" style="text-align: center;">Sửa</th>
     </tr>
   </thead>
-
   <tbody class="table-group-divider">
     <?php
     if ($data["DanhSach"]->num_rows > 0) {
-      
       while ($row = $data["DanhSach"]->fetch_assoc()) {
-       
     ?>
-          <tr>
-            <th style="text-align: center;" scope="row"><?php  echo $NhomQuyenModel->getTenNhomQuyenTuMa($row["MaNhomQuyen"]) ?></th>
-            <td style="text-align: center;"><?php echo $ChucNangModel->getTenTuMa($row["MaChucNang"])  ?></td>
-            <td style="text-align: center;"><input class="checkbox" type="checkbox" id= "<?php echo $row["MaNhomQuyen"]."/".$row["MaChucNang"]."/Xem" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"],$row["MaChucNang"],"Xem")) echo "checked = 'checked'"; ?>></td>
-            <td style="text-align: center;"><input class="checkbox" type="checkbox" id= "<?php echo $row["MaNhomQuyen"]."/".$row["MaChucNang"]."/Thêm" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"],$row["MaChucNang"],"Thêm")) echo "checked = 'checked'"; ?>></td>
-            <td style="text-align: center;"><input class="checkbox" type="checkbox" id= "<?php echo $row["MaNhomQuyen"]."/".$row["MaChucNang"]."/Xóa" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"],$row["MaChucNang"],"Xóa")) echo "checked = 'checked'"; ?>></td>
-            <td style="text-align: center;"><input class="checkbox" type="checkbox" id= "<?php echo $row["MaNhomQuyen"]."/".$row["MaChucNang"]."/Sửa" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"],$row["MaChucNang"],"Sửa")) echo "checked = 'checked'"; ?>></td>
-
-          </tr>
+        <tr>
+          <th style="text-align: center;" scope="row"><?php echo $NhomQuyenModel->getTenNhomQuyenTuMa($row["MaNhomQuyen"]) ?></th>
+          <td style="text-align: center;"><?php echo $ChucNangModel->getTenTuMa($row["MaChucNang"])  ?></td>
+          <td style="text-align: center;"><input class="checkbox" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Xem" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Xem")) echo "checked = 'checked'"; ?>></td>
+          <td style="text-align: center;"><input class="checkbox" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Thêm" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Thêm")) echo "checked = 'checked'"; ?>></td>
+          <td style="text-align: center;"><input class="checkbox" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Xóa" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Xóa")) echo "checked = 'checked'"; ?>></td>
+          <td style="text-align: center;"><input class="checkbox" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Sửa" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Sửa")) echo "checked = 'checked'"; ?>></td>
+        </tr>
     <?php
       }
     }
-     
     ?>
-
-<!-- end -->
-
+    <!-- end -->
   </tbody>
-
 </table>
-
-
 <script>
+  function DoiTrangThaiChiTietQuyen() {
 
-  function DoiTrangThaiChiTietQuyen()
-  {
-  
   }
-
 </script>

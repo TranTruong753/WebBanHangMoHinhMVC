@@ -9,7 +9,8 @@ class NhomQuyenModel extends DB{
         return $this->con->query($qr);
     }
 
-    public function getNhomQuyenTuTen($ten)
+    
+    public function contains($ten)
     {
         $qr = "SELECT * FROM nhomquyen Where TenNhomQuyen = N\"$ten\"";
         $row = mysqli_query($this->con,$qr);
@@ -47,6 +48,56 @@ class NhomQuyenModel extends DB{
         {
             echo "Đổi Trạng Thái Thất Bại!";
         }
+    }
+
+    // public function insert($ten)
+    // {
+    //     $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
+    //     if($row = mysqli_query($this->con,$qr))
+    //     {
+    //         return true;
+    //     }else
+    //     {
+    //         return false;
+    //     }
+    // }
+
+    public function insert($ten)
+    {
+        $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
+        if(in_array($ten,$this->GetDanhSachTen()))
+        {
+            return "Tên nhóm quyền đã tồn tại!";
+        }
+        else
+        {
+            if($row = mysqli_query($this->con,$qr))
+            {
+                return true;
+            }else
+            {
+                return false;
+            }
+        }
+       
+    }
+
+    
+
+    public function GetDanhSachTen()
+    {
+        $qr = "SELECT TenNhomQuyen from nhomquyen";
+        $arr = [];
+        $i=1;
+        if( $this->con->query($qr)->num_rows > 0)
+        {
+            while($row = $this->con->query($qr)->fetch_assoc())
+            {
+                $arr[$i] = $row["TenNhomQuyen"];
+            }
+            return $arr;
+        }
+        return [];
     }
 }
 

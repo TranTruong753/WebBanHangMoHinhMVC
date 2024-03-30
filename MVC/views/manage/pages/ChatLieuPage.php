@@ -1,8 +1,10 @@
-<table class="table">
-  <style></style>
-  <div style="text-align: center; ">
+<div style="text-align: center; ">
     <h1 style=" margin-bottom: 20px;">Quản Lý Chất Liệu</h1>
   </div>
+
+
+  <a href="">Thêm</a>
+<table class="table">
   <thead>
     <hr>
     <tr>
@@ -29,7 +31,7 @@
                  ?> />
       </td>
       <td style="text-align: center;">
-        <pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a></pre>
+        <pre><a href="">Sửa</a> | <a href="">Chi Tiết</a></pre>
       </td>
     </tr>
     <!-- <?php
