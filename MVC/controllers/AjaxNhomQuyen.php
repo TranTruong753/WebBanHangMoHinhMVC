@@ -22,9 +22,17 @@ class AjaxNhomQuyen extends controller
    public function ThemDuLieunhomQuyen()
    {
     $TenNhomQuyen = $_POST["TenNhomQuyen"];
+    print_r($_POST);
+    if( $this->NhomQuyenModel->insert($TenNhomQuyen)==1) return 1;
+    else return 0;
+   }
+
+   public function TimKiemQuaTen()
+   {
+    $TenNhomQuyen = $_POST["TenNhomQuyen"];
     // print_r($_POST);
-    if( $this->NhomQuyenModel->insert($TenNhomQuyen)==true) return false;
-    else echo false;
+    if( $this->NhomQuyenModel->TimKiemQuaTen($TenNhomQuyen)==1) echo "true";
+    else echo "false";
    }
 
 

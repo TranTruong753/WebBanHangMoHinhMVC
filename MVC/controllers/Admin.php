@@ -70,7 +70,7 @@ class Admin extends controller
         else if ($page == "ThemNhomQuyenPage") {
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $this->data["page"] = "addPages/ThemNhomQuyenPage";
-            $this->data["Data"] = "";
+            $this->data["Data"] = [];
         }
 
         // print_r($this->data); 

@@ -50,37 +50,37 @@ class NhomQuyenModel extends DB{
         }
     }
 
-    // public function insert($ten)
-    // {
-    //     $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
-    //     if($row = mysqli_query($this->con,$qr))
-    //     {
-    //         return true;
-    //     }else
-    //     {
-    //         return false;
-    //     }
-    // }
-
     public function insert($ten)
     {
         $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
-        if(in_array($ten,$this->GetDanhSachTen()))
+        if($row = mysqli_query($this->con,$qr))
         {
-            return "Tên nhóm quyền đã tồn tại!";
-        }
-        else
+            return 1;
+        }else
         {
-            if($row = mysqli_query($this->con,$qr))
-            {
-                return true;
-            }else
-            {
-                return false;
-            }
+            return 0;
         }
-       
     }
+
+    // public function insert($ten)
+    // {
+    //     $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
+    //     if(in_array($ten,$this->GetDanhSachTen()))
+    //     {
+    //         return "Tên nhóm quyền đã tồn tại!";
+    //     }
+    //     else
+    //     {
+    //         if($row = mysqli_query($this->con,$qr))
+    //         {
+    //             return true;
+    //         }else
+    //         {
+    //             return false;
+    //         }
+    //     }
+       
+    // }
 
     
 
@@ -98,6 +98,16 @@ class NhomQuyenModel extends DB{
             return $arr;
         }
         return [];
+    }
+
+    public function TimKiemQuaTen($ten)
+    {
+        $qr = 'SELECT TenNhomQuyen from nhomquyen where TenNhomQuyen = "'.$ten.'"';
+       if( mysqli_query($this->con,$qr)->num_rows > 0)
+       {
+        return 1;
+       }
+        return 0;
     }
 }
 
