@@ -153,8 +153,8 @@
                                 <!-- item 02-->
                                 <tr class="table-title table-line">
                                     <td class="table-product">
-                                        <input class="procedure-input__check" type="checkbox" name="product" id="product">
-                                        <label class="procedure-label__check" for="product"><span class="procedure-label__tick"></span></label>                                  
+                                        <input class="procedure-input__check" type="checkbox" name="product" id="product02">
+                                        <label class="procedure-label__check" for="product02"><span class="procedure-label__tick"></span></label>                                  
                                         <div class="table-product__info">
                                             <img class="table-product__img" src="<?php echo Root ?>public/img/product01.jpg" alt="">
                                             <div class="table-title-wrap">
@@ -189,8 +189,8 @@
                                  <!-- item 03-->
                                  <tr class="table-title table-line">
                                     <td class="table-product">
-                                        <input class="procedure-input__check" type="checkbox" name="product" id="product">
-                                        <label class="procedure-label__check" for="product"><span class="procedure-label__tick"></span></label>                                  
+                                        <input class="procedure-input__check" type="checkbox" name="product" id="product03">
+                                        <label class="procedure-label__check" for="product03"><span class="procedure-label__tick"></span></label>                                  
                                         <div class="table-product__info">
                                             <img class="table-product__img" src="<?php echo Root ?>public/img/product01.jpg"alt="">
                                             <div class="table-title-wrap">
