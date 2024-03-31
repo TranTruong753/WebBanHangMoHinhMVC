@@ -124,15 +124,8 @@
                                             <div class="table-title-wrap">
                                                 <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
                                                <div class="table__info-input-wrap">
-                                                    <select name="" id="" class="table__info-select">
-                                                        <option value="sizeS">S</option>
-                                                        <option value="sizeL">L</option>
-                                                        <option value="sizeM">M</option>
-                                                    </select>
-                                                    <input class="table__info-radio" type="radio" name="" id="color">
-                                                    <label class="table__label-radio" for="color" >
-                                                        <span class="table__label-img" style="background: #f00;"></span>
-                                                    </label>
+                                                    <div class="table__info-size">Size: S</div>
+                                                    <div class="table__info-color">Color: Nâu</div>                                                
                                                </div>
                                             </div>
                                         </div>                                       
@@ -160,15 +153,8 @@
                                             <div class="table-title-wrap">
                                                 <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
                                                <div class="table__info-input-wrap">
-                                                    <select name="" id="" class="table__info-select">
-                                                        <option value="sizeS">S</option>
-                                                        <option value="sizeL">L</option>
-                                                        <option value="sizeM">M</option>
-                                                    </select>
-                                                    <input class="table__info-radio" type="radio" name="" id="color">
-                                                    <label class="table__label-radio" for="color" >
-                                                        <span class="table__label-img" style="background: #f00;"></span>
-                                                    </label>
+                                                    <div class="table__info-size">Size: S</div>
+                                                    <div class="table__info-color">Color: Nâu</div>   
                                                </div>
                                             </div>
                                         </div>                                       
@@ -196,15 +182,8 @@
                                             <div class="table-title-wrap">
                                                 <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
                                                <div class="table__info-input-wrap">
-                                                    <select name="" id="" class="table__info-select">
-                                                        <option value="sizeS">S</option>
-                                                        <option value="sizeL">L</option>
-                                                        <option value="sizeM">M</option>
-                                                    </select>
-                                                    <input class="table__info-radio" type="radio" name="" id="color">
-                                                    <label class="table__label-radio" for="color" >
-                                                        <span class="table__label-img" style="background: #f00;"></span>
-                                                    </label>
+                                                    <div class="table__info-size">Size: S</div>
+                                                    <div class="table__info-color">Color: Nâu</div>   
                                                </div>
                                             </div>
                                         </div>                                       
