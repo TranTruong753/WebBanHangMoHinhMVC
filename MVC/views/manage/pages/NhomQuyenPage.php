@@ -30,7 +30,7 @@
                                                                                                                             ?> />
           </td>
           <td style="text-align: center;">
-            <pre><a href="">Sửa</a></pre>
+            <pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage/<?php echo  $row["MaNhomQuyen"]  ?>">Sửa</a></pre>
           </td>
         </tr>
     <?php

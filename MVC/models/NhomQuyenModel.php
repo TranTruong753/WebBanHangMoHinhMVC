@@ -62,6 +62,30 @@ class NhomQuyenModel extends DB{
         }
     }
 
+    public function update($ten,$ma)
+    {
+        $qr = "UPDATE nhomquyen SET TenNhomQuyen= '$ten' where MaNhomQuyen = $ma";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
+
+    public function delete($ma)
+    {
+        $qr = "DELETE FROM nhomquyen where MaNhomQuyen = $ma";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
+
     // public function insert($ten)
     // {
     //     $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
@@ -109,6 +133,21 @@ class NhomQuyenModel extends DB{
        }
         return 0;
     }
+
+    // public function TimKiemQuaMa($ma)
+    // {
+    //     $qr = 'SELECT * from nhomquyen where MaNhomQuyen = '.$ma.'';
+    //    if( mysqli_query($this->con,$qr)->num_rows > 0)
+    //    {
+    //     while($row = $this->con->query($qr)->fetch_assoc())
+    //     {
+    //         return new
+    //     }
+       
+    //     }
+       
+    //     return 0;
+    // }
 }
 
 ?>

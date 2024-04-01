@@ -1,3 +1,18 @@
+<style>
+
+.formThemChiTietQuyen{
+  width: 100%;
+  min-height: 300px;
+  background-color: red;
+  display: none;
+}
+
+.hidden
+{
+  display: block;
+}
+</style>
+
 <?php
 $NhomQuyenModel = new NhomQuyenModel();
 $ChiTietQuyenModel = new ChiTietQuyenModel();
@@ -5,12 +20,18 @@ $ChucNangModel = new ChucNangModel();
 // echo $NhomQuyenModel->getTenNhomQuyenTuMa(1);
 // echo $ChiTietQuyenModel->KiemTraHanhDong(3,6,"Xem");
 ?>
-<input type="button" onclick="DoiTrangThaiChiTietQuyen()" value="Lưu">
-<table class="table">
-  <style></style>
-  <div style="text-align: center;">
+<div style="text-align: center;">
     <h1 style=" margin-bottom: 20px;">Quản Lý Chi Tiết Quyền</h1>
   </div>
+<input type="button" onclick="hienThiFrom()" value="Thêm Chi Tiết Quyền">
+<div class="formThemChiTietQuyen" id="formThemChiTietQuyen">
+
+</div>
+<hr>
+
+<table class="table">
+  <style></style>
+  
   <thead>
     <tr>
       <th scope="col" style="text-align: center;">Nhóm Quyền</th>
@@ -42,7 +63,10 @@ $ChucNangModel = new ChucNangModel();
   </tbody>
 </table>
 <script>
-  function DoiTrangThaiChiTietQuyen() {
-
+  function hienThiFrom()
+  {
+    document.getElementById("formThemChiTietQuyen").classList.toggle("hidden");
   }
+
+
 </script>

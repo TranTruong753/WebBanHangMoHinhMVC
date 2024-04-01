@@ -4,7 +4,7 @@ class Admin extends controller
 {
     protected $data = [];
 
-    function default($page = "SanPhamPage")
+    function default($page = "SanPhamPage",$data=[])
     {
         if ($page == "SanPhamPage") {
             $NhomQuyenModel = $this->model("SanPhamModel");
@@ -70,7 +70,12 @@ class Admin extends controller
         else if ($page == "ThemNhomQuyenPage") {
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $this->data["page"] = "addPages/ThemNhomQuyenPage";
-            $this->data["Data"] = [];
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
+        else if ($page == "SuaNhomQuyenPage") {
+            $NhomQuyenModel = $this->model( "NhomQuyenModel");
+            $this->data["page"] = "addPages/ThemNhomQuyenPage";
+            $this->data["Data"] = ["index"=> "Sửa","MaNhomQuyen"=>$data];
         }
 
         // print_r($this->data); 
