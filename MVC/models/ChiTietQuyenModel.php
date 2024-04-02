@@ -35,6 +35,16 @@ class ChiTietQuyenModel extends DB{
         return 0;
 
     }
+
+    public function insert($MaNhomQuyen,$MaChucNang,$HanhDong) {
+        $qr = "INSERT INTO chitietquyen VALUES (null,'$MaNhomQuyen','$MaChucNang','$HanhDong')";
+        if($this->con->query($qr))
+        {
+            return 1;
+        }
+        return 0;
+        
+    }
 }
 
 ?>
