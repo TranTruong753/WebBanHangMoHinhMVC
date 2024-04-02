@@ -146,7 +146,7 @@
                                 </ul>
                                 <div class="cart__buy">
                                     <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price"><?php echo $thanhtien ;?></span></div>
-                                    <span class="cart__buy-btn" id="cart__buy-btn" title="Thanh toán">Thanh toán</span>
+                                    <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                                 </div>           
                             </div>
                         </div>

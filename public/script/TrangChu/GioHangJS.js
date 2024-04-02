@@ -7,16 +7,13 @@ const smallImages = document.querySelectorAll('.content__img-item');
             largeImage.src = smallImage.src;
         });
     });
-    // $(".cart-item__icon").click(function (e) { 
+    // $(".cart__buy-btn").click(function (e) { 
+    //     alert(1);
     //     e.preventDefault();
-    //     var mactsp=$(this).attr("id");
-    //        alert(mactsp);
-    //        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
-    //         alert("xóa thành công");
-    //         $("#cart-preview").html(data);
-    //         })
+    //     var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang";
+    //     window.location.assign(url);
         
-    // });
+    //  });
     // $(".cart__list").on("click","i",function(){
     //       var mactsp=$(this).attr("id");
     //       alert(mactsp);
@@ -25,6 +22,13 @@ const smallImages = document.querySelectorAll('.content__img-item');
     //         $("#cart-preview").html(data);
     //         })
     //     });
+    function thanhtoan() {
+        alert(1);
+        
+        var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang";
+        window.location.assign(url);
+
+    }
     function test(ojt) {
         var mactsp=ojt.id;
         alert(mactsp);
