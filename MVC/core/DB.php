@@ -14,6 +14,10 @@ class DB{
         mysqli_query($this->con, "SET NAMES 'utf8'");
     }
 
+    // function get_data() {
+
+    // }
+
 }
 
 ?>
