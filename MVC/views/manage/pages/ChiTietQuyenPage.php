@@ -1,5 +1,5 @@
 <style>
-  .formThemChiTietQuyen {
+  /* .formThemChiTietQuyen {
     width: 100%;
     min-height: 300px;
     background-color: red;
@@ -8,7 +8,7 @@
 
   .hidden {
     display: block;
-  }
+  } */
 </style>
 
 <?php
@@ -21,7 +21,7 @@ $ChucNangModel = new ChucNangModel();
 <div style="text-align: center;">
   <h1 style=" margin-bottom: 20px;">Quản Lý Chi Tiết Quyền</h1>
 </div>
-<input type="button" onclick="hienThiFrom()" value="Thêm Chi Tiết Quyền">
+<!-- <input type="button" onclick="hienThiFrom()" value="Thêm Chi Tiết Quyền"> -->
 <div class="formThemChiTietQuyen" id="formThemChiTietQuyen">
   <form action="">
     <!-- Selected Nhóm Quyền -->
@@ -59,7 +59,7 @@ $ChucNangModel = new ChucNangModel();
   
   
      <!-- selected Hành Động -->
-     <label for="HanhDong">Chức Năng</label>
+     <label for="HanhDong">Hành Động</label>
       <div class="CheckBoxHanhDong">
         <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xem">Xem</input>
         <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Thêm">Thêm</input>
@@ -70,7 +70,7 @@ $ChucNangModel = new ChucNangModel();
 
     <!-- button -->
 
-    <input type="button" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+    <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
 
   </form>
 </div>
@@ -81,11 +81,12 @@ $ChucNangModel = new ChucNangModel();
   <thead>
 
     <div style="background-color: black;">
-      <input type="button" value="Lưu">
-      <input type="button" value="Xóa">
+      <input type="button" id="btnLuu" value="Lưu">
+      <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">
 
     </div>
     <tr>
+    <th><input type="checkbox" name="" id=""></th>
       <th scope="col" style="text-align: center;">Nhóm Quyền</th>
       <th scope="col" style="text-align: center;">Chức Năng</th>
       <th scope="col" style="text-align: center;">Xem</th>
@@ -101,6 +102,7 @@ $ChucNangModel = new ChucNangModel();
       while ($row = $data["DanhSach"]->fetch_assoc()) {
     ?>
         <tr>
+        <th><input type="checkbox" class="CheckBoxXoa" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] ?>"></th>
           <th style="text-align: center;" scope="row"><?php echo $NhomQuyenModel->getTenNhomQuyenTuMa($row["MaNhomQuyen"]) ?></th>
           <td style="text-align: center;"><?php echo $ChucNangModel->getTenTuMa($row["MaChucNang"])  ?></td>
           <td style="text-align: center;"><input class="CheckBoxHanhDongTrongTable" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Xem" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Xem")) echo "checked = 'checked'"; ?>></td>
@@ -116,11 +118,54 @@ $ChucNangModel = new ChucNangModel();
   </tbody>
 </table>
 <script>
+ //xử lý sự kiện cho nút Xóa
+ function XoaDuLieuChiTietQuyenDaChon()
+ {
+    var result = true;
+    var ListCheckBoxXoa = document.querySelectorAll(".CheckBoxXoa");
+    ListCheckBoxXoa.forEach(element => {
+      if(element.checked)
+      {
+        var arr = element.id.split("/")
+        var MaNhomQuyen = arr[0];
+        var MaChucNang = arr[1];
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietQuyen/XoaDuLieuChiTietQuyen",{
+          MaNhomQuyen:MaNhomQuyen,
+          MaChucNang:MaChucNang
+        },function(data)
+        {
+          alert(data)
+          if(data.length==7)
+          {
+            result = false;
+          }
+        })
+      }
+      
+    });
+    if(result == false)
+    {
+      alert("Xóa Dữ Liệu Thất Bại!");
+    }
+    {
+      alert("Xóa Dữ Liệu Thành công");
+      window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage";
+    }
+
+
+
+  }
+
+
   // alert(document.getElementById("SelectNhomQuyen"))
   function hienThiFrom() {
     document.getElementById("formThemChiTietQuyen").classList.toggle("hidden");
   }
 
+  
+
+
+  // Xử Lý Sự Kiện Khi Nhấn vào Nút Thêm 
   function ThemDuLieuChiTietQuyen() {
     var result=true;
     var MaNhomQuyen = document.getElementById("SelectNhomQuyen").value;
@@ -156,7 +201,7 @@ $ChucNangModel = new ChucNangModel();
           $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietQuyen/ThemDuLieuChiTietQuyen",{
             MaNhomQuyen:MaNhomQuyen,MaChucNang:MaChucNang,HanhDong:HanhDong
           },function(data){
-            alert("data:"+data);
+            // alert("data:"+data);
             if(data.length==7)
             {
               result =false;
@@ -169,7 +214,8 @@ $ChucNangModel = new ChucNangModel();
         if(result==true)
         {
           alert("Thêm Dữ Liệu Chi Tiết Quyền Thành Công!");
-          window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage";
+          // $.post("http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage")
+          window.location="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage";
         }
         else
         {
@@ -178,4 +224,7 @@ $ChucNangModel = new ChucNangModel();
     }
 
   }
+
+
+  
 </script>

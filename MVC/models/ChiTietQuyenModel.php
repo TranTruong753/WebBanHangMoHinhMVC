@@ -24,6 +24,29 @@ class ChiTietQuyenModel extends DB{
         return $this->con->query($qr);
     }
 
+    public function getMaChiTietQuyenTuMaNhomQuyenVaMaChucNang($MaNhomQuyen,$MaChucNang)
+    {
+        $qr = "SELECT * from chitietquyen where MaNhomQuyen = $MaNhomQuyen and MaChucNang = $MaChucNang ";
+        if($this->con->query($qr)->num_rows > 0 )
+        {
+            while($row = $this->con->query($qr)->fetch_assoc())
+            {
+                return $row["Id"];
+            }
+        }
+        return 0;
+    }
+
+    public function delete($MaNhomQuyen,$MaChucNang)
+    {
+        $qr = "DELETE FROM chitietQuyen where MaNhomQuyen = $MaNhomQuyen and MaChucNang = $MaChucNang ";
+        if($this->con->query($qr))
+        {
+            return 1;
+        }
+        return 0;
+    }
+
     public function KiemTraHanhDong($MaNhomQuyen,$MaChucNang,$HanhDong)
     {
         $qr = 'SELECT * From chitietquyen Where MaNhomQuyen  = '.$MaNhomQuyen.' and MaChucNang = '.$MaChucNang.' and HanhDong = N\''.$HanhDong.'\'';

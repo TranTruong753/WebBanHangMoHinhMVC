@@ -27,5 +27,20 @@ class AjaxChiTietQuyen extends controller{
         }
       
     }
+
+    public function XoaDuLieuChiTietQuyen()
+    {
+        $MaNhomQuyen =  $_POST["MaNhomQuyen"];
+        $MaChucNang =  $_POST["MaChucNang"];
+        print_r($_POST);
+        if($this->ChiTietQuyenModel->delete($MaNhomQuyen,$MaChucNang)==1)
+        {
+            echo "true";
+        }else
+        {
+          echo "false";
+        }
+      
+    }
 }
 ?>
