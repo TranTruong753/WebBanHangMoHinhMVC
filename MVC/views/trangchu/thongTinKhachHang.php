@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinKhachHang.css">
 </head>
 <body>
+  
    <div class="info__client-wrap container container__nav">      
         <div class="info__client-left">
             <div class="info__wrap">
@@ -22,11 +23,17 @@
             </div>
 
             <div class="info__wrap">
-                <span>Trần Quang Trường</span>
+                <div class="client-title-02 client-user__name">Trần Quang Trường</div>
             </div>
 
             <ul class="info__wrap-column ">
                 <li>
+                    <a href="#!" class="btn btn-client">Thông tin cá nhân</a>
+                </li>
+                <li>
+                    <a href="#!" class="btn btn-client">Quản lý đơn hàng</a>
+                </li>
+                <!-- <li>
                     <a href="#!" class="btn btn-client">item1</a>
                 </li>
                 <li>
@@ -43,16 +50,18 @@
                 </li>
                 <li>
                     <a href="#!" class="btn btn-client">item1</a>
-                </li>
-                <li>
-                    <a href="#!" class="btn btn-client">item1</a>
-                </li>
-                <li>
-                    <a href="#!" class="btn btn-client">item1</a>
-                </li>
+                </li> -->
             </ul>
         </div>
-        <div class="info__client-right table">content</div>   
+        <div class="info__client-right table">
+            <div class="client-right__main">
+                <?php 
+                     require('./MVC/views/trangchu/pages/thongTinSanPham.php');
+                // ?>
+               
+            </div>
+
+        </div>   
    </div>
 </body>
 </html>

@@ -6,6 +6,7 @@
             $gh=  $this->model("GioHangModel");
             $this->view("trangchu/block/header",[]);
             $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel(),"GH"=>$gh->GetAll()]);
+            $this->view("trangchu/block/link",[]);
             $this->view("trangchu/thongTinKhachHang",[]);
             $this->view("trangchu/block/footer",[]);
            
