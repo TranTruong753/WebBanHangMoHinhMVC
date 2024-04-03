@@ -8,11 +8,6 @@ $(document).ready(function(){
 
 $(".nav__list").on("click","a",function(){
      var chungloai = $(this).attr("id");
-    // $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetSPtheoTL",{tl : theloai},function(data){
-       
-    //     $("#product__list").html(data);
-
-    // })
     
     var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/" + chungloai+"/none/none";
     window.location.assign(url);
@@ -30,12 +25,17 @@ $(".sub-menu").on("click","span",function(){
 });
 
 function showAlert() {
+    var tensp=" ";
     var tensp =document.getElementById("search-form__input").value;
-    
+    if(tensp==""){
+        alert("Hãy nhập tên sản phẩm");
+    }
+    else{
     var Tensp=tensp.replaceAll(" ", "_");
     
     var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/none/none/"+Tensp;
     window.location.assign(url);
+    }
     
     };
     $(document).on('keyup keypress', 'form input[type="text"]', function(e) {
