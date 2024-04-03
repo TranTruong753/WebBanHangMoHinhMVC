@@ -22,6 +22,55 @@ const smallImages = document.querySelectorAll('.content__img-item');
     //         $("#cart-preview").html(data);
     //         })
     //     });
+
+    function change(){   // sự kiện lấy số lượng tồn khi chọn màu săc
+        const element = document.getElementsByName('content__info-title')[0];
+        const masp=element.id;
+        var tenmausac="";
+        var mamausac = ""; 
+        var radioButtons = document.getElementsByName("mausac");
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked === true) {
+                mamausac=radioButtons[i].value;
+                tenmausac=radioButtons[i].id;
+            }
+        }
+        const selectElement = document.getElementById("content__input-select");
+        const makichco = selectElement.value;
+       
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
+            masp: masp,mamausac : mamausac, makichco: makichco},function(data){
+            $("#content__info-color").html("Màu sắc :"+tenmausac);   
+            $("#SoLuong").html(data);
+        })
+        
+    }
+
+    document.getElementById("content__input-select").onchange = function() {  // sự kiện lấy số lượng tồn khi chọn size
+        const element = document.getElementsByName('content__info-title')[0];
+        const masp=element.id;
+        var mamausac = ""; 
+        var radioButtons = document.getElementsByName("mausac");
+        for (var i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].checked === true) {
+                mamausac=radioButtons[i].value;
+            }
+        }
+        if( mamausac ==""){
+            
+        }
+        else {
+        const selectElement = document.getElementById("content__input-select");
+        const makichco = selectElement.value;
+        
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
+            masp: masp,mamausac : mamausac, makichco: makichco},function(data){
+                
+            $("#SoLuong").html(data);
+        })
+    }
+      };
+
     function thanhtoan() {
         
         

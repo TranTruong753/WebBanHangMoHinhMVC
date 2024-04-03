@@ -107,8 +107,8 @@
                             }
                             ?>
                             <div class="content__info-wrap">
-                                <p class="content__info-color">Màu sắc:</p>
-                                <span>số lượng còn lại: 130</span>
+                                <p class="content__info-color" id= "content__info-color">Màu sắc :</p>
+                                <span class="SoLuong" id= "SoLuong">Số lượng còn lại :</span>
                             </div>
                             <form action="" method="post">
                                 <div class="content__input">
@@ -116,9 +116,10 @@
                                 if ($data['mausac']->num_rows > 0) {
                                     while ($row = $data['mausac']->fetch_assoc()) {
                                             echo  '
-                                                     <input class="content__input-radio" type="radio" name="mausac" id="ct'.$row['MaMauSac'].'" value="'.$row['MaMauSac'].'">
-                                                     <label class="content__input-label" for="ct'.$row['MaMauSac'].'">
-                                                    <span class="content__input-span"></span></label>
+                                                     <input class="content__input-radio" type="radio" onclick ="change()" name="mausac" id="'.$row['TenMauSac'].'" value="'.$row['MaMauSac'].'">
+                                                     <label class="content__input-label" for="'.$row['TenMauSac'].'">
+                                                    <span class="content__input-span" id="content__input-span" va></span>
+                                                    </label>
                                                      '.$row['TenMauSac'];
                                     }
                                 }
@@ -134,7 +135,7 @@
                                 </div>
                                 
                                 <div class="content__input">
-                                    <select name="" id="content__input-select" class="content__input-select">
+                                    <select name="" id="content__input-select"  class="content__input-select">
                                         <!-- <option value="sizeS">S</option>
                                         <option value="sizeL">L</option>
                                         <option value="sizeM">M</option> -->
@@ -142,7 +143,7 @@
                                         if ($data['kichco']->num_rows > 0) {
                                             while ($row = $data['kichco']->fetch_assoc()) {
                                                     echo    '
-                                                    <option value="'.$row['MaKichCo'].'">'.$row['TenKichCo'].'</option>';
+                                                    <option  value="'.$row['MaKichCo'].'" >'.$row['TenKichCo'].'</option>';
                                                 }
                                         }
                                         ?>

@@ -1,7 +1,7 @@
 <?php
 class GioHangModel extends DB{
     public function TimkiemCTSP($masp,$mamausac,$makichco){
-        $qr = 'SELECT MaChiTietSanPham FROM chitietsanpham where MaSanPham="'.$masp.'" and MaMauSac="'.$mamausac.'" and MaKichCo="'.$makichco.'"';
+        $qr = 'SELECT * FROM chitietsanpham where MaSanPham="'.$masp.'" and MaMauSac="'.$mamausac.'" and MaKichCo="'.$makichco.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }

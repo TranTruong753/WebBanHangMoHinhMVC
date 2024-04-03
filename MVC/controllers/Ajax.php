@@ -275,6 +275,19 @@ $this->GioHang= $this->model("GioHangModel");
        
     }
 
+    function GetCount(){
+        $masp=$_POST['masp'];
+        $mamausac=$_POST['mamausac'];
+        $makichco=$_POST['makichco'];
+        $result=$this->GioHang->TimkiemCTSP($masp,$mamausac,$makichco);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo 'Số lượng còn lai : '.$row['SoLuongTon'];
+            }
+        }
+
+    }
+
 
 
 }
