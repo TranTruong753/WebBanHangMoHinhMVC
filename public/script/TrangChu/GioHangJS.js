@@ -102,7 +102,7 @@ function addgiohang() {
             mamausac=radioButtons[i].value;
         }
     }
-    
+    var slton=document.getElementById("SoLuong").innerHTML;
     
     var ktmakh = document.getElementById('username');
    
@@ -110,9 +110,10 @@ function addgiohang() {
         var makh=ktmakh.value;
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
-        //alert("Giá trị của option được chọn: " + selectedValue);
+        
         const sl = document.getElementById('content__input-number').value;
-        if(sl>=1){
+        
+        if( parseInt(sl)<= parseInt(slton)){
             
             //alert(1);
             $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
@@ -121,7 +122,7 @@ function addgiohang() {
                 $("#cart-preview").html(data);
                 })
         }
-        else alert("Số lượng chọn cần phải lớn hơn 0");
+        else alert("Số lượng chọn đã vượt quá số lượng tồn");
     }
     else {
         alert("Bạn chưa đăng nhập");

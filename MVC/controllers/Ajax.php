@@ -282,7 +282,7 @@ $this->GioHang= $this->model("GioHangModel");
         $result=$this->GioHang->TimkiemCTSP($masp,$mamausac,$makichco);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                echo 'Số lượng còn lai : '.$row['SoLuongTon'];
+                echo $row['SoLuongTon'];
             }
         }
 

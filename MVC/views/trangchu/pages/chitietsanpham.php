@@ -108,7 +108,7 @@
                             ?>
                             <div class="content__info-wrap">
                                 <p class="content__info-color" id= "content__info-color">Màu sắc :</p>
-                                <span class="SoLuong" id= "SoLuong">Số lượng còn lại :</span>
+                                <span class="" id= "">Số lượng còn lại :</span> <span class="SoLuong" id= "SoLuong"></span>
                             </div>
                             <form action="" method="post">
                                 <div class="content__input">
