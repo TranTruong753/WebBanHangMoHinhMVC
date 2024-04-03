@@ -30,3 +30,4 @@
 </section>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/XuLyDanhMuc.js"></script>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/timkiem.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>

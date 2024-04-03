@@ -113,7 +113,7 @@
                                 if ($data['mausac']->num_rows > 0) {
                                     while ($row = $data['mausac']->fetch_assoc()) {
                                             echo  '
-                                                     <input class="content__input-radio" type="radio" name="mausac" id="ct'.$row['MaMauSac'].'">
+                                                     <input class="content__input-radio" type="radio" name="mausac" id="ct'.$row['MaMauSac'].'" value="'.$row['MaMauSac'].'">
                                                      <label class="content__input-label" for="ct'.$row['MaMauSac'].'">
                                                     <span class="content__input-span"></span></label>
                                                      '.$row['TenMauSac'];

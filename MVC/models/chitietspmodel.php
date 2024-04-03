@@ -40,8 +40,14 @@ class chitietspmodel extends DB{
         FROM sanpham  where MaSanPham="'.$masp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
-
-        
     }
+
+    public function UpdateCTSP($mactsp,$sl){
+        $qr = 'UPDATE chitietsanpham set SoLuongTon = '.$sl.' where MaChiTietSanPham = "'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
+
 }
 ?>

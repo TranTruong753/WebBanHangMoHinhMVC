@@ -6,7 +6,8 @@ class GioHangModel extends DB{
         return $row;
     }
     public function TimctspGioHang($mactsp,$makh){
-        $qr = 'SELECT MaChiTietSanPham FROM giohang where MaChiTietSanPham="'.$mactsp.'" and MaKhachHang="'.$makh.'"';
+        $qr = 'SELECT * FROM giohang INNER JOIN ChiTietSanPham on giohang.MaChiTietSanPham=ChiTietSanPham.MaChiTietSanPham  
+        INNER JOIN sanpham on sanpham.MaSanPham=ChiTietSanPham.MaSanPham where giohang.MaChiTietSanPham="'.$mactsp.'" and giohang.MaKhachHang="'.$makh.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }

@@ -17,6 +17,13 @@
         return $this->con->query($qr);
     }
 
+    public function UpdateSP($masp,$sl){
+        $qr = 'UPDATE sanpham set SoLuongTonSP = '.$sl.' where MaSanPham = "'.$masp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+
     
 }
 

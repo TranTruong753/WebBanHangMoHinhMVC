@@ -109,15 +109,15 @@
                                 </div>
                                 <div class="procedure-left__info table">
                                     
-                                        <input class="procedure-left__info-input " type="tel" name="" id="" placeholder="Nhập số điện thoại...">
-                                        <textarea class="procedure-left__info-textarea" name="" id="" cols="30" rows="5" placeholder="Nhập địa chỉ của mày vào"></textarea>
+                                        <input class="procedure-left__info-input " type="tel" name="" id="sdt" placeholder="Nhập số điện thoại...">
+                                        <textarea class="procedure-left__info-textarea" name="" id="diachi" cols="30" rows="5" placeholder="Nhập địa chỉ của mày vào"></textarea>
                                    
                                 </div>
                                                              
                             </div>
                        </div>
                        <div class="procedure-left__center table">
-                            <div class="procedure-wrap">
+                            <div class="procedure-wrap" id ="procedure-wrap">
                                 <div class="procedure-left__header">
                                     <input class="procedure-input__check"  type="checkbox" name="allProduct" id="allProduct">
                                     <label class="procedure-label__check" for="allProduct"><span class="procedure-label__tick"></span></label>
@@ -132,93 +132,43 @@
                                         <th>Tổng tính</th>
                                         <th>Xóa</th>
                                     </tr>
-                                    <!-- item 01-->
+                                    <?php
+                                    $tongtien=0;
+                                    if ($data['GH']->num_rows > 0) {
+                                        while ($row = $data['GH']->fetch_assoc()) {
+                                                echo  '
                                     <tr class="table-title table-line">
                                         <td class="table-product">
-                                            <input class="procedure-input__check" type="checkbox" name="product" id="product">
-                                            <label class="procedure-label__check" for="product"><span class="procedure-label__tick"></span></label>                                  
+                                            <input class="procedure-input__check" type="checkbox" name="product" id="'.$row['MaChiTietSanPham'].'">
+                                            <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'"><span class="procedure-label__tick"></span></label>                                  
                                             <div class="table-product__info">
-                                                <img class="table-product__img" src="<?php echo Root ?>public/img/product01.jpg" alt="">
+                                                <img class="table-product__img" src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="">
                                                 <div class="table-title-wrap">
-                                                    <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
+                                                    <p class="table__info-title">'.$row['TenSanPham'].'</p>
                                                    <div class="table__info-input-wrap">
-                                                        <div class="table__info-size">Size: S</div>
-                                                        <div class="table__info-color">Color: Nâu</div>                                                
+                                                        <div class="table__info-size">'.$row['TenKichCo'].'</div>
+                                                        <div class="table__info-color">Color: '.$row['TenMauSac'].'</div>                                                
                                                    </div>
                                                 </div>
                                             </div>                                       
                                         </td>
                                         <td>
-                                            1
+                                        '.$row['SoLuong'].'
                                         </td>
                                         <td>
-                                            400.000 VNĐ
+                                        '.$row['GiaSanPham'].' VNĐ
                                         </td>
                                         <td>
-                                            400.000 VNĐ
-                                        </td>
-                                        <td>
-                                            <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
-                                        </td>
-                                    </tr>
-                                    <!-- item 02-->
-                                    <tr class="table-title table-line">
-                                        <td class="table-product">
-                                            <input class="procedure-input__check" type="checkbox" name="product" id="product02">
-                                            <label class="procedure-label__check" for="product02"><span class="procedure-label__tick"></span></label>                                  
-                                            <div class="table-product__info">
-                                                <img class="table-product__img" src="<?php echo Root ?>public/img/product01.jpg" alt="">
-                                                <div class="table-title-wrap">
-                                                    <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
-                                                   <div class="table__info-input-wrap">
-                                                        <div class="table__info-size">Size: S</div>
-                                                        <div class="table__info-color">Color: Nâu</div>   
-                                                   </div>
-                                                </div>
-                                            </div>                                       
-                                        </td>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            400.000 VNĐ
-                                        </td>
-                                        <td>
-                                            400.000 VNĐ
+                                        '.$row['SoLuong']*$row['GiaSanPham'].' VNĐ
                                         </td>
                                         <td>
                                             <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
                                         </td>
-                                    </tr>
-                                     <!-- item 03-->
-                                     <tr class="table-title table-line">
-                                        <td class="table-product">
-                                            <input class="procedure-input__check" type="checkbox" name="product" id="product03">
-                                            <label class="procedure-label__check" for="product03"><span class="procedure-label__tick"></span></label>                                  
-                                            <div class="table-product__info">
-                                                <img class="table-product__img" src="<?php echo Root ?>public/img/product01.jpg"alt="">
-                                                <div class="table-title-wrap">
-                                                    <p class="table__info-title">áo sơ mi kiểu nữ tay dài xoắn ngực</p>
-                                                   <div class="table__info-input-wrap">
-                                                        <div class="table__info-size">Size: S</div>
-                                                        <div class="table__info-color">Color: Nâu</div>   
-                                                   </div>
-                                                </div>
-                                            </div>                                       
-                                        </td>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            400.000 VNĐ
-                                        </td>
-                                        <td>
-                                            400.000 VNĐ
-                                        </td>
-                                        <td>
-                                            <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
-                                        </td>
-                                    </tr>
+                                    </tr>';
+                                    $tongtien=$tongtien+$row['SoLuong']*$row['GiaSanPham'];
+                                        }
+                                    }?>
+
                                 </table>
                             </div>
                        </div>
@@ -246,8 +196,8 @@
                                             class="procedure__raido-input"
                                             type="radio"
                                             id="atm"
-                                            name="sex"
-                                            value="Nam"
+                                            name="pttt"
+                                            value="ATM card (Thẻ nội địa)"
                                             checked
                                             hidden
                                         />
@@ -263,8 +213,8 @@
                                             class="procedure__raido-input"
                                             type="radio"
                                             id="visa"
-                                            name="sex"
-                                            value="Nu"
+                                            name="pttt"
+                                            value="Thẻ quốc tế (Visa, Master, JCB)"
                                             hidden
                                         />
                                     
@@ -278,8 +228,8 @@
                                             class="procedure__raido-input"
                                             type="radio"
                                             id="momo"
-                                            name="sex"
-                                            value="Nu"
+                                            name="pttt"
+                                            value="Thanh toán qua MoMo"
                                             hidden
                                         />
                                     
@@ -293,8 +243,8 @@
                                             class="procedure__raido-input"
                                             type="radio"
                                             id="shope"
-                                            name="sex"
-                                            value="khac"
+                                            name="pttt"
+                                            value="Shopee Pay"
                                             hidden
                                         />
                                         
@@ -308,12 +258,11 @@
                                             class="procedure__raido-input"
                                             type="radio"
                                             id="other"
-                                            name="sex"
-                                            value="khac"
+                                            name="pttt"
+                                            value="Thanh toán khi nhận hàng"
                                             hidden
                                         />
-                                        
-                                        <label class="procedure__radio-label" for="other"
+                                            <label class="procedure__radio-label" for="other"
                                             ><span class="procedure__radio-span"></span>
                                             Thanh toán khi nhận hàng</label
                                         >
@@ -323,8 +272,8 @@
                                             class="procedure__raido-input procedure__raido-info"
                                             type="radio"
                                             id="bank"
-                                            name="sex"
-                                            value="khac"
+                                            name="pttt"
+                                            value="Chuyển khoản"
                                             hidden
                                         />
                                         
@@ -360,7 +309,7 @@
                                             <div class="radio-info__row">
                                                <div class="radio-info__column">
                                                     <span>Chủ tài khoản</span>
-                                                    <span>:</span>
+<span>:</span>
                                                     <span>Trần Quang Trường</span> 
                                                </div>
                                                <div class="radio-info__column">
@@ -393,7 +342,7 @@
                                <div class="procedure__price-wrap">
                                     <div class="procedure__row">
                                         <span>Tổng tiền hàng</span>
-                                        <span class="procedure__price">800.000 VNĐ</span>
+                                        <span class="procedure__price"><?php echo $tongtien;?> VNĐ</span>
                                     </div>
                                     <div class="procedure__row">
                                         <span>Phí vận chuyển</span>
@@ -404,13 +353,13 @@
                                <div class="procedure__price-wrap no--line">
                                     <div class="procedure__row">
                                                 <span>Tổng thanh toán</span>
-                                                <span class="procedure__price">800.000 VNĐ</span>
+                                                <span class="procedure__price" id="tongtien"><?php echo $tongtien;?> VNĐ</span>
                                     </div>
                                 </div>
-                               <button type="button" class="procedure__btn btn btn--primary">Thanh toán</button>
+                               <button type="button" class="procedure__btn btn btn--primary" onclick="test()">Thanh toán</button>
                          </div>
                      </div>
-                   </div>
+</div>
                 </div>
                
             </div>
