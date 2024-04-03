@@ -8,21 +8,16 @@
 <section class="product">
     <div class="container">
     
-        <?php echo '<input type="hidden" id ="test" value ="'.$data['cl'].'"/>
-                    <input type="hidden" id ="testa" value ="'.$data['tl'].'"/>
-                    <input type="hidden" id ="testb" value ="'.$data['tk'].'"/>'; 
+        <?php echo '<input type="hidden" id ="chungloai" value ="'.$data['cl'].'"/>
+                    <input type="hidden" id ="theloai" value ="'.$data['tl'].'"/>
+                    <input type="hidden" id ="tiemkiem" value ="'.$data['tk'].'"/>'; 
                     ?>
         
         <!-- fashion - 01 -->
         <section class="product__fashion">
             <p class="product__title product__title-left" id="product__title"></p>
             <div class="product__list" id ="product__list">
-            
-
             <!-- nội dung của ajax -->
-
-
-
             </div>
         </section>
     </div>
