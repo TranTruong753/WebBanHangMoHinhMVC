@@ -102,3 +102,13 @@ input {
     color: var(--color-btn-light);
 }
 
+/* table */
+
+.table {
+    border: .5px solid #d8d7d7;
+}
+
+
+.table-line {
+    border-bottom: .5px solid #d8d7d7;
+}

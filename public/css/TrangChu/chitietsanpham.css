@@ -87,6 +87,10 @@ input[type="radio"] {
     padding: 40px;
 }
 
+.content__info-wrap {
+    display: flex;
+    justify-content: space-between;
+}
 .content__input-label {
     --color: #333;
     display: inline-flex;

@@ -106,7 +106,10 @@
                                     }
                             }
                             ?>
-                            <p class="content__info-color">Màu sắc: Trắng</p>
+                            <div class="content__info-wrap">
+                                <p class="content__info-color">Màu sắc:</p>
+                                <span>số lượng còn lại: 130</span>
+                            </div>
                             <form action="" method="post">
                                 <div class="content__input">
                                 <?php
@@ -144,9 +147,8 @@
                                         }
                                         ?>
                                     </select>
-                                    
-
-                                    <input type="number" name="" id="content__input-number" class="content__input-number" value="0">
+                                
+                                    <input type="number" name="" id="content__input-number" class="content__input-number" value="1"  min="1" >
                                 </div>
 
                                 <div class="content__input"><button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
