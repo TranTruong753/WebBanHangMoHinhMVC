@@ -157,9 +157,9 @@
                     <div class="nav__right">
                         <div class="nav__right-wrap">
                             <?php
-                                if(isset($_SESSION['email'])){
-                                    echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" id="username" 
-                                    value="'.$_SESSION['Ten'].'" >'.$_SESSION['Ten'].'</a>';
+                                if(isset($_SESSION['email']) and isset($_SESSION['Ten'])){
+                                    echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" name="user" id="'.$_SESSION['email'].'"  
+                                    value ="aaa" >'.$_SESSION['Ten'].'</a>';
                                     echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
                                 }
                                 else{ echo '

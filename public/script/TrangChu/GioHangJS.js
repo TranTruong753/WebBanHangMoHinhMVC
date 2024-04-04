@@ -104,10 +104,10 @@ function addgiohang() {
     }
     var slton=document.getElementById("SoLuong").innerHTML;
     
-    var ktmakh = document.getElementById('username');
-   
+    var ktmakh = document.getElementsByName("user")[0];
+    
     if(ktmakh){
-        var makh=ktmakh.innerHTML;
+        var makh=ktmakh.id;
         
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
@@ -119,8 +119,8 @@ function addgiohang() {
             //alert(1);
             $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
             masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
-                alert("Thêm thành công");
-                $("#cart-preview").html(data);
+                alert("Thêm thanh công");
+                 $("#cart-preview").html(data);
                 })
         }
         else if(mamausac=="")alert("bạn chưa chọn màu sắc");
