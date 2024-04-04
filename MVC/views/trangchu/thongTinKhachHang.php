@@ -15,7 +15,28 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinKhachHang.css">
 </head>
 <body>
-  
+  <?php 
+    $userName = "" ;
+    $email = "";
+    $userPhone ="";
+    $sex = "";
+   
+     if(isset($data['KH'])){
+      
+        if ($data['KH']->num_rows > 0) {
+        
+            while ($row = $data['KH']->fetch_assoc()) {
+             
+                $email = $row['MaKhachHang'];
+                $userName = $row['TenKhachHang'];
+                $userPhone = $row['SoDienThoai'];
+                $sex = $row['GioiTinh'];
+             
+            }
+        }
+
+    }
+  ?>
    <div class="info__client-wrap container container__nav">      
         <div class="info__client-left">
             <div class="info__wrap">
@@ -23,7 +44,7 @@
             </div>
 
             <div class="info__wrap">
-                <div class="client-title-02 client-user__name">Trần Quang Trường</div>
+                <div class="client-title-02 client-user__name"><?php echo $userName ?></div>
             </div>
 
             <ul class="info__wrap-column ">
@@ -56,7 +77,11 @@
         <div class="info__client-right table">
             <div class="client-right__main">
                 <?php 
-                     require('./MVC/views/trangchu/pages/thongTinChiTietSanPham.php');
+                    if(isset($data['Page'])){
+                        require_once('./MVC/views/trangchu/pages/'.$data['Page'].'.php');
+                    }
+                   
+                    
                 // ?>
                
             </div>

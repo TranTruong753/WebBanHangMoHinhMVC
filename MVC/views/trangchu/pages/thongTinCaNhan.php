@@ -8,6 +8,8 @@
     <!-- <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css"> -->
 </head>
 <body>
+   
+
     <header class="user__header ">
         <h2 class="client-title-01">Thông Tin Cá Nhân</h2>
     </header>
@@ -15,18 +17,18 @@
         <div class="user-row">
            <div class="user-column">
                 <label for="userName" class="clinet-title-02">Nhập họ và tên</label>
-                <input type="text" name="" id="userName" value="Trần quang trường" class="user__input">
+                <input type="text" name="" id="userName" value="<?php echo $userName?>" class="user__input">
            </div>
         </div>
 
         <div class="user-row">
             <div class="user-column">
                 <label for="userPhone" class="clinet-title-02">Số điện thoại</label>
-                <input type="tel" name="" id="userPhone" value="0824431088" class="user__input">
+                <input type="tel" name="" id="userPhone" value="<?php echo $userPhone?>" class="user__input">
             </div>
             <div class="user-column" class="clinet-title-02">
                 <label for="userEmail">Email</label>
-                <input type="email" name="" id="userEmail" value="chantruong@gmail.com" class="user__input">
+                <input type="email" name="" id="userEmail" value="<?php echo $email?>" class="user__input">
             </div>
             
         </div>
@@ -43,6 +45,11 @@
                                 name="sex"
                                 value="boy"
                                 hidden
+                                <?php 
+                                    if($sex == "Nam") {
+                                        ?> checked <?php
+                                    }
+                                ?>
                             />
                                 <label class="user__radio-label" for="boy"
                                 >
@@ -59,6 +66,11 @@
                                 name="sex"
                                 value="girl"
                                 hidden
+                                <?php 
+                                    if($sex == "Nữ") {
+                                        ?> checked <?php
+                                    }
+                                ?>
                             />
                                 <label class="user__radio-label" for="girl"
                                 >
@@ -85,10 +97,10 @@
                         </div>
                    </div>
             </div>
-            <div class="user-column">
+            <!-- <div class="user-column">
                 <label for="userDate">Ngày sinh</label>
-                <input type="date" name="" id="userDate" value="" class="user__input">
-            </div>
+                <input type="date" name="" id="userDate" value="2017-06-01" class="user__input">
+            </div> -->
         </div>
 
        
