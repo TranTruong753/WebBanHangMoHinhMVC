@@ -1,3 +1,7 @@
+<?php
+$PhanTrangModel = new PhanTrangModel();
+?>
+
 <div style="text-align: center;">
     <h1 style=" margin-bottom: 20px;">Quản Lý Nhóm Quyền</h1>
   </div>
@@ -17,20 +21,23 @@
   <tbody class="table-group-divider">
 
     <?php
-    if ($data['DanhSach']->num_rows > 0) {
+    if ($data['DanhSach']->num_rows>0 ) {
       while ($row = $data['DanhSach']->fetch_assoc()) {
     ?>
         <tr>
           <th style="text-align: center;" scope="row"><?php echo $row["MaNhomQuyen"] ?></th>
           <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ; ?></td>
           <td style="text-align: center;">
+
+          <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
             <input onchange="DoiTrangThaiNhomQuyen(this)" id="<?php echo $row["MaNhomQuyen"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
                                                                                                                               echo "checked = 'checked'";
                                                                                                                             }
                                                                                                                             ?> />
           </td>
           <td style="text-align: center;">
-            <pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage/<?php echo  $row["MaNhomQuyen"]  ?>">Sửa</a></pre>
+          <!-- link  để chuyển sang trang nhóm quyền -->
+            <pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,<?php echo  $row["MaNhomQuyen"]?>">Sửa</a></pre>
           </td>
         </tr>
     <?php
@@ -40,6 +47,13 @@
 
   </tbody>
 </table>
+
+<div class="PhanTrang">
+    <?php
+     echo  $PhanTrangModel->PhanTrang(50,100,8,1);
+    ?>
+
+</div>
 
 <script>
   function DoiTrangThaiNhomQuyen(obj) {

@@ -1,11 +1,40 @@
 <?php
 class NhomQuyenModel extends DB{
 
-    public function getDanhSach()
+    public function getDanhSach($key,$pageIndex = 0 ,$soLuong = 8)
     {
-        $qr = "SELECT * FROM nhomquyen ";
-        // $row = mysqli_query($this->con,$qr);
-        // return $row;
+
+        trim($key);
+        
+        //Kiểm tra đang ở trang
+        echo "pageIndex:".$pageIndex;
+        if($pageIndex =="" || $pageIndex <= 0 )
+        {
+            $pageIndex = 1;
+        }
+
+        $batDau = ($pageIndex-1)*$soLuong;
+        
+        $qr = "SELECT * FROM nhomquyen";
+
+        if($key!="")
+        {
+            $qr .= " where concat(MaNhomQuyen,TenNhomQuyen) like '%$key%'";   
+            $qr .= " ORDER BY MaNhomQuyen DESC";
+            $qr .= " Limit $batDau,$soLuong";
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " ORDER BY MaNhomQuyen DESC";
+            $qr .= " Limit $batDau,$soLuong";
+            return $this->con->query($qr);
+        }
+    }
+
+    public function getDanhSachAll()
+    {
+        $qr = "SELECT * FROM nhomquyen";
         return $this->con->query($qr);
     }
 
@@ -32,7 +61,24 @@ class NhomQuyenModel extends DB{
         return "";
     }
 
-    public function getDanhSachMaCoTrangThai(){
+    public function soLuongBanGhi($key)
+    {
+        $tmp = trim($key);
+        $qr = "SELECT * FROM nhomquyen";
+        if($tmp!="")
+        {
+            $qr .= " where concat(MaNhomQuyen,TenNhomQuyen) like '%$key%'";   
+            $qr .= " ORDER BY MaNhomQuyen DESC";
+            return $this->con->query($qr)->num_rows;
+        }else
+        {
+            $qr .= " ORDER BY MaNhomQuyen DESC";
+        }
+        return $this->con->query($qr)->num_rows;
+    }
+
+   
+    public function getDanhSachCoTrangThai(){
         $qr = "SELECT * from nhomquyen where TrangThai = 1";
         return $this->con->query($qr);
     }
@@ -86,27 +132,6 @@ class NhomQuyenModel extends DB{
         }
     }
 
-    // public function insert($ten)
-    // {
-    //     $qr = "INSERT INTO nhomquyen VALUES (null,'$ten','1')";
-    //     if(in_array($ten,$this->GetDanhSachTen()))
-    //     {
-    //         return "Tên nhóm quyền đã tồn tại!";
-    //     }
-    //     else
-    //     {
-    //         if($row = mysqli_query($this->con,$qr))
-    //         {
-    //             return true;
-    //         }else
-    //         {
-    //             return false;
-    //         }
-    //     }
-       
-    // }
-
-    
 
     public function GetDanhSachTen()
     {

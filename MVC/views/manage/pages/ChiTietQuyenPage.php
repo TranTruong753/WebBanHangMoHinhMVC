@@ -29,7 +29,7 @@ $ChucNangModel = new ChucNangModel();
     <select name="NhomQuyen" id="SelectNhomQuyen" size="6">
       <option value="">--Hãy chọn một nhóm quyền--</option>
       <?php
-      $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSach();
+      $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
       if ($DanhSachNhomQuyen->num_rows > 0) {
         while ($row = $DanhSachNhomQuyen->fetch_assoc()) {
       ?>
@@ -40,6 +40,7 @@ $ChucNangModel = new ChucNangModel();
       ?>
     </select>
     <!-- selected Chức Năng -->
+    <br>
     <label for="SelectChucNang">Chức Năng</label>
     <select name="SelectChucNang" id="SelectChucNang" size="6">
       <option value="">--Hãy chọn một nhóm quyền--</option>
@@ -60,6 +61,7 @@ $ChucNangModel = new ChucNangModel();
   
      <!-- selected Hành Động -->
      <label for="HanhDong">Hành Động</label>
+     <br>
       <div class="CheckBoxHanhDong">
         <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xem">Xem</input>
         <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Thêm">Thêm</input>
