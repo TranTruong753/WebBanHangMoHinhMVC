@@ -7,23 +7,26 @@
             $this->KhachHangModel= $this->model("KhachHangModel");
         }
 
-        function showInfo()
-        {   $userName = "" ;
-            $email = "";
-            $userPhone ="";
-            $sex = "";
-            if(isset($_SESSION['email'])){
-                $email = $_SESSION['email'] ;
-                $Kh = $this->KhachHangModel->TimKHbyID($email);
-                if ($Kh->num_rows > 0) { 
-                    while ($row = $Kh->fetch_assoc()) {
-                        $userName = $row['TenKhachHang'];
-                        $userPhone = $row['SoDienThoai'];
-                        $sex = $row['GioiTinh'];
-                    
-                    }
-                }
+
+
+        function updateKh(){
+            $makh=$_POST['makh'];
+            $ten=$_POST['ten'];
+            $sdt=$_POST['sdt'];
+            $gioitinh=$_POST['gioitinh'];
+            if($this->KhachHangModel->updateKh($makh,$sdt,$ten,$gioitinh)==true){
+                $_SESSION['Ten']=$ten;
+                echo 'true';
             }
+            else {
+                echo 'false';
+            }
+            
+
+
+
         }
+
+       
     }
 ?>

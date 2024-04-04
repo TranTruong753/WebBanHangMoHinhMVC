@@ -21,15 +21,22 @@
     $email = "";
     $userPhone ="";
     $sex = "";
-   
+    
+    if(isset( $_SESSION['email'])){
+        $email = $_SESSION['email'];
+    }
+
+    if(isset($_SESSION['Ten'])) {
+        $userName = $_SESSION['Ten'];
+    }
+
      if(isset($data['KH'])){
       
         if ($data['KH']->num_rows > 0) {
         
             while ($row = $data['KH']->fetch_assoc()) {
              
-                $email = $row['MaKhachHang'];
-                $userName = $row['TenKhachHang'];
+               
                 $userPhone = $row['SoDienThoai'];
                 $sex = $row['GioiTinh'];
              
@@ -50,7 +57,7 @@
 
             <ul class="info__wrap-column ">
                 <li>
-                    <a href="#!" class="btn btn-client">Thông tin cá nhân</a>
+                    <a href="#!" onclick="QLThongTin()" class="btn btn-client">Thông tin cá nhân</a>
                 </li>
                 <li>
                     <a href="#!" onclick="QLHoaDon()" class="btn btn-client">Quản lý đơn hàng</a>
@@ -78,11 +85,9 @@
         <div class="info__client-right table">
             <div class="client-right__main" id="client-right__main">
                 <?php
-                if(isset($data['Page'])){
-                    require('./MVC/views/trangchu/pages/'.$data['Page'].'.php');
-                } 
+              
                      require('./MVC/views/trangchu/pages/thongTinCaNhan.php');
-                // ?>
+                 ?>
                
             </div>
 

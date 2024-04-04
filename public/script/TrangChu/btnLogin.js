@@ -14,7 +14,8 @@ function onclickbtn(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/addTaiKhoan",{email : email,
     ten : ten,sdt : sdt,mk : mk, gioitinh: gioitinh},function(data){
         var result=data;
-        //alert(typeof(result));
+        // alert(typeof(result));
+        // alert(result);
         if(result.length == 6){
             alert("Thêm thành công");
             window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");

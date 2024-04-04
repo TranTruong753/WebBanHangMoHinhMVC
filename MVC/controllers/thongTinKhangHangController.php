@@ -28,22 +28,16 @@
         $this->view("trangchu/pages/thongTinSanPham",["HD"=>$hd->GetAllHoaDonKH($makh)]);
     }
 
-    function showInfo(){
-        $cl = $this->model("ChungLoaiModel");
-        $tl = $this->model("TheLoaiModel");
-        $gh=  $this->model("GioHangModel");
+    function QLThongTin(){
         $kh = $this->model("KhachHangModel");
-
-        $this->view("trangchu/block/header",[]);
-        $this->view("trangchu/block/navbar",["CL"=>$cl->GetChungLoaiModel(),"TL"=>$tl->GetTheLoaiModel(),"GH"=>$gh->GetAll()]);
-        $this->view("trangchu/block/link",[]);
+        $makh="";
         if(isset($_SESSION['email'])){
-            $email = $_SESSION['email'];
-            $this->view("trangchu/thongTinKhachHang",["Page"=>"thongTinCaNhan","KH"=>$kh->TimKHbyID($email)]);
-        }
-        
-        $this->view("trangchu/block/footer",[]);
+            $makh=$_SESSION['email'];
+        } 
+        $this->view("trangchu/pages/thongTinCaNhan",["KH"=>$kh->TimKHbyID($makh)]);
     }
+
+ 
 }
 
 

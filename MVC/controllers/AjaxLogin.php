@@ -36,6 +36,7 @@ class AjaxLogin extends controller{
                 if($row['MaNhomQuyen']==1){
                     $_SESSION['email']=$email;
                     $_SESSION['Ten']=$row['TenKhachHang'];
+                              
                     $KH= 'KH';
                     return 1;
                 }
@@ -49,6 +50,8 @@ class AjaxLogin extends controller{
         
         if(isset($_SESSION['email'])){
             unset($_SESSION['email']);
+            unset($_SESSION['Ten']);
+    
         }
         
     }

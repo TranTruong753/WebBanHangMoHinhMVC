@@ -159,7 +159,7 @@
                             <?php
                                 if(isset($_SESSION['email'])){
                                     echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" id="username" 
-                                    value="'.$_SESSION['Ten'].'" >'.$_SESSION['Ten'].'</a>';
+                                    value="'.$_SESSION['email'].'" >'.$_SESSION['email'].'</a>';
                                     echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
                                 }
                                 else{ echo '
