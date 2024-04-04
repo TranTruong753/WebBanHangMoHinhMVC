@@ -158,7 +158,8 @@
                         <div class="nav__right-wrap">
                             <?php
                                 if(isset($_SESSION['email'])){
-                                    echo '<input type="button" id="username" value="'.$_SESSION['email'].'" />';
+                                    echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" id="username" 
+                                    value="'.$_SESSION['Ten'].'" >'.$_SESSION['Ten'].'</a>';
                                     echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
                                 }
                                 else{ echo '
@@ -179,3 +180,4 @@
 
 </html>
 <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>

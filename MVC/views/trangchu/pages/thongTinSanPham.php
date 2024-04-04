@@ -10,6 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- link css -->
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinSanPham.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   
 </head>
 <body>
@@ -19,47 +20,59 @@
     <main class="user__main">
         <ul class="user-product__list">
             <!-- item 01 -->
-            <li class=" user-product-item-wrap">
-                <a href="#!" class="user-product-item">
-                    <div class="product-item__row">
-                    
-                        <span>Số hoá đơn:WD.03.04.24.02508</span>
-                        <span class="product-item__column-span">Trang thái: xác nhận</span>
-              
-                    </div>
-                    <div class="product-item__row">                       
-                        <div class="product-item__column product-item__column-w">
-                            <div class="product-item__info">
-                                    <div class="product-item__info-wrap">
-                                        <span class="product-item__info-span">Số lương:</span>
-                                        <span>1 Sản phẩm</span>
-                                    </div>
-
-                                    <div class="product-item__info-wrap">
-                                        <span class="product-item__info-span">Tổng tiền hàng:</span>
-                                        <span>800.000 VNĐ</span>
-                                    </div>
-
-                                    <div class="product-item__info-wrap">
-                                        <span class="product-item__info-span">Phí vận chuyển:</span>
-                                        <span>15.000 VNĐ</span>
-                                    </div>
-                                 
-                                  
-
-                            </div>
-                            <div class="product-item__info-price">
-                                        <span>Tổng thanh toán: 815.000 VNĐ</span>
-                            </div>
-                           
+            
+                <?php
+                    if ($data['HD']->num_rows > 0) {
+                        while ($row = $data['HD']->fetch_assoc()) {
+                            echo    '
+                            <li class=" user-product-item-wrap">
+                                <a href="#!" class="user-product-item" id="'.$row['MaHoaDon'].'" onclick="GetCTHD(this)">
+                                    <div class="product-item__row">
                             
-                        </div>
-                   
-                    </div>
-
-                   
-                </a>
-            </li>
+                                    <span>Số hoá đơn:'.$row['MaHoaDon'].'</span>';
+                                    if($row['TrangThai']==0){
+                                        echo'<span class="product-item__column-span">Đang đợi xử lý</span>';
+                                    }
+                                    else if($row['TrangThai']==1){
+                                        echo'<span class="product-item__column-span">Đã gọi xác nhận</span>';
+                                    }
+                                    else if($row['TrangThai']==1){
+                                        echo'<span class="product-item__column-span">Đã giao</span>';
+                                    }
+                                    
+                                    echo '
+                                    </div>
+                                    <div class="product-item__row">                       
+                                        <div class="product-item__column product-item__column-w">
+                                            
+                                            <div class="product-item__info">
+                                                    
+                
+                                                    <div class="product-item__info-wrap">
+                                                        <span class="product-item__info-span">Tổng tiền hàng:</span>
+                                                        <span>'.$row['TongTien'].' VNĐ</span>
+                                                    </div>
+                
+                                                    <div class="product-item__info-wrap">
+                                                        <span class="product-item__info-span">Ngày đặt hàng:</span>
+                                                        <span>'.$row['NgayLap'].'</span>
+                                                    </div>
+                                            </div>
+                                            <div class="product-item__info-price">
+                                                        <span>Tổng thanh toán:'.$row['TongTien'].' VNĐ</span>
+                                            </div>
+                                        
+                                            
+                                        </div>
+                                
+                                    </div>
+                                </a>
+                            </li>';
+                            }
+                    }
+                ?>
+                    
+                
 
         
         </ul>
@@ -67,3 +80,4 @@
     </main>
 </body>
 </html>
+<script src="<?php echo Root ?>public/script/TrangChu/QLHoaDonJS.js"></script>

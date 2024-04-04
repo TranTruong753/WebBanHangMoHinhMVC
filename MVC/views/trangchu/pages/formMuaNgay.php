@@ -382,4 +382,4 @@
 </body>
 
 </html>
-<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLonJS.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLon.js"></script>

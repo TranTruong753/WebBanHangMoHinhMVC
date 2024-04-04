@@ -107,7 +107,8 @@ function addgiohang() {
     var ktmakh = document.getElementById('username');
    
     if(ktmakh){
-        var makh=ktmakh.value;
+        var makh=ktmakh.innerHTML;
+        
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
         
@@ -122,7 +123,8 @@ function addgiohang() {
                 $("#cart-preview").html(data);
                 })
         }
-        else alert("Số lượng chọn đã vượt quá số lượng tồn");
+        else if(mamausac=="")alert("bạn chưa chọn màu sắc");
+        else alert("Số lượng đã vượt quá số lượng tồn");
     }
     else {
         alert("Bạn chưa đăng nhập");

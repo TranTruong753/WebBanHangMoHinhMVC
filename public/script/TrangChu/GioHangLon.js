@@ -30,8 +30,8 @@ function test(){
         }
         else{
             $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/thanhtoan",{arr: arr,sdt:sdt,diachi:diachi,date:date,pttt: pttt,tongtien: tongtien},function(data){
-                //$("#procedure-wrap").html(data);
-                alert("Thanh Toán Thanh Công");
+                $("#procedure-wrap").html(data);
+                 alert("thanh toán thành công");
                 var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
                 window.location.assign(url);
                 

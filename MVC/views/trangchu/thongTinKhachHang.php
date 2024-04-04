@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinKhachHang.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
   
@@ -23,7 +24,7 @@
             </div>
 
             <div class="info__wrap">
-                <div class="client-title-02 client-user__name">Trần Quang Trường</div>
+                <div class="client-title-02 client-user__name"><?php echo $_SESSION['Ten'];?></div>
             </div>
 
             <ul class="info__wrap-column ">
@@ -31,7 +32,7 @@
                     <a href="#!" class="btn btn-client">Thông tin cá nhân</a>
                 </li>
                 <li>
-                    <a href="#!" class="btn btn-client">Quản lý đơn hàng</a>
+                    <a href="#!" onclick="QLHoaDon()" class="btn btn-client">Quản lý đơn hàng</a>
                 </li>
                 <!-- <li>
                     <a href="#!" class="btn btn-client">item1</a>
@@ -54,9 +55,9 @@
             </ul>
         </div>
         <div class="info__client-right table">
-            <div class="client-right__main">
+            <div class="client-right__main" id="client-right__main">
                 <?php 
-                     require('./MVC/views/trangchu/pages/thongTinChiTietSanPham.php');
+                     require('./MVC/views/trangchu/pages/thongTinSanPham.php');
                 // ?>
                
             </div>
@@ -65,3 +66,4 @@
    </div>
 </body>
 </html>
+<script src="<?php echo Root ?>public/script/TrangChu/QLThongTinKHJS.js"></script>
