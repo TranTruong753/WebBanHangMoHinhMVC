@@ -61,7 +61,7 @@ if ($index == "Sửa") {
                         TenNhomQuyen: TenNhomQuyen
                     }, function(data) {
                         alert("Thêm Dữ Liệu Nhóm Quyền Thành Công");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage";
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,8";
 
                     })
 
@@ -95,7 +95,7 @@ if ($index == "Sửa") {
                         if(result.length == 6)
                         {
                             alert("Cập nhật dữ liệu nhóm quyền thành công!");
-                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage";
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,8";
                         }
                         else
                         {

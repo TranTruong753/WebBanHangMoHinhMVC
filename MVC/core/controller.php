@@ -13,6 +13,7 @@ class controller{
        
             //chuyển tất cả các key của mảng thành biến
             // extract($data);
+            // print()
         require_once "./MVC/views/$view.php";
     
     }

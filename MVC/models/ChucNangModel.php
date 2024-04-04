@@ -7,6 +7,14 @@ class ChucNangModel extends DB{
         return $this->con->query($qr);
     }
 
+    
+    public function getDanhSachCoTrangThai()
+    {
+        $qr = "SELECT * From chucnang where TrangThai = 1";
+        return $this->con->query($qr);
+    }
+
+
 
     public function updateTrangThai($ma,$trangThai)
     {

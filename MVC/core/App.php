@@ -39,6 +39,7 @@ protected $routes;
 
                 //Xử lý params
                 $this->params =  array_values($arr);
+
                 call_user_func_array(array( new $this->controller, $this->action), $this->params);
             } else {
                 $this->loadError();
