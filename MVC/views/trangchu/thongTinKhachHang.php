@@ -56,7 +56,7 @@
         <div class="info__client-right table">
             <div class="client-right__main">
                 <?php 
-                     require('./MVC/views/trangchu/pages/thongTinSanPham.php');
+                     require('./MVC/views/trangchu/pages/thongTinChiTietSanPham.php');
                 // ?>
                
             </div>
