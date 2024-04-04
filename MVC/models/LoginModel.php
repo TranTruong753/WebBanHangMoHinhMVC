@@ -24,7 +24,8 @@ class LoginModel extends DB{
 
     public function TimTK($email,$mk){
         
-        $qr ='SELECT * FROM taikhoan where (MaNguoiDung="'.$email.'" and MatKhau="'.$mk.'") or (MaNhanVien="'.$email.'" and MatKhau="'.$mk.'")';
+        $qr ='SELECT * FROM taikhoan INNER JOIN khachhang on taikhoan.MaNguoiDung=khachhang.MaKhachHang 
+        where (taikhoan.MaNguoiDung="'.$email.'" and taikhoan.MatKhau="'.$mk.'") or (taikhoan.MaNhanVien="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
         $row=mysqli_query($this->con, $qr);
         return $row;
         

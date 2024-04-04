@@ -2,9 +2,15 @@
 
 class HoaDonModel extends DB{
     
+    function GetAllHoaDonKH($makh){
+        $qr = 'SELECT *
+        from hoadon where MaKhachHang="'.$makh.'"';
+        return $this->con->query($qr);
+
+    }
     function GetAllHoaDon(){
-        $qr = "SELECT *
-        from hoadon";
+        $qr = 'SELECT *
+        from hoadon ';
         return $this->con->query($qr);
 
     }
