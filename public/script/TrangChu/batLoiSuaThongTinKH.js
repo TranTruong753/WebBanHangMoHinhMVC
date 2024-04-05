@@ -1,6 +1,6 @@
 
 function checkKeyUser() {
-    var userName = document.getElementById("UserName").value;
+    var userName = document.getElementById("userName").value;
     var message_user = document.getElementById("error-message-user");
     if(userName.length > 0){
         if(checkPatternUser(userName)){
@@ -32,7 +32,7 @@ function checkPatternUser(userName){
 }
 
 function checkKeyPhone() {
-    var phone = document.getElementById("phone").value;
+    var phone = document.getElementById("userPhone").value;
 
     var message_phone = document.getElementById("error-message-phone");
 
@@ -58,3 +58,11 @@ function checkPatternPhone(phone) {
     var pattern = /^(0|\+?84)(3|5|7|8|9)[0-9]{8}$/;
     return pattern.test(phone);
 }
+
+var eventUserInput = document.getElementById("userName");
+eventUserInput.addEventListener("keyup", checkKeyUser);
+eventUserInput.addEventListener("blur", checkKeyUser);
+
+var eventPhoneInput = document.getElementById("userPhone");
+eventPhoneInput.addEventListener("keyup", checkKeyPhone);
+eventPhoneInput.addEventListener("blur", checkKeyPhone);

@@ -51,8 +51,8 @@
                             echo ' value="'.$userName.'" ';
                         }
                     ?>
-                   
                     class="user__input">
+                    <div id="error-message-user"></div>
                </div>
             </div>
     
@@ -67,6 +67,7 @@
                     ?>  
                   
                     class="user__input">
+                    <div id="error-message-phone"></div>
                 </div>
                 <div class="user-column" class="clinet-title-02">
                     <label for="userEmail">Email</label>
@@ -163,5 +164,6 @@
       -->
     </main>
     <script src="<?php echo Root ?>public/script/TrangChu/QLThongTinKHJS.js"></script>
+    <script src="<?php echo Root ?>public/script/TrangChu/batLoiSuaThongTinKH.js"></script>
 </body>
 </html>
