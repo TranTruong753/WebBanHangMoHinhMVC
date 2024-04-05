@@ -23,7 +23,7 @@ $ChucNangModel = new ChucNangModel();
 </div>
 <!-- <input type="button" onclick="hienThiFrom()" value="Thêm Chi Tiết Quyền"> -->
 <div class="formThemChiTietQuyen" id="formThemChiTietQuyen">
-  <form action="">
+  <!-- <form action=""> -->
     <!-- Selected Nhóm Quyền -->
     <label for="SelectNhomQuyen">Nhóm Quyền</label>
     <select name="NhomQuyen" id="SelectNhomQuyen" size="6">
@@ -74,7 +74,7 @@ $ChucNangModel = new ChucNangModel();
 
     <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
 
-  </form>
+  <!-- </form> -->
 </div>
 
 <table class="table">

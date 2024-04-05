@@ -1,14 +1,13 @@
 <?php
 class NhomQuyenModel extends DB{
 
-    public function getDanhSach($key,$pageIndex = 0 ,$soLuong = 8)
+    public function getDanhSach($key,$pageIndex,$soLuong)
     {
 
         trim($key);
-        
-        //Kiểm tra đang ở trang
-        echo "pageIndex:".$pageIndex;
-        if($pageIndex =="" || $pageIndex <= 0 )
+        // Kiểm tra đang ở trang
+        // echo "pageIndex:".$pageIndex;
+        if($pageIndex == "" || $pageIndex <= 0 )
         {
             $pageIndex = 1;
         }
@@ -19,17 +18,23 @@ class NhomQuyenModel extends DB{
 
         if($key!="")
         {
-            $qr .= " where concat(MaNhomQuyen,TenNhomQuyen) like '%$key%'";   
+            $qr .= " where concat(MaNhomQuyen,TenNhomQuyen) like '%$key%'"; 
+
             $qr .= " ORDER BY MaNhomQuyen DESC";
-            $qr .= " Limit $batDau,$soLuong";
+            $qr .= " LIMIT $batDau,$soLuong";
+
+            // echo $qr;
             return $this->con->query($qr);
         }
         else
         {
             $qr .= " ORDER BY MaNhomQuyen DESC";
             $qr .= " Limit $batDau,$soLuong";
+            // echo $qr;
             return $this->con->query($qr);
         }
+        // $qr="SELECT * from nhomquyen";
+        // return $this->con->query($qr);
     }
 
     public function getDanhSachAll()

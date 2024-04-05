@@ -1,11 +1,17 @@
 <?php
+
 $PhanTrangModel = new PhanTrangModel();
 ?>
 
+<!-- Tiêu Đề -->
 <div style="text-align: center;">
     <h1 style=" margin-bottom: 20px;">Quản Lý Nhóm Quyền</h1>
   </div>
 
+  <div class="search">
+  <input type="text" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+</div>
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
   <input type="submit" onclick="DieuHuong()" value="Thêm">
 <table class="table">
   <style></style>
@@ -18,7 +24,7 @@ $PhanTrangModel = new PhanTrangModel();
       <th scope="col" style="text-align: center;">Thao Tác</th>
     </tr>
   </thead>
-  <tbody class="table-group-divider">
+  <tbody  class="table-group-divider row-table">
 
     <?php
     if ($data['DanhSach']->num_rows>0 ) {
@@ -56,6 +62,64 @@ $PhanTrangModel = new PhanTrangModel();
 </div>
 
 <script>
+  $(document).ready(function(){
+
+  //   $('#txtfind').on('keyup', function(e)
+  // {
+  //   // alert(1);
+  // })
+  $(document).on("keyup","#txtFind",function(){
+    var key=$(this).val();
+    var pageIndex = 1;
+    var numberItem = 8;
+      
+        $.ajax(
+          {
+            url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach' ,
+            type: 'post',
+            dataType: 'html',
+            data: {
+               key : key,
+               pageIndex: pageIndex,
+               numberItem: numberItem,
+            },
+            success:function(data){
+              console.log(data)
+              $(".row-table").html(data)
+            } 
+          }
+        )
+
+      
+    })
+    // $("#txtFind").keyup(function(e){
+      
+    //   var key = $("#txtFind").val();
+    //   var pageIndex = 1;
+    //   var numberItem = 8;
+      
+    //     $.ajax(
+    //       {
+    //         url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach' ,
+    //         type: 'post',
+    //         dataType: 'html',
+    //         data: {
+              
+    //            key : key,
+    //            pageIndex: pageIndex,
+    //            numberItem: numberItem,
+    //         },
+    //         success:function(data){
+    //           console.log(data)
+    //         } 
+            
+
+    //       }
+    //     )
+
+      
+    // })
+  })
   function DoiTrangThaiNhomQuyen(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)

@@ -6,7 +6,7 @@ if ($index == "Sửa") {
 }
 ?>
 
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/container/NhomQuyenPage"> Trang Nhóm Quyền></a>
+<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,0,8"> Trang Nhóm Quyền></a>
 <?php if ($index == "Thêm") {
     echo    "<h1>Form Thêm Nhóm Quyền</h1>";
 } else if ($index == "Sửa") {
