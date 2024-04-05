@@ -54,9 +54,7 @@ class AjaxLogin extends controller{
     function Logout(){
         
         if(isset($_SESSION['email'])){
-            unset($_SESSION['email']);
-            unset($_SESSION['Ten']);
-    
+            session_destroy();
         }
         
     }
