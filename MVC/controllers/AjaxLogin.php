@@ -11,6 +11,7 @@ class AjaxLogin extends controller{
         $this->LoginModel= $this->model("LoginModel");
         
     }
+
     function addTaiKhoan(){
         $email=$_POST['email'];
         $ten=$_POST['ten'];
@@ -18,7 +19,7 @@ class AjaxLogin extends controller{
         $gioitinh=$_POST['gioitinh'];
         $mk=$_POST['mk'];
         if($this->LoginModel->addDangKiKH($email,$ten,$sdt,$gioitinh)==true and
-         $this->LoginModel->addDangKiTK($email,$mk)== true ){
+        $this->LoginModel->addDangKiTK($email,$mk)== true ){
             echo "true";
 
         }
