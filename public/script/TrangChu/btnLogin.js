@@ -39,9 +39,9 @@ function onclickbtnDN(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/DangNhap",{email : email,
     mk : mk},function(data){
         // const obj = JSON.parse(data);
-        // alert(obj);
-       
-        if(data.length== 2){
+        // alert(data.length);
+        
+        if(data.length== 3){
             alert("DN thành công");
             window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");
         }
