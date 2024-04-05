@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/sidebar.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/style.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/style.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/sidebarPRO.css">
 
 
     <title>Trang Quản trị</title>
@@ -35,10 +36,10 @@
             <div class="row">
                 <div class="sidebar col l-3">
                     <?php
-                    require_once "blocks/sidebar.php";
+                    require_once "blocks/sidebarPRO.php";
                     ?>
                 </div>
-                <div class="container col l-9">
+                <div class="container col l-8">
                     <?php
                     // print_r($data["Data"]);
                     $this->view("manage/pages/" . $data['detail'], ["DanhSach" => $data["Data"]]);
@@ -48,7 +49,8 @@
 
         </div>
 
-        <script src="<?php echo Root . "public/script/manage/main.js" ?>"></script>
+        <script src="<?php echo Root . "public/script/admin/main.js" ?>"></script>
+        <script src="<?php echo Root ."public/script/admin/sidebarPRO.js" ?>"></script>
     </div>
 
 
