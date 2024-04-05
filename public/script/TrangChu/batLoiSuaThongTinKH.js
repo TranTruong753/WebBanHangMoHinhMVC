@@ -1,3 +1,22 @@
+    
+function changeButton(){
+    button = document.getElementById("btn");    
+    if(checkAllInput()){              
+        
+       
+        button.classList.remove("btn--noActivate");
+        button.classList.add("btn--primary");
+        
+        
+        
+    }else { 
+        button.classList.remove("btn--primary");
+        button.classList.add("btn--noActivate");  
+        //button = document.getElementById("btn").type = "button";
+               
+    }
+
+}
 
 function checkKeyUser() {
     var userName = document.getElementById("userName").value;
@@ -66,3 +85,27 @@ eventUserInput.addEventListener("blur", checkKeyUser);
 var eventPhoneInput = document.getElementById("userPhone");
 eventPhoneInput.addEventListener("keyup", checkKeyPhone);
 eventPhoneInput.addEventListener("blur", checkKeyPhone);
+
+
+var eventform = document.getElementById("my_form");
+eventform.addEventListener("keyup", changeButton);
+eventform.addEventListener("blur", changeButton);
+
+
+
+function checkAllInput(){
+    var check = true ;
+    var userName = document.getElementById("userName").value;
+
+    if(userName.length == 0 || !checkPatternUser(userName)){
+        check = false;           
+    }
+    var phone = document.getElementById("userPhone").value;
+
+
+    if(phone.length == 0 || !checkPatternPhone(phone)){
+        check = false;      
+    }
+ return check;
+   
+}

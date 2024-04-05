@@ -27,7 +27,7 @@ function updateKh(){
     ten : ten,sdt : sdt, gioitinh: gioitinh},function(data){
         var result=data;
         // alert(typeof(result));
-        alert(result);
+        // alert(result);
         if(result.length == 6){
             alert("Cập nhật thành công");
            

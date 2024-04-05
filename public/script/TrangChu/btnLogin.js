@@ -39,7 +39,7 @@ function onclickbtnDN(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/DangNhap",{email : email,
     mk : mk},function(data){
         // const obj = JSON.parse(data);
-         //alert(data.length);
+        //  alert(data.length);
         
         if(data.length== 6){
             alert("DN thành công");

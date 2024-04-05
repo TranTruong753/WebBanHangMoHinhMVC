@@ -41,7 +41,7 @@
         <h2 class="client-title-01">Thông Tin Cá Nhân</h2>
     </header>
     <main >
-        <form action="" method="POST" class="user__main">
+        <form action="" method="POST" class="user__main" id="my_form">
             <div class="user-row">
                <div class="user-column">
                     <label for="userName" class="clinet-title-02">Nhập họ và tên</label>
@@ -78,6 +78,7 @@
                         }
                     ?>                 
                     class="user__input" readonly disabled >
+                    <div id="error-email-user"></div>
                 </div>
                 
             </div>
@@ -159,7 +160,7 @@
     
         </form>
        
-            <button class="btn btn--primary btn-user" onclick="updateKh()">Lưu chỉnh sửa</button>                       
+            <button class="btn btn--primary btn-user" onclick="updateKh()" id="btn">Lưu chỉnh sửa</button>                       
             <!-- <a href="#!"class ="btn btn--primary btn-user" >Lưu chỉnh sửa</a>
       -->
     </main>
