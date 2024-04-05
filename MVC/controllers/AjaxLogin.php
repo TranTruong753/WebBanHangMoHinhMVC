@@ -31,21 +31,25 @@ class AjaxLogin extends controller{
     function DangNhap(){
         $email=$_POST['email'];
         $mk=$_POST['mk'];
-        $result=$this->LoginModel->TimTK($email,$mk);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                if($row['MaNhomQuyen']==1){
+        $resultKH=$this->LoginModel->TimTKKH($email,$mk);
+        $resultNV=$this->LoginModel->TimTKNV($email,$mk);
+        if ($resultKH->num_rows > 0) {
+            while ($row = $resultKH->fetch_assoc()) {
+                $_SESSION['email']=$email;
+                $_SESSION['Ten']=$row['TenKhachHang'];
+                            
+                $KH= 'KH';
+                echo 1;
+           }
+       } else if ($resultNV->num_rows > 0) {
+                while ($row = $resultNV->fetch_assoc()) {
                     $_SESSION['email']=$email;
-                    $_SESSION['Ten']=$row['TenKhachHang'];
-                              
-                    $KH= 'KH';
-                    return 1;
+                    $_SESSION['Ten']=$row['TenNhanVien'];
+                            
+                    echo "NV";
                 }
-                echo "NV";
-            
-            }
-       } else echo "false";
-    }
+    } else echo "false";
+}
 
     function Logout(){
         

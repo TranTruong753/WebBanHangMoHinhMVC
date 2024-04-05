@@ -3,9 +3,6 @@
 </div>
 <div class="sidebar-container">
     <ul>
-
-
-
         <!-- Quản lý Sản Phẩm -->
         <li> <a href="<?php echo Root ?>admin/container/SanPhamPage" class="none-decoration">
                 <i class='bx bx-shopping-bag'></i>
