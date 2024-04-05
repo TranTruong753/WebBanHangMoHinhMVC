@@ -38,8 +38,8 @@ class AjaxLogin extends controller{
                 $_SESSION['email']=$email;
                 $_SESSION['Ten']=$row['TenKhachHang'];
                             
-                $KH= 'KH';
-                echo 1;
+                
+                echo "true";
            }
        } else if ($resultNV->num_rows > 0) {
                 while ($row = $resultNV->fetch_assoc()) {

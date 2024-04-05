@@ -5,7 +5,7 @@ class Admin extends controller
     protected $pageName;
     protected $data = [];
     protected $params = [];
-    function default($params)
+    function default($params=[])
     {
 
         
