@@ -30,7 +30,7 @@ function updateKh(){
         // alert(result);
         if(result.length == 6){
             alert("Cập nhật thành công");
-           
+            location.reload();     
         }
         else {
             alert("mã khách hàng bị trùng");}

@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinCaNhan.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css"> -->
+
 </head>
 <body>
     <?php 

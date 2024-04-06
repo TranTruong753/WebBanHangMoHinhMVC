@@ -24,7 +24,7 @@
         <div class="container container__nav">
             <div class="nav__inner">
                 <!-- logo -->
-                <a href="#" class="nav__link-logo">
+                <a href="<?php echo Root ?>home/trangchu" class="nav__link-logo">
                     <img src="<?php echo Root ?>public/img/logo.png" alt="" class="nav-logo" />
                 </a>
                 <!-- <div class="nav__toggle nav__bars" id="nav-toggle">
@@ -156,11 +156,48 @@
                     <!-- login logout -->
                     <div class="nav__right">
                         <div class="nav__right-wrap">
+                            
+                            <!-- <img class="nav__icon-user" src="<?php echo Root ?>public/img/user.png" alt="" id="">           
+                            <span>Tran Quang Truong</span>
+                            <ul class="show-info__user">
+                                <li>
+                                    <div class="info-user__wrap-menu">
+                                        <img class="nav__icon-user" src="<?php echo Root ?>public/img/user.png" alt="" id="">
+                                        <span>Tran Quang Truong</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="">Quản lý thông tin cá nhân</a>  
+                                </li>
+                                <li>
+                                    <a href="">Đăng xuất</a>  
+                                </li>
+                            </ul>       -->
+
                             <?php
                                 if(isset($_SESSION['email']) and isset($_SESSION['Ten'])){
-                                    echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" name="user" id="'.$_SESSION['email'].'"  
-                                    value ="aaa" >'.$_SESSION['Ten'].'</a>';
-                                    echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
+                                    echo '
+                                    <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">           
+                                    <span>'.$_SESSION['Ten'].'</span>
+                                    <ul class="show-info__user">
+                                        <li>
+                                            <div class="info-user__wrap-menu">
+                                                <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">
+                                                <span>'.$_SESSION['Ten'].'</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a id="'.$_SESSION['email'].'" href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show">Quản lý thông tin cá nhân</a>  
+                                        </li>
+                                        <li>
+                                            <a href="#" onclick="Logout()">Đăng xuất</a>  
+                                        </li>
+                                     </ul>     
+                                    ';
+                                    
+                                    // echo '<a href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" name="user" id="'.$_SESSION['email'].'"  
+                                    // value ="aaa" >'.$_SESSION['Ten'].'</a>';
+                                    // echo '<button onclick="Logout()" class="" type="button"> Đăng con mẹ nó xuất';
                                 }
                                 else{ echo '
                                     <a href="'; echo Root; echo 'DangNhap/dangNhap" class="nav__signin"

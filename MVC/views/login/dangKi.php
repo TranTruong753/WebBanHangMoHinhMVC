@@ -43,18 +43,18 @@
                     </div>
 
                    
-                    <div class="error-wrap">
+                    <!-- <div class="error-wrap">
                         <div class="error-text">Lỗi!</div>
                         <a href="#!"class="text-link" >Gửi mã OTP</a>
-                    </div>
+                    </div> -->
                  
 
                      
-                    <div class="form-input-wrap">
+                    <!-- <div class="form-input-wrap">
                             <label class="login__formLabel" for="codeOTP">Mã xác thực OTP <span class="importan">*</span></label>
                             <input type="text" name="codeOTP" id="codeOTP" class="login__formInput" placeholder="Nhập mã OTP..." >
                             <div class="error-text">Lỗi!</div>
-                    </div>
+                    </div> -->
 
                     <div class="form-input-wrap">
                             <label class="login__formLabel" for="email">Email</label>

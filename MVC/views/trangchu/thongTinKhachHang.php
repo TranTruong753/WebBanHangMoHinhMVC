@@ -48,7 +48,10 @@
    <div class="info__client-wrap container container__nav">      
         <div class="info__client-left">
             <div class="info__wrap">
-                <img class="client__user-img" src="<?php echo Root ?>public/img/user.png" alt="">
+                <label for="imgUser">
+                    <img class="client__user-img" src="<?php echo Root ?>public/img/user.png" alt="" id="preview">
+                </label>
+                <input type="file" name="" id="imgUser" hidden onchange="preview.src=window.URL.createObjectURL(this.files[0])">
             </div>
 
             <div class="info__wrap">

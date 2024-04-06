@@ -118,6 +118,9 @@
 
 .client__user-img {
     width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .info__wrap-column  li {
