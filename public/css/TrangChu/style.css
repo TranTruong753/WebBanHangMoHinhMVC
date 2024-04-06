@@ -467,57 +467,6 @@ button {
     height: 100%;
 }
 
-.show-info__user {
-   cursor: initial;
-    padding: 15px 0 20px 0px;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 325px;
-    background-color: #fff;
-    top: 52px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    visibility: hidden;
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
-    transition: opacity 0.2s, visibility 0.2s;
-
-}
-
-.show-info__user li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 0.5px solid #eee;
-}
-
-.show-info__user li:not(.show-info__user li:first-of-type) a {
-    padding: 20px 0;
-}
-
-.show-info__user li:last-of-type {
-    border: none;
-}
-
-.show-info__user li a {
-    color: #333;
-    text-align: center;
-    width: 100%;
-}
-
-.info-user__wrap-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
-    padding-bottom: 10px;
-}
-
-.nav__right-wrap:hover .show-info__user {
-    visibility: visible;
-    opacity: 1;
-}
 
 /* hero */
 .hero__media {
@@ -910,4 +859,62 @@ button {
     height: 25px;
     object-fit: cover;
 }
+
+.show-info__user {
+    cursor: initial;
+     padding: 15px 0 20px 0px;
+     display: flex;
+     flex-direction: column;
+     position: absolute;
+     width: 325px;
+     background-color: #fff;
+     top: 52px;
+     left: 0;
+     right: 0;
+     opacity: 0;
+     visibility: hidden;
+     filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+     transition: opacity 0.2s, visibility 0.2s;
+ 
+ }
+ 
+ .show-info__user li {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     border-bottom: 0.5px solid #eee;
+ }
+ 
+ .show-info__user li:not(.show-info__user li:first-of-type) a {
+     padding: 20px 0;
+ }
+ 
+ .show-info__user li:last-of-type {
+     border: none;
+ }
+ 
+ .show-info__user li a {
+     color: #333;
+     text-align: center;
+     width: 100%;
+ }
+ 
+ .info-user__wrap-menu {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     row-gap: 10px;
+     padding-bottom: 10px;
+ }
+
+ .info-user__wrap-menu  img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+ }
+ 
+ .nav__right-wrap:hover .show-info__user {
+     visibility: visible;
+     opacity: 1;
+ }
 
