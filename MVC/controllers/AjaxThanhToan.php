@@ -9,7 +9,7 @@ class AjaxThanhToan extends controller{
     public $GioHangModel;
     public $HoaDonModel;
     public $chitietspmodel;
-    public $SanphamModel;
+    public $SanPhamModel;
 
     function __construct(){
         $this->KhachHangModel= $this->model("TrangChuKHModel");

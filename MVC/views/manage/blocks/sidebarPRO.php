@@ -62,7 +62,7 @@
                                     <i class='bx bx-group' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Nhân viên</span>
                             </a>
-                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_link">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage" class="sidebar_link">
                                     <i class='bx bx-user-circle' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Khách hàng</span>
                             </a>

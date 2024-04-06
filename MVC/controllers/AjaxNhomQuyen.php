@@ -42,6 +42,12 @@ class AjaxNhomQuyen extends controller
     else echo 'false';
    }
 
+   public function XoaDuLieuNhomQuyen()
+   {
+    $ma = $_POST["ma"];
+      if($this->NhomQuyenModel->delete($ma)==1) echo 'Xóa Nhóm Quyền Thành Công!';
+      else echo 'Xóa Nhóm Quyền Thất Bại!';
+   }
    public function getDanhSach()
    {
         $key = $_POST['key'];

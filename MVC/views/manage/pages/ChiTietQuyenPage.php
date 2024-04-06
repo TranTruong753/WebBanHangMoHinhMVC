@@ -45,7 +45,7 @@ $ChucNangModel = new ChucNangModel();
     <select name="SelectChucNang" id="SelectChucNang" size="6">
       <option value="">--Hãy chọn một nhóm quyền--</option>
       <?php
-      $DanhSachChucNang = $ChucNangModel->getDanhSach();
+      $DanhSachChucNang = $ChucNangModel->getDanhSachCoTrangThai();
       if ($DanhSachChucNang->num_rows > 0) {
         while ($row = $DanhSachChucNang->fetch_assoc()) {
       ?>
