@@ -35,7 +35,8 @@ if($data["DanhSach"]->num_rows>0)
       <td style="text-align: center;"><?php echo $row["TenTheLoai"]?></td>
       <td style="text-align: center;"><?php echo $row["TenChatLieu"]?></td>
       <td style="text-align: center;"><?php echo $row["TenThuongHieu"]?></td>
-      <td style="text-align: center;"><pre><a href="">Sửa</a> |  <button  onclick="XoaSP(this)" id="<?php echo $row["MaSanPham"]?>">Xóa</button> | <a href="">Chi Tiết</a>  <br> <a href="">Sản Phẩm Con</a> </pre></td>
+      <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="<?php echo $row["MaSanPham"]?>">Xóa</button> | 
+      <a href="">Chi Tiết</a>  <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,<?php echo $row["MaSanPham"]?>">Sản Phẩm Con</a> </pre></td>
     </tr>
 <?php
   }
