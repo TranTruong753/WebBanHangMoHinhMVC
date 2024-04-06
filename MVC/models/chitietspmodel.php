@@ -48,6 +48,15 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function GetCTSP($masp){
+        $qr = 'SELECT *
+        FROM chitietsanpham where MaSanPham="'.$masp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+
+        
+    }
+
 
 }
 ?>

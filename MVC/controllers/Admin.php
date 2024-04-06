@@ -27,9 +27,7 @@ class Admin extends controller
             $this->data["Data"]= $TaiKhoanModel->getDanhSach();
             $this->data["detail"] = "TaiKhoanPage";
 
-        } else if ($this->pageName == "ThemSanPhamPage") {
-            $this->data["detail"] = "ThemSanPhamPage";
-        } else if ($this->pageName == "NhomQuyenPage") {
+        }  else if ($this->pageName == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             $this->data["Data"] = $NhomQuyenModel->getDanhSach("",$this->params[1],$this->params[2]);
@@ -89,6 +87,14 @@ class Admin extends controller
             $this->data["detail"] = "addPages/ThemNhomQuyenPage";
             if(isset($this->params[1])) $this->data["MaNhomQuyen"] = $this->params[1];
             $this->data["Data"] = ["index"=> "Sửa","MaNhomQuyen"=>$this->data["MaNhomQuyen"]];
+        }
+        else if ($this->pageName == "ThemSanPhamPage") {
+            //$NhomQuyenModel = $this->model( "ThemSanPhamPage");
+            $cl=$this->model( "ChatLieuModel")->getDanhSach();
+            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModel();
+            $sp=$this->model( "SanPhamModel")->getDanhSach();
+            $this->data["detail"] = "addPages/ThemSanPhamPage";
+            $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp];
         }
 
         print_r($this->data); 

@@ -9,7 +9,7 @@
 
     public function getDanhSachAdmin()
     {
-        $qr = "SELECT sp.MaSanPham, sp.TenSanPham, tl.TenTheLoai,cl.TenChatLieu,th.TenThuongHieu,sp.TrangThai
+        $qr = "SELECT *
         FROM sanpham as sp, theloai as tl, chatlieu as cl, thuonghieu as th  
         WHERE sp.MaTheLoai=tl.MaTheLoai 
         and sp.MaChatLieu = cl.MaChatLieu 
@@ -19,6 +19,20 @@
 
     public function UpdateSP($masp,$sl){
         $qr = 'UPDATE sanpham set SoLuongTonSP = '.$sl.' where MaSanPham = "'.$masp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+
+    public function InsertSP($masp,$tensp,$giasp,$matheloai,$machatlieu){
+        $qr = "INSERT INTO sanpham VALUES ('$masp', '$matheloai','$tensp','$giasp','0','0','0','0','$machatlieu','1','1')";
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+
+    public function DeleteSP($masp){
+        $qr = 'DELETE FROM sanpham where MaSanPham= "'.$masp.'"';
         if(mysqli_query($this->con, $qr))
            return true;
         return false;
