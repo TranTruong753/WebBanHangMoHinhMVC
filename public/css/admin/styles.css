@@ -1,4 +1,8 @@
 
+.all
+{
+    margin-left: 64px;
+}
 
 .header{
     height: 50px;
@@ -9,6 +13,7 @@
 
 .container {
     margin-top: 50px;
+    margin-left: 100px;
 }
 .row{
     margin-right: 50px;
@@ -23,3 +28,9 @@
     display: block;
     
 }
+
+.showContainer
+{
+    margin-left: 285px;
+    transition: 0.4s;
+}   

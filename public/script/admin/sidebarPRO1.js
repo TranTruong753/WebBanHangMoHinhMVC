@@ -2,9 +2,13 @@ const showMenu = (toggleId,sidebarId,linkID)=>{
     const toggle = document.getElementById(toggleId),
     navbar = document.getElementById(sidebarId)
     links = document.getElementsByClassName(linkID)
+    var main  = document.querySelector(".all");
+    console.log(main);
+
     if(toggle && navbar){
         toggle.addEventListener('click',()=>{
             navbar.classList.toggle('show')
+            main.classList.toggle('showContainer');
             toggle.classList.toggle('rotate')
             Array.from(links).forEach(link => {
                 link.classList.toggle('edit');
@@ -18,10 +22,12 @@ const showsubMenu = (IconId,submenuID,subId)=>{
     const icon = document.getElementById(IconId),
     submenu = document.getElementById(submenuID)
     sub = document.getElementById(subId)
+    console.log("hihi")
     if(submenu && sub){
         submenu.addEventListener('click',()=>{
             sub.classList.toggle('showsub')
             icon.classList.toggle('rotate')
+            
         })
     }   
 }

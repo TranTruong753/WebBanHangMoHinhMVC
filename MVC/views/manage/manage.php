@@ -20,15 +20,16 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/sidebar.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/style.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/sidebarPRO.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/styles.css">
+
 
 
     <title>Trang Quản trị</title>
 </head>
 
 <body>
-    <div>
+    <div class="all">
         <div class="header">
             <h1>header</h1>
         </div>
@@ -48,9 +49,8 @@
             </div>
 
         </div>
-
         <script src="<?php echo Root . "public/script/admin/main.js" ?>"></script>
-        <script src="<?php echo Root ."public/script/admin/sidebarPRO.js" ?>"></script>
+        <script src="<?php echo Root ."public/script/admin/sidebarPRO1.js" ?>"></script>
     </div>
 
 
