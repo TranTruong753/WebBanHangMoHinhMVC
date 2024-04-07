@@ -90,7 +90,7 @@ $PhanTrangModel = new PhanTrangModel();
   $(document).ready(function(){
     var index = 1;
     var size = 4;
-   loadPhanTrang("nhomQuyen",index,size,"","");
+   loadPhanTrang("nhomquyen",index,size,"","");
     
   })
   //Xử lý khi nhấn nút xóa
@@ -133,7 +133,7 @@ $PhanTrangModel = new PhanTrangModel();
     })
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    loadPhanTrang("nhomQuyen",index,size,"",tmpKey);
+    loadPhanTrang("nhomquyen",index,size,"",tmpKey);
   })
   //Xử lý khi nhấn nút tìm kiếm
   $(document).on("click", "#btnSearch", function() {
@@ -156,7 +156,7 @@ $PhanTrangModel = new PhanTrangModel();
       }
     })
     // xử lý số trang đã chọn
-    loadPhanTrang("nhomQuyen",index,size,"",key);
+    loadPhanTrang("nhomquyen",index,size,"",key);
     
   })
 
