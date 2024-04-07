@@ -14,5 +14,4 @@ class AjaxChucNang extends controller {
     }
 
 
-    public function
 }

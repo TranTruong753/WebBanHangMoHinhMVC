@@ -98,6 +98,7 @@ class Admin extends controller
         else if ($this->pageName == "ThemChatLieuPage") {
             $this->data["detail"] = "addPages/ThemChatLieuPage";
             $this->data["Data"] = ["index"=>"Thêm"];
+        }
         else if ($this->pageName == "ChiTietSanPhamPage") {
             $masp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GetCTSP($masp);
