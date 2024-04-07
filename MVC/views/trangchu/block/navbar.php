@@ -44,7 +44,10 @@
                                 <li class="nav__list-items">
                                     <a href="#!" class="nav__item-link" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
                                     <ul class="sub-menu">';
+<<<<<<< Updated upstream
                                         
+=======
+>>>>>>> Stashed changes
                                         if ($data['TL']->num_rows > 0) {
                                             
                                             while ($row1 = $data['TL']->fetch_assoc()) {
