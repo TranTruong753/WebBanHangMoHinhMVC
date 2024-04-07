@@ -46,7 +46,7 @@ $PhanTrangModel = new PhanTrangModel();
           </td>
           <td style="text-align: center;">
             <!-- link  để chuyển sang trang nhóm quyền -->
-            <pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,<?php echo  $row["MaNhomQuyen"] ?>">Sửa</a> | <a href="#"  id="<?php echo  $row["MaNhomQuyen"] ?>" id="btnXoa" onclick="btnXoa(this)">Xóa</a></pre> 
+            <pre><a  href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,<?php echo  $row["MaNhomQuyen"] ?>">Sửa</a> | <a href="#"  id="<?php echo  $row["MaNhomQuyen"] ?>" id="btnXoa" onclick="btnXoa(this)">Xóa</a></pre>
 
           </td>
         </tr>
@@ -59,130 +59,213 @@ $PhanTrangModel = new PhanTrangModel();
 </table>
 
 <div class="PhanTrang">
-  <?php
-  echo  $PhanTrangModel->PhanTrang(50, 100, 8, 1);
-  ?>
 
 </div>
 
 <script>
-  $(document).ready(function() {
+  var tmpKey = ""
+  $(document).ready(function(){
+    var index = 1;
+    var size = 4;
+
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
+      type: "post",
+      dataType: "html",
+      data: {
+        key:"",
+        table: "nhomquyen",
+        condition: "",
+        index: index,
+        size: size
+      },
+      success: function(data) {
+        console.log(data)
+        $(".PhanTrang").html(data)
+      }
 
 
-    $(document).on("click", "#btnXoa", function() {
-        var ma = document.getElementById("btnXoa").id;
-      
+    })
+    
+  })
+  //Xử lý khi nhấn nút xóa
+  $(document).on("click", "#btnXoa", function() {
+    var ma = document.getElementById("btnXoa").id;
+    $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
+      type: 'post',
+      dataType: 'html',
+      data: {
+        ma: ma,
+      },
+      success: function(data) {
+        alert(data);
+      }
+    })
 
-        $.ajax({
-          url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
-          type: 'post',
-          dataType: 'html',
-          data: {
-            ma: ma,
-          },
-          success: function(data) {
-           alert(data);
-          }
-        })
+    // alert("refresh");
+  })
+  //   $('#txtfind').on('keyup', function(e)
+  // {
+  //   // alert(1);
+  // })
 
-        // alert("refresh");
+//Xử llys sự kiện khi nhấn bào nút phân trang
+  $(document).on("click", ".btnPhanTrang", function() {
 
-
-      })
-    //   $('#txtfind').on('keyup', function(e)
-    // {
-    //   // alert(1);
-    // })
-
-    $(document).on("click", "#btnSearch", function() {
-      var key = $("#txtFind").val();
-      var pageIndex = 1;
-      var numberItem = 8;
-
-      $.ajax({
-        url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
-        type: 'post',
-        dataType: 'html',
-        data: {
-          key: key,
-          pageIndex: pageIndex,
-          numberItem: numberItem,
-        },
-        success: function(data) {
-          console.log(data)
-          $(".row-table").html(data)
-        }
-      })
-
-
-      $(document).on("click", "#btnRefresh", function() {
-        document.getElementById("txtFind").value = "";
-        var key = "";
-        var pageIndex = 1;
-        var numberItem = 8;
-
-        $.ajax({
-          url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
-          type: 'post',
-          dataType: 'html',
-          data: {
-            key: key,
-            pageIndex: pageIndex,
-            numberItem: numberItem,
-          },
-          success: function(data) {
-            console.log(data)
-            $(".row-table").html(data)
-          }
-        })
-
-        // alert("refresh");
+    // alert(this.id)
+    var arr = this.id.split("/");
+    var index = arr[0];
+    var size = arr[1];
+    //xử lý thay đổi bảng khi nhấn vào phân trang
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach",
+      type: "post",
+      dataType: "html",
+      data: {
+        key: tmpKey,
+        index: index,
+        size: size
+      },
+      success: function(data) {
+        $(".row-table").html(data)
+      }
 
 
-      })
+    })
+    // xử lý số trang đã chọn
+    alert(tmpKey)
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
+      type: "post",
+      dataType: "html",
+      data: {
+        key:tmpKey,
+        table: "nhomquyen",
+        condition: "",
+        index: index,
+        size: size
+      },
+      success: function(data) {
+        $(".PhanTrang").html(data)
+      }
 
-  
+
+    })
+  })
+
+
+  //Xử lý khi nhấn nút tìm kiếm
+  $(document).on("click", "#btnSearch", function() {
+    var key = $("#txtFind").val();
+    var index = 1;
+    var size = 4;
+    tmpKey = key;
+
+    $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
+      type: 'post',
+      dataType: 'html',
+      data: {
+        key: key,
+        index: index,
+        size: size,
+      },
+      success: function(data) {
+        console.log(data)
+        $(".row-table").html(data)
+      }
+    })
+    // xử lý số trang đã chọn
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
+      type: "post",
+      dataType: "html",
+      data: {
+        key: key,
+        table: "nhomquyen",
+        condition: "",
+        index: index,
+        size: size
+      },
+      success: function(data) {
+        $(".PhanTrang").html(data)
+      }
+
+
     })
 
 
 
 
 
-    // $("#txtFind").keyup(function(e){
-
-    //   var key = $("#txtFind").val();
-    //   var pageIndex = 1;
-    //   var numberItem = 8;
-
-    //     $.ajax(
-    //       {
-    //         url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach' ,
-    //         type: 'post',
-    //         dataType: 'html',
-    //         data: {
-
-    //            key : key,
-    //            pageIndex: pageIndex,
-    //            numberItem: numberItem,
-    //         },
-    //         success:function(data){
-    //           console.log(data)
-    //         } 
 
 
-    //       }
-    //     )
+  })
 
+  //xử lý sự kiện khi click vào nút làm tươi
+  $(document).on("click", "#btnRefresh", function() {
+    document.getElementById("txtFind").value = "";
+    var key = "";
+    var index = 1;
+    var size = 4;
+    tmpKey = "";
 
-    // })
+    $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
+      type: 'post',
+      dataType: 'html',
+      data: {
+        key: key,
+        index: index,
+        size: size,
+      },
+      success: function(data) {
+        console.log(data)
+        $(".row-table").html(data)
+      }
+    })
   })
 
 
-  function btnXoa(obj)
-  {
-    var ma = obj.id;
-    alert(ma);
-  }
+
+
+
+  // $("#txtFind").keyup(function(e){
+
+  //   var key = $("#txtFind").val();
+  //   var index = 1;
+  //   var size = 8;
+
+  //     $.ajax(
+  //       {
+  //         url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach' ,
+  //         type: 'post',
+  //         dataType: 'html',
+  //         data: {
+
+  //            key : key,
+  //            index: index,
+  //            size: size,
+  //         },
+  //         success:function(data){
+  //           console.log(data)
+  //         } 
+
+
+  //       }
+  //     )
+
+
+  // })
+
+
+
+  // function btnXoa(obj) {
+  //   var ma = obj.id;
+  //   alert(ma);
+  // }
+
   function DoiTrangThaiNhomQuyen(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
