@@ -15,7 +15,5 @@ function loadPhanTrang(tableName,index,size,condition="",key="")
         console.log(data)
         $(".PhanTrang").html(data)
       }
-
-
     })
   }
