@@ -1,10 +1,31 @@
 <?php
 class ChucNangModel extends DB{
     
-    public function getDanhSach()
+    // public function getDanhSach()
+    // {
+    //     $qr = "SELECT * From chucnang";
+    //     return $this->con->query($qr);
+    // }
+
+    public function getDanhSach($key,$index,$sizePage)
     {
-        $qr = "SELECT * From chucnang";
+        trim($index);
+        if($index == "" || $index <=0)
+        {
+            $index = 1;
+        }
+        $start = ($index - 1)*$sizePage;
+
+        $qr = "SELECT * FROM chucnang ";
+
+        if($key != "")
+        {
+            $qr .= " where concat(MaChucNang,TenChucNang) like '%$key%'";
+        }
+        $qr .= " ORDER BY MaChucNang DESC LIMIT $start,$sizePage";
         return $this->con->query($qr);
+
+
     }
 
     

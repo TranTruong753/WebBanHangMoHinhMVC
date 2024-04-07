@@ -37,47 +37,30 @@ class AjaxNhomQuyen extends controller
    public function TimKiemQuaTen()
    {
     $TenNhomQuyen = $_POST['TenNhomQuyen'];
-    // print_r($_POST);
     if( $this->NhomQuyenModel->TimKiemQuaTen($TenNhomQuyen)==1) echo 'true';
     else echo 'false';
    }
 
+   public function XoaDuLieuNhomQuyen()
+   {
+    $ma = $_POST["ma"];
+      if($this->NhomQuyenModel->delete($ma)==1) echo 'Xóa Nhóm Quyền Thành Công!';
+      else echo 'Xóa Nhóm Quyền Thất Bại!';
+   }
    public function getDanhSach()
    {
         $key = $_POST['key'];
-        $pageIndex = $_POST['pageIndex'];
-        $numberItem = $_POST['numberItem'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
 
-
-        // $key = "";
-        // $pageIndex = 1;
-        // $numberItem = 8;
-        
-
-      //  echo "<pre>
-      //  key: $key
-      //  pageIndex: $pageIndex
-      //   numberItem: $numberItem
-      //   </pre>";
-      // echo $key;
         $html="";
         
        
         if($this->NhomQuyenModel->getDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
         {
-            // echo $this->NhomQuyenModel->getDanhSach("aaaa")->num_rows;
             $result=$this->NhomQuyenModel->getDanhSach($key,$pageIndex,$numberItem);
-            // print_r($this->NhomQuyenModel->getDanhSach($key)->fetch_assoc());
-            // $i=4;
             while($row = $result->fetch_assoc())
             {
-             
-  
-              // echo "<pre>";
-              // print_r($row);
-              
-              // echo "</pre>";
-              //echo "Tạch";
               $html .=  " <tr>
               <th style='text-align: center;' scope='row'>".$row['MaNhomQuyen']."</th>
               <td style='text-align: center;'>".$row['TenNhomQuyen']."</td>

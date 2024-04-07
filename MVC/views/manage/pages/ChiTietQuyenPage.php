@@ -26,7 +26,7 @@ $ChucNangModel = new ChucNangModel();
   <!-- <form action=""> -->
     <!-- Selected Nhóm Quyền -->
     <label for="SelectNhomQuyen">Nhóm Quyền</label>
-    <select name="NhomQuyen" id="SelectNhomQuyen" size="6">
+    <select name="NhomQuyen" id="SelectNhomQuyen" >
       <option value="">--Hãy chọn một nhóm quyền--</option>
       <?php
       $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
@@ -42,10 +42,10 @@ $ChucNangModel = new ChucNangModel();
     <!-- selected Chức Năng -->
     <br>
     <label for="SelectChucNang">Chức Năng</label>
-    <select name="SelectChucNang" id="SelectChucNang" size="6">
+    <select name="SelectChucNang" id="SelectChucNang">
       <option value="">--Hãy chọn một nhóm quyền--</option>
       <?php
-      $DanhSachChucNang = $ChucNangModel->getDanhSach();
+      $DanhSachChucNang = $ChucNangModel->getDanhSachCoTrangThai();
       if ($DanhSachChucNang->num_rows > 0) {
         while ($row = $DanhSachChucNang->fetch_assoc()) {
       ?>
