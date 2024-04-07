@@ -64,27 +64,7 @@ $PhanTrangModel = new PhanTrangModel();
 
 <script>
 
-  function loadPhanTrang(tableName,index,size,condition="",key="")
-  {
-    $.ajax({
-      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
-      type: "post",
-      dataType: "html",
-      data: {
-        key:key,
-        table: tableName,
-        condition: condition,
-        index: index,
-        size: size
-      },
-      success: function(data) {
-        console.log(data)
-        $(".PhanTrang").html(data)
-      }
-
-
-    })
-  }
+  
   var tmpKey = ""
   $(document).ready(function(){
     var index = 1;
@@ -132,23 +112,7 @@ $PhanTrangModel = new PhanTrangModel();
     })
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    $.ajax({
-      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
-      type: "post",
-      dataType: "html",
-      data: {
-        key:tmpKey,
-        table: "nhomquyen",
-        condition: "",
-        index: index,
-        size: size
-      },
-      success: function(data) {
-        $(".PhanTrang").html(data)
-      }
-
-
-    })
+    loadPhanTrang("nhomQuyen",index,size,"",tmpKey);
   })
   //Xử lý khi nhấn nút tìm kiếm
   $(document).on("click", "#btnSearch", function() {
@@ -171,21 +135,8 @@ $PhanTrangModel = new PhanTrangModel();
       }
     })
     // xử lý số trang đã chọn
-    $.ajax({
-      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
-      type: "post",
-      dataType: "html",
-      data: {
-        key: key,
-        table: "nhomquyen",
-        condition: "",
-        index: index,
-        size: size
-      },
-      success: function(data) {
-        $(".PhanTrang").html(data)
-      }
-    })
+    loadPhanTrang("nhomQuyen",index,size,"",key);
+    
   })
 
   //xử lý sự kiện khi click vào nút làm tươi
@@ -210,6 +161,8 @@ $PhanTrangModel = new PhanTrangModel();
         $(".row-table").html(data)
       }
     })
+
+    loadPhanTrang("nhomquyen",index,size,"",key);
   })
 
 

@@ -21,7 +21,7 @@
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,4" class="sidebar_sublink">
                                             <span class="sidebar_text">Nhóm Quyền</span>
                                     </a>
-                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChuNangPage" class="sidebar_sublink">
+                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4" class="sidebar_sublink">
                                             <span class="sidebar_text">Chức Năng</span>
                                     </a>
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChiTietQuyenPage" class="sidebar_sublink">

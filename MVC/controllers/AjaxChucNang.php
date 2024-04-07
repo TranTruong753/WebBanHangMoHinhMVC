@@ -13,4 +13,6 @@ class AjaxChucNang extends controller {
         $this->ChucNangModel->updateTrangThai($ma,$trangThai);
     }
 
+
+    public function
 }
