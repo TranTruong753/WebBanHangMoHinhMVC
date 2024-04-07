@@ -49,11 +49,14 @@
             </div>
 
         </div>
+
+        <script src="http://localhost/WebBanHangMoHinhMVC/public/script/admin/PhanTrang.js"></script>
         <script src="<?php echo Root . "public/script/admin/main.js" ?>"></script>
         <script src="<?php echo Root ."public/script/admin/sidebarPRO1.js" ?>"></script>
     </div>
 
 
 </body>
+
 
 </html>

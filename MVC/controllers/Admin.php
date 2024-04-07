@@ -41,7 +41,6 @@ class Admin extends controller
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $ChucNangModel = $this->model("ChucNangModel");
             $this->data["Data"]= $ChiTietQuyenModel->getDanhSach();
-
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
@@ -113,7 +112,7 @@ class Admin extends controller
 
     // public function test() {
     //     $this->view("manage/pages/ThongKePage", $this->data);
-    // }
+    // };'ơ
 
 
     public function paramsProcess($data)
