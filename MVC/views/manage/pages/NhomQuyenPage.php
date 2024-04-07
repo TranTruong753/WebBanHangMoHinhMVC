@@ -165,45 +165,7 @@ $PhanTrangModel = new PhanTrangModel();
     loadPhanTrang("nhomquyen",index,size,"",key);
   })
 
-
-
-
-
-  // $("#txtFind").keyup(function(e){
-
-  //   var key = $("#txtFind").val();
-  //   var index = 1;
-  //   var size = 8;
-
-  //     $.ajax(
-  //       {
-  //         url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach' ,
-  //         type: 'post',
-  //         dataType: 'html',
-  //         data: {
-
-  //            key : key,
-  //            index: index,
-  //            size: size,
-  //         },
-  //         success:function(data){
-  //           console.log(data)
-  //         } 
-
-
-  //       }
-  //     )
-
-
-  // })
-
-
-
-  // function btnXoa(obj) {
-  //   var ma = obj.id;
-  //   alert(ma);
-  // }
-
+  // Hàm Đổi Trạng Thái của Nhóm Quyền khi tick vào check box Trạng Thái
   function DoiTrangThaiNhomQuyen(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
