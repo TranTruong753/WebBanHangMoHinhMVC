@@ -63,19 +63,17 @@ $PhanTrangModel = new PhanTrangModel();
 </div>
 
 <script>
-  var tmpKey = ""
-  $(document).ready(function(){
-    var index = 1;
-    var size = 4;
 
+  function loadPhanTrang(tableName,index,size,condition="",key="")
+  {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
       type: "post",
       dataType: "html",
       data: {
-        key:"",
-        table: "nhomquyen",
-        condition: "",
+        key:key,
+        table: tableName,
+        condition: condition,
         index: index,
         size: size
       },
@@ -86,6 +84,12 @@ $PhanTrangModel = new PhanTrangModel();
 
 
     })
+  }
+  var tmpKey = ""
+  $(document).ready(function(){
+    var index = 1;
+    var size = 4;
+   loadPhanTrang("nhomQuyen",index,size,"","");
     
   })
   //Xử lý khi nhấn nút xóa
@@ -102,13 +106,8 @@ $PhanTrangModel = new PhanTrangModel();
         alert(data);
       }
     })
-
-    // alert("refresh");
   })
-  //   $('#txtfind').on('keyup', function(e)
-  // {
-  //   // alert(1);
-  // })
+ 
 
 //Xử llys sự kiện khi nhấn bào nút phân trang
   $(document).on("click", ".btnPhanTrang", function() {
@@ -130,11 +129,9 @@ $PhanTrangModel = new PhanTrangModel();
       success: function(data) {
         $(".row-table").html(data)
       }
-
-
     })
     // xử lý số trang đã chọn
-    alert(tmpKey)
+    // alert(tmpKey)
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
       type: "post",
@@ -153,15 +150,12 @@ $PhanTrangModel = new PhanTrangModel();
 
     })
   })
-
-
   //Xử lý khi nhấn nút tìm kiếm
   $(document).on("click", "#btnSearch", function() {
     var key = $("#txtFind").val();
     var index = 1;
     var size = 4;
     tmpKey = key;
-
     $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
       type: 'post',
@@ -191,16 +185,7 @@ $PhanTrangModel = new PhanTrangModel();
       success: function(data) {
         $(".PhanTrang").html(data)
       }
-
-
     })
-
-
-
-
-
-
-
   })
 
   //xử lý sự kiện khi click vào nút làm tươi

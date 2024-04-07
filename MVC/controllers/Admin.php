@@ -34,7 +34,7 @@ class Admin extends controller
             $this->data["detail"] = "NhomQuyenPage";
         } else if ($this->pageName == "ChucNangPage") {
             $ChucNangModel = $this->model("ChucNangModel");
-            $this->data["Data"] = $ChucNangModel->getDanhSach();
+            $this->data["Data"] = $ChucNangModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "ChucNangPage";
         } else if ($this->pageName == "ChiTietQuyenPage") {
             $ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
@@ -109,7 +109,7 @@ class Admin extends controller
 
     // public function test() {
     //     $this->view("manage/pages/ThongKePage", $this->data);
-    // }
+    // };'ơ
 
 
     public function paramsProcess($data)

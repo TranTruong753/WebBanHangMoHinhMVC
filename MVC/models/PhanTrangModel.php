@@ -11,7 +11,7 @@ class PhanTrangModel extends DB{
         $total = ceil($result->num_rows/$sizePage);
         // echo $total;
         $html = "";
-        if($index > 3 )
+        if($index >= 3 )
         {
             $html .= "<a href='#' class='btnPhanTrang' id='1/$sizePage'>Trang Đầu Tiên</a>";
         }
@@ -29,9 +29,8 @@ class PhanTrangModel extends DB{
                 $html .= "<b><a href='#' class='btnPhanTrang' id='$num/$sizePage'>$num</a></b>";
             }
         }
-        if($index < $total - 3 )
+        if($index <= $total - 3 )
         {
-            $endPage = $total;
             $html .= " <a href='#' class='btnPhanTrang' id='$total/$sizePage'>Trang Cuối Cùng</a>";
         }
         return $html;
