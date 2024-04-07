@@ -12,6 +12,10 @@ class AjaxChucNang extends controller {
         $trangThai = $_POST["trangThai"];
         $this->ChucNangModel->updateTrangThai($ma,$trangThai);
     }
+    
+    public function getDanhSach()
+
+
 
 
 }
