@@ -1,6 +1,25 @@
 <?php
 class NhomQuyenModel extends DB{
 
+    public function KiemTraTaiKhoanSuDung($ma)
+    {
+        $qr = "SELECT * FROM taikhoan where MaNhomQuyen = $ma";
+        if($this->con->query($qr)->num_rows > 0 )
+        {
+            return 1;
+        }
+        else return 0;
+    }
+
+    public function KiemTraChiTietQuyenSuDung($ma)
+    {
+        $qr = "SELECT * FROM chitietquyen where MaNhomQuyen = $ma";
+        if($this->con->query($qr)->num_rows > 0 )
+        {
+            return 1;
+        }
+        else return 0;
+    }
     public function getDanhSach($key,$pageIndex,$soLuong)
     {
 

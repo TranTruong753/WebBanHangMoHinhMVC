@@ -117,6 +117,10 @@ class Admin extends controller
     //     $this->view("manage/pages/ThongKePage", $this->data);
     // };'ơ
 
+    public function main($x=[])
+    {
+        print_r($x) ;
+    }
 
     public function paramsProcess($data)
     {
