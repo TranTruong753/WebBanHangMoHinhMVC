@@ -2,32 +2,36 @@
 
 class PhanTrangModel extends DB{
 
-    public function PhanTrang($nowPage,$numRow,$soLuong = 8,$linkFirstPage)
+    public function PhanTrang($index,$sizePage = 8,$tableName,$condition="")
     {
+        $qr = "SELECT * From $tableName $condition";
+       
+        $result = $this->con->query($qr)->num_rows;
+        // echo $result;
+        $total = ceil($result/$sizePage);
+       
         $html = "";
-        if($nowPage > 3 )
+        if($index > 3 )
         {
-            $firstPage = 1;
-            $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/' >Trang Đầu Tiên</a>";
+            $html .= "<a href='#' class='btnPhanTrang' id='1/$sizePage'>Trang Đầu Tiên</a>";
         }
-        for($num =1; $num <= $numRow;$num++)
+        for($num =1; $num <= $total;$num++)
         {
-            if($num != $nowPage)
+            if($num != $index)
             {
-                if( $num > $nowPage-3 && $num < $nowPage + 3)
+                if( $num >= $index-3 && $num <= $index + 3)
                 {
-                    $html .= "<a>$num</a>";
+                    $html .= "<a href='#' class='btnPhanTrang' id='$num/$sizePage'>$num</a>";
                 }
             }
             else
             {
-                $html .= "<b><a>$num</a></b>";
+                $html .= "<b><a href='#' class='btnPhanTrang' id='$num/$sizePage'>$num</a></b>";
             }
         }
-        if($nowPage < $numRow - 3 )
+        if($index < $total - 3 )
         {
-            $endPage = $numRow;
-            $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/' >Trang Cuối Cùng</a>";
+            $html .= " <a href='#' class='btnPhanTrang' id='$total/$sizePage'>Trang Cuối Cùng</a>";
         }
         return $html;
     }

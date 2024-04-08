@@ -1,9 +1,10 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <div style="text-align: center; ">
     <h1 style=" margin-bottom: 20px;">Quản Lý Chất Liệu</h1>
   </div>
 
 
-  <a href="">Thêm</a>
+<input type="submit" onclick="DieuHuong()" value="Thêm">
 <table class="table">
   <thead>
     <hr>
@@ -70,4 +71,10 @@
     }
   }
 
+  function DieuHuong()
+  {
+    window.location="http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChatLieuPage";
+  }
+
 </script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyCLJS.js"></script>

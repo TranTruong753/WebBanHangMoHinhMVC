@@ -34,14 +34,15 @@ class Admin extends controller
             $this->data["detail"] = "NhomQuyenPage";
         } else if ($this->pageName == "ChucNangPage") {
             $ChucNangModel = $this->model("ChucNangModel");
-            $this->data["Data"] = $ChucNangModel->getDanhSach();
+            $this->data["Data"]["index"] = $this->params[1];
+            $this->data["Data"]["sizePage"]= $this->params[2];
+            // $this->data["Data"] = $ChucNangModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "ChucNangPage";
         } else if ($this->pageName == "ChiTietQuyenPage") {
             $ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $ChucNangModel = $this->model("ChucNangModel");
             $this->data["Data"]= $ChiTietQuyenModel->getDanhSach();
-
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
@@ -96,6 +97,10 @@ class Admin extends controller
             $this->data["detail"] = "addPages/ThemSanPhamPage";
             $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp];
         }
+        else if ($this->pageName == "ThemChatLieuPage") {
+            $this->data["detail"] = "addPages/ThemChatLieuPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
         else if ($this->pageName == "ChiTietSanPhamPage") {
             $masp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GetCTSP($masp);
@@ -119,7 +124,7 @@ class Admin extends controller
 
     // public function test() {
     //     $this->view("manage/pages/ThongKePage", $this->data);
-    // }
+    // };'ơ
 
 
     public function paramsProcess($data)
