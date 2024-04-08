@@ -7,6 +7,12 @@
 
     }
 
+    public function GetSP($masp){
+        $qr = 'SELECT * from sanpham where MaSanPham="'.$masp.'"';
+        return $this->con->query($qr);
+
+    }
+
     public function getDanhSachAdmin()
     {
         $qr = "SELECT *
