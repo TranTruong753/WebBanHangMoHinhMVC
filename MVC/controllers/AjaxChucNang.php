@@ -17,8 +17,8 @@ class AjaxChucNang extends controller {
 {
     $key = $_POST["key"];
     $index = $_POST["index"];
-    $sizePage = $_POST["sizePage"];
-    $result = $this->ChucNangModel->getDanhSach($key,$index,$sizePage);
+    $size = $_POST["size"];
+    $result = $this->ChucNangModel->getDanhSach($key,$index,$size);
     $render = "";
 
     if($result->num_rows > 0 )

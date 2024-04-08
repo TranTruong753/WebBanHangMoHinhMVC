@@ -1,5 +1,4 @@
 <?php
-
 $PhanTrangModel = new PhanTrangModel();
 ?>
 

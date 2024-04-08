@@ -78,6 +78,11 @@ class Admin extends controller
             $this->data["detail"] = "ThongKePage";
         }
         //page thêm
+        else if ($this->pageName == "ThemChucNangPage") {
+            $ChucNangModel = $this->model( "ChucNangModel");
+            $this->data["detail"] = "addPages/ThemChucNangPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
         else if ($this->pageName == "ThemNhomQuyenPage") {
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $this->data["detail"] = "addPages/ThemNhomQuyenPage";
