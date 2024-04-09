@@ -66,6 +66,9 @@ class Admin extends controller
             $this->data["detail"] = "NhanVienPage";
         }
         else if ($this->pageName == "KhachHangPage") {
+            $KhachHangModel = $this->model("KhachHangModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "KhachHangPage";
         }
         else if ($this->pageName == "KhuyenMaiPage") {
