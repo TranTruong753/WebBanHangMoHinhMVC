@@ -56,10 +56,19 @@ class chitietspmodel extends DB{
         on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  sanpham.MaSanPham="'.$masp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
-
-        
     }
 
+    public function GetSizeColor($masp,$mausac){
+        $qr = "SELECT * 
+        FROM chitietsanpham INNER JOIN kichco 
+        ON chitietsanpham.MaKichCo = kichco.MaKichCo 
+        AND chitietsanpham.MaSanPham = '$masp'
+        AND chitietsanpham.MaMauSac = '$mausac'
+        GROUP BY kichco.MaKichCo"    
+        ;
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
 
 }
 ?>
