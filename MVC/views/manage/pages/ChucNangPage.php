@@ -1,10 +1,16 @@
 <input style="display: none;" type="checkbox" id="params" value='<?php echo $data['DanhSach']['index'] . "/" . $data["DanhSach"]['sizePage'] ?>'>
 
-<table class="table">
-  <style></style>
+
+<style></style>
   <div style="text-align: center;">
     <h1 style=" margin-bottom: 20px;">Quản Lý Chức Năng</h1>
 
+
+    <div style="text-align: start;">
+    <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
+    </div>
+<table class="table">
+  
   </div>
   <thead>
     <tr>
@@ -50,13 +56,15 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
+  var index ;
+    var size ;
   $(document).ready(function() {
     // alert($("#params").val());
     $arrPhanTang = $("#params").val().split("/");
     var index = $arrPhanTang[0];
-    var sizePage = $arrPhanTang[1];
-    loadBang(index, sizePage)
-    loadPhanTrang("chucnang", index, sizePage, "", "")
+    var size = $arrPhanTang[1];
+    loadBang(index, size);
+    loadPhanTrang("chucnang", index, size, "",tmpKey)
 
   })
 
@@ -71,11 +79,11 @@
     loadBang(index, size, tmpKey);
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    loadPhanTrang("nhomquyen", index, size, "", tmpKey);
+    loadPhanTrang("chucnang", index, size, "", tmpKey);
   })
 
   //hàm load bảng
-  function loadBang(index, sizePage, key = "") {
+  function loadBang(index, size, key = "") {
     $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/getDanhSach',
       type: 'post',
@@ -83,7 +91,7 @@
       data: {
         key: key,
         index: index,
-        sizePage: sizePage,
+        size: size,
       },
       success: function(data) {
         $(".row-table").html(data);
@@ -116,5 +124,11 @@
       }
     }
 
+  }
+
+
+  function DieuHuongSangTrangThem()
+  {
+    window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChucNangPage";
   }
 </script>

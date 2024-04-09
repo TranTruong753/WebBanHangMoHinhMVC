@@ -44,8 +44,15 @@ class AjaxNhomQuyen extends controller
    public function XoaDuLieuNhomQuyen()
    {
     $ma = $_POST["ma"];
+    $checkChuaSuDung  = true ;
+    if($this->NhomQuyenModel->KiemTraChiTietQuyenSuDung($ma) == 1) $checkChuaSuDung = false;
+    if($this->NhomQuyenModel->KiemTraTaiKhoanSuDung($ma) == 1 ) $checkChuaSuDung=false;
+    if($checkChuaSuDung == true)
+    {
       if($this->NhomQuyenModel->delete($ma)==1) echo 'Xóa Nhóm Quyền Thành Công!';
       else echo 'Xóa Nhóm Quyền Thất Bại!';
+   }
+      else echo "Nhóm Quyền Đã Được Sử Dụng";
    }
    public function getDanhSach()
    {
