@@ -60,7 +60,64 @@ if ($index == "Sửa") {
             },
             success:function(data)
             {
-                console.log(data);
+                if(data == -1)
+                {
+                    document.getElementById("errorTen").innerHTML = "Tên Chức Năng Đã Tồn Tại!";
+                }else
+                {
+                    document.getElementById("errorTen").innerHTML = "";
+                    if(data == 1)
+                    {
+                        alert("Thêm chức năng thành công!")
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4";
+                    }
+                    else if(data == 0 )
+                    {
+                        alert("Thêm chức năng thất bại!")
+                    }
+
+                }
+
+
+            }
+        }
+        )
+    }
+
+    function SuaDuLieuChucNang()
+    {
+        var MaChucNang = document.getElementById("MaChucNang").value;
+        var TenChucNang = document.getElementById("TenChucNang").value;
+        // alert(TenChucNang)
+        $.ajax({
+            url: "http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/SuaDuLieu",
+            type: "post",
+            dataType: "html",
+            data:{
+                MaChucNang:MaChucNang,
+                TenChucNang:TenChucNang,
+            },
+            success:function(data)
+            {
+                if(data == -1)
+                {
+                    document.getElementById("errorTen").innerHTML = "Tên Chức Năng Đã Tồn Tại!";
+                }else
+                {
+                    document.getElementById("errorTen").innerHTML = "";
+                    if(data == 1)
+                    {
+                        alert("Sửa chức năng thành công!")
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4";
+                    }
+                    else if(data == 0 )
+                    {
+                        alert("Sửa chức năng thất bại!")
+                    }
+
+                }
+
+
             }
         }
         )
