@@ -44,8 +44,15 @@ class AjaxNhomQuyen extends controller
    public function XoaDuLieuNhomQuyen()
    {
     $ma = $_POST["ma"];
+    $checkChuaSuDung  = true ;
+    if($this->NhomQuyenModel->KiemTraChiTietQuyenSuDung($ma) == 1) $checkChuaSuDung = false;
+    if($this->NhomQuyenModel->KiemTraTaiKhoanSuDung($ma) == 1 ) $checkChuaSuDung=false;
+    if($checkChuaSuDung == true)
+    {
       if($this->NhomQuyenModel->delete($ma)==1) echo 'Xóa Nhóm Quyền Thành Công!';
       else echo 'Xóa Nhóm Quyền Thất Bại!';
+    }
+      else echo "Nhóm Quyền Đã Được Sử Dụng";
    }
    public function getDanhSach()
    {
@@ -77,7 +84,7 @@ class AjaxNhomQuyen extends controller
               </td>
               <td style='text-align: center;'>
               <!-- link  để chuyển sang trang nhóm quyền -->
-                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'>Sửa</a></pre>
+                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'  >Xóa</a></pre>
               </td>
             </tr> ";
               

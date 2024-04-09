@@ -111,7 +111,7 @@ button {
     grid-template-columns: repeat(4, auto);
     grid-template-areas: "column01 column02 column03 column04";
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .nav__link-logo {
@@ -866,14 +866,15 @@ button {
      display: flex;
      flex-direction: column;
      position: absolute;
-     width: 325px;
+     width: 300px;
      background-color: #fff;
      top: 52px;
-     left: 0;
+     left: 50%;
      right: 0;
      opacity: 0;
      visibility: hidden;
      filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+     transform: translateX(-50%);
      transition: opacity 0.2s, visibility 0.2s;
  
  }

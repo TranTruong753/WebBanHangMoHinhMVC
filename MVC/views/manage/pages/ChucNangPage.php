@@ -1,10 +1,16 @@
 <input style="display: none;" type="checkbox" id="params" value='<?php echo $data['DanhSach']['index'] . "/" . $data["DanhSach"]['sizePage'] ?>'>
 
-<table class="table">
-  <style></style>
+
+<style></style>
   <div style="text-align: center;">
     <h1 style=" margin-bottom: 20px;">Quản Lý Chức Năng</h1>
 
+
+    <div style="text-align: start;">
+    <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
+    </div>
+<table class="table">
+  
   </div>
   <thead>
     <tr>
@@ -15,30 +21,6 @@
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">
-
-    <?php
-    // if ($data['DanhSach']->num_rows > 0) {
-    // while ($row = $data['DanhSach']->fetch_assoc()) {
-    ?>
-    <!-- <tr>
-          <th style="text-align: center;" scope="row"><?php echo $row["MaChucNang"] ?></th>
-          <td style="text-align: center;"><?php echo $row["TenChucNang"] ?></td>
-          <td style="text-align: center;">
-            <input onchange="DoiTrangThaiChucNang(this)" id="<?php echo $row["MaChucNang"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
-                                                                                                                            echo "checked = 'checked'";
-                                                                                                                          }
-                                                                                                                          ?> />
-          </td>
-          <td style="text-align: center;">
-            <pre><a href="">Sửa</a></pre>
-          </td>
-        </tr> -->
-    <?php
-    //   }
-    // } else echo "Bảng Chưa Có Dữ Liệu" 
-    ?>
-
-
   </tbody>
 </table>
 
@@ -50,13 +32,15 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
+  var index ;
+    var size ;
   $(document).ready(function() {
     // alert($("#params").val());
     $arrPhanTang = $("#params").val().split("/");
-    var index = $arrPhanTang[0];
-    var sizePage = $arrPhanTang[1];
-    loadBang(index, sizePage)
-    loadPhanTrang("chucnang", index, sizePage, "", "")
+     index = $arrPhanTang[0];
+     size = $arrPhanTang[1];
+    loadTable(index, size);
+    loadPhanTrang("chucnang", index, size, "",tmpKey)
 
   })
 
@@ -65,17 +49,17 @@
 
     // alert(this.id)
     var arr = this.id.split("/");
-    var index = arr[0];
-    var size = arr[1];
+     index = arr[0];
+     size = arr[1];
     //xử lý thay đổi bảng khi nhấn vào phân trang
-    loadBang(index, size, tmpKey);
+    loadTable(index, size, tmpKey);
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    loadPhanTrang("nhomquyen", index, size, "", tmpKey);
+    loadPhanTrang("chucnang", index, size, "", tmpKey);
   })
 
   //hàm load bảng
-  function loadBang(index, sizePage, key = "") {
+  function loadTable(index, size, key = "") {
     $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/getDanhSach',
       type: 'post',
@@ -83,7 +67,7 @@
       data: {
         key: key,
         index: index,
-        sizePage: sizePage,
+        size: size,
       },
       success: function(data) {
         $(".row-table").html(data);
@@ -102,7 +86,6 @@
           ma: ma,
           trangThai: trangThai
         }, function(data) {
-
           alert(data);
         })
       } else {
@@ -115,6 +98,12 @@
         })
       }
     }
+    loadTable( index, size,tmpKey)
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
+  }
 
+  function DieuHuongSangTrangThem()
+  {
+    window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChucNangPage";
   }
 </script>

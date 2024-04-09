@@ -1,0 +1,117 @@
+<?php
+
+class AjaxCTSP extends controller {
+
+    private $GioHangModel;
+    private $chitietspmodel;
+    public function __construct() {
+       $this->GioHangModel = $this->model("GioHangModel");
+       $this->chitietspmodel = $this->model("chitietspmodel");
+
+    }
+    function LoadImg(){
+        // $ten=$_POST['tensanpham'];
+        $file=$_FILES;
+        $filepath='public\img\\';       
+        move_uploaded_file($file['file']['tmp_name'], $filepath.$file['file']['name']);
+        $fileurl=$file['file']['name'];
+        $data= json_encode(['success'=>"true",'src'=>$fileurl]);
+        echo $data; 
+
+        
+    }
+
+    function InsertCTSP(){
+        $mactsp = $_POST["mactsp"];
+        $masp = $_POST["masp"];
+        $mamausac = $_POST["mamausac"];
+        $makichco = $_POST["makichco"];
+        $hinhanh = $_POST["hinhanh"];
+        $result=$this->GioHangModel->TimkiemCTSP($masp,$mamausac,$makichco);
+        $t='';
+        if($result->num_rows >0){
+            //echo "Chi tiet san pham da ton tai";
+            $data=json_encode(["kq"=>false,"echo"=>$t]);
+            echo $data;
+        }
+        else{
+           if( $this->chitietspmodel->InsertCTSP($mactsp,$masp,$mamausac,$makichco,$hinhanh)){
+            //echo "them thanh cong";
+            
+            $resultctsp=$this->chitietspmodel->GetCTSP($masp);
+            $t=$t.'<table class="table">
+            <style></style>
+            <div style="text-align: center;">
+            <h1 >Quản Lý Sản Phẩm</h1>
+            </div>
+              <thead>
+                <tr>
+                  <th scope="col" style="text-align: center;">Hình ảnh</th>
+                  <th scope="col" style="text-align: center;">ID</th>
+                  <th scope="col" style="text-align: center;">Tên</th>
+                  <th scope="col" style="text-align: center;">Màu sắc</th>
+                  <th scope="col" style="text-align: center;">Kích cở</th>
+                  <th scope="col" style="text-align: center;">Số lượng tồn</th>
+                  
+                </tr>
+              </thead>
+              
+              <tbody class="table-group-divider">';
+              
+             
+            if($resultctsp->num_rows > 0)
+            {
+              while($row = $resultctsp->fetch_assoc())
+              {
+                $t=$t.'
+             <tr> 
+                  <th style="text-align: center;" scope="row">
+                    <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
+                  </th>
+                  <th style="text-align: center;" scope="row">'. $row["MaChiTietSanPham"].'</th>
+                  <td style="text-align: center;">'.$row["TenSanPham"].'</td>
+                  <td style="text-align: center;">'. $row["TenMauSac"].'</td>
+                  <td style="text-align: center;">'. $row["TenKichCo"].'</td>
+                  <td style="text-align: center;">'. $row["SoLuongTon"].'</td>
+                  
+                </tr>';
+            
+              }
+            }
+            $t=$t.'
+               
+              </tbody>
+            </table>';
+
+            
+           }
+           else $t= "them that bai";
+           $data=json_encode(["kq"=>true,"echo"=>$t]);
+            echo $data;
+        }
+        // $data=json_encode(["kq"=>true,"echo"=>$t]);
+        // echo $data;
+        //echo $mactsp." cc ".$masp." ".$mamausac." ".$makichco." ".$hinhanh;
+        // if($this->SanPhamModel->InsertSP($masp,$tensp,$giasp,$matheloai,$machatlieu)){
+        //     echo "true";
+        // }
+        // else echo "false";
+        
+    }
+    // function DeleteSP(){
+    //     $masp = $_POST["masp"];
+    //     $result= $this->chitietspmodel->GetCTSP($masp);
+    //     if ($result->num_rows == 0) {
+    //         if($this->SanPhamModel->DeleteSP($masp)){
+    //             echo "true";
+    //         }
+    //         else echo "false";
+    //     }
+    //     else echo "Sản phẩm này không thể xóa";
+    //     // else echo "false";
+        
+    // }
+
+}
+
+?>

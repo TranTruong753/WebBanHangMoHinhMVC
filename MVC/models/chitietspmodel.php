@@ -56,8 +56,33 @@ class chitietspmodel extends DB{
         on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  sanpham.MaSanPham="'.$masp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
+    }
 
-        
+    public function GetAllCTSP(){
+        $qr = 'SELECT *
+        FROM chitietsanpham INNER JOIN mausac 
+        on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
+        on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
+        on sanpham.MaSanPham=chitietsanpham.MaSanPham ';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
+    public function GetSizeColor($masp,$mausac){
+        $qr = "SELECT * 
+        FROM chitietsanpham INNER JOIN kichco 
+        ON chitietsanpham.MaKichCo = kichco.MaKichCo 
+        AND chitietsanpham.MaSanPham = '$masp'
+        AND chitietsanpham.MaMauSac = '$mausac'
+        GROUP BY kichco.MaKichCo"    
+        ;
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+    public function InsertCTSP($mactsp,$masp,$mamausac,$makichco,$hinhanh){
+        $qr = "INSERT INTO chitietsanpham VALUES ('$mactsp','$masp','$mamausac','$makichco','$hinhanh',0,0,1)";
+        $row=mysqli_query($this->con, $qr);
+        return $row;
     }
 
 

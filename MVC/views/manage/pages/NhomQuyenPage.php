@@ -1,5 +1,4 @@
 <?php
-
 $PhanTrangModel = new PhanTrangModel();
 ?>
 
@@ -15,7 +14,7 @@ $PhanTrangModel = new PhanTrangModel();
 <!-- Nút sang form dữ liệu nhóm quyền  -->
 <input type="submit" onclick="DieuHuong()" value="Thêm">
 
-<input type="button" id="btnRefresh" onclick="btnRefresh" value="Làm Tươi">
+<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
   <style></style>
 
@@ -28,33 +27,6 @@ $PhanTrangModel = new PhanTrangModel();
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">
-
-    <?php
-    if ($data['DanhSach']->num_rows > 0) {
-      while ($row = $data['DanhSach']->fetch_assoc()) {
-    ?>
-        <tr>
-          <th style="text-align: center;" scope="row"><?php echo $row["MaNhomQuyen"] ?></th>
-          <td style="text-align: center;"><?php echo $row["TenNhomQuyen"]; ?></td>
-          <td style="text-align: center;">
-
-            <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-            <input onchange="DoiTrangThaiNhomQuyen(this)" id="<?php echo $row["MaNhomQuyen"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
-                                                                                                                              echo "checked = 'checked'";
-                                                                                                                            }
-                                                                                                                            ?> />
-          </td>
-          <td style="text-align: center;">
-            <!-- link  để chuyển sang trang nhóm quyền -->
-            <pre><a  href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,<?php echo  $row["MaNhomQuyen"] ?>">Sửa</a> | <a href="#"  id="<?php echo  $row["MaNhomQuyen"] ?>" id="btnXoa" onclick="btnXoa(this)">Xóa</a></pre>
-
-          </td>
-        </tr>
-    <?php
-      }
-    } ?>
-
-
   </tbody>
 </table>
 
@@ -63,15 +35,28 @@ $PhanTrangModel = new PhanTrangModel();
 </div>
 
 <script>
+  var tmpKey = "";
+  var index = 1;
+  var size = 4;
 
-  function loadPhanTrang(tableName,index,size,condition="",key="")
-  {
+
+   // load khi chạy trang
+   $(document).ready(function() {
+    index = 1;
+    size = 4;
+    loadTable("", index, size)
+    loadPhanTrang("nhomquyen", index, size, "", "");
+
+  })
+
+  //hàm load phân trnag 
+  function loadPhanTrang(tableName, index, size, condition = "", key = "") {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
       type: "post",
       dataType: "html",
       data: {
-        key:key,
+        key: key,
         table: tableName,
         condition: condition,
         index: index,
@@ -85,18 +70,30 @@ $PhanTrangModel = new PhanTrangModel();
 
     })
   }
-  
-  var tmpKey = ""
-  $(document).ready(function(){
-    var index = 1;
-    var size = 4;
-   loadPhanTrang("nhomquyen",index,size,"","");
-    
-  })
+
+ 
   //Xử lý khi nhấn nút xóa
-  $(document).on("click", "#btnXoa", function() {
-    var ma = document.getElementById("btnXoa").id;
-    $.ajax({
+  // $(document).on("click", "#btnXoa", function(obj) {
+  //   var ma = obj.val();
+  //   console.log(ma);
+  //   // $.ajax({
+  //   //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
+  //   //   type: 'post',
+  //   //   dataType: 'html',
+  //   //   data: {
+  //   //     ma: ma,
+  //   //   },
+  //   //   success: function(data) {
+  //   //     alert(data);
+  //   //   }
+  //   // })
+  // })
+
+  function btnXoa(obj)
+  {
+    var ma = obj.id;
+
+      $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
       type: 'post',
       dataType: 'html',
@@ -107,16 +104,34 @@ $PhanTrangModel = new PhanTrangModel();
         alert(data);
       }
     })
-  })
- 
+    loadTable(tmpKey,index,size)
+    loadPhanTrang("nhomquyen",index,size,"",tmpKey)
+  }
 
-//Xử llys sự kiện khi nhấn bào nút phân trang
+  function loadTable(key, index, size) {
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach",
+      type: "post",
+      dataType: "html",
+      data: {
+        key: tmpKey,
+        index: index,
+        size: size
+      },
+      success: function(data) {
+        $(".row-table").html(data)
+      }
+    })
+  }
+
+
+  //Xử llys sự kiện khi nhấn bào nút phân trang
   $(document).on("click", ".btnPhanTrang", function() {
 
     // alert(this.id)
     var arr = this.id.split("/");
-    var index = arr[0];
-    var size = arr[1];
+    index = arr[0];
+    size = arr[1];
     //xử lý thay đổi bảng khi nhấn vào phân trang
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach",
@@ -133,13 +148,13 @@ $PhanTrangModel = new PhanTrangModel();
     })
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    loadPhanTrang("nhomquyen",index,size,"",tmpKey);
+    loadPhanTrang("nhomquyen", index, size, "", tmpKey);
   })
   //Xử lý khi nhấn nút tìm kiếm
   $(document).on("click", "#btnSearch", function() {
     var key = $("#txtFind").val();
-    var index = 1;
-    var size = 4;
+    index = 1;
+    size = 4;
     tmpKey = key;
     $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach',
@@ -156,16 +171,16 @@ $PhanTrangModel = new PhanTrangModel();
       }
     })
     // xử lý số trang đã chọn
-    loadPhanTrang("nhomquyen",index,size,"",key);
-    
+    loadPhanTrang("nhomquyen", index, size, "", key);
+
   })
 
   //xử lý sự kiện khi click vào nút làm tươi
   $(document).on("click", "#btnRefresh", function() {
     document.getElementById("txtFind").value = "";
     var key = "";
-    var index = 1;
-    var size = 4;
+    index = 1;
+    size = 4;
     tmpKey = "";
 
     $.ajax({
@@ -183,7 +198,7 @@ $PhanTrangModel = new PhanTrangModel();
       }
     })
 
-    loadPhanTrang("nhomquyen",index,size,"",key);
+    loadPhanTrang("nhomquyen", index, size, "", key);
   })
 
   // Hàm Đổi Trạng Thái của Nhóm Quyền khi tick vào check box Trạng Thái
@@ -211,6 +226,9 @@ $PhanTrangModel = new PhanTrangModel();
         })
       }
     }
+    loadTable(tmpKey, index, size)
+    loadPhanTrang("nhomquyen", index, size, "", tmpKey)
+
 
   }
 

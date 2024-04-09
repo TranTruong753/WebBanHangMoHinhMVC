@@ -38,3 +38,16 @@ function XoaSP(ojt)
         //         window.location.assign(url);
     });
   }
+
+function addCTSP(){
+    
+    var input = document.getElementsByName('hinhanh');
+    // var fileName = input.files.item(0).name;
+    // var filepath=input.value;
+    // alert('Tên file đã chọn: ' + fileName);
+    // alert('duong dan: ' + filepath);
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{input: input},function(data){
+        alert(data);
+    });
+    
+}
