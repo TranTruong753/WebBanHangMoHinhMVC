@@ -37,6 +37,33 @@ class ChucNangModel extends DB{
         }
     }
 
+    public function update($maChucNang,$tenChucNang)
+    {
+        $qr = "UPDATE chucnang SET TenChucNang = '$tenChucNang' where MaChucNang = '$maChucNang'";
+        if($this->con->query($qr))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public function KiemTraChiTietQuyenSuDung($ma) {
+        $qr = "SELECT * FROM chitietQuyen where MaChucNang = '$ma'";
+        if($this->con->query($qr)->num_rows>0)
+        return 1;
+        else return 0;
+    }
+
+    public function delete($ma) {
+        $qr = "DELETE FROM chucnang where MaChucNang = $ma";
+        if($this->con->query($qr))
+        return 1;
+        else return 0;
+    }
+
 
     public function updateTrangThai($ma,$trangThai)
     {
@@ -60,5 +87,17 @@ class ChucNangModel extends DB{
         }
         return "";
     }
+
+
+    public function KiemTraTonTaiQuaTen($tenChucNang)
+    {
+        $qr = "SELECT * FROM chucnang where TenChucNang ='$tenChucNang'";
+        if($this->con->query($qr)->num_rows)
+        {
+            return 1;
+        }else
+        return 0;
+    }
 }
+
 ?>

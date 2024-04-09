@@ -144,7 +144,7 @@ class Admin extends controller
             $masp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GetCTSP($masp);
             $this->data["detail"] = "ChiTietSanPhamPage";
-            $this->data["Data"] = $ctsp;
+            $this->data["Data"] = ["CTSP"=>$ctsp,"MASP"=>$masp];
         }
         else if ($this->pageName == "ThemChiTietSanPhamPage") {
             $masp=$this->params[1];
@@ -154,6 +154,14 @@ class Admin extends controller
             $ms=$this->model( "MauSacModel")->GetAll();
             $this->data["detail"] = "addPages/ThemChiTietSanPhamPage";
             $this->data["Data"] = ["SP"=>$sp,"CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
+        }
+        else if ($this->pageName == "SuaChiTietSanPhamPage") {
+            $mactsp=$this->params[1];
+            $ctsp=$this->model( "chitietspmodel")->GettheoMactsp($mactsp);
+            $kc=$this->model( "KichCoModel")->GetAll();
+            $ms=$this->model( "MauSacModel")->GetAll();
+            $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
+            $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
 
         print_r($this->data); 
@@ -165,7 +173,7 @@ class Admin extends controller
     //     $this->view("manage/pages/ThongKePage", $this->data);
     // };'ơ
 
-    public function main($x=[])
+    public function main($)
     {
         print_r($x) ;
     }

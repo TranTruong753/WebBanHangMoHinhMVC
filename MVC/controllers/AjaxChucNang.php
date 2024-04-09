@@ -16,11 +16,43 @@ class AjaxChucNang extends controller {
     {
         $tenChucNang = $_POST["TenChucNang"];
         $trangThai = 1;
-        if($this->ChucNangModel->insert($tenChucNang,$trangThai) == 1)
+        if($this->ChucNangModel->KiemTraTonTaiQuaTen($tenChucNang)==0)
         {
-            echo 1;
-        }else echo 0;
+            if($this->ChucNangModel->insert($tenChucNang,$trangThai) == 1)
+            {
+                echo 1;
+            }else echo 0;
+        }else echo -1;
+       
     }
+
+    public function SuaDuLieu()
+    {
+        $maChucNang = $_POST["MaChucNang"];
+        $tenChucNang = $_POST["TenChucNang"];
+        if($this->ChucNangModel->KiemTraTonTaiQuaTen($tenChucNang)==0)
+        {
+            if($this->ChucNangModel->update($maChucNang,$tenChucNang) == 1)
+            {
+                echo 1;
+            }else echo 0;
+        }else echo -1;
+       
+    }
+
+    public function XoaDuLieu()
+    {
+        $maChucNang = $_POST["MaChucNang"];
+        if($this->ChucNangModel->KiemTraChiTietQuyenSuDung($maChucNang)==0)
+        {
+            if($this->ChucNangModel->delete($maChucNang) == 1)
+            {
+                echo 1;
+            }else echo 0;
+        }else echo -1;
+       
+    }
+
 
     public function TimKiemQuaTen() {
         $tenChucNang = $_POST["TenChucNang"];
@@ -29,8 +61,9 @@ class AjaxChucNang extends controller {
             echo 1 ;
         }
         else echo 0;
-        
     }
+    
+
     public function getDanhSach()
 {
     $key = $_POST["key"];
@@ -56,7 +89,7 @@ class AjaxChucNang extends controller {
             $render .= "/>
           </td>
           <td style='text-align: center;'>
-            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a></pre>
+            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a> | <a onclick='btnXoa(this)' id='".$row["MaChucNang"]."'>Xóa</a></pre>
           </td>
         </tr>
             ";

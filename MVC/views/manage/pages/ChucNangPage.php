@@ -2,26 +2,26 @@
 
 
 <style></style>
-  <div style="text-align: center;">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Chức Năng</h1>
+<div style="text-align: center;">
+  <h1 style=" margin-bottom: 20px;">Quản Lý Chức Năng</h1>
 
 
-    <div style="text-align: start;">
+  <div style="text-align: start;">
     <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
-    </div>
-<table class="table">
-  
   </div>
-  <thead>
-    <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
-    </tr>
-  </thead>
-  <tbody class="table-group-divider row-table">
-  </tbody>
+  <table class="table">
+
+</div>
+<thead>
+  <tr>
+    <th scope="col" style="text-align: center;">ID</th>
+    <th scope="col" style="text-align: center;">Tên</th>
+    <th scope="col" style="text-align: center;">Trạng Thái</th>
+    <th scope="col" style="text-align: center;">Thao Tác</th>
+  </tr>
+</thead>
+<tbody class="table-group-divider row-table">
+</tbody>
 </table>
 
 <div class="PhanTrang">
@@ -32,15 +32,15 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
-  var index ;
-    var size ;
+  var index;
+  var size;
   $(document).ready(function() {
     // alert($("#params").val());
     $arrPhanTang = $("#params").val().split("/");
-     index = $arrPhanTang[0];
-     size = $arrPhanTang[1];
+    index = $arrPhanTang[0];
+    size = $arrPhanTang[1];
     loadTable(index, size);
-    loadPhanTrang("chucnang", index, size, "",tmpKey)
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
 
   })
 
@@ -49,8 +49,8 @@
 
     // alert(this.id)
     var arr = this.id.split("/");
-     index = arr[0];
-     size = arr[1];
+    index = arr[0];
+    size = arr[1];
     //xử lý thay đổi bảng khi nhấn vào phân trang
     loadTable(index, size, tmpKey);
     // xử lý số trang đã chọn
@@ -98,12 +98,28 @@
         })
       }
     }
+    loadTable(index, size, tmpKey)
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
+  }
+
+  function btnXoa(obj) {
+    var MaChucNang = obj.id;
+    $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
+      type: 'post',
+      dataType: 'html',
+      data: {
+        MaChucNang: MaChucNang,
+      },
+      success: function(data) {
+        alert(data);
+      }
+    })
     loadTable( index, size,tmpKey)
     loadPhanTrang("chucnang", index, size, "", tmpKey)
   }
 
-  function DieuHuongSangTrangThem()
-  {
+  function DieuHuongSangTrangThem() {
     window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChucNangPage";
   }
 </script>
