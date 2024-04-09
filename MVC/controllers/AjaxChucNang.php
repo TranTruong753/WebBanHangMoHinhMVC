@@ -12,7 +12,25 @@ class AjaxChucNang extends controller {
         $trangThai = $_POST["trangThai"];
         $this->ChucNangModel->updateTrangThai($ma,$trangThai);
     }
-    
+    public function ThemDuLieu()
+    {
+        $tenChucNang = $_POST["TenChucNang"];
+        $trangThai = 1;
+        if($this->ChucNangModel->insert($tenChucNang,$trangThai) == 1)
+        {
+            echo 1;
+        }else echo 0;
+    }
+
+    public function TimKiemQuaTen() {
+        $tenChucNang = $_POST["TenChucNang"];
+        if($this->ChucNangModel->TimKiemQuaTen($tenChucNang) == 1)
+        {
+            echo 1 ;
+        }
+        else echo 0;
+        
+    }
     public function getDanhSach()
 {
     $key = $_POST["key"];
@@ -38,7 +56,7 @@ class AjaxChucNang extends controller {
             $render .= "/>
           </td>
           <td style='text-align: center;'>
-            <pre><a href=''>Sửa</a></pre>
+            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a></pre>
           </td>
         </tr>
             ";
