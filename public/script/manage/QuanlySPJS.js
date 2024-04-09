@@ -24,8 +24,10 @@ function addSP(){
     }
 }
 function XoaSP(ojt)
-  {
-    var masp=ojt.id;
+  { 
+    let choice = confirm("Bạn có chắc muốn xóa không!");
+    if (choice) {
+        var masp=ojt.id;
     //alert($masp);
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",{masp : masp},function(data){
         if(data.length==6){
@@ -37,6 +39,10 @@ function XoaSP(ojt)
         // var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
         //         window.location.assign(url);
     });
+    } else {
+        alert("Yêu cầu xóa đã hủy");
+    }
+    
   }
 
 function addCTSP(){

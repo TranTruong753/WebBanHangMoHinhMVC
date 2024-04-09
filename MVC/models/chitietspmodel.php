@@ -48,6 +48,12 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function UpdateAllCTSP($mactsp,$makichco,$mamausac,$hinhanh){
+        $qr = 'UPDATE chitietsanpham set MaKichCo = "'.$makichco.'" ,MaMauSac="'.$mamausac.'" ,HinhAnh="'.$hinhanh.'" where MaChiTietSanPham = "'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
     public function GetCTSP($masp){
         $qr = 'SELECT *
         FROM chitietsanpham INNER JOIN mausac 
@@ -79,6 +85,22 @@ class chitietspmodel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+    public function InsertCTSP($mactsp,$masp,$mamausac,$makichco,$hinhanh){
+        $qr = "INSERT INTO chitietsanpham VALUES ('$mactsp','$masp','$mamausac','$makichco','$hinhanh',0,0,1)";
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
+    public function GettheoMactsp($mactsp){
+        $qr = 'SELECT *
+        FROM chitietsanpham INNER JOIN mausac 
+        on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
+        on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
+        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  chitietsanpham.MaChiTietSanPham="'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
 
 }
 ?>
