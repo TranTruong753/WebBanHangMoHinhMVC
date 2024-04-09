@@ -178,7 +178,7 @@
                                 if(isset($_SESSION['email']) and isset($_SESSION['Ten'])){
                                     echo '
                                     <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">           
-                                    <span>'.$_SESSION['Ten'].'</span>
+                                    <span >'.$_SESSION['Ten'].'</span>
                                     <ul class="show-info__user">
                                         <li>
                                             <div class="info-user__wrap-menu">
@@ -187,7 +187,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <a id="'.$_SESSION['email'].'" href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show">Quản lý thông tin cá nhân</a>  
+                                            <a name="user" id="'.$_SESSION['email'].'" href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" >Quản lý thông tin cá nhân</a>  
                                         </li>
                                         <li>
                                             <a href="#" onclick="Logout()">Đăng xuất</a>  

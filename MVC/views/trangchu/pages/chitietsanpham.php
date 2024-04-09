@@ -136,17 +136,17 @@
                                 
                                 <div class="content__input">
                                     <select name="" id="content__input-select"  class="content__input-select">
-                                        <!-- <option value="sizeS">S</option>
-                                        <option value="sizeL">L</option>
+                                        <option>Vui lòng chọn màu</option>
+                                        <!-- <option value="sizeL">L</option>
                                         <option value="sizeM">M</option> -->
-                                        <?php
+                                        <!-- <?php
                                         if ($data['kichco']->num_rows > 0) {
                                             while ($row = $data['kichco']->fetch_assoc()) {
                                                     echo    '
                                                     <option  value="'.$row['MaKichCo'].'" >'.$row['TenKichCo'].'</option>';
                                                 }
                                         }
-                                        ?>
+                                        ?> -->
                                     </select>
                                 
                                     <input type="number" name="" id="content__input-number" class="content__input-number" value="1"  min="1" >

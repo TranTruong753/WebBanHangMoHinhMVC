@@ -83,6 +83,12 @@ class Admin extends controller
             $this->data["detail"] = "addPages/ThemChucNangPage";
             $this->data["Data"] = ["index"=>"Thêm"];
         }
+        else if ($this->pageName == "SuaChucNangPage") {
+            $ChucNangModel = $this->model( "ChucNangModel");
+            $this->data["detail"] = "addPages/ThemChucNangPage";
+            if(isset($this->params[1])) $this->data["MaChucNang"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaChucNang"=>$this->data["MaChucNang"]];
+        }
         else if ($this->pageName == "ThemNhomQuyenPage") {
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $this->data["detail"] = "addPages/ThemNhomQuyenPage";

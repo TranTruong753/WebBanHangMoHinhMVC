@@ -21,30 +21,6 @@
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">
-
-    <?php
-    // if ($data['DanhSach']->num_rows > 0) {
-    // while ($row = $data['DanhSach']->fetch_assoc()) {
-    ?>
-    <!-- <tr>
-          <th style="text-align: center;" scope="row"><?php echo $row["MaChucNang"] ?></th>
-          <td style="text-align: center;"><?php echo $row["TenChucNang"] ?></td>
-          <td style="text-align: center;">
-            <input onchange="DoiTrangThaiChucNang(this)" id="<?php echo $row["MaChucNang"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
-                                                                                                                            echo "checked = 'checked'";
-                                                                                                                          }
-                                                                                                                          ?> />
-          </td>
-          <td style="text-align: center;">
-            <pre><a href="">Sửa</a></pre>
-          </td>
-        </tr> -->
-    <?php
-    //   }
-    // } else echo "Bảng Chưa Có Dữ Liệu" 
-    ?>
-
-
   </tbody>
 </table>
 
@@ -61,9 +37,9 @@
   $(document).ready(function() {
     // alert($("#params").val());
     $arrPhanTang = $("#params").val().split("/");
-    var index = $arrPhanTang[0];
-    var size = $arrPhanTang[1];
-    loadBang(index, size);
+     index = $arrPhanTang[0];
+     size = $arrPhanTang[1];
+    loadTable(index, size);
     loadPhanTrang("chucnang", index, size, "",tmpKey)
 
   })
@@ -73,17 +49,17 @@
 
     // alert(this.id)
     var arr = this.id.split("/");
-    var index = arr[0];
-    var size = arr[1];
+     index = arr[0];
+     size = arr[1];
     //xử lý thay đổi bảng khi nhấn vào phân trang
-    loadBang(index, size, tmpKey);
+    loadTable(index, size, tmpKey);
     // xử lý số trang đã chọn
     // alert(tmpKey)
     loadPhanTrang("chucnang", index, size, "", tmpKey);
   })
 
   //hàm load bảng
-  function loadBang(index, size, key = "") {
+  function loadTable(index, size, key = "") {
     $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/getDanhSach',
       type: 'post',
@@ -110,7 +86,6 @@
           ma: ma,
           trangThai: trangThai
         }, function(data) {
-
           alert(data);
         })
       } else {
@@ -123,9 +98,9 @@
         })
       }
     }
-
+    loadTable( index, size,tmpKey)
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
   }
-
 
   function DieuHuongSangTrangThem()
   {

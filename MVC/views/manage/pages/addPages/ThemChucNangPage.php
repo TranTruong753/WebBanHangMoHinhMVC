@@ -3,6 +3,7 @@ $ChucNangModel = new ChucNangModel();
 $index = $data["DanhSach"]["index"];
 if ($index == "Sửa") {
     $MaChucNang = $data["DanhSach"]["MaChucNang"];
+    
 }
 ?>
 
@@ -22,7 +23,7 @@ if ($index == "Sửa") {
     <Br>
     <label for="TenChucNang">Tên Chức Năng</label>
     <Br>
-    <input id="TenChucNang" name="TenChucNang" type="text" onkeyup="hienThiBtn()" value="<?php if($index == "Sửa") echo $ChucNangModel->getTenChucNangTuMa($MaChucNang) ?>">
+    <input id="TenChucNang" name="TenChucNang" type="text"  value="<?php if($index == "Sửa") echo $ChucNangModel->getTenChucNangTuMa($MaChucNang) ?>">
     <Br>
     <span id="errorTen" name="errorTen" style="color: red;"></span>
     <Br>
@@ -42,3 +43,26 @@ if ($index == "Sửa") {
     
     ">
 </form>
+
+<script>
+    // Hàm Thêm Dữ Liệu Chức Năng
+
+    function ThemDuLieuChucNang()
+    {
+        var TenChucNang = document.getElementById("TenChucNang").value;
+        // alert(TenChucNang)
+        $.ajax({
+            url: "http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/ThemDuLieu",
+            type: "post",
+            dataType: "html",
+            data:{
+                TenChucNang:TenChucNang,
+            },
+            success:function(data)
+            {
+                console.log(data);
+            }
+        }
+        )
+    }
+</script>

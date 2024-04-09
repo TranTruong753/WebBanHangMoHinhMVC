@@ -22,7 +22,6 @@ class NhomQuyenModel extends DB{
     }
     public function getDanhSach($key,$pageIndex,$soLuong)
     {
-
         trim($key);
         // Kiểm tra đang ở trang
         // echo "pageIndex:".$pageIndex;

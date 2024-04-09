@@ -26,6 +26,7 @@ const smallImages = document.querySelectorAll('.content__img-item');
     function change(){   // sự kiện lấy số lượng tồn khi chọn màu săc
         const element = document.getElementsByName('content__info-title')[0];
         const masp=element.id;
+        var soluong ="";
         var tenmausac="";
         var mamausac = ""; 
         var radioButtons = document.getElementsByName("mausac");
@@ -35,14 +36,32 @@ const smallImages = document.querySelectorAll('.content__img-item');
                 tenmausac=radioButtons[i].id;
             }
         }
+
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietSanPham/GetCountSizeColor",{
+            masp: masp,mamausac : mamausac},function(data){
+                $("#content__input-select").html(data);
+                $("#SoLuong").html(soluong);
+        })
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
+
+
        
-        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
-            masp: masp,mamausac : mamausac, makichco: makichco},function(data){
-            $("#content__info-color").html("Màu sắc :"+tenmausac);   
-            $("#SoLuong").html(data);
-        })
+
+        
+
+       alert(makichco);
+    $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
+        masp: masp,mamausac : mamausac, makichco: makichco},function(data){
+        $("#content__info-color").html("Màu sắc :"+tenmausac);   
+        $("#SoLuong").html(data);
+        soluong = data;
+    })
+      
+    
+     
+
+   
         
     }
 
@@ -90,7 +109,6 @@ const smallImages = document.querySelectorAll('.content__img-item');
     }
       
 function addgiohang() {
-    
     
     
     const element = document.getElementsByName('content__info-title')[0];

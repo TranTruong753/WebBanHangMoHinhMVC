@@ -106,7 +106,7 @@ $ChucNangModel = new ChucNangModel();
         <tr>
         <th><input type="checkbox" class="CheckBoxXoa" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] ?>"></th>
           <th style="text-align: center;" scope="row"><?php echo $NhomQuyenModel->getTenNhomQuyenTuMa($row["MaNhomQuyen"]) ?></th>
-          <td style="text-align: center;"><?php echo $ChucNangModel->getTenTuMa($row["MaChucNang"])  ?></td>
+          <td style="text-align: center;"><?php echo $ChucNangModel->getTenChucNangTuMa($row["MaChucNang"])  ?></td>
           <td style="text-align: center;"><input class="CheckBoxHanhDongTrongTable" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Xem" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Xem")) echo "checked = 'checked'"; ?>></td>
           <td style="text-align: center;"><input class="CheckBoxHanhDongTrongTable" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Thêm" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Thêm")) echo "checked = 'checked'"; ?>></td>
           <td style="text-align: center;"><input class="CheckBoxHanhDongTrongTable" type="checkbox" id="<?php echo $row["MaNhomQuyen"] . "/" . $row["MaChucNang"] . "/Xóa" ?>" <?php if ($ChiTietQuyenModel->KiemTraHanhDong($row["MaNhomQuyen"], $row["MaChucNang"], "Xóa")) echo "checked = 'checked'"; ?>></td>
