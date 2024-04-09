@@ -68,6 +68,12 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function InsertCTSP($mactsp,$masp,$mamausac,$makichco,$hinhanh){
+        $qr = "INSERT INTO chitietsanpham VALUES ('$mactsp','$masp','$mamausac','$makichco','$hinhanh',0,0,1)";
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
 
 }
 ?>

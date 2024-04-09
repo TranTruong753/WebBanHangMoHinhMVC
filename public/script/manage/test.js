@@ -5,17 +5,46 @@ $(document).ready(function(){
         formdata.append('file',$("#hinhanh")[0].files[0])
         $.ajax({
             
-            url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",
+            url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/LoadImg",
             data: formdata,
             dataType: "JSON",
             method: "POST",
             processData:false,
             contentType:false,
             success: function (data) {
-                alert(data.success);
-                $("#show").html('<img src="http://localhost/WebBanHangMoHinhMVC/public/img/'+data.src+'" alt="">');
+                //alert(data.success);
+                $("#show").html('<img src="http://localhost/WebBanHangMoHinhMVC/public/img/'+data.src+
+                '" weight=200px height=200px alt="">'
+            +'<input type="hidden" id ="filename" value ="'+data.src+'"/>');
                 
             }
         });
     });
 });
+function addCTSP(){
+    var hinhanh=document.getElementById('filename').value;
+    var mactsp=document.getElementById('mactsp').value;
+    var masp=document.getElementById('masanpham').value;
+    var mamausac=document.getElementById('mausac').value;
+    var makichco=document.getElementById('kichco').value;
+    //alert(hinhanh+" "+mactsp+" "+masp+" "+mamausac+" "+makichco);
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{mactsp:mactsp,
+        masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
+            var decodedData = JSON.parse(data);
+         //alert(decodedData.echo);
+         if(decodedData.kq==true){
+            alert("them thanh cong");
+            $("#ctsp").html(decodedData.echo);
+            var soMuoi =parseInt( mactsp.slice(4))+1;
+             var mamoi="CTSP"+parseInt(soMuoi);
+             $("#mactsp").val(mamoi);
+         }
+         else {
+            alert("chi tiet san pham da ton tại");
+         }
+             
+             //var chuoi = "CTSP10";
+            // 
+            // alert(mamoi);
+        })
+}

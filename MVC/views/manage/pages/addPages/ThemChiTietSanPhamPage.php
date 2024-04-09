@@ -4,7 +4,7 @@
     $ctsp=$data["DanhSach"]["CTSP"];
     $mausac=$data["DanhSach"]["MS"];
     $kichco=$data["DanhSach"]["KC"];
-    $dem=0;
+    $dem=1;
     if ($ctsp->num_rows > 0) {
         while ($row = $ctsp->fetch_assoc()) {
                 $dem++;
@@ -21,7 +21,7 @@
     }
     
 ?>
-<form id="submit_form" method="post" action="http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP">
+<form id="submit_form" method="post" action="">
     
     <label for="">Mã sản phẩm</label><br>
     <input type="text" id="masanpham" value="<?php echo $masp;?>"> <br>
@@ -60,8 +60,9 @@
         ?>
     </select><br>
 
-    <input type = "submit" >Thêm</button>
+    <input type = "button" onclick="addCTSP()" value="thêm"></button>
 </form>
+<div id="ctsp"></div>
 <script>
 //     $(document).ready(function(){
 //         $('#hinhanh').on('change',(e)=>{
