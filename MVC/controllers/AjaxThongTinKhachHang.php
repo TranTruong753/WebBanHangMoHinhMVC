@@ -45,7 +45,7 @@
               <td style='text-align: center;'>
     
               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                <input onchange='DoiTrangThaiNhomQuyen(this)' id='".$row['MaNhomQuyen']."' type='checkbox' value='1'";
+                <input onchange='DoiTrangThaiNhomQuyen(this)' id='".$row['MaKhachHang']."' type='checkbox' value='1'";
                 if ($row["TrangThai"] == 1) {
                   $html .= "checked = 'checked'";
 
@@ -55,7 +55,7 @@
               </td>
               <td style='text-align: center;'>
               <!-- link  để chuyển sang trang nhóm quyền -->
-                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'  >Xóa</a></pre>
+                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaKhachHang']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".  $row["MaKhachHang"] ."'  >Xóa</a></pre>
               </td>
             </tr> ";
               

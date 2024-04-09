@@ -1,10 +1,12 @@
 <?php
 
 class AjaxPhanTrang extends controller{
-    protected $PhanTrangModel ; 
+    protected $PhanTrangModel ;
+
     public function __construct() {
         $this->PhanTrangModel = $this->model("PhanTrangModel");
     }
+
     public function getPhanTrang() {
         $table = $_POST["table"];
         $condition = $_POST["condition"];
@@ -24,6 +26,10 @@ class AjaxPhanTrang extends controller{
              if($table == 'chucnang')
             {
                 $varibleEqual .=" MaChucNang,TenChucNang ";
+            }
+            if($table == 'khachhang')
+            {
+                $varibleEqual.= "  MaKhachHang,TenKhachHang";
             }
             if($condition == "")
             {
@@ -46,5 +52,43 @@ class AjaxPhanTrang extends controller{
 
         }
     }
+
+    // public function getPhanTrangKH() {
+    //     $table = $_POST["table"];
+    //     $condition = $_POST["condition"];
+    //     $index =$_POST["index"];
+    //     $size = $_POST["size"];
+    //     // echo "table: $table <br>";
+    //     if(isset($_POST["key"]))
+    //     {
+    //         $varibleEqual = "";
+    //         $key=$_POST["key"];
+
+
+    //         if($table == 'khachhang')
+    //         {
+    //             $varibleEqual.= "  MaKhachHang,TenKhachHang";
+    //         }
+    //         if($condition == "")
+    //         {
+    //             $condition.= " where ";
+    //         } 
+    //         else
+    //         {
+    //             $condition.= " AND ";
+    //         } 
+            
+    //         $condition .= " concat($varibleEqual) like '%$key%'";
+            
+    //         // echo "condition: ".$condition;
+    //         echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
+
+
+    //     }else
+    //     {
+    //         echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
+
+    //     }
+    // }
 }
 ?>

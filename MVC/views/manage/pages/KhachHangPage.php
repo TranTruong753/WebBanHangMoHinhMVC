@@ -48,33 +48,33 @@ $PhanTrangModel = new PhanTrangModel();
   })
 
     //hàm load phân trnag 
-    function loadPhanTrang(tableName, index, size, condition = "", key = "") {
-    $.ajax({
-      url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
-      type: "post",
-      dataType: "html",
-      data: {
-        key: key,
-        table: tableName,
-        condition: condition,
-        index: index,
-        size: size
-      },
-      success: function(data) {
-        console.log(data)
-        $(".PhanTrang").html(data)
-      }
+    // function loadPhanTrang(tableName, index, size, condition = "", key = "") {
+    // $.ajax({
+    //   url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
+    //   type: "post",
+    //   dataType: "html",
+    //   data: {
+    //     key: key,
+    //     table: tableName,
+    //     condition: condition,
+    //     index: index,
+    //     size: size
+    //   },
+    //   success: function(data) {
+    //     console.log(data)
+    //     $(".PhanTrang").html(data)
+    //   }
 
 
-    })
-
+    // })
+   // }
     function loadTable(key, index, size) {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/getDanhSach",
       type: "post",
       dataType: "html",
       data: {
-        key: tmpKey,
+        key: key,
         index: index,
         size: size
       },
@@ -83,6 +83,20 @@ $PhanTrangModel = new PhanTrangModel();
       }
     })
   }
-  }
+
+   //Xử llys sự kiện khi nhấn bào nút phân trang
+   $(document).on("click", ".btnPhanTrang", function() {
+
+    // alert(this.id)
+    var arr = this.id.split("/");
+    index = arr[0];
+    size = arr[1];
+    //xử lý thay đổi bảng khi nhấn vào phân trang
+    loadTable(tmpKey, index, size);
+    // xử lý số trang đã chọn
+    // alert(tmpKey)
+    loadPhanTrang("khachhang", index, size, "", tmpKey);
+    })
+  
 
 </script>

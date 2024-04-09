@@ -32,7 +32,7 @@ class KhachHangModel extends DB{
         {
             $qr .= " where concat(MaKhachHang,TenKhachHang) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaKhachHang DESC";
+            $qr .= " ORDER BY MaKhachHang,TrangThai DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -40,7 +40,7 @@ class KhachHangModel extends DB{
         }
         else
         {
-            $qr .= " ORDER BY MaKhachHang DESC";
+            $qr .= " ORDER BY MaKhachHang,TrangThai DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

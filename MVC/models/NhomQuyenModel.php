@@ -20,7 +20,6 @@ class NhomQuyenModel extends DB{
         }
         else return 0;
     }
-    
     public function getDanhSach($key,$pageIndex,$soLuong)
     {
         trim($key);
