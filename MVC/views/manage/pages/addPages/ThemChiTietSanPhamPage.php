@@ -63,36 +63,5 @@
     <input type = "button" onclick="addCTSP()" value="thêm"></button>
 </form>
 <div id="ctsp"></div>
-<script>
-//     $(document).ready(function(){
-//         $('#hinhanh').on('change',(e)=>{
-            
-//             e.preventDefault();
-//             alert(1);
-//             //alert("data");
-//             var test= document.getElementsByName('submit_form');
-//             // $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{data:  new FormData(this)},function(data){
-//             //     alert(data);
-//             // });
-//             var formdata=new FormData();
-//             formdata.append('file',$("#hinhanh")[0].files[0])
-//             $.ajax({
-                
-//                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",
-//                 data: formdata,
-//                 dataType: "JSON",
-//                 method: "POST",
-//                 processData:false,
-//                 contentType:false,
-//                 success: function (response) {
-//                     $("#show").html('<p id="test" class="test">hello</p>');
-                    
-                   
-                   
-                    
-//                 }
-//             });
-//         });
-// });
-</script>
-<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/test.js"></script>
+
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyCTSP.js"></script>

@@ -57,8 +57,6 @@ class AjaxCTSP extends controller {
               </thead>
               
               <tbody class="table-group-divider">';
-              
-             
             if($resultctsp->num_rows > 0)
             {
               while($row = $resultctsp->fetch_assoc())
@@ -66,7 +64,7 @@ class AjaxCTSP extends controller {
                 $t=$t.'
              <tr> 
                   <th style="text-align: center;" scope="row">
-                    <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
+                    <img weight= 300px height=400px src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
                   </th>
                   <th style="text-align: center;" scope="row">'. $row["MaChiTietSanPham"].'</th>
                   <td style="text-align: center;">'.$row["TenSanPham"].'</td>
@@ -75,27 +73,16 @@ class AjaxCTSP extends controller {
                   <td style="text-align: center;">'. $row["SoLuongTon"].'</td>
                   
                 </tr>';
-            
               }
             }
             $t=$t.'
-               
               </tbody>
-            </table>';
-
-            
+              </table>';
            }
            else $t= "them that bai";
            $data=json_encode(["kq"=>true,"echo"=>$t]);
             echo $data;
         }
-        // $data=json_encode(["kq"=>true,"echo"=>$t]);
-        // echo $data;
-        //echo $mactsp." cc ".$masp." ".$mamausac." ".$makichco." ".$hinhanh;
-        // if($this->SanPhamModel->InsertSP($masp,$tensp,$giasp,$matheloai,$machatlieu)){
-        //     echo "true";
-        // }
-        // else echo "false";
         
     }
     // function DeleteSP(){
@@ -111,6 +98,28 @@ class AjaxCTSP extends controller {
     //     // else echo "false";
         
     // }
+    function UpdateCTSP(){
+      $mactsp = $_POST["mactsp"];
+      $masp = $_POST["masp"];
+      $mamausac = $_POST["mamausac"];
+      $makichco = $_POST["makichco"];
+      $hinhanh = $_POST["hinhanh"];
+      $result=$this->GioHangModel->TimkiemCTSP($masp,$mamausac,$makichco);
+        
+        if($result->num_rows >0){
+            //echo "Chi tiet san pham da ton tai";
+            $data=json_encode(["kq"=>false,"echo"=>"Chi tiết sản phẩm bị trùng"]);
+            echo $data;
+        }
+          else
+            if($this->chitietspmodel->UpdateAllCTSP($mactsp,$makichco,$mamausac,$hinhanh)){
+                  $data=json_encode(["kq"=>true,"echo"=>"Update thành công"]);
+                  echo $data;
+            }
+            else {$data=json_encode(["kq"=>false,"echo"=>"Update thất bại"]);
+                  echo $data;
+            }
+    }
 
 }
 

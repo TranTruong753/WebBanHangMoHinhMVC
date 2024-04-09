@@ -42,9 +42,29 @@ function addCTSP(){
          else {
             alert("chi tiet san pham da ton tại");
          }
-             
-             //var chuoi = "CTSP10";
-            // 
-            // alert(mamoi);
+        })
+}
+
+function updateCTSP(){
+    var hinhanh=document.getElementById('filename').value;
+    var mactsp=document.getElementById('mactsp').value;
+    var masp=document.getElementById('masanpham').value;
+    var mamausac=document.getElementById('mausac').value;
+    var makichco=document.getElementById('kichco').value;
+    //alert(hinhanh+" "+mactsp+" "+mamausac+" "+makichco);
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/UpdateCTSP",{mactsp:mactsp,
+    masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
+        var decodedData = JSON.parse(data);
+        //alert(decodedData.echo);
+        if(decodedData.kq==true){
+           alert(decodedData.echo);
+           var url = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,"+masp;
+             window.location.assign(url);
+           
+        }
+        else {
+           alert(decodedData.echo);
+        }
+            
         })
 }

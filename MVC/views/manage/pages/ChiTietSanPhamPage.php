@@ -16,31 +16,33 @@
     </tr>
   </thead>
   <?php
-if($data["DanhSach"]->num_rows > 0)
-{$row = $data["DanhSach"]->fetch_assoc();
-  $masp=$row['MaSanPham'];
-  $data['DanhSach']->data_seek(0);
-}
+
+  $masp=$data['DanhSach']["MASP"];
+
+
 ?>
   <tbody class="table-group-divider">
   <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm">
   
 
   <?php
-if($data["DanhSach"]->num_rows > 0)
+if($data["DanhSach"]["CTSP"]->num_rows > 0)
 {
-  while($row = $data["DanhSach"]->fetch_assoc())
+  while($row = $data["DanhSach"]["CTSP"]->fetch_assoc())
   {
     ?>
  <tr> 
       <th style="text-align: center;" scope="row">
-        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/<?php echo $row["HinhAnh"]?>" alt="">
+        <img weight= 300px height=400px  src="http://localhost/WebBanHangMoHinhMVC/public/img/<?php echo $row["HinhAnh"]?>" alt="">
       </th>
       <th style="text-align: center;" scope="row"><?php echo $row["MaChiTietSanPham"]?></th>
       <td style="text-align: center;"><?php echo $row["TenSanPham"]?></td>
       <td style="text-align: center;"><?php echo $row["TenMauSac"]?></td>
       <td style="text-align: center;"><?php echo $row["TenKichCo"]?></td>
       <td style="text-align: center;"><?php echo $row["SoLuongTon"]?></td>
+      <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,<?php echo $row["MaChiTietSanPham"]?>">Sửa</a>|
+       <button  onclick="XoaSP(this)" id="<?php echo $row["MaChiTietSanPham"]?>">Xóa</button> | 
+      <br> </pre></td>
       
     </tr>
 <?php
