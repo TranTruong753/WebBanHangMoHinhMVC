@@ -9,8 +9,8 @@
   <thead>
     <hr>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
+      <th scope="col" style="text-align: center;">Mã Chất Liệu</th>
+      <th scope="col" style="text-align: center;">Tên Chất Liệu</th>
       <th scope="col" style="text-align: center;">Trạng Thái</th>
       <th scope="col" style="text-align: center;">Thao Tác</th>
     </tr>
