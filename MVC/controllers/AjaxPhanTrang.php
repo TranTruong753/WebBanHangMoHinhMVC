@@ -27,6 +27,10 @@ class AjaxPhanTrang extends controller{
             {
                 $varibleEqual .=" MaChucNang,TenChucNang ";
             }
+            if($table == 'nhanvien')
+            {
+                $varibleEqual.= "  MaNhanVien,TenNhanVien";
+            }
             if($table == 'khachhang')
             {
                 $varibleEqual.= "  MaKhachHang,TenKhachHang";
