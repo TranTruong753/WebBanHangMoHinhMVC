@@ -68,3 +68,25 @@ function updateCTSP(){
             
         })
 }
+
+function DeleteCTSP(ojt){
+    
+    var mactsp=ojt.id;
+    
+    alert(mactsp);
+    // $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/UpdateCTSP",{mactsp:mactsp,
+    // masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
+    //     var decodedData = JSON.parse(data);
+    //     //alert(decodedData.echo);
+    //     if(decodedData.kq==true){
+    //        alert(decodedData.echo);
+    //        var url = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,"+masp;
+    //          window.location.assign(url);
+           
+    //     }
+    //     else {
+    //        alert(decodedData.echo);
+    //     }
+            
+    //     })
+}

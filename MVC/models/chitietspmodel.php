@@ -101,6 +101,13 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function DeleteCTSP($mactsp){
+        $qr = 'DELETE FROM chitietsanpham where MaChiTietSanPham= "'.$mactsp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+
 
 }
 ?>

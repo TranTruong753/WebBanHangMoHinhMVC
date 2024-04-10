@@ -147,16 +147,16 @@ class Admin extends controller
             $masp=$this->params[1];
             $sp=$this->model( "SanPhamModel")->getDanhSach();
             $ctsp=$this->model( "chitietspmodel")->GetAllCTSP();
-            $kc=$this->model( "KichCoModel")->GetAll();
-            $ms=$this->model( "MauSacModel")->GetAll();
+            $kc=$this->model( "KichCoModel")->GetDanhSach();
+            $ms=$this->model( "MauSacModel")->GetDanhSach();
             $this->data["detail"] = "addPages/ThemChiTietSanPhamPage";
             $this->data["Data"] = ["SP"=>$sp,"CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
         else if ($this->pageName == "SuaChiTietSanPhamPage") {
             $mactsp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GettheoMactsp($mactsp);
-            $kc=$this->model( "KichCoModel")->GetAll();
-            $ms=$this->model( "MauSacModel")->GetAll();
+            $kc=$this->model( "KichCoModel")->GetDanhSach();
+            $ms=$this->model( "MauSacModel")->GetDanhSach();
             $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
             $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }

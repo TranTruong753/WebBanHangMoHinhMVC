@@ -41,7 +41,7 @@ if($data["DanhSach"]["CTSP"]->num_rows > 0)
       <td style="text-align: center;"><?php echo $row["TenKichCo"]?></td>
       <td style="text-align: center;"><?php echo $row["SoLuongTon"]?></td>
       <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,<?php echo $row["MaChiTietSanPham"]?>">Sửa</a>|
-       <button  onclick="XoaSP(this)" id="<?php echo $row["MaChiTietSanPham"]?>">Xóa</button> | 
+       <button  onclick="DeleteCTSP(this)" id="<?php echo $row["MaChiTietSanPham"]?>">Xóa</button> | 
       <br> </pre></td>
       
     </tr>
@@ -60,4 +60,4 @@ if($data["DanhSach"]["CTSP"]->num_rows > 0)
   
 
 </script>
-<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlySPJS.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyCTSP.js"></script>

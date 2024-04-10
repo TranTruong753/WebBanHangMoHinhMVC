@@ -85,19 +85,12 @@ class AjaxCTSP extends controller {
         }
         
     }
-    // function DeleteSP(){
-    //     $masp = $_POST["masp"];
-    //     $result= $this->chitietspmodel->GetCTSP($masp);
-    //     if ($result->num_rows == 0) {
-    //         if($this->SanPhamModel->DeleteSP($masp)){
-    //             echo "true";
-    //         }
-    //         else echo "false";
-    //     }
-    //     else echo "Sản phẩm này không thể xóa";
-    //     // else echo "false";
+    function DeleteCTSP(){
+        $mactsp = $_POST["mactsp"];
         
-    // }
+        // else echo "false";
+        
+    }
     function UpdateCTSP(){
       $mactsp = $_POST["mactsp"];
       $masp = $_POST["masp"];
