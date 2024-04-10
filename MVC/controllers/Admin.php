@@ -73,9 +73,20 @@ class Admin extends controller
         else if ($this->pageName == "NhanVienPage") {
             $this->data["detail"] = "NhanVienPage";
         }
+        //Khách hàng page
         else if ($this->pageName == "KhachHangPage") {
+            $KhachHangModel = $this->model("KhachHangModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "KhachHangPage";
         }
+        else if($this->pageName == "SuaKhachHangPage"){
+            $KhachHangModel = $this->model( "KhachHangModel");
+            $this->data["detail"] = "addPages/ThemKhachHangPage";
+            if(isset($this->params[1])) $this->data["MaKhachHang"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaKhachHang"=>$this->data["MaKhachHang"]];
+        }
+        
         else if ($this->pageName == "KhuyenMaiPage") {
             $this->data["detail"] = "KhuyenMaiPage";
         }
@@ -141,7 +152,7 @@ class Admin extends controller
             $masp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GetCTSP($masp);
             $this->data["detail"] = "ChiTietSanPhamPage";
-            $this->data["Data"] = ["CTSP"=>$ctsp,"MASP"=>$masp];
+            $this->data["Data"] = $ctsp;
         }
         else if ($this->pageName == "ThemChiTietSanPhamPage") {
             $masp=$this->params[1];
