@@ -12,6 +12,7 @@ class AjaxPhanTrang extends controller{
         $condition = $_POST["condition"];
         $index =$_POST["index"];
         $size = $_POST["size"];
+        $masp='';
         // echo "table: $table <br>";
         if(isset($_POST["key"]))
         {
@@ -31,6 +32,14 @@ class AjaxPhanTrang extends controller{
             {
                 $varibleEqual.= "  MaKhachHang,TenKhachHang";
             }
+            if($table == 'sanpham')
+            {   
+                $varibleEqual.= "  MaSanPham,TenSanPham";
+            }
+            if($table == 'chitietsanpham')
+            {   //$masp=$_POST["masp"];
+                $varibleEqual.= "  chitietsanpham.MachitietSanPham,mausac.TenMauSac,kichco.TenKichCo";
+            }
             if($condition == "")
             {
                 $condition.= " where ";
@@ -41,7 +50,6 @@ class AjaxPhanTrang extends controller{
             } 
             
             $condition .= " concat($varibleEqual) like '%$key%'";
-            
             // echo "condition: ".$condition;
             echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
 

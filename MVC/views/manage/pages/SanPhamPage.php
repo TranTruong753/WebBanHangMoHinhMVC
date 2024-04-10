@@ -3,6 +3,11 @@
 <style></style>
 <div style="text-align: center;">
 <h1 >Quản Lý Sản Phẩm</h1>
+
+</div>
+<div class="search">
+  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+  <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div>
   <thead>
     <tr>
@@ -19,32 +24,13 @@
   </thead>
   <tbody class="table-group-divider">
   <input type="submit" onclick="DieuHuong()" value="Thêm">
-
-  <?php
-if($data["DanhSach"]->num_rows>0)
-{
-  while($row = $data["DanhSach"]->fetch_assoc())
-  {
-    ?>
- <tr> 
-      <th style="text-align: center;" scope="row"><?php echo $row["MaSanPham"]?></th>
-      <td style="text-align: center;"><?php echo $row["TenSanPham"]?></td>
-      <td style="text-align: center;"><?php echo $row["GiaSanPham"]?></td>
-      <td style="text-align: center;"><?php echo $row["SoLuongTonSP"]?></td>
-      <td style="text-align: center;"><?php echo $row["GiaNhap"]?></td>
-      <td style="text-align: center;"><?php echo $row["TenTheLoai"]?></td>
-      <td style="text-align: center;"><?php echo $row["TenChatLieu"]?></td>
-      <td style="text-align: center;"><?php echo $row["TenThuongHieu"]?></td>
-      <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="<?php echo $row["MaSanPham"]?>">Xóa</button> | 
-      <a href="">Chi Tiết</a>  <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,<?php echo $row["MaSanPham"]?>">Sản Phẩm Con</a> </pre></td>
-    </tr>
-<?php
-  }
-}
-  ?>
-   
+  <tbody class="table-group-divider row-table">
   </tbody>
 </table>
+
+<div class="PhanTrang">
+
+</div>
 <script>
   function DieuHuong()
   {

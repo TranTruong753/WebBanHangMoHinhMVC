@@ -152,7 +152,7 @@ class Admin extends controller
             $masp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GetCTSP($masp);
             $this->data["detail"] = "ChiTietSanPhamPage";
-            $this->data["Data"] = $ctsp;
+            $this->data["Data"] = ["CTSP"=>$ctsp,"MASP"=>$masp];
         }
         else if ($this->pageName == "ThemChiTietSanPhamPage") {
             $masp=$this->params[1];

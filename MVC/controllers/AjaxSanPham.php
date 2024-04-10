@@ -35,6 +35,39 @@ class AjaxSanPham extends controller {
         // else echo "false";
         
     }
+    public function getDanhSach()
+   {
+        $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+
+        $html="";
+        
+       
+        if($this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
+        {
+            $result=$this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '<tr> 
+              <th style="text-align: center;" scope="row">'.$row["MaSanPham"].'</th>
+              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
+              <td style="text-align: center;">'.$row["GiaSanPham"].'</td>
+              <td style="text-align: center;">'.$row["SoLuongTonSP"].'</td>
+              <td style="text-align: center;">'.$row["GiaNhap"].'</td>
+              <td style="text-align: center;">'.$row["TenTheLoai"].'</td>
+              <td style="text-align: center;">'.$row["TenChatLieu"].'</td>
+              <td style="text-align: center;">'.$row["TenThuongHieu"].'</td>
+              <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaSanPham"].'">Xóa</button> | 
+              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'">Sản Phẩm Con</a> </pre></td>
+            </tr>';
+              
+            }
+
+            echo $html;
+        }
+        
+   }
 
 }
 
