@@ -70,7 +70,11 @@ class Admin extends controller
         else if ($this->pageName == "NhaCungCapPage") {
             $this->data["detail"] = "NhaCungCapPage";
         }
+        // nhân viên
         else if ($this->pageName == "NhanVienPage") {
+            $NhanVienModel = $this->model("NhanVienModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "NhanVienPage";
         }
         //Khách hàng page
