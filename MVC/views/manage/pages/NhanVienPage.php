@@ -31,6 +31,10 @@ $PhanTrangModel = new PhanTrangModel();
   </tbody>
 </table>
 
+<div class="PhanTrang">
+
+</div>
+
 <script>
   var tmpKey = "";
   var index = 1;
