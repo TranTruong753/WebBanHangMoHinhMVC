@@ -85,19 +85,12 @@ class AjaxCTSP extends controller {
         }
         
     }
-    // function DeleteSP(){
-    //     $masp = $_POST["masp"];
-    //     $result= $this->chitietspmodel->GetCTSP($masp);
-    //     if ($result->num_rows == 0) {
-    //         if($this->SanPhamModel->DeleteSP($masp)){
-    //             echo "true";
-    //         }
-    //         else echo "false";
-    //     }
-    //     else echo "Sản phẩm này không thể xóa";
-    //     // else echo "false";
+    function DeleteCTSP(){
+        $mactsp = $_POST["mactsp"];
         
-    // }
+        // else echo "false";
+        
+    }
     function UpdateCTSP(){
       $mactsp = $_POST["mactsp"];
       $masp = $_POST["masp"];
@@ -120,6 +113,42 @@ class AjaxCTSP extends controller {
                   echo $data;
             }
     }
+    public function getDanhSach()
+   {
+        $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        $masp=$_POST['masp'];
+
+        $html="";
+        
+       
+        if($this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp)->num_rows >0)
+        {
+            $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '<tr> 
+              <th style="text-align: center;" scope="row">
+                <img weight= 300px height=400px  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
+              </th>
+              <th style="text-align: center;" scope="row">'.$row["MaChiTietSanPham"].'</th>
+              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
+              <td style="text-align: center;">'.$row["TenMauSac"].'</td>
+              <td style="text-align: center;">'.$row["TenKichCo"].'</td>
+              <td style="text-align: center;">'.$row["SoLuongTon"].'</td>
+              <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'">Sửa</a>|
+               <button  onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'">Xóa</button> | 
+              <br> </pre></td>
+              
+            </tr>';
+              
+            }
+
+            echo $html;
+        }
+        
+   }
 
 }
 

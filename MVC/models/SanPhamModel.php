@@ -44,6 +44,46 @@
         return false;
     }
 
+    public function GetAllDanhSach($key,$pageIndex,$soLuong)
+    {
+        trim($key);
+        // Kiểm tra đang ở trang
+        // echo "pageIndex:".$pageIndex;
+        if($pageIndex == "" || $pageIndex <= 0 )
+        {
+            $pageIndex = 1;
+        }
+
+        $batDau = ($pageIndex-1)*$soLuong;
+        
+        $qr = "SELECT * FROM sanpham";
+
+        if($key!="")
+        {
+            $qr .= " INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai  
+            INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu  
+            INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu 
+            where concat(sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu) like '%$key%'"; 
+
+            $qr .= " ORDER BY MaSanPham DESC";
+            $qr .= " LIMIT $batDau,$soLuong";
+
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai  
+            INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu  
+            INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu ORDER BY MaSanPham DESC";
+            $qr .= " Limit $batDau,$soLuong";
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        // $qr="SELECT * from nhomquyen";
+        // return $this->con->query($qr);
+    }
+
     
 }
 

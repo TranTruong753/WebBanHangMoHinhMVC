@@ -70,12 +70,27 @@ class Admin extends controller
         else if ($this->pageName == "NhaCungCapPage") {
             $this->data["detail"] = "NhaCungCapPage";
         }
+        // nhân viên
         else if ($this->pageName == "NhanVienPage") {
+            $NhanVienModel = $this->model("NhanVienModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "NhanVienPage";
         }
+        //Khách hàng page
         else if ($this->pageName == "KhachHangPage") {
+            $KhachHangModel = $this->model("KhachHangModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "KhachHangPage";
         }
+        else if($this->pageName == "SuaKhachHangPage"){
+            $KhachHangModel = $this->model( "KhachHangModel");
+            $this->data["detail"] = "addPages/ThemKhachHangPage";
+            if(isset($this->params[1])) $this->data["MaKhachHang"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaKhachHang"=>$this->data["MaKhachHang"]];
+        }
+        
         else if ($this->pageName == "KhuyenMaiPage") {
             $this->data["detail"] = "KhuyenMaiPage";
         }
@@ -147,16 +162,16 @@ class Admin extends controller
             $masp=$this->params[1];
             $sp=$this->model( "SanPhamModel")->getDanhSach();
             $ctsp=$this->model( "chitietspmodel")->GetAllCTSP();
-            $kc=$this->model( "KichCoModel")->GetAll();
-            $ms=$this->model( "MauSacModel")->GetAll();
+            $kc=$this->model( "KichCoModel")->GetDanhSach();
+            $ms=$this->model( "MauSacModel")->GetDanhSach();
             $this->data["detail"] = "addPages/ThemChiTietSanPhamPage";
             $this->data["Data"] = ["SP"=>$sp,"CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
         else if ($this->pageName == "SuaChiTietSanPhamPage") {
             $mactsp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GettheoMactsp($mactsp);
-            $kc=$this->model( "KichCoModel")->GetAll();
-            $ms=$this->model( "MauSacModel")->GetAll();
+            $kc=$this->model( "KichCoModel")->GetDanhSach();
+            $ms=$this->model( "MauSacModel")->GetDanhSach();
             $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
             $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
@@ -170,10 +185,10 @@ class Admin extends controller
     //     $this->view("manage/pages/ThongKePage", $this->data);
     // };'ơ
 
-    // public function main($)
-    // {
-    //     print_r($x) ;
-    // }
+    public function main($)
+    {
+        print_r($x) ;
+    }
 
     public function paramsProcess($data)
     {

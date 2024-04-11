@@ -58,11 +58,11 @@
                                     <i class='bx bx-task' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Nhà cung cấp</span>
                             </a>
-                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage" class="sidebar_link">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4" class="sidebar_link">
                                     <i class='bx bx-group' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Nhân viên</span>
                             </a>
-                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage" class="sidebar_link">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,1,4" class="sidebar_link">
                                     <i class='bx bx-user-circle' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Khách hàng</span>
                             </a>

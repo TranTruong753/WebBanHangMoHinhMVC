@@ -101,6 +101,54 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function DeleteCTSP($mactsp){
+        $qr = 'DELETE FROM chitietsanpham where MaChiTietSanPham= "'.$mactsp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+    public function getDanhSach($key,$pageIndex,$soLuong,$masp)
+    {
+        trim($key);
+        // Kiểm tra đang ở trang
+        // echo "pageIndex:".$pageIndex;
+        if($pageIndex == "" || $pageIndex <= 0 )
+        {
+            $pageIndex = 1;
+        }
+
+        $batDau = ($pageIndex-1)*$soLuong;
+        
+        $qr = "SELECT * FROM chitietsanpham";
+
+        if($key!="")
+        {
+            $qr .= " INNER JOIN mausac 
+            on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
+            on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
+            on sanpham.MaSanPham=chitietsanpham.MaSanPham 
+            where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and chitietsanpham.MaSanPham= '$masp' "; 
+
+            $qr .= " ORDER BY Machitietsanpham DESC";
+            $qr .= " LIMIT $batDau,$soLuong";
+
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " INNER JOIN mausac 
+            on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
+            on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
+            on sanpham.MaSanPham=chitietsanpham.MaSanPham where chitietsanpham.MaSanPham= '$masp' ORDER BY MaChiTietSanPham DESC";
+            $qr .= " Limit $batDau,$soLuong";
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        // $qr="SELECT * from nhomquyen";
+        // return $this->con->query($qr);
+    }
+
 
 }
 ?>
