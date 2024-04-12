@@ -47,6 +47,11 @@ class chitietspmodel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+    public function UpdateCTSPtheoSLNHAPvaSLTON($mactsp,$slton,$slnhap){
+        $qr = 'UPDATE chitietsanpham set SoLuongTon = '.$slton.',SoLuongNhap = '.$slnhap.' where MaChiTietSanPham = "'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
 
     public function UpdateAllCTSP($mactsp,$makichco,$mamausac,$hinhanh){
         $qr = 'UPDATE chitietsanpham set MaKichCo = "'.$makichco.'" ,MaMauSac="'.$mamausac.'" ,HinhAnh="'.$hinhanh.'" where MaChiTietSanPham = "'.$mactsp.'"';

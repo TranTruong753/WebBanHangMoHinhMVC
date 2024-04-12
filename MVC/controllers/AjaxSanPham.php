@@ -69,6 +69,17 @@ class AjaxSanPham extends controller {
         
    }
 
+   public function getgianhap(){
+    $masp=$_POST["masp"];
+    $result=$this->SanPhamModel->GetSP($masp);
+    if($result->num_rows >0){
+        while($row = $result->fetch_assoc())
+        {
+            echo $row['GiaNhap'];
+    }
+   }
+}
+
 }
 
 ?>

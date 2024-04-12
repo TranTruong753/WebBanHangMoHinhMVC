@@ -128,7 +128,7 @@ class AjaxCTSP extends controller {
             $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp);
             while($row = $result->fetch_assoc())
             {
-              $html .=  '<tr> 
+              $html .=  '<tr id="'.$row["MaChiTietSanPham"].'" onclick="loadID(this)"> 
               <th style="text-align: center;" scope="row">
                 <img weight= 300px height=400px  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
               </th>

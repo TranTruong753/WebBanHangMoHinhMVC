@@ -28,7 +28,7 @@
                                             <span class="sidebar_text">Chi Tiết Quyền</span>
                                     </a>
                             </ul>
-                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPagePage" class="sidebar_link">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage" class="sidebar_link">
                                     <i class='bx bx-cart-add' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Nhập hàng</span>
                             </a>

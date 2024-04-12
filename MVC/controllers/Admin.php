@@ -46,6 +46,7 @@ class Admin extends controller
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
+            $this->data["Data"]= [];
         } else if ($this->pageName == "ThuongHieuPage") {
             $ThuongHieuModel = $this->model("ThuongHieuModel");
             $this->data["Data"]= $ThuongHieuModel->getDanhSach();
@@ -174,6 +175,13 @@ class Admin extends controller
             $ms=$this->model( "MauSacModel")->GetDanhSach();
             $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
             $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
+        }
+        else if ($this->pageName == "ThemPhieuNhapPage") {
+            $sp=$this->model( "SanPhamModel")->getDanhSach();
+            $pn=$this->model( "PhieuNhapModel")->getAllPN();
+            $ncc=$this->model( "NhaCungCapModel")->getAllNCC();
+            $this->data["detail"] = "addPages/ThemPhieuNhapPage";
+            $this->data["Data"] = ["SP"=>$sp,"PN"=>$pn,"NCC"=>$ncc];
         }
 
         print_r($this->data); 

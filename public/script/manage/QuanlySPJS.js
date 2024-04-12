@@ -50,6 +50,9 @@ function XoaSP(ojt)
   var tmpKey = "";
   var index = 1;
   var size = 4;
+  var sql=" INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai"+  
+  " INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu"+  
+  " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu Where sanpham.TrangThai='1' ";
 
 
    // load khi chạy trang
@@ -57,7 +60,7 @@ function XoaSP(ojt)
     index = 1;
     size = 4;
     loadTable("", index, size)
-    loadPhanTrang("sanpham", index, size, "", "");
+    loadPhanTrang("sanpham", index, size, sql, "");
 
   })
 
@@ -143,7 +146,7 @@ function XoaSP(ojt)
     })
     // xử lý số trang đã chọn
     // alert(tmpKey)
-    loadPhanTrang("sanpham", index, size, "", tmpKey);
+    loadPhanTrang("sanpham", index, size, sql, tmpKey);
   })
   //Xử lý khi nhấn nút tìm kiếm
   $(document).on("click", "#btnSearch", function() {
@@ -166,7 +169,7 @@ function XoaSP(ojt)
       }
     })
     // xử lý số trang đã chọn
-    loadPhanTrang("sanpham", index, size, "", key);
+    loadPhanTrang("sanpham", index, size, sql, key);
 
   })
 
