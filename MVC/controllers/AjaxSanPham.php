@@ -26,15 +26,22 @@ class AjaxSanPham extends controller {
         $masp = $_POST["masp"];
         $result= $this->chitietspmodel->GetCTSP($masp);
         if ($result->num_rows == 0) {
-            if($this->SanPhamModel->DeleteSP($masp)){
-                echo "true";
-            }
-            else echo "false";
+            $this->SanPhamModel->DeleteSP($masp);
+            $data=json_encode(["kq"=>true]);
+            echo $data;
+
         }
-        else echo "Sản phẩm này không thể xóa";
+        else {
+            $this->SanPhamModel->UpdateTTSP($masp);
+            $data=json_encode(["kq"=>true]);
+            echo $data;
+        }
+            
+        }
+        
         // else echo "false";
         
-    }
+    
     public function getDanhSach()
    {
         $key = $_POST['key'];

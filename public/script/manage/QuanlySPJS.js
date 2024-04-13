@@ -28,17 +28,26 @@ function XoaSP(ojt)
     let choice = confirm("Bạn có chắc muốn xóa không!");
     if (choice) {
         var masp=ojt.id;
-    //alert($masp);
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",{masp : masp},function(data){
-        if(data.length==6){
-            alert("Xóa thành công");
-            var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
-             window.location.assign(url);
-        }
-        else alert(data);
-        // var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
-        //         window.location.assign(url);
-    });
+        //alert(masp);
+        $.ajax({
+          url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
+          type: "post",
+          dataType: "JSON",
+          data: {
+
+            masp : masp
+          },
+          success: function(data) {
+            //alert(data.kq);
+            if(data.kq== true){
+              alert("xoa thanh cong");
+              
+              loadTable(tmpKey,index,size)
+              loadPhanTrang("sanpham",index,size,sql,tmpKey)
+            }
+            else {alert("xoa that bai");}
+          }
+        })
     } else {
         alert("Yêu cầu xóa đã hủy");
     }
@@ -52,7 +61,7 @@ function XoaSP(ojt)
   var size = 4;
   var sql=" INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai"+  
   " INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu"+  
-  " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu Where sanpham.TrangThai='1' ";
+  " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu Where sanpham.TrangThai= 1 ";
 
 
    // load khi chạy trang
@@ -85,28 +94,7 @@ function XoaSP(ojt)
 
     })
   }
-
-
-  function btnXoa(obj)
-  {
-    var ma = obj.id;
-
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/XoaDuLieuNhomQuyen',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
-    })
-    loadTable(tmpKey,index,size)
-    loadPhanTrang("sanpham",index,size,"",tmpKey)
-  }
-
-  function loadTable(key, index, size) {
+ function loadTable(key, index, size) {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/getDanhSach",
       type: "post",

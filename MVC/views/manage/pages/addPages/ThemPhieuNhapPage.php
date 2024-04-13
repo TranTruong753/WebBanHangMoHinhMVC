@@ -257,7 +257,7 @@ function Nhaphang(){
   var ncc=document.getElementById('ncc').value;
   var manv=document.getElementById('nhanvien').value;
   //alert(mapn+" "+ngaynhap+" "+tongtien+" "+ncc+" "+manv);
-  alert(JSON.stringify(arr));
+  //alert(JSON.stringify(arr));
   $.ajax({
     url: 'http://localhost/WebBanHangMoHinhMVC/AjaxPhieuNhap/NhapHang',
     type: 'post',
@@ -271,7 +271,9 @@ function Nhaphang(){
       manv:manv
     },
     success: function(data) {
-      alert(data);
+      alert("Nhap hang thanh cong");
+      var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
+             window.location.assign(url);
     }
   })
 }
