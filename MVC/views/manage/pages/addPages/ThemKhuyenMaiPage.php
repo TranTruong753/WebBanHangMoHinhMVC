@@ -1,31 +1,50 @@
 <?php
-echo $data["index"];
 
+$index = $data["DanhSach"]["index"];
+$MaKhuyenMai = "";
+$item = [];
+if($index == "Sửa")
+{
+    $KhuyenMaiModel = $data["DanhSach"]["KhuyenMaiModel"];
+    $MaKhuyenMai = $data["DanhSach"]["MaKhuyenMai"];
+    $item = $KhuyenMaiModel->getItemById($MaKhuyenMai);
+}
 ?>
 <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage">Quay về trang quản lý khuyến mãi></a>
-<h1>Form Thêm Khuyến Mãi</h1>
+<h1>Form <?php if($index == "Thêm"){echo "Thêm";}else if($index == "Sửa") echo "Sửa";?> Khuyến Mãi</h1>
 
 <div class="form">
+    <?php
+    if($index == "Sửa")
+    {
+        echo "<label for='MaKhuyenMai'>Mã Khuyến Mãi</label>
+        <br>
+        <input type='text' name='MaKhuyenMai' id='MaKhuyenMai' value='".$item["MaKhuyenMai"]."' disabled='disabled' />
+        <br>";
+    }
+    ?>
     <label for="TenKhuyenMai">Tên Khuyến Mãi</label>
     <br>
-    <input type="text" name="TenKhuyenMai" id="TenKhuyenMai" />
+    <input type="text" name="TenKhuyenMai" id="TenKhuyenMai" value="<?php if($index == "Sửa") echo $item["TenKhuyenMai"] ?>" />
     <br>
     <span class="errorTenKhuyenMai" style="color: red;"></span>
     <br>
     <label for="MucKhuyenMai">Mức Khuyến Mãi</label>
     <br>
-    <input type="text" name="MucKhuyenMai" id="MucKhuyenMai">
+    <input type="text" name="MucKhuyenMai" id="MucKhuyenMai" value="<?php if($index == "Sửa") echo $item["MucKhuyenMai"] ?>">
     <br>
     <span class="errorMucKhuyenMai" style="color: red;"></span>
     <br>
-    <input type="button" id="btnAdd" value="Lưu">
+    <input type="button" onclick="<?php if($index == "Thêm"){echo "btnAdd()";}else if($index == "Sửa") {echo "btnEdit()";}?>" value="Lưu">
 </div>
 
 <script>
     $(document).ready(function() {
         // alert(kiemTraMucKhuyenMai("61"));
     })
-    document.getElementById("btnAdd").onclick = function() {
+
+    // xử lý sự kiện thêm khuyến mãi
+    function btnAdd() {
         var TenKhuyenMai = document.getElementById("TenKhuyenMai").value;
         var MucKhuyenMai = document.getElementById("MucKhuyenMai").value;
         // alert(checkForm(TenKhuyenMai, MucKhuyenMai));
@@ -48,6 +67,44 @@ echo $data["index"];
         // console.log(MucKhuyenMai);
     }
 
+    // xử lý sự kiện sửa khuyến mãi
+     function btnEdit() {
+        var MaKhuyenMai = document.getElementById("MaKhuyenMai").value;
+        var TenKhuyenMai = document.getElementById("TenKhuyenMai").value;
+        var MucKhuyenMai = document.getElementById("MucKhuyenMai").value;
+        // alert(checkForm(TenKhuyenMai, MucKhuyenMai));
+        if (checkForm(TenKhuyenMai, MucKhuyenMai) == true) {
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/update",
+                type:"post",
+                dataType:"html",
+                data:{
+                    MaKhuyenMai:MaKhuyenMai,
+                    TenKhuyenMai:TenKhuyenMai,
+                    MucKhuyenMai:MucKhuyenMai
+                },
+                success: function(data)
+                {
+                    if(data == 1)
+                    {
+                        alert("Cập nhật dữ liệu thành công!");
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    }
+                    else if(data == -1)
+                    {
+                        alert("Tên Khuyến Mãi Đã Tồn Tại, Vui Lòng chọn tên khác") ;
+                    }
+                    else
+                    {
+                        alert("Cập nhật dữ liệu thất bại!");
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    }
+                }
+            })
+        }
+        console.log(MucKhuyenMai);
+    }
+
     // Hàm kiểm tra số Nguyên Dương
     function kiemTraMucKhuyenMai(value) {
         if (isIntegerString(value)) {
@@ -68,7 +125,7 @@ echo $data["index"];
     }
     // Hàm Check Form
     function checkForm(TenKhuyenMai, MucKhuyenMai) {
-        alert("Mức Khuyến Mãi: " + MucKhuyenMai)
+        // alert("Mức Khuyến Mãi: " + MucKhuyenMai)
         var resultTenKhuyenMai = true;
         var resultMucKhuyenMai = true;
         var errorTenKhuyenMai = document.getElementsByClassName("errorTenKhuyenMai")[0];
@@ -94,7 +151,7 @@ echo $data["index"];
         errorTenKhuyenMai.innerHTML = errorTenKhuyenMaiStr;
         errorMucKhuyenMai.innerHTML = errorMucKhuyenMaiStr;
 
-        alert("resultMucKhuyenMai:" + resultMucKhuyenMai)
+        // alert("resultMucKhuyenMai:" + resultMucKhuyenMai)
         if (resultTenKhuyenMai == true && resultMucKhuyenMai == true) {
             return true;
         } else {

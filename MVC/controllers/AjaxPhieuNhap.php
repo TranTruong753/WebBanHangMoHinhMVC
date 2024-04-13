@@ -21,8 +21,6 @@ class AjaxPhieuNhap extends controller {
         $numberItem = $_POST['size'];
 
         $html="";
-        
-       
         if($this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
         {
             $result=$this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem);
@@ -38,12 +36,9 @@ class AjaxPhieuNhap extends controller {
               <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaPhieuNhap"].'">Xóa</button> | 
               <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaPhieuNhap"].'">Sản Phẩm Con</a> </pre></td>
             </tr>';
-              
             }
-
             echo $html;
         }
-        
    }
    public function NhapHang(){
     $arr=$_POST['arr'];

@@ -29,10 +29,34 @@ class KhuyenMaiModel extends DB {
         else return 0;
     }
 
+    public function getItemById($MaKhuyenMai)
+    {
+        $qr = "SELECT * FROM khuyenmai where MaKhuyenMai = '$MaKhuyenMai'";
+        $result = $this->con->query($qr);
+        if($result->num_rows>0)
+        {
+            while($row = $result->fetch_assoc())
+            {
+                return ["MaKhuyenMai"=>$row["MaKhuyenMai"],"TenKhuyenMai"=>$row["TenKhuyenMai"],"MucKhuyenMai"=>$row["MucKhuyenMai"],"TrangThai"=>$row["TrangThai"]];
+            }
+        }
+        
+    }
+
     public function update($MaKhuyenMai,$TenKhuyenMai,$MucKhuyenMai)
     {
         $qr = "UPDATE khuyenmai SET TenKhuyenMai = '$TenKhuyenMai', MucKhuyenMai = '$MucKhuyenMai' where MaKhuyenMai = '$MaKhuyenMai'";
         if($this->con->query($qr))
+        {
+            return 1;
+        }
+        else return 0;
+    }
+
+    public function KiemTraTonTaiQuaTen($TenKhuyenMai)
+    {
+        $qr = "SELECT * FROM khuyenmai where TenKhuyenMai = '$TenKhuyenMai'";
+        if($this->con->query($qr)->num_rows > 0)
         {
             return 1;
         }
