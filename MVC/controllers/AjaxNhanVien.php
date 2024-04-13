@@ -39,7 +39,7 @@
                   </td>
                   <td style='text-align: center;'>
                   <!-- link  để chuyển sang trang nhóm quyền -->
-                    <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a></pre>
+                    <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a></pre>
                   </td>
                 </tr> ";
                   
@@ -79,6 +79,24 @@
               $trangThai = $_POST['trangThai'];
               $this->NhanVienModel->updateTrangThai($ma,$trangThai);
           }
+
+          public function insert()
+          {
+            
+
+              $tenNhanVien = $_POST["tenNhanVien"];
+              $sdt = $_POST["sdt"];
+              $cccd = $_POST["cccd"];
+              $ngaySinh = $_POST["ngaySinh"];
+              if($this->NhanVienModel->insert($tenNhanVien,$sdt,$cccd,$ngaySinh))
+              {
+                  echo "Thêm Dữ Liệu Thành Công!";
+              }else echo "Thêm Dữ Liệu Thất Bại!";
+      
+              
+          }
+
+
 
                 
           

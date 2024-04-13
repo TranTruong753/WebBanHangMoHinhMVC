@@ -78,6 +78,17 @@ class Admin extends controller
             $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
             $this->data["detail"] = "NhanVienPage";
         }
+        else if($this->pageName == "SuaNhanVienPage"){
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $this->data["detail"] = "addPages/ThemNhanVienPage";
+            if(isset($this->params[1])) $this->data["MaNhanVien"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaNhanVien"=>$this->data["MaNhanVien"]];
+        }
+        else if ($this->pageName == "ThemNhanVienPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $this->data["detail"] = "addPages/ThemNhanVienPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
         //Khách hàng page
         else if ($this->pageName == "KhachHangPage") {
             $KhachHangModel = $this->model("KhachHangModel");

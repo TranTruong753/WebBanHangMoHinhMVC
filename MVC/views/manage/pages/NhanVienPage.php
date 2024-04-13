@@ -154,6 +154,6 @@ $PhanTrangModel = new PhanTrangModel();
   }
 
   function DieuHuong() {
-    window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemNhomQuyenPage";
+    window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemNhanVienPage";
   }
 </script>
