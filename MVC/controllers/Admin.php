@@ -68,6 +68,8 @@ class Admin extends controller
             $this->data["detail"] = "MauSacPage";
         }
         else if ($this->pageName == "NhaCungCapPage") {
+            $NhaCungCapModel = $this->model("NhaCungCapModel");
+            $this->data["Data"] = $NhaCungCapModel->getDanhSach();
             $this->data["detail"] = "NhaCungCapPage";
         }
         // nhân viên
@@ -150,6 +152,10 @@ class Admin extends controller
         }
         else if ($this->pageName == "ThemMauSacPage") {
             $this->data["detail"] = "addPages/ThemMauSacPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
+        else if ($this->pageName == "ThemNhaCungCapPage") {
+            $this->data["detail"] = "addPages/ThemNhaCungCapPage";
             $this->data["Data"] = ["index"=>"Thêm"];
         }
         else if ($this->pageName == "ChiTietSanPhamPage") {
