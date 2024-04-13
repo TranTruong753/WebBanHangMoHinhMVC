@@ -92,7 +92,9 @@ class Admin extends controller
         }
         
         else if ($this->pageName == "KhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model("KhuyenMaiModel");
             $this->data["detail"] = "KhuyenMaiPage";
+            $this->data["Data"]=[];
         }
         else if ($this->pageName == "ThuePage") {
             $this->data["detail"] = "ThuePage";
@@ -101,6 +103,17 @@ class Admin extends controller
             $this->data["detail"] = "ThongKePage";
         }
         //page thêm
+        else if ($this->pageName == "ThemKhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model( "KhuyenMaiModel");
+            $this->data["detail"] = "addPages/ThemKhuyenMaiPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
+        else if ($this->pageName == "SuaKhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model( "KhuyenMaiModel");
+            $this->data["detail"] = "addPages/ThemKhuyenMaiPage";
+            if(isset($this->params[1])) $this->data["MaKhuyenMai"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaKhuyenMai"=>$this->data["MaKhuyenMai"]];
+        }
         else if ($this->pageName == "ThemChucNangPage") {
             $ChucNangModel = $this->model( "ChucNangModel");
             $this->data["detail"] = "addPages/ThemChucNangPage";
@@ -185,10 +198,10 @@ class Admin extends controller
     //     $this->view("manage/pages/ThongKePage", $this->data);
     // };'ơ
 
-    public function main($)
-    {
-        print_r($x) ;
-    }
+    // public function main($)
+    // {
+    //     print_r($x) ;
+    // }
 
     public function paramsProcess($data)
     {
