@@ -35,16 +35,19 @@ class AjaxThongTinKhachHang extends controller {
     {
       //được xóa khi trang thái bằng 0 trong DB
       $ma = $_POST["ma"];
-      $checkTrangThai  = true ;
+      // $checkTrangThai  = true ;
       //nếu tìm thấy trạng thái trong DB bằng 1 thì $checkTrangThai = false
-      if($this->KhachHangModel->kiemTraTrangThai($ma) == 1) $checkTrangThai = false;
+      // if($this->KhachHangModel->kiemTraTrangThai($ma) == 1) $checkTrangThai = false;
       //echo $this->KhachHangModel->kiemTraTrangThai($ma);
-      if($checkTrangThai == true)
-      {
-        if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
-        else echo 'Xóa Khách hàng Thất Bại!';
-      }
-        else echo "Khách hàng Đã Được Sử Dụng";
+      // if($checkTrangThai == true)
+      // {
+      //   if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
+      //   else echo 'Xóa Khách hàng Thất Bại!';
+      // }
+      //   else echo "Khách hàng Đã Được Sử Dụng";
+
+      if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
+      else echo 'Xóa Khách hàng Thất Bại!';
     }
 
 

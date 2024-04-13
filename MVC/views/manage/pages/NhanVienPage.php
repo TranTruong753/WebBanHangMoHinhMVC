@@ -31,10 +31,6 @@ $PhanTrangModel = new PhanTrangModel();
   </tbody>
 </table>
 
-<div class="PhanTrang">
-
-</div>
-
 <script>
   var tmpKey = "";
   var index = 1;
@@ -112,7 +108,7 @@ $PhanTrangModel = new PhanTrangModel();
   {
     var ma = obj.id;
       $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/XoaDuLieuKhachHang',
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
       type: 'post',
       dataType: 'html',
       data: {
@@ -128,23 +124,22 @@ $PhanTrangModel = new PhanTrangModel();
 
 
   // Hàm Đổi Trạng Thái của Khách Hàng khi tick vào check box Trạng Thái
-  function DoiTrangThaiKhachHang(obj) {
+  function DoiTrangThaiNhanVien(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
     var result = confirm("Bạn có muốn đổi trạng thái?");
-    var trangThai = 1;
     if (result == true) {
       if (checkBox.checked == true) {
-        // var trangThai = 1;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/DoiTrangThai", {
+        var trangThai = 1;
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
           ma: ma,
           trangThai: trangThai
         }, function(data) {
           // alert(data);
         })
       } else {
-        trangThai = 0;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/DoiTrangThai", {
+        var trangThai = 0;
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
           ma: ma,
           trangThai: trangThai
         }, function(data) {
