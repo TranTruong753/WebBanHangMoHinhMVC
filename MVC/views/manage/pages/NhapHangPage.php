@@ -1,25 +1,38 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <table class="table">
 <style></style>
 <div style="text-align: center;">
 <h1 style=" margin-bottom: 20px;">Quản Lý Nhập Hàng</h1>
 
 </div>
+<div class="search">
+  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+  <input type="button" id="btnSearch" value="Tìm Kiếm">
+</div>
   <thead>
     <tr>
       <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th scope="col" style="text-align: center;">Ngày nhập</th>
+      <th scope="col" style="text-align: center;">Tông tiền</th>
+      <th scope="col" style="text-align: center;">Nhà cung cấp</th>
+      <th scope="col" style="text-align: center;">Nhân viên</th>
+      
     </tr>
-  </thead>
-  <tbody class="table-group-divider">
-
-    <tr>
-      <th style="text-align: center;" scope="row">1</th>
-      <td style="text-align: center;">Mark</td>
-      <td style="text-align: center;">Otto</td>
-      <td style="text-align: center;"><pre><a href="">Sửa</a> |  <a href="">Xóa</a> | <a href="">Chi Tiết</a>  <br> <a href="">Sản Phẩm Con</a> </pre></td>
-    </tr>
-    
+    <tbody class="table-group-divider">
+  <input type="submit" onclick="DieuHuong()" value="Nhập Hàng">
+  <tbody class="table-group-divider row-table">
   </tbody>
 </table>
+
+<div class="PhanTrang">
+
+</div>
+<script>
+  function DieuHuong()
+  {
+    window.location="http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemPhieuNhapPage";
+  }
+  
+
+</script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyPN.js"></script>

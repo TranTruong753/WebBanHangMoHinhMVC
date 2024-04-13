@@ -87,7 +87,32 @@ class AjaxCTSP extends controller {
     }
     function DeleteCTSP(){
         $mactsp = $_POST["mactsp"];
-        
+        $result=$this->chitietspmodel->GettheoMactsp($mactsp);
+        if($result->num_rows >0){
+          while($row = $result->fetch_assoc()){
+            if($row['SoLuongNhap']>0){
+              if($this->chitietspmodel->UpdateTTCTSP($mactsp)){
+                $data=json_encode(["kq"=>true,"sl"=>$row['SoLuongNhap']]);
+                echo $data;
+              }
+              else {
+                $data=json_encode(["kq"=>false]);
+                echo $data;
+              }
+            }
+            else {
+              if($this->chitietspmodel->DeleteCTSP($mactsp)){
+                $data=json_encode(["kq"=>true]);
+                echo $data;
+              }
+              else {
+                $data=json_encode(["kq"=>false,"sl"=>"cc"]);
+                echo $data;
+              }
+            }
+
+          }
+        }
         // else echo "false";
         
     }
@@ -128,7 +153,7 @@ class AjaxCTSP extends controller {
             $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp);
             while($row = $result->fetch_assoc())
             {
-              $html .=  '<tr> 
+              $html .=  '<tr id="'.$row["MaChiTietSanPham"].'" onclick="loadID(this)"> 
               <th style="text-align: center;" scope="row">
                 <img weight= 300px height=400px  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
               </th>

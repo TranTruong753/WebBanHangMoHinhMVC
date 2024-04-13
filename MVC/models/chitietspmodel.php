@@ -47,9 +47,19 @@ class chitietspmodel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+    public function UpdateCTSPtheoSLNHAPvaSLTON($mactsp,$slton,$slnhap){
+        $qr = 'UPDATE chitietsanpham set SoLuongTon = '.$slton.',SoLuongNhap = '.$slnhap.' where MaChiTietSanPham = "'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
 
     public function UpdateAllCTSP($mactsp,$makichco,$mamausac,$hinhanh){
         $qr = 'UPDATE chitietsanpham set MaKichCo = "'.$makichco.'" ,MaMauSac="'.$mamausac.'" ,HinhAnh="'.$hinhanh.'" where MaChiTietSanPham = "'.$mactsp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+    public function UpdateTTCTSP($mactsp){
+        $qr = 'UPDATE chitietsanpham set TrangThai = 0 where MaChiTietSanPham = "'.$mactsp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
@@ -127,7 +137,7 @@ class chitietspmodel extends DB{
             on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
             on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
             on sanpham.MaSanPham=chitietsanpham.MaSanPham 
-            where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and chitietsanpham.MaSanPham= '$masp' "; 
+            where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and chitietsanpham.MaSanPham= '$masp' and chitietsanpham.TrangThai= 1"; 
 
             $qr .= " ORDER BY Machitietsanpham DESC";
             $qr .= " LIMIT $batDau,$soLuong";
@@ -140,7 +150,7 @@ class chitietspmodel extends DB{
             $qr .= " INNER JOIN mausac 
             on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
             on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
-            on sanpham.MaSanPham=chitietsanpham.MaSanPham where chitietsanpham.MaSanPham= '$masp' ORDER BY MaChiTietSanPham DESC";
+            on sanpham.MaSanPham=chitietsanpham.MaSanPham where  chitietsanpham.MaSanPham= '$masp' and chitietsanpham.TrangThai= 1 ORDER BY MaChiTietSanPham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);
