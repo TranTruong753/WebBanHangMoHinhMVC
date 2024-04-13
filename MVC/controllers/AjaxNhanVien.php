@@ -93,35 +93,28 @@
     }
 
     public function update(){
-        $check = false;
+        $checkSdt = false;
+        $checkCCCD = false;
         $maNhanVien = $_POST["maNhanVien"];
         $tenNhanVien = $_POST["tenNhanVien"];
         $sdt = $_POST["sdt"];
         $cccd = $_POST["cccd"];
         $ngaySinh = $_POST["ngaySinh"];
         if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
-          $check = true;
+          $checkSdt = true;
           
         }else{
-          $check = false;
-          // echo '<script> 
-          //   var errorUserPhone = document.getElementById("error-userPhone");
-          //   errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
-          // </script>';
-          echo '-2';
-        }
-        if($this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
-          $check = true;
-        }else{
-          $check = false;
-          // echo '<script>
-          //     var errorUserCccd = document.getElementById("error-userCCCD");
-          //     errorUserCccd.innerHTML = "CCCD bị trùng!";
-          // </script>';
+          $checkSdt = false;
           echo '-1';
         }
+        if($this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
+          $checkCCCD = true;
+        }else{
+          $checkCCCD = false;   
+          echo '-2';
+        }
 
-        if($check){
+        if($checkCCCD&&$checkSdt){
           if($this->NhanVienModel->update($maNhanVien,$tenNhanVien,$sdt,$cccd,$ngaySinh))
           {
               echo "1";

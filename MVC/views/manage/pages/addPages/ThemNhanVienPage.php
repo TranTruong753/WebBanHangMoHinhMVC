@@ -176,7 +176,7 @@ if ($index == "Sửa") {
                     if(data == 1)
                     {
                         alert("Cập nhật dữ liệu thành công!");
-                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4";
                     }
                     if(data == -1){
                         alert("Số điện thoại bị trùng!");
