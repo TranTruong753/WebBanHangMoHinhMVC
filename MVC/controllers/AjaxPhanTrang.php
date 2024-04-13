@@ -38,11 +38,18 @@ class AjaxPhanTrang extends controller{
             }
             if($table == 'sanpham')
             {   
-                $varibleEqual.= "  MaSanPham,TenSanPham";
+                $varibleEqual.= "  sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu";
             }
             if($table == 'chitietsanpham')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietsanpham.MachitietSanPham,mausac.TenMauSac,kichco.TenKichCo";
+            }
+            if($table == "khuyenmai")
+            {
+                $varibleEqual .= " MaKhuyenMai,TenKhuyenMai,MucKhuyenMai ";
+            if($table == 'phieunhap')
+            {   //$masp=$_POST["masp"];
+                $varibleEqual.= "  phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien";
             }
             if($condition == "")
             {
@@ -101,6 +108,6 @@ class AjaxPhanTrang extends controller{
     //         echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
 
     //     }
-    // }
+    }
 }
 ?>

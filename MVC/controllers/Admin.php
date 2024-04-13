@@ -46,6 +46,7 @@ class Admin extends controller
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
+            $this->data["Data"]= [];
         } else if ($this->pageName == "ThuongHieuPage") {
             $ThuongHieuModel = $this->model("ThuongHieuModel");
             $this->data["Data"]= $ThuongHieuModel->getDanhSach();
@@ -94,7 +95,9 @@ class Admin extends controller
         }
         
         else if ($this->pageName == "KhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model("KhuyenMaiModel");
             $this->data["detail"] = "KhuyenMaiPage";
+            $this->data["Data"]=[];
         }
         else if ($this->pageName == "ThuePage") {
             $this->data["detail"] = "ThuePage";
@@ -103,6 +106,17 @@ class Admin extends controller
             $this->data["detail"] = "ThongKePage";
         }
         //page thêm
+        else if ($this->pageName == "ThemKhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model( "KhuyenMaiModel");
+            $this->data["detail"] = "addPages/ThemKhuyenMaiPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
+        else if ($this->pageName == "SuaKhuyenMaiPage") {
+            $KhuyenMaiModel = $this->model( "KhuyenMaiModel");
+            $this->data["detail"] = "addPages/ThemKhuyenMaiPage";
+            if(isset($this->params[1])) $this->data["MaKhuyenMai"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaKhuyenMai"=>$this->data["MaKhuyenMai"],"KhuyenMaiModel"=>$KhuyenMaiModel];
+        }
         else if ($this->pageName == "ThemChucNangPage") {
             $ChucNangModel = $this->model( "ChucNangModel");
             $this->data["detail"] = "addPages/ThemChucNangPage";
@@ -181,6 +195,13 @@ class Admin extends controller
             $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
             $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
+        else if ($this->pageName == "ThemPhieuNhapPage") {
+            $sp=$this->model( "SanPhamModel")->getDanhSach();
+            $pn=$this->model( "PhieuNhapModel")->getAllPN();
+            $ncc=$this->model( "NhaCungCapModel")->getAllNCC();
+            $this->data["detail"] = "addPages/ThemPhieuNhapPage";
+            $this->data["Data"] = ["SP"=>$sp,"PN"=>$pn,"NCC"=>$ncc];
+        }
 
         print_r($this->data); 
 
@@ -191,10 +212,10 @@ class Admin extends controller
     //     $this->view("manage/pages/ThongKePage", $this->data);
     // };'ơ
 
-    public function main($x=[])
-    {
-        print_r($x) ;
-    }
+    // public function main($)
+    // {
+    //     print_r($x) ;
+    // }
 
     public function paramsProcess($data)
     {

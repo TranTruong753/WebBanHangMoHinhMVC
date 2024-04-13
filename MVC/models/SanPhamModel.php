@@ -29,6 +29,12 @@
            return true;
         return false;
     }
+    public function UpdateTTSP($masp){
+        $qr = 'UPDATE sanpham set TrangThai = 0 where MaSanPham = "'.$masp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
 
     public function InsertSP($masp,$tensp,$giasp,$matheloai,$machatlieu){
         $qr = "INSERT INTO sanpham VALUES ('$masp', '$matheloai','$tensp','$giasp','0','0','0','0','$machatlieu','1','1')";
@@ -63,7 +69,7 @@
             $qr .= " INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai  
             INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu  
             INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu 
-            where concat(sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu) like '%$key%'"; 
+            where concat(sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu) like '%$key%' and sanpham.TrangThai= 1"; 
 
             $qr .= " ORDER BY MaSanPham DESC";
             $qr .= " LIMIT $batDau,$soLuong";
@@ -75,7 +81,7 @@
         {
             $qr .= " INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai  
             INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu  
-            INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu ORDER BY MaSanPham DESC";
+            INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu where sanpham.TrangThai= 1 ORDER BY MaSanPham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

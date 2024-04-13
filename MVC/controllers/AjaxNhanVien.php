@@ -6,6 +6,7 @@
         {
             $this->NhanVienModel= $this->model("NhanVienModel");
         }
+
         public function getDanhSach(){
             $key = $_POST['key'];
             $pageIndex = $_POST['index'];
@@ -28,7 +29,7 @@
                   <td style='text-align: center;'>
         
                   <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                    <input onchange='DoiTrangThaiKhachHang(this)' id='".$row['MaNhanVien']."' type='checkbox' value='1'";
+                    <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaNhanVien']."' type='checkbox' value='1'";
                     if ($row["TrangThai"] == 1) {
                       $html .= "checked";
       
@@ -47,6 +48,39 @@
                 echo $html;
             }
             
-          }    
+          }
+
+          public function XoaDuLieuNhanVien()
+          {
+            //được xóa khi trang thái bằng 0 trong DB
+            $ma = $_POST["ma"];
+           // $checkTk  = false ;
+            //nếu tìm thấy tài khoản của nv trong DB bằng 1 thì $checkTk = true
+           //if($this->NhanVienModel->kiemTraTaiKhoanNv($ma)==1) $checkTk = true;
+
+          
+           if($this->NhanVienModel->delete($ma)==1){
+              echo 'Xóa Nhân viên Thành Công!';
+           }else{
+              echo 'Xóa Nhân viên Thất bại!';
+           }
+            //echo $this->KhachHangModel->kiemTraTrangThai($ma);
+          //   if($checkTrangThai == true)
+          //   {
+          //     if($this->NhanVienModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
+          //     else echo 'Xóa Khách hàng Thất Bại!';
+          //   }
+          //     else echo "Khách hàng Đã Được Sử Dụng";
+           }
+
+           public function DoiTrangThai()
+          {
+              $ma = $_POST['ma'];
+              $trangThai = $_POST['trangThai'];
+              $this->NhanVienModel->updateTrangThai($ma,$trangThai);
+          }
+
+                
+          
     }
 ?>

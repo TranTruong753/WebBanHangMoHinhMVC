@@ -5,9 +5,10 @@ class PhanTrangModel extends DB{
     public function PhanTrang($index,$sizePage = 8,$tableName,$condition="")
     {
         $qr = "SELECT * From $tableName $condition";
+
+        // echo $qr;
        
         $result = $this->con->query($qr)->num_rows;
-        // echo $result;
         $total = ceil($result/$sizePage);
        
         $html = "";

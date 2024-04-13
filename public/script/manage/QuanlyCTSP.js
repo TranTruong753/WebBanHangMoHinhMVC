@@ -72,8 +72,30 @@ function updateCTSP(){
 function DeleteCTSP(ojt){
     
     var mactsp=ojt.id;
-    
-    alert(mactsp);
+    let choice = confirm("Bạn có chắc muốn xóa không!");
+    if (choice) {
+       
+    $.ajax({
+      url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DeleteCTSP",
+      type: "post",
+      dataType: "JSON",
+      data: {
+
+        mactsp : mactsp
+      },
+      success: function(data) {
+        if(data.kq== true){
+          alert("xoa thanh cong");
+          
+          loadTable(tmpKey,index,size)
+          loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
+        }
+        else {alert("xoa that bai");}
+      }
+    })
+    } else {
+        alert("Yêu cầu xóa đã hủy");
+    }
 
 }
 
@@ -82,7 +104,7 @@ var index = 1;
 var size = 4;
 var masp=document.getElementById('masp').value;
 var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco"+  
-" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"'";
+" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' and chitietsanpham.TrangThai= 1";
 
 
 
@@ -95,26 +117,6 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
 
 })
 
-//hàm load phân trnag 
-
-function btnXoa(obj)
-{
-  var ma = obj.id;
-
-    $.ajax({
-    url: 'http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/XoaDuLieuNhomQuyen',
-    type: 'post',
-    dataType: 'html',
-    data: {
-      ma: ma,
-    },
-    success: function(data) {
-      alert(data);
-    }
-  })
-  loadTable(tmpKey,index,size)
-  loadPhanTrang("chitietsanpham",index,size,"",tmpKey)
-}
 
 function loadTable(key, index, size) {
   $.ajax({
