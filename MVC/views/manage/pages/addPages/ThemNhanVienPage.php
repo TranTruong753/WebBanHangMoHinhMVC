@@ -5,16 +5,6 @@ if ($index == "Sửa") {
     $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
     $item = $NhanVienModel->getItemById($MaNhanVien);
 
-    // $item02 = $NhanVienModel->getNhanVien($MaNhanVien);
-
-    // if($item02->num_rows>0)
-    // {
-    //     while($row = $item02->fetch_assoc())
-    //     {
-    //         $userName = $row['TenNhanVien'];
-    //         // echo $userName;
-    //     }
-    // }
   
 }
 

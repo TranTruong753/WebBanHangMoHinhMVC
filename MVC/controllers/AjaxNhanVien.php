@@ -39,7 +39,7 @@
             </td>
             <td style='text-align: center;'>
             <!-- link  để chuyển sang trang nhóm quyền -->
-              <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a></pre>
+              <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a>| <a href='#!'>Cấp tài khoản</a></pre>
             </td>
           </tr> ";
             
