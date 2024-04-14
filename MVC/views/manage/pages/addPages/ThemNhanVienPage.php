@@ -5,16 +5,6 @@ if ($index == "Sửa") {
     $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
     $item = $NhanVienModel->getItemById($MaNhanVien);
 
-    // $item02 = $NhanVienModel->getNhanVien($MaNhanVien);
-
-    // if($item02->num_rows>0)
-    // {
-    //     while($row = $item02->fetch_assoc())
-    //     {
-    //         $userName = $row['TenNhanVien'];
-    //         // echo $userName;
-    //     }
-    // }
   
 }
 
@@ -105,7 +95,7 @@ if ($index == "Sửa") {
         if($index=="Sửa"){
             echo '
             <div class="">
-                <button>Cập nhật</button>
+                <button type="button" onclick="btnEdit()">Cập nhật</button>
             </div>
             ';
         }
@@ -151,6 +141,53 @@ if ($index == "Sửa") {
         }
 
     }
+
+    function btnEdit() {
+        var maNhanVien = document.getElementById("userId").value;
+        var tenNhanVien = document.getElementById("userName").value;
+        var sdt = document.getElementById("userPhone").value;
+        var cccd = document.getElementById("userCCCD").value;
+        var ngaySinh = document.getElementById("date").value;
+        // alert(tenNhanVien+sdt+cccd+ngaySinh);
+        if(checkForm(tenNhanVien,sdt,cccd,ngaySinh)){
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/update",
+                type:"post",
+                dataType:"html",
+                data:{
+                    maNhanVien:maNhanVien,
+                    tenNhanVien:tenNhanVien,
+                    sdt:sdt,
+                    cccd:cccd,
+                    ngaySinh:ngaySinh,
+                },
+                success: function(data)
+                {
+                    if(data == 1)
+                    {
+                        alert("Cập nhật dữ liệu thành công!");
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4";
+                    }
+                    if(data == -1){
+                        alert("Số điện thoại bị trùng!");
+                        var errorUserPhone = document.getElementById("error-userPhone");
+                        errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
+                    } 
+                    if(data == -2){
+                        alert("CCCD bị trùng!");
+                        var errorUserCccd = document.getElementById("error-userCCCD");
+                        errorUserCccd.innerHTML = "CCCD bị trùng!";
+                    }                 
+                    if(data==0)
+                    {
+                        alert("Cập nhật dữ liệu thất bại!");
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    }
+                }
+            })
+        }
+
+    }    
 
 
     function checkPatternUser(userName){

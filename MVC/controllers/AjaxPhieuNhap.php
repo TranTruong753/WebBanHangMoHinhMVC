@@ -33,8 +33,8 @@ class AjaxPhieuNhap extends controller {
               <td style="text-align: center;">'.$row["TenNhaCungCap"].'</td>
               <td style="text-align: center;">'.$row["TenNhanVien"].'</td>
               
-              <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaPhieuNhap"].'">Xóa</button> | 
-              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaPhieuNhap"].'">Sản Phẩm Con</a> </pre></td>
+              <td style="text-align: center;"><pre> 
+              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'">Chi Tiết</a> </pre></td>
             </tr>';
             }
             echo $html;
@@ -49,7 +49,7 @@ class AjaxPhieuNhap extends controller {
     $manv=$_POST['manv'];
     $donvinhap="del bt";
     
-    //echo $mapn." ".$ngaynhap." ".$tongtien." ".$ncc." ".$manv;
+    echo $mapn." ".$ngaynhap." ".$tongtien." ".$ncc." ".$manv;
     $this->PhieuNhapModel->InsertPN($mapn,$ngaynhap,$tongtien,$ncc,$manv);
     for($i=0;$i<count($arr);$i++){
       $this->ChiTietPhieuNhapModel->InsertCTPN($mapn,$arr[$i]['mactsp'],$donvinhap,$arr[$i]['sl'],$arr[$i]['gn'],$arr[$i]['tt']);

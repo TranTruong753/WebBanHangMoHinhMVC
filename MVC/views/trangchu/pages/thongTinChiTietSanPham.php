@@ -10,7 +10,7 @@
 <body>
     <header class="user__header ">
         <?php
-            
+            if($data['CTHD']->num_rows>0){
             $row = $data['CTHD']->fetch_assoc();
             $tongtien=$row['TongTien'];
             echo '<h2 class="client-title-01">Chi Tiết Đơn Hàng # '.$row['MaHoaDon'].'</h2>
@@ -44,6 +44,7 @@
                     </tr>'
                 ;
                 $data['CTHD']->data_seek(0);
+            }
                 if ($data['CTHD']->num_rows > 0) {
                     while ($row = $data['CTHD']->fetch_assoc()) {
                         echo    '

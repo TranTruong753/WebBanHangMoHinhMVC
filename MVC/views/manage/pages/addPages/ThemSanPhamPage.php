@@ -3,6 +3,8 @@
     $theloai=$data["DanhSach"]["TL"];
     $chatlieu=$data["DanhSach"]["CL"];
     $sanpham=$data["DanhSach"]["SP"];
+    $km=$data["DanhSach"]["KM"];
+   
     $dem=0;
     if ($sanpham->num_rows > 0) {
         while ($row = $sanpham->fetch_assoc()) {
@@ -19,8 +21,19 @@
     <label for="">Tên sản phẩm</label><br>
     <input type="text" id="tensanpham"> <br>
 
-    <label for="">Giá sản phẩm</label><br>
-    <input type="text" id="giasanpham"> <br>
+    <label for="">Giá Nhập</label><br>
+    <input type="text" id="gianhap"> <br>
+
+    <label for="">Khuyến mãi</label> <br>
+    <select name="" id="khuyenmai"  class="">
+        <?php
+        if ($km->num_rows > 0) {
+            while ($row = $km->fetch_assoc()) {
+                    echo '<option  value="'.$row['MaKhuyenMai'].'" >'.$row['TenKhuyenMai'].'-'.$row['MucKhuyenMai'].'%</option>';
+            }
+        }
+        ?>
+    </select><br>
 
     <label for="">Thể loại</label> <br>
     <select name="" id="theloai"  class="">

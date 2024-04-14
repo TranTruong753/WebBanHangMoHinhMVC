@@ -7,16 +7,40 @@ class AjaxSanPham extends controller {
     public function __construct() {
        $this->SanPhamModel = $this->model("SanPhamModel");
        $this->chitietspmodel = $this->model("chitietspmodel");
+       $this->KhuyenMaiModel = $this->model("KhuyenMaiModel");
 
     }
     function InsertSP(){
         $masp = $_POST["masp"];
         $tensp = $_POST["tensp"];
-        $giasp = $_POST["giasp"];
+        $gianhap = $_POST["gianhap"];
         $matheloai = $_POST["matheloai"];
         $machatlieu = $_POST["machatlieu"];
+        $khuyenmai=$_POST["khuyenmai"];
+        $result=$this->KhuyenMaiModel->getItemById($khuyenmai);
+        $giasp=0;
+        $giasp=(float)$gianhap*2-((float)$gianhap*(float)$result['MucKhuyenMai'])/100;
         //echo $masp." cc ".$tensp." ".$giasp." ".$matheloai." ".$machatlieu;
-        if($this->SanPhamModel->InsertSP($masp,$tensp,$giasp,$matheloai,$machatlieu)){
+        //echo $giasp;
+        if($this->SanPhamModel->InsertSP($masp,$tensp,$giasp,$gianhap,$matheloai,$machatlieu,$khuyenmai)){
+            echo "true";
+        }
+        else echo "false";
+        
+    }
+    function UpdateSP(){
+        $masp = $_POST["masp"];
+        $tensp = $_POST["tensp"];
+        $gianhap = $_POST["gianhap"];
+        $matheloai = $_POST["matheloai"];
+        $machatlieu = $_POST["machatlieu"];
+        $khuyenmai=$_POST["khuyenmai"];
+        $result=$this->KhuyenMaiModel->getItemById($khuyenmai);
+        $giasp=0;
+        $giasp=(float)$gianhap*2-((float)$gianhap*(float)$result['MucKhuyenMai'])/100;
+        echo $masp." cc ".$tensp." ".$giasp." ".$matheloai." ".$machatlieu;
+        //echo $giasp;
+        if($this->SanPhamModel->UpdateSPMoi($masp,$tensp,$giasp,$matheloai,$machatlieu,$khuyenmai)){
             echo "true";
         }
         else echo "false";
@@ -62,10 +86,11 @@ class AjaxSanPham extends controller {
               <td style="text-align: center;">'.$row["GiaSanPham"].'</td>
               <td style="text-align: center;">'.$row["SoLuongTonSP"].'</td>
               <td style="text-align: center;">'.$row["GiaNhap"].'</td>
+              <td style="text-align: center;">'.$row["TenKhuyenMai"].'-'.$row["MucKhuyenMai"].'%</td>
               <td style="text-align: center;">'.$row["TenTheLoai"].'</td>
               <td style="text-align: center;">'.$row["TenChatLieu"].'</td>
               <td style="text-align: center;">'.$row["TenThuongHieu"].'</td>
-              <td style="text-align: center;"><pre><a href="">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaSanPham"].'">Xóa</button> | 
+              <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaSanPham"].'">Xóa</button> | 
               <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'">Sản Phẩm Con</a> </pre></td>
             </tr>';
               

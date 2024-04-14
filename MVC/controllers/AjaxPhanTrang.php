@@ -38,7 +38,7 @@ class AjaxPhanTrang extends controller{
             }
             if($table == 'sanpham')
             {   
-                $varibleEqual.= "  sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu";
+                $varibleEqual.= "  sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu,khuyenmai.TenKhuyenMai";
             }
             if($table == 'chitietsanpham')
             {   //$masp=$_POST["masp"];
@@ -53,6 +53,10 @@ class AjaxPhanTrang extends controller{
             }
             if($table == "chitietquyen")
             {
+            }
+            if($table == 'chitietphieunhap')
+            {   //$masp=$_POST["masp"];
+                $varibleEqual.= "  chitietphieunhap.MaChiTietSanPham,sanpham.TenSanPham";
             }
             if($condition == "")
             {

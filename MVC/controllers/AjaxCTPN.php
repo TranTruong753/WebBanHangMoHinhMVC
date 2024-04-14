@@ -2,15 +2,17 @@
 
 class AjaxCTPN extends controller {
 
-    private $SanPhamModel;
-    private $chitietspmodel;
-    private $PhieuNhapModel;
-    public function __construct() {
-       $this->SanPhamModel = $this->model("SanPhamModel");
-       $this->chitietspmodel = $this->model("chitietspmodel");
-       $this->PhieuNhapModel = $this->model("PhieuNhapModel");
+      private $SanPhamModel;
+      private $chitietspmodel;
+      private $PhieuNhapModel;
+      private $ChiTietPhieuNhapModel;
+      public function __construct() {
+         $this->SanPhamModel = $this->model("SanPhamModel");
+         $this->chitietspmodel = $this->model("chitietspmodel");
+         $this->PhieuNhapModel = $this->model("PhieuNhapModel");
+         $this->ChiTietPhieuNhapModel=$this->model("ChiTietPhieuNhapModel");
 
-    }
+   }
     
     public function getDanhSach()
    {  $tongtien=0;
@@ -36,6 +38,39 @@ class AjaxCTPN extends controller {
    $data=json_encode(["html"=>$html,"tongtien"=>$tongtien]);
    echo $data;
 }
+
+    
+   public function HienDanhSach(){  
+      $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        $mapn=$_POST['mapn'];
+
+        $html="";
+        
+       
+        if($this->ChiTietPhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem,$mapn)->num_rows >0)
+        {
+            $result=$this->ChiTietPhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem,$mapn);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '<tr> 
+              
+              <th style="text-align: center;" scope="row">'.$row["MaChiTietSanPham"].'</th>
+              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
+              <td style="text-align: center;">'.$row["SoLuong"].'</td>
+              <td style="text-align: center;">'.$row["TienNhap"].'</td>
+              <td style="text-align: center;">'.$row["ThanhTien"].'</td>
+              
+              
+            </tr>';
+              
+            }
+
+            echo $html;
+        }
+
+   }
 
 }
 

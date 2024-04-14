@@ -100,6 +100,35 @@
             }
         }
 
+        public function update($ma,$ten,$sdt,$cccd,$ngaySinh)
+        {
+            $qr = "UPDATE nhanvien SET TenNhanVien = '$ten', SoDienThoai = '$sdt',  CCCD = '$cccd', NgaySinh = '$ngaySinh' where MaNhanVien = '$ma'";
+            if($this->con->query($qr))
+            {
+                return 1;
+            }
+            else return 0;
+        }
+        
+        //check sdt
+        public function checkSdtTrung($sdt,$ma) {
+            $qr = "SELECT COUNT(*) as total FROM nhanvien WHERE SoDienThoai = '$sdt' AND MaNhanVien !='$ma'";
+            $result = $this->con->query($qr);
+            $row = $result->fetch_assoc();
+            if($row['total']>0)
+                return false;
+            return true;
+        }
+        //check cccd
+        public function checkCccdTrung($cccd,$ma) {
+            $qr = "SELECT COUNT(*) as total FROM nhanvien WHERE CCCD = '$cccd' AND MaNhanVien !='$ma'";
+            $result = $this->con->query($qr);
+            $row = $result->fetch_assoc();
+            if($row['total']>0)
+                return false;
+            return true;
+        }
+
         public function kiemTraTaiKhoanNv($ma){
             $qr = "SELECT * FROM taikhoan where MaNhanVien= '$ma'";
             if(mysqli_query($this->con,$qr)->num_rows > 0)
@@ -134,16 +163,19 @@
             }
         }
 
+
+       
+
         public function updateTrangThai($ma,$trangThai)
-    {
-        $qr = "UPDATE nhanvien set TrangThai = $trangThai where MaNhanVien = '$ma'";
-        if($this->con->query($qr))
         {
-            echo "Đổi Trạng Thái Thành Công!";
-        }else
-        {
-            echo "Đổi Trạng Thái Thất Bại!";
+            $qr = "UPDATE nhanvien set TrangThai = $trangThai where MaNhanVien = '$ma'";
+            if($this->con->query($qr))
+            {
+                echo "Đổi Trạng Thái Thành Công!";
+            }else
+            {
+                echo "Đổi Trạng Thái Thất Bại!";
+            }
         }
-    }
     }
 ?>

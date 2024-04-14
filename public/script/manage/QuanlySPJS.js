@@ -1,27 +1,60 @@
 function addSP(){
     var masanpham=document.getElementById("masanpham").value;
     var tensanpham=" ";
-    var giasanpham= " ";
-    giasanpham=document.getElementById("giasanpham").value;
+    var gianhap= " ";
+    
+    gianhap=document.getElementById("gianhap").value;
     tensanpham=document.getElementById("tensanpham").value;
     if(!tensanpham){
         alert("Không được để trống tên sản phẩm");
-    } else if(!giasanpham){
-        alert("Không được để trống giá sản phẩm");
+    } else if(!gianhap){
+        alert("Không được để trống giá nhập");
     }
-    else if(isNaN(giasanpham)== true){
+    else if(isNaN(gianhap)== true){
         alert("Giá sản phẩm không hợp lý");
     }
     else {
+      
     var machatlieu=document.getElementById("chatlieu").value;
     var matheloai=document.getElementById("theloai").value;
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/InsertSP",{masp : masanpham, tensp: tensanpham, giasp: giasanpham,machatlieu: machatlieu,
-    matheloai : matheloai},function(data){
+    var khuyenmai=document.getElementById("khuyenmai").value;
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/InsertSP",{masp : masanpham, tensp: tensanpham, gianhap: gianhap,machatlieu: machatlieu,
+    matheloai : matheloai,khuyenmai:khuyenmai},function(data){
         alert("Thêm thành công");
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
                 window.location.assign(url);
+        //alert(data);
     });
     }
+}
+
+function updateSP(){
+  var masanpham=document.getElementById("masanpham").value;
+    var tensanpham=" ";
+    gianhap=document.getElementById("gianhap").value;
+    tensanpham=document.getElementById("tensanpham").value;
+    if(!tensanpham){
+        alert("Không được để trống tên sản phẩm");
+    } else if(!gianhap){
+        alert("Không được để trống giá nhập");
+    }
+    else if(isNaN(gianhap)== true){
+        alert("Giá sản phẩm không hợp lý");
+    }
+    else {
+      
+    var machatlieu=document.getElementById("chatlieu").value;
+    var matheloai=document.getElementById("theloai").value;
+    var khuyenmai=document.getElementById("khuyenmai").value;
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/UpdateSP",{masp : masanpham, tensp: tensanpham, gianhap: gianhap,machatlieu: machatlieu,
+    matheloai : matheloai,khuyenmai:khuyenmai},function(data){
+        alert("Cập nhật thành công");
+        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
+                window.location.assign(url);
+        //alert(data);
+    });
+    }
+
 }
 function XoaSP(ojt)
   { 
@@ -61,7 +94,9 @@ function XoaSP(ojt)
   var size = 4;
   var sql=" INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai"+  
   " INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu"+  
-  " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu Where sanpham.TrangThai= 1 ";
+  " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu"+
+  " INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai"+ 
+   " Where sanpham.TrangThai= 1 ";
 
 
    // load khi chạy trang
