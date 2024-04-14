@@ -4,7 +4,10 @@ class PhanTrangModel extends DB{
 
     public function PhanTrang($index,$sizePage = 8,$tableName,$condition="")
     {
-        $qr = "SELECT * From $tableName $condition";
+        $qr = "SELECT ";
+        if($tableName == "chitietquyen") $qr .= " DISTINCT ";
+
+        $qr .= " * From $tableName $condition";
 
         // echo $qr;
        

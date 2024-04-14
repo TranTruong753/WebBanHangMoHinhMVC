@@ -1,7 +1,7 @@
 <table class="table">
   <style></style>
   <div style="text-align: center;">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Nhóm Quyền</h1>
+    <h1 style=" margin-bottom: 20px;">Quản Lý Tài Khoản</h1>
 
   </div>
   <thead>

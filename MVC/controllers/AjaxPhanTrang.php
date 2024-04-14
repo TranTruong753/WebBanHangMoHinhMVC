@@ -51,6 +51,9 @@ class AjaxPhanTrang extends controller{
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien";
             }
+            if($table == "chitietquyen")
+            {
+            }
             if($condition == "")
             {
                 $condition.= " where ";
