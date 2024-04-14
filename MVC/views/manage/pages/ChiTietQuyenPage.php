@@ -156,7 +156,7 @@ $ChucNangModel = new ChucNangModel();
       alert("Xóa Dữ Liệu Thất Bại!");
     } {
       alert("Xóa Dữ Liệu Thành công");
-      window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage";
+      loadTable(tmpKey, index, size);
     }
 
 
@@ -219,7 +219,7 @@ $ChucNangModel = new ChucNangModel();
       if (result == true) {
         alert("Thêm Dữ Liệu Chi Tiết Quyền Thành Công!");
         // $.post("http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage")
-        window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage";
+        loadTable(tmpKey, index, size);
       } else {
         alert("Thêm Dữ Liệu Chi Tiết Quyền Thất Bại!");
       }
