@@ -271,6 +271,7 @@ function Nhaphang(){
       manv:manv
     },
     success: function(data) {
+      //alert(data);
       alert("Nhap hang thanh cong");
       var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
              window.location.assign(url);
