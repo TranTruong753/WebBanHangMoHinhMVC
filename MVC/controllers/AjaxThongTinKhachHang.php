@@ -59,15 +59,23 @@ class AjaxThongTinKhachHang extends controller {
     $tenKhachHang = $_POST["tenKhachHang"];
     $sdt = $_POST["sdt"];
     $gioitinh = $_POST["gioitinh"];
-    if($this->KhachHangModel->checkSdtTrung($sdt,$maKhachHang)){
+
+    if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')&&!$this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
+        echo '-3';
+        $checkMa = false;
+        $checkSdt = false;
+    }
+    else if($this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
       $checkSdt = true; 
-    }else{
+    }
+    else if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
       $checkSdt = false;
       echo '-1';
     }
-    if($this->KhachHangModel->checkSdtMaTrung($maKhachHang)){
+    else if($this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
       $checkMa = true; 
-    }else{
+    }
+    else{
       $checkMa = false;
       echo '-2';
     }

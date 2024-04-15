@@ -136,8 +136,6 @@ if ($index == "Sửa") {
                 gioitinh= radioButtons[i].value;
             }
         }
-        alert(gioitinh);
-        alert(checkForm(tenKhachHang,sdt,gioitinh));
         if(checkForm(tenKhachHang,sdt,gioitinh)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/insert",
@@ -156,24 +154,27 @@ if ($index == "Sửa") {
                     alert(data);
                     if(data == 1)
                     {
+                        errorUserId.innerHTML = "";
+                        errorUserPhone.innerHTML = "";
                         alert("Thêm dữ liệu thành công!");
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,1,4";
                     }
-                    if(data == -1&&data == -2){
+                    else if(data == -3){
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
                         errorUserId.innerHTML = "Mã bị trùng!";
-                    }
-                    if(data == -1){
+                    }                  
+                    else if(data == -1){
                         // alert("Số điện thoại bị trùng!");
                         errorUserId.innerHTML = "";
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
                     }
-                    if(data == -2){
+                    else if(data == -2){
                         // alert("Gmail bị trùng!");
                         errorUserPhone.innerHTML = "";
                         errorUserId.innerHTML = "Mã bị trùng!";
-                    }                          
-                    if(data==0)
+                    }
+                                            
+                    else (data==0)
                     {
                         alert("Thêm dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
