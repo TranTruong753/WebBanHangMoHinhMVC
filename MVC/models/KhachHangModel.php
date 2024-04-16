@@ -14,6 +14,20 @@ class KhachHangModel extends DB{
         return $this->con->query($qr);
     }
 
+    public function getItemById($ma)
+        {
+            $qr = "SELECT * FROM khachhang where MaKhachHang = '$ma'";
+            $result = $this->con->query($qr);
+            if($result->num_rows>0)
+            {
+                while($row = $result->fetch_assoc())
+                {
+                    return ["MaKhachHang"=>$row["MaKhachHang"],"TenKhachHang"=>$row["TenKhachHang"],"SoDienThoai"=>$row["SoDienThoai"],"GioiTinh"=>$row["GioiTinh"],"TrangThai"=>$row["TrangThai"]];
+                }
+            }
+            
+        }
+
     function getDanhSach($key,$pageIndex,$soLuong)
     {
         trim($key);
@@ -63,6 +77,28 @@ class KhachHangModel extends DB{
         return $this->con->query($qr);
     }
 
+     //check sdt update
+     public function checkSdtTrung($sdt,$ma) {
+        $qr = "SELECT COUNT(*) as total FROM khachhang WHERE SoDienThoai = '$sdt' AND MaKhachHang !='$ma'";
+        $result = $this->con->query($qr);
+        $row = $result->fetch_assoc();
+        if($row['total']>0)
+            return false;
+        return true;
+    }
+
+    //check sdt insert
+    public function checkTrung($key,$str) {
+        $qr = "SELECT COUNT(*) as total FROM khachhang WHERE $str ='$key'";
+        $result = $this->con->query($qr);
+        $row = $result->fetch_assoc();
+        if($row['total']>0)
+            return false;
+        return true;
+    }
+
+    
+
     public function getDanhSachCoTrangThai(){
         $qr = "SELECT * from khachhang where TrangThai = 1";
         return $this->con->query($qr);
@@ -91,6 +127,12 @@ class KhachHangModel extends DB{
         {
             return 0;
         }
+    }
+
+    public function insertKh($makh, $sdt, $ten, $gioitinh)
+    {
+        $qr = "INSERT INTO khachhang VALUES ('$makh','$ten','$sdt','$gioitinh','1')";
+        return $this->con->query($qr);
     }
 
 

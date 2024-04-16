@@ -16,6 +16,7 @@
       <th scope="col" style="text-align: center;">Giá</th>
       <th scope="col" style="text-align: center;">Số lượng tồn</th>
       <th scope="col" style="text-align: center;">Giá nhập</th>
+      <th scope="col" style="text-align: center;">Khuyến mãi</th>
       <th scope="col" style="text-align: center;">Thể Loại</th>
       <th scope="col" style="text-align: center;">Chất Liệu</th>
       <th scope="col" style="text-align: center;">Thương Hiệu</th>

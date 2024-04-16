@@ -5,24 +5,29 @@
 $(document).ready(function(){
     $("#product__list").load("http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP");
 });
-
-$(".nav__list").on("click","a",function(){
-     var chungloai = $(this).attr("id");
+function getAllSP(ojt){
+    var chungloai = ojt.id;
+    alert
+    var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/" + chungloai+"/none/none";
+    window.location.assign(url);
+}
+function getSP(ojt){
+     var chungloai = ojt.id;
     
     var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/" + chungloai+"/none/none";
     window.location.assign(url);
 
-});
+};
 
-$(".sub-menu").on("click","span",function(){
-    var theloai = $(this).attr("id");
+function getTL(ojt){
+    var theloai = ojt.id;
     
     var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/none/" + theloai+"/none";
     window.location.assign(url);
     
     
 
-});
+};
 
 function showAlert() {
     var tensp=" ";

@@ -14,13 +14,36 @@ class ChiTietQuyenModel extends DB{
     //     return $this->con->query($qr);
     // }
 
-    public function getDanhSach()
+    // public function getDanhSach()
+    // {
+    //     $qr = "SELECT DISTINCT ctq.MaNhomQuyen,ctq.MaChucNang
+    //     from chitietquyen as ctq, nhomquyen as nq, chucnang as cn
+    //             where ctq.MaNhomQuyen = nq.MaNhomQuyen
+    //             and ctq.MaChucNang = cn.MaChucNang
+    //             ORDER by ctq.MaNhomQuyen,cn.MaChucNang  ";
+    //     return $this->con->query($qr);
+    // }
+
+    public function getDanhSach($key,$index,$size)
     {
+        trim($key);
+
+        if($index == "" || $index <= 0)
+        {
+            $index = 1;
+        }
+        $start = ($index - 1)*$size;
         $qr = "SELECT DISTINCT ctq.MaNhomQuyen,ctq.MaChucNang
         from chitietquyen as ctq, nhomquyen as nq, chucnang as cn
                 where ctq.MaNhomQuyen = nq.MaNhomQuyen
-                and ctq.MaChucNang = cn.MaChucNang
-                ORDER by ctq.MaNhomQuyen,cn.MaChucNang  ";
+                and ctq.MaChucNang = cn.MaChucNang";
+
+            if($key == "")
+            {
+                $qr .= " and concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%'";
+            }
+
+                $qr .=" ORDER by ctq.MaNhomQuyen,cn.MaChucNang LIMIT $start,$size";
         return $this->con->query($qr);
     }
 

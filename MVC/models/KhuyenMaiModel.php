@@ -62,5 +62,9 @@ class KhuyenMaiModel extends DB {
         }
         else return 0;
     }
+    public function getAllKM(){
+        $qr = "SELECT * FROM khuyenmai where TrangThai=1";
+        return $this->con->query($qr);
+    }
 }
 ?>

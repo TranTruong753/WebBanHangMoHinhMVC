@@ -42,7 +42,7 @@ class Admin extends controller
             $ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
             $NhomQuyenModel = $this->model( "NhomQuyenModel");
             $ChucNangModel = $this->model("ChucNangModel");
-            $this->data["Data"]= $ChiTietQuyenModel->getDanhSach();
+            $this->data["Data"]= [];
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
@@ -104,6 +104,11 @@ class Admin extends controller
             if(isset($this->params[1])) $this->data["MaKhachHang"] = $this->params[1];
             $this->data["Data"] = ["index"=> "Sửa","MaKhachHang"=>$this->data["MaKhachHang"]];
         }
+        else if ($this->pageName == "ThemKhachHangPage") {
+            $KhachHangModel = $this->model( "KhachHangModel");
+            $this->data["detail"] = "addPages/ThemKhachHangPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
         
         else if ($this->pageName == "KhuyenMaiPage") {
             $KhuyenMaiModel = $this->model("KhuyenMaiModel");
@@ -155,8 +160,9 @@ class Admin extends controller
             $cl=$this->model( "ChatLieuModel")->getDanhSach();
             $tl=$this->model( "TheLoaiModel")->GetTheLoaiModel();
             $sp=$this->model( "SanPhamModel")->getDanhSach();
+            $km=$this->model( "KhuyenMaiModel")->getAllKM();
             $this->data["detail"] = "addPages/ThemSanPhamPage";
-            $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp];
+            $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp,"KM"=>$km];
         }
         else if ($this->pageName == "ThemChatLieuPage") {
             $this->data["detail"] = "addPages/ThemChatLieuPage";
@@ -222,7 +228,7 @@ class Admin extends controller
         }
         else if ($this->pageName == "ThemChiTietSanPhamPage") {
             $masp=$this->params[1];
-            $sp=$this->model( "SanPhamModel")->getDanhSach();
+            $sp=$this->model( "SanPhamModel")->GetSP($masp);
             $ctsp=$this->model( "chitietspmodel")->GetAllCTSP();
             $kc=$this->model( "KichCoModel")->GetDanhSach();
             $ms=$this->model( "MauSacModel")->GetDanhSach();
@@ -240,9 +246,23 @@ class Admin extends controller
         else if ($this->pageName == "ThemPhieuNhapPage") {
             $sp=$this->model( "SanPhamModel")->getDanhSach();
             $pn=$this->model( "PhieuNhapModel")->getAllPN();
-            $ncc=$this->model( "NhaCungCapModel")->getAllNCC();
+            $ncc=$this->model( "NhaCungCapModel")->getDanhSach();
             $this->data["detail"] = "addPages/ThemPhieuNhapPage";
             $this->data["Data"] = ["SP"=>$sp,"PN"=>$pn,"NCC"=>$ncc];
+        }
+        else if ($this->pageName == "ChiTietPhieuNhapPage") {
+            $manp=$this->params[1];
+            $this->data["detail"] = "ChiTietPhieuNhapPage";
+            $this->data["Data"] = ["MAPN"=>$manp];
+        }
+        else if ($this->pageName == "SuaSanPhamPage") {
+            $masp=$this->params[1];
+            $cl=$this->model( "ChatLieuModel")->getDanhSach();
+            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModel();
+            $sp=$this->model( "SanPhamModel")->GetSP($masp);
+            $km=$this->model( "KhuyenMaiModel")->getAllKM();
+            $this->data["detail"] = "updatePages/SuaSanPhamPage";
+            $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp,"KM"=>$km];
         }
 
         print_r($this->data); 

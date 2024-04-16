@@ -15,8 +15,6 @@ class AjaxKhuyenMai extends controller{
         {
             echo "Thêm Dữ Liệu Thành Công!";
         }else echo "Thêm Dữ Liệu Thất Bại!";
-
-        
     }
 
     

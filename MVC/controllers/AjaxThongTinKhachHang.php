@@ -31,6 +31,63 @@ class AjaxThongTinKhachHang extends controller {
         }
     }
 
+    public function update(){
+      $checkSdt = false;
+      $maKhachHang = $_POST["maKhachHang"];
+      $tenKhachHang = $_POST["tenKhachHang"];
+      $sdt = $_POST["sdt"];
+      $gioitinh = $_POST["gioitinh"];
+      if($this->KhachHangModel->checkSdtTrung($sdt,$maKhachHang)){
+        $checkSdt = true;
+        
+      }else{
+        $checkSdt = false;
+        echo '-1';
+      }
+      if($checkSdt){
+        if($this->KhachHangModel->updateKh($maKhachHang, $sdt, $tenKhachHang, $gioitinh))
+        {
+            echo "1";
+        }else echo "0";     
+      }
+  }
+
+  public function insert(){
+    $checkMa = false;
+    $checkSdt = false;
+    $maKhachHang = $_POST["maKhachHang"];
+    $tenKhachHang = $_POST["tenKhachHang"];
+    $sdt = $_POST["sdt"];
+    $gioitinh = $_POST["gioitinh"];
+
+    if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')&&!$this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
+        echo '-3';
+        $checkMa = false;
+        $checkSdt = false;
+    }
+    else if($this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
+      $checkSdt = true; 
+    }
+    else if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
+      $checkSdt = false;
+      echo '-1';
+    }
+    else if($this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
+      $checkMa = true; 
+    }
+    else{
+      $checkMa = false;
+      echo '-2';
+    }
+
+    if($checkSdt&&$checkMa){
+      if($this->KhachHangModel->insertKh($maKhachHang, $sdt, $tenKhachHang, $gioitinh))
+      {
+          echo "1";
+      }else echo "0";     
+    }
+  }
+
     public function XoaDuLieuKhachHang()
     {
       //được xóa khi trang thái bằng 0 trong DB
