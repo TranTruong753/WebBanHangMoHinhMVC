@@ -34,15 +34,15 @@
                 <!-- nav list -->
                 <ul class="nav__list">
                     <li class="nav__list-items">
-                        <a href="#!" class="nav__item-link" id ="hangmoi">HÀNG MỚI VÈ</a>
+                        <a href="#!" class="nav__item-link" onclick="getAllSP(this)" id ="hangmoi">HÀNG MỚI VÈ</a>
                     </li>
                     <?php   
                             if ($data['CL']->num_rows > 0) {
                                 while ($row = $data['CL']->fetch_assoc()) {
                                     echo    '
                                     
-                                <li class="nav__list-items">
-                                    <a href="#!" class="nav__item-link" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
+                                <li class="nav__list-items"  value="'.$row["MaChungLoai"].'">
+                                    <a href="#!" class="nav__item-link" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
                                     <ul class="sub-menu">';
                                         
                                         if ($data['TL']->num_rows > 0) {
@@ -52,7 +52,7 @@
                                                 if($row1["MaChungLoai"]==$row["MaChungLoai"]){
                                                     echo'
                                                     <li>
-                                                        <span class="sub-link" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
+                                                        <span class="sub-link" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
                                                     </li>
                                                     ';
                                                 }
