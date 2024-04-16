@@ -12,10 +12,15 @@ public $GioHang;
 $this->GioHang= $this->model("GioHangModel");
     }
     function GetAllSP(){
-        $tc = $this->TrangChuKHModel->GetTrangChuKHModel();
+        $key = "";
+        $pageIndex = 1;
+        $numberItem = 8;
+       
+        $html="";
+        $tc = $this->TrangChuKHModel->getDanhSach($key,$pageIndex,$numberItem);
         if ($tc->num_rows > 0) {
             while ($row = $tc->fetch_assoc()) {
-                echo    '
+                $html.=    '
                     <section class="product__item">
                         <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
                         
@@ -42,89 +47,183 @@ $this->GioHang= $this->model("GioHangModel");
                     </section>';
             }
         }
+        echo $html;
 
     }
 
     function GetSPtheoCL(){
-        if(isset($_POST['cl'])){
-            $tl=$_POST['cl'];
-            $cl = $this->TrangChuKHModel->GetspCL($tl);
-            if ($cl->num_rows > 0) {
-                while ($row = $cl->fetch_assoc()) {
-                    echo    '
-                        <section class="product__item">
-                            <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
-                                <div class="product__img-wrap">
-                                    <img
-                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
-                                        alt=""
-                                        class="product__img"
-                                    />
-                                    <span class="product__img-sale"
-                                        >-50%</span
-                                    >
-                                </div>
+        $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        $cl=$_POST['cl'];
+        $html="";
+        
+       
+        if($this->TrangChuKHModel->GetspCL($key,$pageIndex,$numberItem,$cl)->num_rows >0)
+        {
+            $result=$this->TrangChuKHModel->GetspCL($key,$pageIndex,$numberItem,$cl);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '
+              <section class="product__item">
+                  <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+                      <div class="product__img-wrap">
+                          <img
+                          src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+                              alt=""
+                              class="product__img"
+                          />
+                          <span class="product__img-sale"
+                              >-50%</span
+                          >
+                      </div>
 
-                                <div class="product__content">
-                                    <div class="product__content-price">'
-                                    .$row["GiaSanPham"].'VND
-                                    </div>
-                                    <p class="product__content-title">'
-                                        .$row["TenSanPham"].'
-                                    </p>
-                                </div>
-                            </a>
-                        </section>';
-                }
+                      <div class="product__content">
+                          <div class="product__content-price">'
+                          .$row["GiaSanPham"].'VND
+                          </div>
+                          <p class="product__content-title">'
+                              .$row["TenSanPham"].'
+                          </p>
+                      </div>
+                  </a>
+              </section>';
+              
             }
-            else
-            { if($tl=="hangmoi"){
+            echo $html;
+        }
+        else
+            { if($cl=="hangmoi"){
                 $this->GetAllSP();
             }
             else
                 echo "Hiện không có sản phẩm để hiển thị";
             }
-        }
+
+        // if(isset($_POST['cl'])){
+        //     $tl=$_POST['cl'];
+        //     $cl = $this->TrangChuKHModel->GetspCL($key,$pageIndex,$soLuong,$cl);
+        //     if ($cl->num_rows > 0) {
+        //         while ($row = $cl->fetch_assoc()) {
+        //             echo    '
+        //                 <section class="product__item">
+        //                     <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+        //                         <div class="product__img-wrap">
+        //                             <img
+        //                             src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+        //                                 alt=""
+        //                                 class="product__img"
+        //                             />
+        //                             <span class="product__img-sale"
+        //                                 >-50%</span
+        //                             >
+        //                         </div>
+
+        //                         <div class="product__content">
+        //                             <div class="product__content-price">'
+        //                             .$row["GiaSanPham"].'VND
+        //                             </div>
+        //                             <p class="product__content-title">'
+        //                                 .$row["TenSanPham"].'
+        //                             </p>
+        //                         </div>
+        //                     </a>
+        //                 </section>';
+        //         }
+        //     }
+        //     else
+        //     { if($tl=="hangmoi"){
+        //         $this->GetAllSP();
+        //     }
+        //     else
+        //         echo "Hiện không có sản phẩm để hiển thị";
+        //     }
+        // }
         
     }
 
     function GetSPtheoTL(){
-        if(isset($_POST['tl'])){
-            $tl=$_POST['tl'];
-            $cl = $this->TrangChuKHModel->GetspTL($tl);
-            if ($cl->num_rows > 0) {
-                while ($row = $cl->fetch_assoc()) {
-                    echo    '
-                        <section class="product__item">
-                            <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
-                                <div class="product__img-wrap">
-                                    <img
-                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
-                                        alt=""
-                                        class="product__img"
-                                    />
-                                    <span class="product__img-sale"
-                                        >-50%</span
-                                    >
-                                </div>
+        $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        $tl=$_POST['tl'];
+        $html="";
+        
+       
+        if($this->TrangChuKHModel->GetspTL($key,$pageIndex,$numberItem,$tl)->num_rows >0)
+        {
+            $result=$this->TrangChuKHModel->GetspTL($key,$pageIndex,$numberItem,$tl);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '
+              <section class="product__item">
+                  <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+                      <div class="product__img-wrap">
+                          <img
+                          src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+                              alt=""
+                              class="product__img"
+                          />
+                          <span class="product__img-sale"
+                              >-50%</span
+                          >
+                      </div>
 
-                                <div class="product__content">
-                                    <div class="product__content-price">'
-                                    .$row["GiaSanPham"].'VND
-                                    </div>
-                                    <p class="product__content-title">'
-                                        .$row["TenSanPham"].'
-                                    </p>
-                                </div>
-                            </a>
-                        </section>';
-                }
+                      <div class="product__content">
+                          <div class="product__content-price">'
+                          .$row["GiaSanPham"].'VND
+                          </div>
+                          <p class="product__content-title">'
+                              .$row["TenSanPham"].'
+                          </p>
+                      </div>
+                  </a>
+              </section>';
+              
             }
-            else
+            echo $html;
+        }
+        else
             {
                 echo "Hiện không có sản phẩm để hiển thị";
             }
-        }
+
+        // if(isset($_POST['tl'])){
+        //     $tl=$_POST['tl'];
+        //     $cl = $this->TrangChuKHModel->GetspTL($key,$pageIndex,$soLuong,$tl);
+        //     if ($cl->num_rows > 0) {
+        //         while ($row = $cl->fetch_assoc()) {
+        //             echo    '
+        //                 <section class="product__item">
+        //                     <a href="http://localhost/WebBanHangMoHinhMVC/chitietsp/chitiet/'.$row["MaSanPham"].'" class="product__link">
+        //                         <div class="product__img-wrap">
+        //                             <img
+        //                             src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'"
+        //                                 alt=""
+        //                                 class="product__img"
+        //                             />
+        //                             <span class="product__img-sale"
+        //                                 >-50%</span
+        //                             >
+        //                         </div>
+
+        //                         <div class="product__content">
+        //                             <div class="product__content-price">'
+        //                             .$row["GiaSanPham"].'VND
+        //                             </div>
+        //                             <p class="product__content-title">'
+        //                                 .$row["TenSanPham"].'
+        //                             </p>
+        //                         </div>
+        //                     </a>
+        //                 </section>';
+        //         }
+        //     }
+        //     else
+        //     {
+        //         echo "Hiện không có sản phẩm để hiển thị";
+        //     }
+        // }
         
     }
     function TimSP(){

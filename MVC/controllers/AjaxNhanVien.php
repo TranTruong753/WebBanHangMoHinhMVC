@@ -100,14 +100,19 @@
         $sdt = $_POST["sdt"];
         $cccd = $_POST["cccd"];
         $ngaySinh = $_POST["ngaySinh"];
-        if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
+        if(!$this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)&&!$this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
+          echo '-3';
+          $checkSdt = false;
+          $checkCCCD = false;
+        }
+        else if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
           $checkSdt = true;
           
-        }else{
+        }else if(!$this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
           $checkSdt = false;
           echo '-1';
         }
-        if($this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
+        else if($this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
           $checkCCCD = true;
         }else{
           $checkCCCD = false;   

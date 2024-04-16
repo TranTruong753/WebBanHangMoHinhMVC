@@ -16,10 +16,13 @@
         <!-- fashion - 01 -->
         <section class="product__fashion">
             <p class="product__title product__title-left" id="product__title"></p>
-            <div class="product__list" id ="product__list">
+            <div class="product__list" id ="product__lista">
             <!-- nội dung của ajax -->
             </div>
         </section>
+    </div>
+    <div class="PhanTrang">
+
     </div>
     
 </section>

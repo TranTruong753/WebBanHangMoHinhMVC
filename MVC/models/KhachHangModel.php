@@ -77,7 +77,7 @@ class KhachHangModel extends DB{
         return $this->con->query($qr);
     }
 
-     //check sdt
+     //check sdt update
      public function checkSdtTrung($sdt,$ma) {
         $qr = "SELECT COUNT(*) as total FROM khachhang WHERE SoDienThoai = '$sdt' AND MaKhachHang !='$ma'";
         $result = $this->con->query($qr);
@@ -87,15 +87,17 @@ class KhachHangModel extends DB{
         return true;
     }
 
-     //check gmail trung gamil chinh la ma khach hang
-     public function checkSdtMaTrung($ma) {
-        $qr = "SELECT COUNT(*) as total FROM khachhang WHERE MaKhachHang ='$ma'";
+    //check sdt insert
+    public function checkTrung($key,$str) {
+        $qr = "SELECT COUNT(*) as total FROM khachhang WHERE $str ='$key'";
         $result = $this->con->query($qr);
         $row = $result->fetch_assoc();
         if($row['total']>0)
             return false;
         return true;
     }
+
+    
 
     public function getDanhSachCoTrangThai(){
         $qr = "SELECT * from khachhang where TrangThai = 1";
