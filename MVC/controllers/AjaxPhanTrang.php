@@ -12,7 +12,6 @@ class AjaxPhanTrang extends controller{
         $condition = $_POST["condition"];
         $index =$_POST["index"];
         $size = $_POST["size"];
-        $masp='';
         // echo "table: $table <br>";
         if(isset($_POST["key"]))
         {
@@ -41,7 +40,8 @@ class AjaxPhanTrang extends controller{
                 $varibleEqual.= "  sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu,khuyenmai.TenKhuyenMai";
             }
             if($table == 'chitietsanpham')
-            {   //$masp=$_POST["masp"];
+            {  
+                 //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietsanpham.MachitietSanPham,mausac.TenMauSac,kichco.TenKichCo";
             }
             if($table == "khuyenmai")
@@ -51,12 +51,14 @@ class AjaxPhanTrang extends controller{
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien";
             }
-            if($table == "chitietquyen")
-            {
-            }
+           
             if($table == 'chitietphieunhap')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietphieunhap.MaChiTietSanPham,sanpham.TenSanPham";
+            }
+            if($table == 'chitietquyen')
+            {
+                $varibleEqual .= " nq.TenNhomQuyen,cn.TenChucNang ";
             }
             if($condition == "")
             {
@@ -68,7 +70,8 @@ class AjaxPhanTrang extends controller{
             } 
             
             $condition .= " concat($varibleEqual) like '%$key%'";
-            // echo "condition: ".$condition;
+            
+            echo "condition: ".$condition;
             echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
 
 
