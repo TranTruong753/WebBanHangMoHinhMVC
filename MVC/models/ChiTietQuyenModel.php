@@ -43,7 +43,7 @@ class ChiTietQuyenModel extends DB{
                 $qr .= " and concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%'";
             }
 
-                $qr .=" ORDER by ctq.MaNhomQuyen,cn.MaChucNang LIMIT $start,$size";
+                $qr .=" ORDER by ctq.Id DESC LIMIT $start,$size";
         return $this->con->query($qr);
     }
 

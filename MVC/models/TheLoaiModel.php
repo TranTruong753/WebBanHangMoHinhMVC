@@ -20,11 +20,56 @@ class TheLoaiModel extends DB{
             echo "Dổi trạng thái không thành công!";
         }
     }
-    public function InsertTL($machungloai,$tenthuonghieu){
-        $qr = "INSERT INTO theloai VALUES (NULL,'$machungloai','$tenthuonghieu','1')";
+    public function InsertTL($machungloai,$tentheloai){
+        $qr = "INSERT INTO theloai VALUES (NULL,'$machungloai','$tentheloai','1')";
         if(mysqli_query($this->con, $qr))
            return true;
         return false;
+    }
+    public function UpdateTL($matheloai,$machungloai,$tentheloai){
+        $qr = "UPDATE theloai set MaChungLoai = '$machungloai',TenTheLoai = '$tentheloai' where MaTheLoai = '$matheloai'";
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
+    public function GettheoMaTheLoai($matl){
+        $qr = 'SELECT * FROM theloai where MaTheLoai="'.$matl.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+    public function getDanhSachTL($key,$pageIndex,$soLuong)
+    {
+        trim($key);
+        // Kiểm tra đang ở trang
+        // echo "pageIndex:".$pageIndex;
+        if($pageIndex == "" || $pageIndex <= 0 )
+        {
+            $pageIndex = 1;
+        }
+
+        $batDau = ($pageIndex-1)*$soLuong;
+        
+        $qr = "SELECT * FROM theloai";
+
+        if($key!="")
+        {
+            $qr .= " where concat(MaTheLoai,TenTheLoai) like '%$key%'"; 
+
+            $qr .= " ORDER BY MaTheLoai ASC";
+            $qr .= " LIMIT $batDau,$soLuong";
+
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " ORDER BY MaTheLoai ASC";
+            $qr .= " Limit $batDau,$soLuong";
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        // $qr="SELECT * from nhomquyen";
+        // return $this->con->query($qr);
     }
 }
 ?>

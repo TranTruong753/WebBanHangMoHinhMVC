@@ -103,6 +103,7 @@ $ChucNangModel = new ChucNangModel();
     <!-- end -->
   </tbody>
 </table>
+<div class="PhanTrang"></div>
 <script>
   var index = 1;
   var size = 4;
@@ -113,6 +114,7 @@ $ChucNangModel = new ChucNangModel();
     size = 4;
     tmpKey = "";
     loadTable(tmpKey, index, size);
+    loadPhanTrang("chitietquyen",index,size,"",tmpKey);
   })
 
   function loadTable(key, index, size) {
@@ -159,8 +161,6 @@ $ChucNangModel = new ChucNangModel();
       loadTable(tmpKey, index, size);
     }
 
-
-
   }
 
 
@@ -169,6 +169,20 @@ $ChucNangModel = new ChucNangModel();
     document.getElementById("formThemChiTietQuyen").classList.toggle("hidden");
   }
 
+
+      //Xử llys sự kiện khi nhấn bào nút phân trang
+      $(document).on("click", ".btnPhanTrang", function() {
+
+    // alert(this.id)
+    var arr = this.id.split("/");
+    index = arr[0];
+    size = arr[1];
+    //xử lý thay đổi bảng khi nhấn vào phân trang
+   loadTable(tmpKey,index,size);
+    // xử lý số trang đã chọn
+    // alert(tmpKey)
+    loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+    })
 
 
 

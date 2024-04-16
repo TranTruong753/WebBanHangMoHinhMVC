@@ -20,15 +20,54 @@ class AjaxMauSac extends controller{
         else echo "false";
     }
 
-    // public function UpdateCL(){
-    //     $macl=$_POST["macl"];
-    //     $tencl=$_POST["tencl"];
-    //     $this->ChatLieuModel->UpdateCL($macl,$tencl);
-    // }
+    public function UpdateMS(){
+        $mams=$_POST["mams"];
+        $tenms=$_POST["tenms"];
+        if($this->MauSacModel->UpdateMS($mams,$tenms)){
+            echo "true";
+        }
+        else echo "false";       
+    }
 
-    // public function DeleteCL(){
-    //     $macl=$_POST["macl"];
-    //     $this->ChatLieuModel->DeleteCL($macl);
-    // }
+    public function getDanhSachMS()
+    {
+         $key = $_POST['key'];
+         $pageIndex = $_POST['index'];
+         $numberItem = $_POST['size'];
+ 
+         $html="";
+         
+        
+         if($this->MauSacModel->getDanhSachMS($key,$pageIndex,$numberItem)->num_rows >0)
+         {
+             $result=$this->MauSacModel->getDanhSachMS($key,$pageIndex,$numberItem);
+             while($row = $result->fetch_assoc())
+             {
+               $html .=  " <tr>
+               <th style='text-align: center;' scope='row'>".$row['MaMauSac']."</th>
+               <td style='text-align: center;'>".$row['TenMauSac']."</td>
+               <td style='text-align: center;'>
+     
+               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                 <input onchange='DoiTrangThaiMauSac(this)' id='".$row['MaMauSac']."' type='checkbox' value='1'";
+                 if ($row["TrangThai"] == 1) {
+                   $html .= "checked = 'checked'";
+ 
+                 }
+                 $html .="
+                 
+               </td>
+               <td style='text-align: center;'>
+               <!-- link  để chuyển sang trang nhóm quyền -->
+                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'>Sửa</a></pre>
+               </td>
+             </tr> ";
+               
+             }
+ 
+             echo $html;
+         }
+         
+    }
 }
 ?>

@@ -3,8 +3,12 @@
     <h1 style=" margin-bottom: 20px;">Quản Lý Kích Cỡ</h1>
   </div>
 
-
+<div class="search">
+  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+  <input type="button" id="btnSearch" value="Tìm Kiếm">
+</div>
 <input type="submit" onclick="DieuHuong()" value="Thêm">
+<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
   <thead>
     <hr>
@@ -15,33 +19,13 @@
       <th scope="col" style="text-align: center;">Thao Tác</th>
     </tr>
   </thead>
-  <tbody class="table-group-divider">
-
-      <!-- <?php
-          if ($data["DanhSach"]->num_rows > 0) {
-            while ($row = $data["DanhSach"]->fetch_assoc()) {
-          ?> -->
-    <tr>
-      <th style="text-align: center;" scope="row"><?php echo $row["MaKichCo"] ?></th>
-      <td style="text-align: center;"><?php echo $row["TenKichCo"] ?></td>
-      <td style="text-align: center;">
-       <input onchange="DoiTrangThaiKichCo(this)" id="<?php echo $row["MaKichCo"] ?>" type="checkbox"  <?php if ($row["TrangThai"] == 1) 
-       {
-        echo "checked = 'checked'";
-      }
-                 ?> />
-      </td>
-      <td style="text-align: center;">
-        <pre><a href="">Sửa</a> | <a href="">Chi Tiết</a></pre>
-      </td>
-    </tr>
-    <!-- <?php
-            }
-          }
-          ?> -->
-  
+  <tbody class="table-group-divider row-table">
   </tbody>
 </table>
+
+<div class="PhanTrang">
+
+</div>
 <script>
   function DoiTrangThaiKichCo(obj)
   {
@@ -76,3 +60,4 @@
   }
 
 </script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyKCJS.js"></script>

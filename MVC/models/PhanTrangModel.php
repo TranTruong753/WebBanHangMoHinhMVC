@@ -2,14 +2,23 @@
 
 class PhanTrangModel extends DB{
 
-    public function PhanTrang($index,$sizePage = 8,$tableName,$condition="")
+    public function PhanTrang($index,$sizePage = 8,$tableName,$condition)
     {
-        $qr = "SELECT ";
-        if($tableName == "chitietquyen") $qr .= " DISTINCT ";
+        $qr = "";
+        // if($tableName == "chitietquyen") $DISTINCT = " DISTINCT ";
+        // else $DISTINCT = "";
+        // echo "condition: ".$condition."<br>";
 
-        $qr .= " * From $tableName $condition";
-
-        // echo $qr;
+        $qr .= " SELECT * From $tableName $condition";
+        
+        if($tableName == "chitietquyen")
+        {
+            $qr = "SELECT DISTINCT ctq.MaNhomQuyen,ctq.MaChucNang
+            from chitietquyen as ctq, nhomquyen as nq, chucnang as cn
+                     ";
+        }
+      
+        echo $qr;   
        
         $result = $this->con->query($qr)->num_rows;
         $total = ceil($result/$sizePage);
