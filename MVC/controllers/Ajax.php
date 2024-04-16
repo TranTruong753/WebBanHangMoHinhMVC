@@ -12,9 +12,17 @@ public $GioHang;
 $this->GioHang= $this->model("GioHangModel");
     }
     function GetAllSP(){
-        $key = "";
+        
+        if(isset($_POST['size'])){
+            $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        }
+        else {
+            $numberItem = 8;
+            $key = "";
         $pageIndex = 1;
-        $numberItem = 8;
+        }
        
         $html="";
         $tc = $this->TrangChuKHModel->getDanhSach($key,$pageIndex,$numberItem);
@@ -46,6 +54,7 @@ $this->GioHang= $this->model("GioHangModel");
                         </a>
                     </section>';
             }
+            $tc->data_seek(0);
         }
         echo $html;
 
@@ -90,6 +99,7 @@ $this->GioHang= $this->model("GioHangModel");
               </section>';
               
             }
+            $result->data_seek(0);
             echo $html;
         }
         else
@@ -181,6 +191,7 @@ $this->GioHang= $this->model("GioHangModel");
               </section>';
               
             }
+            $result->data_seek(0);
             echo $html;
         }
         else

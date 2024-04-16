@@ -71,7 +71,7 @@
                     <form action="" class="search-form">
                         <input type="text" class="search-form__input" id ="search-form__input" placeholder="Tìm kiếm ..." />
                         <!-- Submit button -->
-                        <button onclick="showAlert()" class="search-form__btn" type="button">
+                        <button onclick="showAlert()" class="search-form__btn" id="search-form__btn" type="button">
                             
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>

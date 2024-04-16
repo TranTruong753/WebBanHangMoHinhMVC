@@ -39,7 +39,7 @@ class PhanTrangModel extends DB{
         }
         return $html;
     }
-    public function PhanTrangCL($index,$sizePage = 8,$tableName,$condition="")
+    public function PhanTrangCL($index,$sizePage ,$tableName,$condition="")
     {
         $qr = "SELECT ";
 
@@ -112,5 +112,43 @@ class PhanTrangModel extends DB{
         }
         return $html;
     }
+    public function PhanTrangbt($index,$sizePage = 8,$tableName,$condition="")
+    {
+        $qr = "SELECT ";
+        if($tableName == "chitietquyen") $qr .= " DISTINCT ";
+
+        $qr .= " * From $tableName $condition";
+
+        // echo $qr;
+       
+        $result = $this->con->query($qr)->num_rows;
+        $total = ceil($result/$sizePage);
+       
+        $html = "";
+        if($index > 3 )
+        {
+            $html .= "<a href='#' class='btnPhanTrangbt' id='1/$sizePage'>Trang Đầu Tiên</a>";
+        }
+        for($num =1; $num <= $total;$num++)
+        {
+            if($num != $index)
+            {
+                if( $num >= $index-3 && $num <= $index + 3)
+                {
+                    $html .= "<a href='#' class='btnPhanTrangbt' id='$num/$sizePage'>$num</a>";
+                }
+            }
+            else
+            {
+                $html .= "<b><a href='#' class='btnPhanTrangbt' id='$num/$sizePage'>$num</a></b>";
+            }
+        }
+        if($index < $total - 3 )
+        {
+            $html .= " <a href='#' class='btnPhanTrangbt' id='$total/$sizePage'>Trang Cuối Cùng</a>";
+        }
+        return $html;
+    }
+    
 }
 ?>
