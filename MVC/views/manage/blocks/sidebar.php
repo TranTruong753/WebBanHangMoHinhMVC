@@ -21,7 +21,7 @@
                         <span>Tài Khoản</span>
                 </li>
                 <li> </a>
-                    <a href="<?php echo Root ?>admin/default/NhomQuyenPage,0,8" class="none-decoration">
+                    <a href="<?php echo Root ?>admin/default/NhomQuyenPage" class="none-decoration">
                         <span>Nhóm quyền</span>
                     </a>
                 </li>
