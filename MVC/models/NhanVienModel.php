@@ -110,7 +110,7 @@
             else return 0;
         }
         
-        //check sdt
+        //check sdt update
         public function checkSdtTrung($sdt,$ma) {
             $qr = "SELECT COUNT(*) as total FROM nhanvien WHERE SoDienThoai = '$sdt' AND MaNhanVien !='$ma'";
             $result = $this->con->query($qr);
@@ -119,7 +119,7 @@
                 return false;
             return true;
         }
-        //check cccd
+        //check cccd update
         public function checkCccdTrung($cccd,$ma) {
             $qr = "SELECT COUNT(*) as total FROM nhanvien WHERE CCCD = '$cccd' AND MaNhanVien !='$ma'";
             $result = $this->con->query($qr);
@@ -128,6 +128,17 @@
                 return false;
             return true;
         }
+
+        //check insert
+        public function checkTrung($key,$str) {
+            $qr = "SELECT COUNT(*) as total FROM nhanvien WHERE $str ='$key'";
+            $result = $this->con->query($qr);
+            $row = $result->fetch_assoc();
+            if($row['total']>0)
+                return false;
+            return true;
+        }
+
 
         public function kiemTraTaiKhoanNv($ma){
             $qr = "SELECT * FROM taikhoan where MaNhanVien= '$ma'";

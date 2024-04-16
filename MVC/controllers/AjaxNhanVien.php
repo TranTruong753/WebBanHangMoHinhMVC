@@ -82,14 +82,41 @@
 
     public function insert()
     {
+        $checkSdt = false;
+        $checkCCCD = false;
         $tenNhanVien = $_POST["tenNhanVien"];
         $sdt = $_POST["sdt"];
         $cccd = $_POST["cccd"];
         $ngaySinh = $_POST["ngaySinh"];
-        if($this->NhanVienModel->insert($tenNhanVien,$sdt,$cccd,$ngaySinh))
-        {
-            echo "Thêm Dữ Liệu Thành Công!";
-        }else echo "Thêm Dữ Liệu Thất Bại!";             
+        if(!$this->NhanVienModel->checkTrung($sdt,'SoDienThoai')&&!$this->NhanVienModel->checkTrung($cccd,'CCCD')){
+          echo '-3';
+          $checkSdt = false;
+          $checkCCCD = false;
+        }
+        else if($this->NhanVienModel->checkTrung($sdt,'SoDienThoai')&&$this->NhanVienModel->checkTrung($cccd,'CCCD')){
+          $checkSdt = true;
+          $checkCCCD = true;
+        }
+        else if($this->NhanVienModel->checkTrung($sdt,'SoDienThoai')&&!$this->NhanVienModel->checkTrung($cccd,'CCCD')){
+          $checkSdt = true;
+          echo '-2';
+          $checkCCCD = false;
+        }
+        else if(!$this->NhanVienModel->checkTrung($sdt,'SoDienThoai')&&$this->NhanVienModel->checkTrung($cccd,'CCCD')){
+          echo '-1';
+          $checkCCCD = true;
+          $checkSdt = false;
+        }
+        if($checkSdt&&$checkCCCD){
+           if($this->NhanVienModel->insert($tenNhanVien,$sdt,$cccd,$ngaySinh))
+            {
+                echo "1";
+            }else{
+              echo "0";
+            }
+        }
+       
+                
     }
 
     public function update(){
@@ -105,19 +132,21 @@
           $checkSdt = false;
           $checkCCCD = false;
         }
-        else if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
+        else if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)&&$this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
           $checkSdt = true;
-          
-        }else if(!$this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)){
-          $checkSdt = false;
-          echo '-1';
-        }
-        else if($this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
           $checkCCCD = true;
-        }else{
+        }
+        else if($this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)&&!$this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
+          $checkSdt = true;
           $checkCCCD = false;   
           echo '-2';
+          
+        }else if(!$this->NhanVienModel->checkSdtTrung($sdt,$maNhanVien)&&$this->NhanVienModel->checkCccdTrung($cccd,$maNhanVien)){
+          $checkSdt = false;
+          $checkCCCD = true;
+          echo '-1';
         }
+       
 
         if($checkCCCD&&$checkSdt){
           if($this->NhanVienModel->update($maNhanVien,$tenNhanVien,$sdt,$cccd,$ngaySinh))
