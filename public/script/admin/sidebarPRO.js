@@ -14,7 +14,7 @@ const showMenu = (toggleId,sidebarId,linkID)=>{
                 link.classList.toggle('edit');
             });
         })
-    }   
+    }
 }
 showMenu('sidebar_toggle_icon','sidebar','sidebar_link')
 

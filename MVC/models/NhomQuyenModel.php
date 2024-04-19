@@ -61,6 +61,12 @@ class NhomQuyenModel extends DB{
         return $this->con->query($qr);
     }
 
+    public function getDanhSachAllNotMa($ma)
+    {
+        $qr = "SELECT * FROM nhomquyen Where MaNhomQuyen != '$ma'";
+        return $this->con->query($qr);
+    }
+
     
     public function contains($ten)
     {

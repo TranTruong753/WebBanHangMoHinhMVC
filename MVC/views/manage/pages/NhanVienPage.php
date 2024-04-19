@@ -1,15 +1,15 @@
 <?php
 $PhanTrangModel = new PhanTrangModel();
 ?>
-<div style="text-align: center;">
-  <h1 style=" margin-bottom: 20px;">Quản Lý Nhân Viên</h1>
+<div>
+  <h1 class="styleText-01">Quản Lý Nhân Viên</h1>
 </div>
 <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên nhân viên">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div>
 <!-- Nút sang form dữ liệu nhóm quyền  -->
-<input type="submit" onclick="DieuHuong()" value="Thêm">
+<input type="submit" class="btn" onclick="DieuHuong()" value="Thêm">
 
 <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
@@ -30,6 +30,10 @@ $PhanTrangModel = new PhanTrangModel();
     
   </tbody>
 </table>
+
+<div class="PhanTrang">
+
+</div>
 
 <script>
   var tmpKey = "";
