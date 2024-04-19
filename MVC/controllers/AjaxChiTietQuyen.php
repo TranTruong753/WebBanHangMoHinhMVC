@@ -67,7 +67,7 @@ class AjaxChiTietQuyen extends controller
         $key = $_POST["key"];
         $index = $_POST["index"];
         $size = $_POST["size"];
-        print_r($_POST);
+        // print_r($_POST);
         $html = "";
         $result = $this->ChiTietQuyenModel->getDanhSach($key, $index, $size);
         if ($result->num_rows > 0) {

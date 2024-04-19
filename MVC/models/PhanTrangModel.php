@@ -5,17 +5,16 @@ class PhanTrangModel extends DB{
     public function PhanTrang($index,$sizePage = 8,$tableName,$condition)
     {
         $qr = "";
-        // if($tableName == "chitietquyen") $DISTINCT = " DISTINCT ";
-        // else $DISTINCT = "";
         // echo "condition: ".$condition."<br>";
 
-        $qr .= " SELECT * From $tableName $condition";
+        $qr .= " SELECT * From $tableName   $condition";
         
         if($tableName == "chitietquyen")
         {
             $qr = "SELECT DISTINCT ctq.MaNhomQuyen,ctq.MaChucNang
             from chitietquyen as ctq, nhomquyen as nq, chucnang as cn
-                     ";
+                    where ctq.MaNhomQuyen = nq.MaNhomQuyen
+                    and ctq.MaChucNang = cn.MaChucNang $condition ";
         }
       
         echo $qr;   

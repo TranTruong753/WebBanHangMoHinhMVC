@@ -38,7 +38,7 @@ class ChiTietQuyenModel extends DB{
                 where ctq.MaNhomQuyen = nq.MaNhomQuyen
                 and ctq.MaChucNang = cn.MaChucNang";
 
-            if($key == "")
+            if($key != "")
             {
                 $qr .= " and concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%'";
             }

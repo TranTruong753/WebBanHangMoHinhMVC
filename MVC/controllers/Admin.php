@@ -31,6 +31,7 @@ class Admin extends controller
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"] = $NhomQuyenModel->getDanhSach("",$this->params[1],$this->params[2]);
+            $this->data["Data"] = [];
             $this->data["detail"] = "NhomQuyenPage";
         } else if ($this->pageName == "ChucNangPage") {
             $ChucNangModel = $this->model("ChucNangModel");
