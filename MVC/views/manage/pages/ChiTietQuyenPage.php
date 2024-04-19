@@ -85,6 +85,7 @@ $ChucNangModel = new ChucNangModel();
 
       <input type="button" id="btnLuu" onclick="LuuDuLieuHanhDong()" value="Lưu">
       <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">
+      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi">
 
     </div>
 
@@ -137,14 +138,21 @@ $ChucNangModel = new ChucNangModel();
     })
   }
 
+  // xử lý sự kiện nút làm tươi
+  function btnRefresh() {
+    index = 1;
+    tmpKey = "";
+    document.getElementById("txtSearch").value = tmpKey;
+    loadTable(tmpKey, index, size);
+    loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+  }
   //xử lý sự kiện cho nút tìm kiếm --
-  function btnSearch()
-  {
+  function btnSearch() {
     // alert("Tìm kiếm")
     index = 1;
     tmpKey = document.getElementById('txtSearch').value;
     // alert(tmpKey);
-    loadTable(tmpKey,index,size);
+    loadTable(tmpKey, index, size);
     loadPhanTrang("chitietquyen", index, size, "", tmpKey);
 
   }
@@ -161,7 +169,6 @@ $ChucNangModel = new ChucNangModel();
           MaNhomQuyen: MaNhomQuyen,
           MaChucNang: MaChucNang
         }, function(data) {
-          alert(data)
           if (data.length == 7) {
             result = false;
           }
@@ -171,11 +178,11 @@ $ChucNangModel = new ChucNangModel();
     });
     if (result == false) {
       alert("Xóa Dữ Liệu Thất Bại!");
-    } {
+    } 
+    else {
       alert("Xóa Dữ Liệu Thành công");
       loadTable(tmpKey, index, size);
       loadPhanTrang("chitietquyen", index, size, "", tmpKey);
-      
     }
 
   }

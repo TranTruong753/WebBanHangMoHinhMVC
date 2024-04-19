@@ -15,10 +15,6 @@ function changeButton(){
     }
 
 }
-
-
-
-
 function checkKeyEmail() {
     var email = document.getElementById("email").value;
 
