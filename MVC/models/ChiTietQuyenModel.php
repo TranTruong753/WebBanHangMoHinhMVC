@@ -38,12 +38,12 @@ class ChiTietQuyenModel extends DB{
                 where ctq.MaNhomQuyen = nq.MaNhomQuyen
                 and ctq.MaChucNang = cn.MaChucNang";
 
-            if($key == "")
+            if($key != "")
             {
                 $qr .= " and concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%'";
             }
 
-                $qr .=" ORDER by ctq.MaNhomQuyen,cn.MaChucNang LIMIT $start,$size";
+                $qr .=" ORDER by ctq.Id DESC LIMIT $start,$size";
         return $this->con->query($qr);
     }
 
@@ -70,6 +70,16 @@ class ChiTietQuyenModel extends DB{
         return 0;
     }
 
+    public function XoaKhiCapNhatTrangThaiCheckBox($MaNhomQuyen,$MaChucNang,$HanhDong)
+    {
+        $qr = "DELETE FROM chitietQuyen where MaNhomQuyen = $MaNhomQuyen and MaChucNang = $MaChucNang and HanhDong = '$HanhDong'" ;
+        if($this->con->query($qr))
+        {
+            return 1;
+        }
+        return 0;
+    }
+
     public function KiemTraHanhDong($MaNhomQuyen,$MaChucNang,$HanhDong)
     {
         $qr = 'SELECT * From chitietquyen Where MaNhomQuyen  = '.$MaNhomQuyen.' and MaChucNang = '.$MaChucNang.' and HanhDong = N\''.$HanhDong.'\'';
@@ -79,6 +89,13 @@ class ChiTietQuyenModel extends DB{
         }
 
         return 0;
+
+    }
+
+
+    public function updateTrangThai($MaNhomQuyen,$MaChucNang,$HanhDong)
+    {
+      
 
     }
 

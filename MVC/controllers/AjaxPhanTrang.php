@@ -12,8 +12,9 @@ class AjaxPhanTrang extends controller{
         $condition = $_POST["condition"];
         $index =$_POST["index"];
         $size = $_POST["size"];
-        $masp='';
         // echo "table: $table <br>";
+        // print_r($_POST);
+        
         if(isset($_POST["key"]))
         {
             $varibleEqual = "";
@@ -30,49 +31,60 @@ class AjaxPhanTrang extends controller{
             }
             if($table == 'nhanvien')
             {
-                $varibleEqual.= "  MaNhanVien,TenNhanVien";
+                $varibleEqual.= " MaNhanVien,TenNhanVien";
             }
             if($table == 'khachhang')
             {
-                $varibleEqual.= "  MaKhachHang,TenKhachHang";
+                $varibleEqual.= " MaKhachHang,TenKhachHang";
             }
             if($table == 'sanpham')
             {   
                 $varibleEqual.= "  sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu,khuyenmai.TenKhuyenMai";
             }
             if($table == 'chitietsanpham')
-            {   //$masp=$_POST["masp"];
+            {  
+                 //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietsanpham.MachitietSanPham,mausac.TenMauSac,kichco.TenKichCo";
             }
             if($table == "khuyenmai")
             {
                 $varibleEqual .= " MaKhuyenMai,TenKhuyenMai,MucKhuyenMai ";
+            }
+                
             if($table == 'phieunhap')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien";
             }
+           
             if($table == 'mausac')
             {
                 $varibleEqual.= "  MaMauSac,TenMauSac";
-            }
-            if($table == "chitietquyen")
-            {
             }
             if($table == 'chitietphieunhap')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietphieunhap.MaChiTietSanPham,sanpham.TenSanPham";
             }
+           
             if($condition == "")
             {
-                $condition.= " where ";
+                $condition.= " where 1=1 AND";
             } 
             else
             {
                 $condition.= " AND ";
             } 
             
+            
             $condition .= " concat($varibleEqual) like '%$key%'";
-            // echo "condition: ".$condition;
+            
+
+            //này ko đc xóa của tao nhe mấy con cờ hó
+            if($table == 'chitietquyen')
+            {
+                $condition = " and  concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%' ";
+
+            }
+            // print_r("condition(AjaxChiTietQUyen): ".$condition) ;
             echo $this->PhanTrangModel->PhanTrang($index,$size,$table,$condition);
 
 
@@ -120,5 +132,4 @@ class AjaxPhanTrang extends controller{
 
     //     }
     }
-}
 ?>

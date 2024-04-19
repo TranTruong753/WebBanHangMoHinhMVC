@@ -18,7 +18,7 @@
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_sublink">
                                             <span class="sidebar_text">Tài Khoản</span>
                                     </a>
-                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,4" class="sidebar_sublink">
+                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage" class="sidebar_sublink">
                                             <span class="sidebar_text">Nhóm Quyền</span>
                                     </a>
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4" class="sidebar_sublink">

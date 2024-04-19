@@ -89,7 +89,7 @@ class AjaxChucNang extends controller {
             $render .= "/>
           </td>
           <td style='text-align: center;'>
-            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a> | <a onclick='btnXoa(this)' id='".$row["MaChucNang"]."'>Xóa</a></pre>
+            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a> | <a href='' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'>Xóa</a></pre>
           </td>
         </tr>
             ";

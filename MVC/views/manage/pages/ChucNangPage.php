@@ -7,7 +7,10 @@
 
 
   <div style="text-align: start;">
+    <input type="text" id="txtSearch" style="min-width: 300px;" placeholder="Nhập mã hoặc tên chức năng">
+    <input type="button" value="Tìm kiếm" onclick="btnSearch()">
     <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
+    <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi">
   </div>
   <table class="table">
 
@@ -44,6 +47,20 @@
 
   })
 
+  // Xử lý sự kiện nút làm tươi
+  function btnRefresh() {
+    tmpKey = "";
+    index = 1;
+    loadTable(index, size, tmpKey);
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
+  }
+
+  // xử lý sự kiện nút tìm kiếm
+  function btnSearch() {
+    tmpKey = document.getElementById("txtSearch").value;
+    loadTable(index, size, tmpKey);
+    loadPhanTrang("chucnang", index, size, "", tmpKey)
+  }
   //Xử llys sự kiện khi nhấn bào nút phân trang
   $(document).on("click", ".btnPhanTrang", function() {
 
@@ -112,10 +129,13 @@
         MaChucNang: MaChucNang,
       },
       success: function(data) {
-        alert(data);
+        // alert(data);
+        if (data == 1) alert("Xóa chức năng thành công!")
+        else if (data == 0) alert("Xóa chức năng thất bại!");
+        else if (data == -1) alert("Chức năng đang được sử dụng!");
       }
     })
-    loadTable( index, size,tmpKey)
+    loadTable(index, size, tmpKey)
     loadPhanTrang("chucnang", index, size, "", tmpKey)
   }
 

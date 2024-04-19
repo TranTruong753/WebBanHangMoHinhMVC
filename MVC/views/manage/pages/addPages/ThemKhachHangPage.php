@@ -174,7 +174,7 @@ if ($index == "Sửa") {
                         errorUserId.innerHTML = "Mã bị trùng!";
                     }
                                             
-                    else (data==0)
+                    else
                     {
                         alert("Thêm dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";

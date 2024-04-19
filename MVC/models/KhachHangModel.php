@@ -87,7 +87,7 @@ class KhachHangModel extends DB{
         return true;
     }
 
-    //check sdt insert
+    //check insert
     public function checkTrung($key,$str) {
         $qr = "SELECT COUNT(*) as total FROM khachhang WHERE $str ='$key'";
         $result = $this->con->query($qr);

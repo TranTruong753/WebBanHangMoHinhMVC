@@ -2,14 +2,22 @@
 
 class PhanTrangModel extends DB{
 
-    public function PhanTrang($index,$sizePage = 8,$tableName,$condition="")
+    public function PhanTrang($index,$sizePage = 8,$tableName,$condition)
     {
-        $qr = "SELECT ";
-        if($tableName == "chitietquyen") $qr .= " DISTINCT ";
+        $qr = "";
+        // echo "condition: ".$condition."<br>";
 
-        $qr .= " * From $tableName $condition";
-
-        // echo $qr;
+        $qr .= " SELECT * From $tableName   $condition";
+        
+        if($tableName == "chitietquyen")
+        {
+            $qr = "SELECT DISTINCT ctq.MaNhomQuyen,ctq.MaChucNang
+            from chitietquyen as ctq, nhomquyen as nq, chucnang as cn
+                    where ctq.MaNhomQuyen = nq.MaNhomQuyen
+                    and ctq.MaChucNang = cn.MaChucNang $condition ";
+        }
+      
+        echo $qr;   
        
         $result = $this->con->query($qr)->num_rows;
         $total = ceil($result/$sizePage);
@@ -39,7 +47,7 @@ class PhanTrangModel extends DB{
         }
         return $html;
     }
-    public function PhanTrangCL($index,$sizePage = 8,$tableName,$condition="")
+    public function PhanTrangCL($index,$sizePage ,$tableName,$condition="")
     {
         $qr = "SELECT ";
 
@@ -112,5 +120,43 @@ class PhanTrangModel extends DB{
         }
         return $html;
     }
+    public function PhanTrangbt($index,$sizePage = 8,$tableName,$condition="")
+    {
+        $qr = "SELECT ";
+        if($tableName == "chitietquyen") $qr .= " DISTINCT ";
+
+        $qr .= " * From $tableName $condition";
+
+        // echo $qr;
+       
+        $result = $this->con->query($qr)->num_rows;
+        $total = ceil($result/$sizePage);
+       
+        $html = "";
+        if($index > 3 )
+        {
+            $html .= "<a href='#' class='btnPhanTrangbt' id='1/$sizePage'>Trang Đầu Tiên</a>";
+        }
+        for($num =1; $num <= $total;$num++)
+        {
+            if($num != $index)
+            {
+                if( $num >= $index-3 && $num <= $index + 3)
+                {
+                    $html .= "<a href='#' class='btnPhanTrangbt' id='$num/$sizePage'>$num</a>";
+                }
+            }
+            else
+            {
+                $html .= "<b><a href='#' class='btnPhanTrangbt' id='$num/$sizePage'>$num</a></b>";
+            }
+        }
+        if($index < $total - 3 )
+        {
+            $html .= " <a href='#' class='btnPhanTrangbt' id='$total/$sizePage'>Trang Cuối Cùng</a>";
+        }
+        return $html;
+    }
+    
 }
 ?>

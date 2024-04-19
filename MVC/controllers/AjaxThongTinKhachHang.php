@@ -65,21 +65,21 @@ class AjaxThongTinKhachHang extends controller {
         $checkMa = false;
         $checkSdt = false;
     }
-    else if($this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
-      $checkSdt = true; 
+    else if($this->KhachHangModel->checkTrung($sdt,'SoDienThoai')&&$this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
+      $checkMa = true;
+      $checkSdt = true;
     }
-    else if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')){
+    else if($this->KhachHangModel->checkTrung($sdt,'SoDienThoai')&&!$this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
+      $checkSdt = true;
+      $checkMa = false;
+      echo '-2'; 
+    }
+    else if(!$this->KhachHangModel->checkTrung($sdt,'SoDienThoai')&&$this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
       $checkSdt = false;
+      $checkMa = true; 
       echo '-1';
     }
-    else if($this->KhachHangModel->checkTrung($maKhachHang,'MaKhachHang')){
-      $checkMa = true; 
-    }
-    else{
-      $checkMa = false;
-      echo '-2';
-    }
-
+ 
     if($checkSdt&&$checkMa){
       if($this->KhachHangModel->insertKh($maKhachHang, $sdt, $tenKhachHang, $gioitinh))
       {

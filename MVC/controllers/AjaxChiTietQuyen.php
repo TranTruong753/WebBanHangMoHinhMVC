@@ -12,6 +12,28 @@ class AjaxChiTietQuyen extends controller
         $this->ChucNangModel = $this->model("ChucNangModel");
     }
 
+    public function CapNhatTrangThai()
+    {
+        $TrangThai = $_POST["TrangThai"];
+        $MaNhomQuyen =  $_POST["MaNhomQuyen"];
+        $MaChucNang =  $_POST["MaChucNang"];
+        $HanhDong = $_POST["HanhDong"];
+        if($TrangThai == 1)
+        {
+            if($this->ChiTietQuyenModel->KiemTraHanhDong($MaNhomQuyen,$MaChucNang,$HanhDong)==1){
+                return 1;
+            }else
+            {
+                 return $this->ChiTietQuyenModel->insert($MaNhomQuyen,$MaChucNang,$HanhDong);
+            }
+        }
+        else if($TrangThai == 0)
+        {
+           return $this->ChiTietQuyenModel->XoaKhiCapNhatTrangThaiCheckBox($MaNhomQuyen,$MaChucNang,$HanhDong);
+        }
+        
+    }
+
     public function ThemDuLieuChiTietQuyen()
     {
         $MaNhomQuyen =  $_POST["MaNhomQuyen"];
@@ -45,7 +67,7 @@ class AjaxChiTietQuyen extends controller
         $key = $_POST["key"];
         $index = $_POST["index"];
         $size = $_POST["size"];
-        print_r($_POST);
+        // print_r($_POST);
         $html = "";
         $result = $this->ChiTietQuyenModel->getDanhSach($key, $index, $size);
         if ($result->num_rows > 0) {
