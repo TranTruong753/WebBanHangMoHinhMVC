@@ -55,7 +55,7 @@ class MauSacModel extends DB{
         {
             $qr .= " where concat(MaMauSac,TenMauSac) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaMauSac ASC";
+            $qr .= " ORDER BY MaMauSac DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -63,7 +63,7 @@ class MauSacModel extends DB{
         }
         else
         {
-            $qr .= " ORDER BY MaMauSac ASC";
+            $qr .= " ORDER BY MaMauSac DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

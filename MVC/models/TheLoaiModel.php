@@ -55,7 +55,7 @@ class TheLoaiModel extends DB{
         {
             $qr .= " where concat(MaTheLoai,TenTheLoai) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaTheLoai ASC";
+            $qr .= " ORDER BY MaTheLoai DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -63,7 +63,7 @@ class TheLoaiModel extends DB{
         }
         else
         {
-            $qr .= " ORDER BY MaTheLoai ASC";
+            $qr .= " ORDER BY MaTheLoai DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

@@ -55,7 +55,7 @@ class KichCoModel extends DB{
         {
             $qr .= " where concat(MaKichCo,TenKichCo) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaKichCo ASC";
+            $qr .= " ORDER BY MaKichCo DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -63,7 +63,7 @@ class KichCoModel extends DB{
         }
         else
         {
-            $qr .= " ORDER BY MaKichCo ASC";
+            $qr .= " ORDER BY MaKichCo DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

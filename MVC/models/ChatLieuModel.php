@@ -61,7 +61,7 @@ class ChatLieuModel extends DB
         {
             $qr .= " where concat(MaChatLieu,TenChatLieu) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaChatLieu ASC";
+            $qr .= " ORDER BY MaChatLieu DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -69,7 +69,7 @@ class ChatLieuModel extends DB
         }
         else
         {
-            $qr .= " ORDER BY MaChatLieu ASC";
+            $qr .= " ORDER BY MaChatLieu DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

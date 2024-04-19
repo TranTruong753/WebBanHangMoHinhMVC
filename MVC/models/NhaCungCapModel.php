@@ -60,7 +60,7 @@ class NhaCungCapModel extends DB
         {
             $qr .= " where concat(MaNhaCungCap,TenNhaCungCap) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaNhaCungCap ASC";
+            $qr .= " ORDER BY MaNhaCungCap DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -68,7 +68,7 @@ class NhaCungCapModel extends DB
         }
         else
         {
-            $qr .= " ORDER BY MaNhaCungCap ASC";
+            $qr .= " ORDER BY MaNhaCungCap DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

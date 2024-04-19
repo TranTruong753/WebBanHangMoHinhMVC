@@ -7,8 +7,7 @@
   <thead>
     <tr>
       <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Mã Người Dùng</th>
-      <th scope="col" style="text-align: center;">Mã Nhân Viên</th>
+      <th scope="col" style="text-align: center;">Tên Đăng Nhập</th>
       <th scope="col" style="text-align: center;">Mật Khẩu</th>
       <th scope="col" style="text-align: center;">Nhóm Quyền</th>
       <th scope="col" style="text-align: center;">Trạng Thái</th>
@@ -23,8 +22,7 @@
     ?>
         <tr>
           <th style="text-align: center;" scope="row"><?php echo $row["MaTaiKhoan"] ?></th>
-          <td style="text-align: center;"><?php if($row["MaNguoiDung"] != "") echo $row["MaNguoiDung"]; else echo "x"; ?></td>
-          <td style="text-align: center;"><?php  if($row["MaNhanVien"] != "") echo $row["MaNhanVien"]; else echo "x";?></td>
+          <td style="text-align: center;"><?php if($row["TenDangNhap"] != "") echo $row["TenDangNhap"]; else echo "x"; ?></td>
           <td style="text-align: center;"><?php echo $row["MatKhau"] ?></td>
           <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ?></td>
           <td style="text-align: center;">

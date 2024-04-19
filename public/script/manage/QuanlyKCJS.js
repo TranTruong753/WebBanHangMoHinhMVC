@@ -35,7 +35,7 @@ function UpdateKC(){
         index = 1;
         size = 4;
         loadTable("", index, size)
-        loadPhanTrang("mausac", index, size, sql, "");
+        loadPhanTrang("kichco", index, size, sql, "");
     
     })
     

@@ -39,7 +39,21 @@ class HoaDonModel extends DB{
 
     }
 
-    
+    public function updateTrangThai($ma,$trangThai)
+    {
+      
+        // echo $ma;
+        // echo $trangThai;
+        $qr = "UPDATE hoadon set TrangThai = $trangThai where MaHoaDon = '$ma' ";
+        
+        if(mysqli_query($this->con,$qr))
+        {
+              echo "Đổi trạng thái thành công!";
+        }else
+        {
+            echo "Dổi trạng thái không thành công!";
+        }
+    }
 
 
 }

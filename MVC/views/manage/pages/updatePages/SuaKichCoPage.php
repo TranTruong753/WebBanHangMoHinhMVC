@@ -9,9 +9,9 @@
     if ($kichco->num_rows > 0) {
         while ($row = $kichco->fetch_assoc()) {
             echo '
-            <label for="">Mã Màu Sắc</label><br>
+            <label for="">Mã Kích Cỡ</label><br>
             <input type="text" id="makichco" name="makichco" value="'.$row['MaKichCo'].'" ><br>
-            <label for="">Tên Màu Sắc</label><br>
+            <label for="">Tên Kích Cỡ</label><br>
             <input type="text" id="tenkichco" name="tenkichco" value="'.$row['TenKichCo'].'" ><br>
             <input type = "button" onclick="UpdateKC()" value="update"></button>';
         }

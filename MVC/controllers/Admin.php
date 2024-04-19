@@ -115,8 +115,10 @@ class Admin extends controller
             $this->data["detail"] = "KhuyenMaiPage";
             $this->data["Data"]=[];
         }
-        else if ($this->pageName == "ThuePage") {
-            $this->data["detail"] = "ThuePage";
+        else if ($this->pageName == "HoaDonPage") {
+            $HoaDonModel = $this->model("HoaDonModel");
+            $this->data["Data"]=$HoaDonModel->GetAllHoaDon();
+            $this->data["detail"] = "HoaDonPage";
         }
         else if ($this->pageName == "ThongKePage") {
             $this->data["detail"] = "ThongKePage";

@@ -36,7 +36,7 @@
                                     else if($row['TrangThai']==1){
                                         echo'<span class="product-item__column-span">Đã gọi xác nhận</span>';
                                     }
-                                    else if($row['TrangThai']==1){
+                                    else if($row['TrangThai']==2){
                                         echo'<span class="product-item__column-span">Đã giao</span>';
                                     }
                                     

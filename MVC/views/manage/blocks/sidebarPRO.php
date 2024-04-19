@@ -70,9 +70,9 @@
                                     <i class='bx bx-wallet' id="sidebar_icon"></i>
                                     <span class="sidebar_text">Khuyến mãi</span>
                             </a>
-                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/Thue" class="sidebar_link">
+                            <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/HoaDonPage" class="sidebar_link">
                                     <i class='bx bx-money-withdraw' id="sidebar_icon"></i>
-                                    <span class="sidebar_text">Thuế</span>
+                                    <span class="sidebar_text">Quản lý hoá đơn</span>
                             </a>
                             <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKePage" class="sidebar_link">
                                     <i class='bx bx-bar-chart-alt-2' id="sidebar_icon"></i>
