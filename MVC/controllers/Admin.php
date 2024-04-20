@@ -267,6 +267,16 @@ class Admin extends controller
             $this->data["detail"] = "updatePages/SuaSanPhamPage";
             $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp,"KM"=>$km];
         }
+        else if($this->pageName == "ThongKePage")
+        {
+            $this->data["detail"] = "ThongKePage";
+            $this->data["Data"] = [1];
+        }
+        else if($this->pageName == "Top5SanPham")
+        {
+            $this->data["detail"] = "chartPages/Top5SanPham";
+            $this->data["Data"] = [1];
+        }
 
         print_r($this->data); 
 

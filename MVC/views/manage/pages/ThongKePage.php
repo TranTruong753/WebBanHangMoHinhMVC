@@ -1,1 +1,3 @@
-<h1>Thống Kê</h1>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
+
+<input type="">
