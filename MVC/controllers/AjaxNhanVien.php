@@ -46,7 +46,7 @@
                 $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."' id='".$row["MaNhanVien"]."'>Sửa tài khoản</a>";
               }
               else {
-                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'>Cấp tài khoản</a>";
+                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'>Cấp tài khoản</a>";
               }
             $html .="
             </td>
@@ -63,24 +63,22 @@
     {
       //được xóa khi trang thái bằng 0 trong DB
       $ma = $_POST["ma"];
-      // $checkTk  = false ;
-      //nếu tìm thấy tài khoản của nv trong DB bằng 1 thì $checkTk = true
-      //if($this->NhanVienModel->kiemTraTaiKhoanNv($ma)==1) $checkTk = true;
+      $arr = [];
 
-    
+      //nếu tìm thấy tài khoản của nv trong DB bằng 1 thì xóa tk
+      if($this->NhanVienModel->kiemTraTaiKhoanNv($ma,$arr)==1) {
+        $this->NhanVienModel->xoaTaiKhoanNv($ma);
+      }
+
+
       if($this->NhanVienModel->delete($ma)==1){
         echo 'Xóa Nhân viên Thành Công!';
       }else{
         echo 'Xóa Nhân viên Thất bại!';
       }
-      //echo $this->KhachHangModel->kiemTraTrangThai($ma);
-    //   if($checkTrangThai == true)
-    //   {
-    //     if($this->NhanVienModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
-    //     else echo 'Xóa Khách hàng Thất Bại!';
-    //   }
-    //     else echo "Khách hàng Đã Được Sử Dụng";
-      }
+  
+   
+    }
 
       public function DoiTrangThai()
     {

@@ -158,6 +158,29 @@ class KhachHangModel extends DB{
             return 0;
         }
     }
+
+    public function kiemTraTaiKhoanKh($ma,&$arr){
+        $arr = [];
+        $qr = "SELECT * FROM taikhoan where TenDangNhap= '$ma'";
+        $result = $this->con->query($qr);
+        if($result->num_rows>0)
+        {
+        //    return  $result ;
+        while($row = $result->fetch_assoc())
+            {
+                $arr = ["MaTaiKhoan"=>$row["MaTaiKhoan"]];
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+   
+    public function xoaTaiKhoanKh($ma){
+        $qr = "DELETE FROM taikhoan where TenDangNhap= '$ma'";
+        return $this->con->query($qr);
+    }
+
     
 
     

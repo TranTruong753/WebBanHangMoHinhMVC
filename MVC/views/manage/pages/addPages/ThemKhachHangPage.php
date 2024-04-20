@@ -126,9 +126,9 @@ if ($index == "Sửa") {
     })
 
     function btnAdd() {
-        var maKhachHang = document.getElementById("idClient").value;
-        var tenKhachHang = document.getElementById("nameClient").value;
-        var sdt = document.getElementById("phoneClient").value;
+        var maKhachHang = document.getElementById("idClient").value.Trim();
+        var tenKhachHang = document.getElementById("nameClient").value.Trim();
+        var sdt = document.getElementById("phoneClient").value.Trim();
         var radioButtons = document.getElementsByName("sexClient");
         var gioitinh="";
         for (var i = 0; i < radioButtons.length; i++) {
@@ -186,9 +186,9 @@ if ($index == "Sửa") {
     }
 
     function btnEdit() {
-        var maKhachHang = document.getElementById("idClient").value;
-        var tenKhachHang = document.getElementById("nameClient").value;
-        var sdt = document.getElementById("phoneClient").value;
+        var maKhachHang = document.getElementById("idClient").value.Trim();
+        var tenKhachHang = document.getElementById("nameClient").value.Trim();
+        var sdt = document.getElementById("phoneClient").value.Trim();
         var radioButtons = document.getElementsByName("sexClient");
         var gioitinh ="";
         for (var i = 0; i < radioButtons.length; i++) {

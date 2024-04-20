@@ -50,7 +50,8 @@ class Admin extends controller
             $this->data["detail"] = "addPages/ThemTaiKhoanPage";
             $this->data["Data"] = ["index"=>"Thêm"];
         }
-        else if ($this->pageName == "CapTaiKhoanPage") {
+        //Cấp tài khoản nhân viên
+        else if ($this->pageName == "CapTaiKhoanNhanVienPage") {
             $NhanVienModel = $this->model( "NhanVienModel");
             $KhachHangModel = $this->model("KhachHangModel");
             $TaiKhoanModel = $this->model("TaiKhoanModel");
@@ -59,7 +60,17 @@ class Admin extends controller
             if(isset($this->params[1])) $this->data["MaNhanVien"] = $this->params[1];
             $this->data["Data"] = ["index"=>"CấpNv","MaNhanVien"=>$this->data["MaNhanVien"]];
         }  
-        
+        //Cấp tài khoản khách hàng
+        else if ($this->pageName == "CapTaiKhoanKhachHangPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");
+            $TaiKhoanModel = $this->model("TaiKhoanModel");
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["detail"] = "addPages/ThemTaiKhoanPage";
+            if(isset($this->params[1])) $this->data["MaKhachHang"] = $this->params[1];
+            $this->data["Data"] = ["index"=>"CấpKh","MaKhachHang"=>$this->data["MaKhachHang"]];
+        }  
+
         else if ($this->pageName == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
@@ -107,6 +118,7 @@ class Admin extends controller
             $this->data["Data"] = $NhaCungCapModel->getDanhSach();
             $this->data["detail"] = "NhaCungCapPage";
         }
+
         // nhân viên
         else if ($this->pageName == "NhanVienPage") {
             // $NhanVienModel = $this->model("NhanVienModel");

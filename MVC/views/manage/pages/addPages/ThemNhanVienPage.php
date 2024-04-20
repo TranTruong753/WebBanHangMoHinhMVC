@@ -1,19 +1,15 @@
 <?php
-$NhanVienModel = new NhanVienModel();
-$index = $data["DanhSach"]["index"];
-if ($index == "Sửa") {
-    $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
-    $item = $NhanVienModel->getItemById($MaNhanVien);
+    $NhanVienModel = new NhanVienModel();
+    $index = $data["DanhSach"]["index"];
+    if ($index == "Sửa") {
+        $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
+        $item = $NhanVienModel->getItemById($MaNhanVien);
 
-  
-}
-
-
-
-
+    
+    }
 
 ?>
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4"> Trang quản lý nhân viên></a>
+<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>
 <?php if ($index == "Thêm") {
     echo    "<h1>Form Thêm Nhân viên</h1>";
 } else if ($index == "Sửa") {
@@ -116,10 +112,10 @@ if ($index == "Sửa") {
     })
 
     function btnAdd() {
-        var tenNhanVien = document.getElementById("userName").value;
-        var sdt = document.getElementById("userPhone").value;
-        var cccd = document.getElementById("userCCCD").value;
-        var ngaySinh = document.getElementById("date").value;
+        var tenNhanVien = document.getElementById("userName").value.Trim();
+        var sdt = document.getElementById("userPhone").value.Trim();
+        var cccd = document.getElementById("userCCCD").value.Trim();
+        var ngaySinh = document.getElementById("date").value.Trim();
         alert(cccd);
         if(checkForm(tenNhanVien,sdt,cccd,ngaySinh)){
             $.ajax({
@@ -169,11 +165,11 @@ if ($index == "Sửa") {
     }
 
     function btnEdit() {
-        var maNhanVien = document.getElementById("userId").value;
-        var tenNhanVien = document.getElementById("userName").value;
-        var sdt = document.getElementById("userPhone").value;
-        var cccd = document.getElementById("userCCCD").value;
-        var ngaySinh = document.getElementById("date").value;
+        var maNhanVien = document.getElementById("userId").value.Trim();
+        var tenNhanVien = document.getElementById("userName").value.Trim();
+        var sdt = document.getElementById("userPhone").value.Trim();
+        var cccd = document.getElementById("userCCCD").value.Trim();
+        var ngaySinh = document.getElementById("date").value.Trim();
         alert(tenNhanVien+sdt+cccd+ngaySinh);
         if(checkForm(tenNhanVien,sdt,cccd,ngaySinh)){
             $.ajax({

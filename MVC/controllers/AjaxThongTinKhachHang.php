@@ -16,7 +16,7 @@ class AjaxThongTinKhachHang extends controller {
 
 
 
-
+// form khách hàng
     function updateKh(){
         $makh=$_POST['makh'];
         $ten=$_POST['ten'];
@@ -30,6 +30,8 @@ class AjaxThongTinKhachHang extends controller {
             echo 'false';
         }
     }
+
+    // form admin
 
     public function update(){
       $checkSdt = false;
@@ -90,18 +92,15 @@ class AjaxThongTinKhachHang extends controller {
 
     public function XoaDuLieuKhachHang()
     {
-      //được xóa khi trang thái bằng 0 trong DB
+    
       $ma = $_POST["ma"];
-      // $checkTrangThai  = true ;
-      //nếu tìm thấy trạng thái trong DB bằng 1 thì $checkTrangThai = false
-      // if($this->KhachHangModel->kiemTraTrangThai($ma) == 1) $checkTrangThai = false;
-      //echo $this->KhachHangModel->kiemTraTrangThai($ma);
-      // if($checkTrangThai == true)
-      // {
-      //   if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
-      //   else echo 'Xóa Khách hàng Thất Bại!';
-      // }
-      //   else echo "Khách hàng Đã Được Sử Dụng";
+      $arr = [];
+     
+      //nếu tìm thấy trạng thái trong DB bằng 1 thì xóa tk
+      if($this->KhachHangModel->kiemTraTrangThai($ma,$arr) == 1){
+        $this->KhachHangModel->xoaTaiKhoanKh($ma);
+      }
+    
 
       if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
       else echo 'Xóa Khách hàng Thất Bại!';
@@ -112,7 +111,7 @@ class AjaxThongTinKhachHang extends controller {
       $key = $_POST['key'];
       $pageIndex = $_POST['index'];
       $numberItem = $_POST['size'];
-
+      $arr = [];
       $html="";
       
     
@@ -139,11 +138,20 @@ class AjaxThongTinKhachHang extends controller {
             </td>
             <td style='text-align: center;'>
             <!-- link  để chuyển sang trang nhóm quyền -->
-              <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  >Xóa</a></pre>
-            </td>
-          </tr> ";
+            <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  >Xóa</a>| 
+            ";
+            if($this->KhachHangModel->kiemTraTaiKhoanKh($row['MaKhachHang'],$arr)==1){
+              $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."' id='".$row["MaKhachHang"]."'>Sửa tài khoản</a>";
+            }
+            else {
+              $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanKhachHangPage,".$row["MaKhachHang"]."' id='".$row["MaKhachHang"]."'>Cấp tài khoản</a>";
+            }
+          $html .="
+          </td>
+        </tr> ";
             
           }
+          
 
           echo $html;
       }

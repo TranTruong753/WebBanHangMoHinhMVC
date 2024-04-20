@@ -13,11 +13,15 @@ if ($index == "Sửa") {
     // echo  $itemKhSua;
     // print_r($arr);
 }
-if ($index == "CấpNv") {
+else if ($index == "CấpNv") {
     $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
     $itemNvCap = $NhanVienModel->getItemById($MaNhanVien);
-    // echo $MaNhanVien;
-  
+    // echo $MaNhanVien; 
+}
+else if ($index == "CấpKh") {
+    $MaKhachHang = $data["DanhSach"]["MaKhachHang"];
+    $itemKhCap = $KhachHangModel->getItemById($MaKhachHang);
+
 }
 
 
@@ -29,6 +33,8 @@ if ($index == "CấpNv") {
     }
     else if($index == "CấpNv"){
         echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>';
+    } else if($index == "CấpKv"){
+        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage"> Trang quản lý khách hàng></a>';
     }
 ?>
 
@@ -92,6 +98,8 @@ if ($index == "CấpNv") {
                 if($index == "CấpNv")
                 {
                     echo"<option value='{$itemNvCap['MaNhanVien']}'>{$itemNvCap['MaNhanVien']} - {$itemNvCap['TenNhanVien']}</option>";
+                }else if($index == "CấpKh"){
+                    echo"<option value='{$itemKhCap['MaKhachHang']}'>{$itemKhCap['MaKhachHang']} - {$itemKhCap['TenKhachHang']}</option>";
                 }
                
             
@@ -132,7 +140,7 @@ if ($index == "CấpNv") {
                       
                     }
                 
-                    if($index == "Thêm" || $index == "CấpNv"){
+                    if($index == "Thêm" || $index == "CấpNv" || $index == "CấpKh"){
                         $itemNq = $NhomQuyenModel->getDanhSachAll();                      
                         if($itemNq->num_rows>0)
                         {
@@ -149,10 +157,14 @@ if ($index == "CấpNv") {
    </div>
 
    <?php 
-        if ($index == "Thêm" || $index == "CấpNv") {
+        if ($index == "Thêm") {
            echo '<button type="button" onclick = "btnAdd()">Tạo tài khoản</button>';
         }else if($index == "Sửa"){
             echo '<button type="button"  onclick = "btnEdit()">Cập nhật tài khoản</button>';
+        }else if($index == "CấpNv" ){
+            echo '<button type="button" onclick = "btnAddNv()">Cấp tài khoản</button>';
+        }else if($index == "CấpKh"){
+            echo '<button type="button" onclick = "btnAddKh()">Cấp tài khoản</button>';
         }
    ?>
    
@@ -186,6 +198,76 @@ if ($index == "CấpNv") {
                     {
                         alert("Thêm dữ liệu thành công!");
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage";
+                    }                             
+                    else 
+                    {
+                        alert("Thêm dữ liệu thất bại!");
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    }
+                }
+            })
+
+        }      
+    }
+
+    function btnAddNv() {
+        var TenDangNhap = document.getElementById("userLogin").value.trim();
+        var MatKhau = document.getElementById("userPw").value.trim();
+        var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
+        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        if(checkForm(MatKhau)){
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",
+                type:"post",
+                dataType:"html",
+                data:{
+                    TenDangNhap:TenDangNhap,
+                    MatKhau:MatKhau,
+                    MaNhomQuyen:MaNhomQuyen
+                },
+                success: function(data)
+                {               
+                   
+                    alert(data);
+                    if(data == 1)
+                    {
+                        alert("Thêm dữ liệu thành công!");
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage";
+                    }                             
+                    else 
+                    {
+                        alert("Thêm dữ liệu thất bại!");
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    }
+                }
+            })
+
+        }      
+    }
+
+    function btnAddKh() {
+        var TenDangNhap = document.getElementById("userLogin").value.trim();
+        var MatKhau = document.getElementById("userPw").value.trim();
+        var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
+        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        if(checkForm(MatKhau)){
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",
+                type:"post",
+                dataType:"html",
+                data:{
+                    TenDangNhap:TenDangNhap,
+                    MatKhau:MatKhau,
+                    MaNhomQuyen:MaNhomQuyen
+                },
+                success: function(data)
+                {               
+                   
+                    alert(data);
+                    if(data == 1)
+                    {
+                        alert("Thêm dữ liệu thành công!");
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage";
                     }                             
                     else 
                     {

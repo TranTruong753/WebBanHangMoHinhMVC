@@ -197,5 +197,11 @@
                 echo "Đổi Trạng Thái Thất Bại!";
             }
         }
+
+            
+        public function xoaTaiKhoanNv($ma){
+            $qr = "DELETE FROM taikhoan where TenDangNhap= '$ma'";
+            return $this->con->query($qr);
+        }
     }
 ?>
