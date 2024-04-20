@@ -141,7 +141,8 @@ class AjaxThongTinKhachHang extends controller {
             <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  >Xóa</a>| 
             ";
             if($this->KhachHangModel->kiemTraTaiKhoanKh($row['MaKhachHang'],$arr)==1){
-              $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."' id='".$row["MaKhachHang"]."'>Sửa tài khoản</a>";
+              //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
+              $html .= "<a href='#!' id='".$row["MaKhachHang"]."'>Đã có tài khoản</a>";
             }
             else {
               $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanKhachHangPage,".$row["MaKhachHang"]."' id='".$row["MaKhachHang"]."'>Cấp tài khoản</a>";

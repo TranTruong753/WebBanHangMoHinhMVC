@@ -11,7 +11,9 @@ if ($index == "Sửa") {
     $itemNvSua = $TaiKhoanModel->getItemById($MaTaiKhoan,'nhanvien','MaNhanVien','TenNhanVien', $arrNv);
     $itemKhSua = $TaiKhoanModel->getItemById($MaTaiKhoan,'khachhang','MaKhachHang','TenKhachHang', $arrKh);
     // echo  $itemKhSua;
-    // print_r($arr);
+    // echo  $itemNvSua;
+    // print_r($arrKh);
+    // print_r($arrNv);
 }
 else if ($index == "CấpNv") {
     $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
@@ -140,13 +142,28 @@ else if ($index == "CấpKh") {
                       
                     }
                 
-                    if($index == "Thêm" || $index == "CấpNv" || $index == "CấpKh"){
+                    else if($index == "Thêm" || $index == "CấpNv" ){
+                        $itemNq = $NhomQuyenModel->getDanhSachAll();                      
+                        if($itemNq->num_rows>0)
+                        {
+                            while($row = $itemNq->fetch_assoc())
+                            {                             
+                                echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";                               
+                            }
+                        }
+                    }
+
+                    else if($index == "CấpKh"){
                         $itemNq = $NhomQuyenModel->getDanhSachAll();                      
                         if($itemNq->num_rows>0)
                         {
                             while($row = $itemNq->fetch_assoc())
                             {
-                                echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";
+                                if($row['MaNhomQuyen']=='1'){
+
+                                    echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";
+
+                                }
                             }
                         }
                     }

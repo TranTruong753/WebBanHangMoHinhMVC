@@ -43,7 +43,8 @@
               <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a>| 
               ";
               if($this->NhanVienModel->kiemTraTaiKhoanNv($row['MaNhanVien'],$arr)==1){
-                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."' id='".$row["MaNhanVien"]."'>Sửa tài khoản</a>";
+                //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
+                $html .= "<a href='#!' id='".$row["MaNhanVien"]."'>Đã có tài khoản</a>";
               }
               else {
                 $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'>Cấp tài khoản</a>";
