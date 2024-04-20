@@ -34,6 +34,19 @@ class AjaxHoaDon extends controller{
     //     else echo "false";   
     // }
 
+    public function getDanhSachThongKeTrong1Thang() {
+      $result = $this->HoaDonModel->getDanhSachHoaDonTrong1Thang();
+      $render = "[";
+      for($i = 0 ; $i < count($result);$i++)
+      {
+        $render.= '["'.$result[$i][0].'",'.$result[$i][1].']';
+        if($i!= count($result)-1) $render.=",";
+      }
+      $render.="]";
+      echo $render;
+      
+      
+    }
     public function getDanhSachHD()
     {
          $key = $_POST['key'];

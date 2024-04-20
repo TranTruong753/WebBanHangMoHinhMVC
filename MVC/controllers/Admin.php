@@ -158,6 +158,7 @@ class Admin extends controller
         }
         else if ($this->pageName == "ThongKePage") {
             $this->data["detail"] = "ThongKePage";
+            $this->data["Data"]= [];
         }
         //page thêm
         else if ($this->pageName == "ThemKhuyenMaiPage") {
@@ -302,15 +303,12 @@ class Admin extends controller
             $this->data["detail"] = "updatePages/SuaSanPhamPage";
             $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp,"KM"=>$km];
         }
-        else if($this->pageName == "ThongKePage")
-        {
-            $this->data["detail"] = "ThongKePage";
-            $this->data["Data"] = [1];
-        }
+      //form thống kê
         else if($this->pageName == "Top5SanPham")
         {
+            $HoaDonModel = $this->model("HoaDonModel");
             $this->data["detail"] = "chartPages/Top5SanPham";
-            $this->data["Data"] = [1];
+            $this->data["Data"] = [];
         }
 
         print_r($this->data); 
@@ -318,14 +316,6 @@ class Admin extends controller
         $this->view("manage/manage", $this->data);
     }
 
-    // public function test() {
-    //     $this->view("manage/pages/ThongKePage", $this->data);
-    // };'ơ
-
-    // public function main($)
-    // {
-    //     print_r($x) ;
-    // }
 
     public function paramsProcess($data)
     {

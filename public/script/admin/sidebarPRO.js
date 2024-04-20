@@ -22,7 +22,6 @@ const showsubMenu = (IconId,submenuID,subId)=>{
     const icon = document.getElementById(IconId),
     submenu = document.getElementById(submenuID)
     sub = document.getElementById(subId)
-    console.log("hihi")
     if(submenu && sub){
         submenu.addEventListener('click',()=>{
             sub.classList.toggle('showsub')

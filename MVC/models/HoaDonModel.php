@@ -55,6 +55,42 @@ class HoaDonModel extends DB{
         }
     }
 
+    public function getDanhSachHoaDonTrong1Thang()
+    {
+        $qr = 'SELECT concat(sp.TenSanPham,"-",kc.TenKichCo,"-",ms.TenMauSac) as TenSanPham, SUM(cthd.SoLuong) as total
+        FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp, mausac as ms, kichco as kc
+        WHERE NgayLap BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
+        AND hd.MaHoaDon = cthd.MaHoaDon 
+        AND cthd.MaChiTietSanPham = ctsp.MaChiTietSanPham
+        AND	sp.MaSanPham = ctsp.MaSanPham
+        AND ctsp.MaMauSac = ms.MaMauSac
+        AND ctsp.MaKichCo = kc.MaKichCo
+        GROUP BY sp.TenSanPham,cthd.SoLuong
+        ORDER BY total DESC
+        LIMIT 0,5';
 
+        $result = $this->con->query($qr);
+      $arr = [];
+      if($result->num_rows >0)
+      {
+        while($row = $result->fetch_assoc())
+        {
+          array_push($arr,[$row["TenSanPham"],$row["total"]]);
+        }
+      }
+    //   print_r($arr);
+      return $arr;
+       
+    }
+
+
+//     SELECT sp.TenSanPham, SUM(cthd.ThanhTien)
+// FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp
+// WHERE NgayLap BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
+
+    // SELECT sp.TenSanPham, SUM(cthd.ThanhTien) as total
+    // FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp
+    // WHERE NgayLap BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
+    // ORDER BY total DESC
 }
 ?>
