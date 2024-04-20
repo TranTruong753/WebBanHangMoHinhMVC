@@ -32,7 +32,9 @@ class Admin extends controller
             $this->data["detail"] = "TaiKhoanPage";
 
         } 
-        else if ($this->pageName == "SuaTaiKhoanPage") {            
+        else if ($this->pageName == "SuaTaiKhoanPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");            
             $TaiKhoanModel = $this->model("TaiKhoanModel");
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $this->data["detail"] = "addPages/ThemTaiKhoanPage";
@@ -47,7 +49,16 @@ class Admin extends controller
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $this->data["detail"] = "addPages/ThemTaiKhoanPage";
             $this->data["Data"] = ["index"=>"Thêm"];
-        } 
+        }
+        else if ($this->pageName == "CapTaiKhoanPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");
+            $TaiKhoanModel = $this->model("TaiKhoanModel");
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["detail"] = "addPages/ThemTaiKhoanPage";
+            if(isset($this->params[1])) $this->data["MaNhanVien"] = $this->params[1];
+            $this->data["Data"] = ["index"=>"CấpNv","MaNhanVien"=>$this->data["MaNhanVien"]];
+        }  
         
         else if ($this->pageName == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");

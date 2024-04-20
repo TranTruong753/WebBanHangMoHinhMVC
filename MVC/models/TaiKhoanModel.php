@@ -37,6 +37,9 @@ class TaiKhoanModel extends DB{
         
     }
 
+  
+
+
     function loadDsTenDangNha($table,$column){
         // $qr = "SELECT DISTINCT $table.* FROM $table, taikhoan WHERE $column != TenDangNhap ORDER BY $column";
         $qr = "SELECT $table.*

@@ -1,8 +1,8 @@
 <?php
 $TaiKhoanModel = new TaiKhoanModel();
 $NhomQuyenModel = new NhomQuyenModel();
-// $NhanVienModel = new NhanVienModel();
-// $KhachHangModel = new KhachHangModel();
+$NhanVienModel = new NhanVienModel();
+$KhachHangModel = new KhachHangModel();
 $index = $data["DanhSach"]["index"];
 if ($index == "Sửa") {
     $MaTaiKhoan = $data["DanhSach"]["MaTaiKhoan"];
@@ -13,11 +13,27 @@ if ($index == "Sửa") {
     // echo  $itemKhSua;
     // print_r($arr);
 }
+if ($index == "CấpNv") {
+    $MaNhanVien = $data["DanhSach"]["MaNhanVien"];
+    $itemNvCap = $NhanVienModel->getItemById($MaNhanVien);
+    // echo $MaNhanVien;
+  
+}
 
 
 ?>
 
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage"> Trang quản lý tài khoản></a>
+<?php 
+    if($index == "Sửa" || $index == "Thêm"){
+        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage"> Trang quản lý tài khoản></a>';
+    }
+    else if($index == "CấpNv"){
+        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>';
+    }
+?>
+
+
+
 <?php if ($index == "Thêm") {
     echo    "<h1>Form Tạo tài khoản</h1>";
 } else if ($index == "Sửa") {
@@ -51,24 +67,31 @@ if ($index == "Sửa") {
                         echo"<option value='{$arrKh['TenDangNhap']}'>{$arrKh['TenDangNhap']} - {$arrKh['TenKhachHang']}</option>";
                     }
                 }
-                //thêm
-                $itemNv = $TaiKhoanModel->loadDsTenDangNha('nhanvien','MaNhanVien');
-                $itemKh = $TaiKhoanModel->loadDsTenDangNha('khachhang','MaKhachHang');
-                $resultNv = $itemNv;
-                if($itemNv->num_rows>0)
-                {
-                    while($row = $itemNv->fetch_assoc())
+
+                if($index == "Sửa"||$index == "Thêm"){
+                     //thêm và sửa đều load tất cả tên đăng nhâp
+                    $itemNv = $TaiKhoanModel->loadDsTenDangNha('nhanvien','MaNhanVien');
+                    $itemKh = $TaiKhoanModel->loadDsTenDangNha('khachhang','MaKhachHang');
+                    if($itemNv->num_rows>0)
                     {
-                        echo"<option value='{$row['MaNhanVien']}'>{$row['MaNhanVien']} - {$row['TenNhanVien']}</option>";
+                        while($row = $itemNv->fetch_assoc())
+                        {
+                            echo"<option value='{$row['MaNhanVien']}'>{$row['MaNhanVien']} - {$row['TenNhanVien']}</option>";
+                        }
                     }
+                    if($itemKh->num_rows>0)
+                    {
+                        while($row = $itemKh->fetch_assoc())
+                        {
+                            echo"<option value='{$row['MaKhachHang']}'>{$row['MaKhachHang']} - {$row['TenKhachHang']}</option>";
+                        }
+                    }
+               
                 }
-                $resultKh = $itemKh;
-                if($itemKh->num_rows>0)
+
+                if($index == "CấpNv")
                 {
-                    while($row = $itemKh->fetch_assoc())
-                    {
-                        echo"<option value='{$row['MaKhachHang']}'>{$row['MaKhachHang']} - {$row['TenKhachHang']}</option>";
-                    }
+                    echo"<option value='{$itemNvCap['MaNhanVien']}'>{$itemNvCap['MaNhanVien']} - {$itemNvCap['TenNhanVien']}</option>";
                 }
                
             
@@ -109,7 +132,7 @@ if ($index == "Sửa") {
                       
                     }
                 
-                    if($index == "Thêm"){
+                    if($index == "Thêm" || $index == "CấpNv"){
                         $itemNq = $NhomQuyenModel->getDanhSachAll();                      
                         if($itemNq->num_rows>0)
                         {
@@ -126,7 +149,7 @@ if ($index == "Sửa") {
    </div>
 
    <?php 
-        if ($index == "Thêm") {
+        if ($index == "Thêm" || $index == "CấpNv") {
            echo '<button type="button" onclick = "btnAdd()">Tạo tài khoản</button>';
         }else if($index == "Sửa"){
             echo '<button type="button"  onclick = "btnEdit()">Cập nhật tài khoản</button>';
@@ -144,7 +167,7 @@ if ($index == "Sửa") {
         var TenDangNhap = document.getElementById("userLogin").value.trim();
         var MatKhau = document.getElementById("userPw").value.trim();
         var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
-        // alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
         if(checkForm(MatKhau)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",

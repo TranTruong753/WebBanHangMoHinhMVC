@@ -9,7 +9,7 @@ $PhanTrangModel = new PhanTrangModel();
   <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div>
 <!-- Nút sang form dữ liệu nhóm quyền  -->
-<input type="submit" class="btn" onclick="DieuHuong()" value="Thêm">
+<input type="submit" class="" onclick="DieuHuong()" value="Thêm">
 
 <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
@@ -110,6 +110,26 @@ $PhanTrangModel = new PhanTrangModel();
   //Xử lý khi nhấn nút xóa
   function btnXoa(obj)
   {
+    var ma = obj.id;
+      $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
+      type: 'post',
+      dataType: 'html',
+      data: {
+        ma: ma,
+      },
+      success: function(data) {
+        alert(data);
+      }
+    })
+    loadTable(tmpKey,index,size)
+    loadPhanTrang("nhanvien",index,size,"",tmpKey)
+  }
+
+  // Xử lý cấp tài khoản
+  function btnCap(obj)
+  {
+    var ma = obj.id;
     var ma = obj.id;
       $.ajax({
       url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',

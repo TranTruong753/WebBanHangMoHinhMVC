@@ -8,6 +8,7 @@
     }
 
   public function getDanhSach(){
+      $arr = [];
       $key = $_POST['key'];
       $pageIndex = $_POST['index'];
       $numberItem = $_POST['size'];
@@ -39,7 +40,15 @@
             </td>
             <td style='text-align: center;'>
             <!-- link  để chuyển sang trang nhóm quyền -->
-              <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a>| <a href='#!'>Cấp tài khoản</a></pre>
+              <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a>| 
+              ";
+              if($this->NhanVienModel->kiemTraTaiKhoanNv($row['MaNhanVien'],$arr)==1){
+                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."' id='".$row["MaNhanVien"]."'>Sửa tài khoản</a>";
+              }
+              else {
+                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'>Cấp tài khoản</a>";
+              }
+            $html .="
             </td>
           </tr> ";
             

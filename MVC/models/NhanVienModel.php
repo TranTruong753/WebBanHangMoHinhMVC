@@ -11,6 +11,10 @@
             return $this->con->query($qr);
         }
 
+        function getIdTk($ma){
+
+        }
+
 
         public function getItemById($ma)
         {
@@ -140,19 +144,24 @@
         }
 
 
-        public function kiemTraTaiKhoanNv($ma){
-            $qr = "SELECT * FROM taikhoan where MaNhanVien= '$ma'";
-            if(mysqli_query($this->con,$qr)->num_rows > 0)
+        public function kiemTraTaiKhoanNv($ma,&$arr){
+            $arr = [];
+            $qr = "SELECT * FROM taikhoan where TenDangNhap= '$ma'";
+            $result = $this->con->query($qr);
+            if($result->num_rows>0)
             {
-                return 1;
-            }else
-            {
-                return 0;
+            //    return  $result ;
+            while($row = $result->fetch_assoc())
+                {
+                    $arr = ["MaTaiKhoan"=>$row["MaTaiKhoan"]];
+                    return 1;
+                }
             }
+            return 0;
         }
 
         public function xoaTaiKhoanNhanVien($ma) {
-            $qr = "DELETE FROM taikhoan where MaNhanVien= '$ma'";
+            $qr = "DELETE FROM taikhoan where TenDangNhap= '$ma'";
             if(mysqli_query($this->con,$qr))
             {
                 return 1;
