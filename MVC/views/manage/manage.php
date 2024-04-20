@@ -17,9 +17,10 @@
     <!--ajax -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- link css -->
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/reset.css">
+    <!-- <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/grid.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/sidebar.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css">
+    <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css"> -->
     <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/sidebarPRO.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/styles.css">
 
@@ -33,14 +34,14 @@
         <div class="header">
             <h1>header</h1>
         </div>
-        <div class="grid">
-            <div class="row">
-                <div class="sidebar col l-3">
+        <div class="">
+            <div class="">
+                <div class="">
                     <?php
                     require_once "blocks/sidebarPRO.php";
                     ?>
                 </div>
-                <div class="container col l-8">
+                <div class="">
                     <?php
                     // print_r($data["Data"]);
                     $this->view("manage/pages/" . $data['detail'], ["DanhSach" => $data["Data"]]);

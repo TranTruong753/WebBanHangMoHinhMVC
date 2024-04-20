@@ -117,17 +117,17 @@ class KhachHangModel extends DB{
         }
     }
 
-    public function insert($ten)
-    {
-        $qr = "INSERT INTO khachhang VALUES (null,'$ten','1')";
-        if($row = mysqli_query($this->con,$qr))
-        {
-            return 1;
-        }else
-        {
-            return 0;
-        }
-    }
+    // public function insert($ten)
+    // {
+    //     $qr = "INSERT INTO khachhang VALUES (null,'$ten','1')";
+    //     if($row = mysqli_query($this->con,$qr))
+    //     {
+    //         return 1;
+    //     }else
+    //     {
+    //         return 0;
+    //     }
+    // }
 
     public function insertKh($makh, $sdt, $ten, $gioitinh)
     {

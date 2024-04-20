@@ -18,16 +18,49 @@ class Admin extends controller
         }
      
         if ($this->pageName == "SanPhamPage") {
-            $NhomQuyenModel = $this->model("SanPhamModel");
-            $this->data["Data"] = $NhomQuyenModel->getDanhSachAdmin();
+            $SanPhamModel = $this->model("SanPhamModel");
+            $this->data["Data"] = $SanPhamModel->getDanhSachAdmin();
             $this->data["detail"] = "SanPhamPage";
-        } else if ($this->pageName == "TaiKhoanPage") {
-            
+        } 
+        //quản lý tài khoản 
+        else if ($this->pageName == "TaiKhoanPage") {            
             $TaiKhoanModel = $this->model("TaiKhoanModel");
-            $this->data["Data"]= $TaiKhoanModel->getDanhSach();
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $PhanTrangModel = $this->model("PhanTrangModel");
+            // $this->data["Data"]= $TaiKhoanModel->getDanhSach();
+            $this->data["Data"]= [];
             $this->data["detail"] = "TaiKhoanPage";
 
-        }  else if ($this->pageName == "NhomQuyenPage") {
+        } 
+        else if ($this->pageName == "SuaTaiKhoanPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");            
+            $TaiKhoanModel = $this->model("TaiKhoanModel");
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["detail"] = "addPages/ThemTaiKhoanPage";
+            if(isset($this->params[1])) $this->data["MaTaiKhoan"] = $this->params[1];
+            $this->data["Data"] = ["index"=> "Sửa","MaTaiKhoan"=>$this->data["MaTaiKhoan"]];
+
+        }
+        else if ($this->pageName == "ThemTaiKhoanPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");
+            $TaiKhoanModel = $this->model("TaiKhoanModel");
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["detail"] = "addPages/ThemTaiKhoanPage";
+            $this->data["Data"] = ["index"=>"Thêm"];
+        }
+        else if ($this->pageName == "CapTaiKhoanPage") {
+            $NhanVienModel = $this->model( "NhanVienModel");
+            $KhachHangModel = $this->model("KhachHangModel");
+            $TaiKhoanModel = $this->model("TaiKhoanModel");
+            $NhomQuyenModel = $this->model("NhomQuyenModel");
+            $this->data["detail"] = "addPages/ThemTaiKhoanPage";
+            if(isset($this->params[1])) $this->data["MaNhanVien"] = $this->params[1];
+            $this->data["Data"] = ["index"=>"CấpNv","MaNhanVien"=>$this->data["MaNhanVien"]];
+        }  
+        
+        else if ($this->pageName == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"] = $NhomQuyenModel->getDanhSach("",$this->params[1],$this->params[2]);
@@ -76,9 +109,10 @@ class Admin extends controller
         }
         // nhân viên
         else if ($this->pageName == "NhanVienPage") {
-            $NhanVienModel = $this->model("NhanVienModel");
+            // $NhanVienModel = $this->model("NhanVienModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
-            $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
+            // $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
+            $this->data["Data"] = [];
             $this->data["detail"] = "NhanVienPage";
         }
         else if($this->pageName == "SuaNhanVienPage"){
@@ -96,7 +130,8 @@ class Admin extends controller
         else if ($this->pageName == "KhachHangPage") {
             $KhachHangModel = $this->model("KhachHangModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
-            $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
+            // $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
+            $this->data["Data"] = [];
             $this->data["detail"] = "KhachHangPage";
         }
         else if($this->pageName == "SuaKhachHangPage"){

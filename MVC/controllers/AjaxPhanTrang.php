@@ -25,7 +25,7 @@ class AjaxPhanTrang extends controller{
             {
                 $varibleEqual.= "  MaNhomQuyen,TenNhomQuyen";
             }
-             if($table == 'chucnang')
+            if($table == 'chucnang')
             {
                 $varibleEqual .=" MaChucNang,TenChucNang ";
             }
@@ -53,8 +53,7 @@ class AjaxPhanTrang extends controller{
             if($table == "khuyenmai")
             {
                 $varibleEqual .= " MaKhuyenMai,TenKhuyenMai,MucKhuyenMai ";
-            }
-                
+            }               
             if($table == 'phieunhap')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien";
@@ -68,7 +67,10 @@ class AjaxPhanTrang extends controller{
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietphieunhap.MaChiTietSanPham,sanpham.TenSanPham";
             }
-           
+            if($table == 'taikhoan')
+            {
+                $varibleEqual.= "  taikhoan.MaTaiKhoan";
+            }
             if($condition == "")
             {
                 $condition.= " where 1=1 AND";
