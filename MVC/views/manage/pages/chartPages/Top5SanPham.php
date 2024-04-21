@@ -25,7 +25,4 @@
     </div>
 
 </div>
-
-<script src="http://localhost/WebBanHangMoHinhMVC/public/script/admin/Top5SanPham.js">
-
-</script>
+ 

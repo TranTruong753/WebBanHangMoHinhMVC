@@ -1,47 +1,4 @@
-// var Top5 = `<style>
-// .main {
 
-//     margin-left: 50px;
-//     text-align: center;
-// }
-// </style>
-// <div class="grid main ">
-
-// <div class="row">
-//     <div class=" col so-do-cot l-12" style="min-height: 50px; background-color: red;">
-//         <div id="myChart" style="width:100%; max-width:1280px; height:500px; border: 5px solid ;"></div>
-//     </div>
-
-// </div>
-// </div>`;
-
-// //load sơ đồ cột Top 5 sản phẩm
-// google.charts.load('current', {
-//     'packages': ['corechart']
-// });
-// google.charts.setOnLoadCallback(drawChart);
-
-// function drawChart() {
-//     const data = google.visualization.arrayToDataTable([
-//         ['Sản Phẩm', 'Số Lượng'],
-//         ['Italy', 100],
-//         ['France', 49],
-//         ['Spain', 44],
-//         ['USA', 24],
-//         ['Argentina', 15]
-//     ]);
-
-//     const options = {
-//         title: 'Top 5 sản phẩm bán chạy trong tháng'
-//     };
-
-//     const chart = new google.visualization.BarChart(document.getElementById('myChart'));
-//     chart.draw(data, options);
-// }
-// $(document).ready(function(){
-//     document.getElementsByClassName("content")[0].innerHTML=Top5;
-   
-// })
 
 
 var arrThongKe=[['Sản Phẩm', 'Số Lượng']];
@@ -62,8 +19,6 @@ $(document).ready(function(){
             console.log(json)
             arrThongKe = [...arrThongKe, ...json]
             
-            // concat(arrThongKe,json)
-            console.log(arr);
         }
         
     })

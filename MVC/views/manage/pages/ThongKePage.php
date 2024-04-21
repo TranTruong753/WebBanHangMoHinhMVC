@@ -8,16 +8,48 @@
     <option value="">Thống kê theo Khoảng tgian</option>
 </select>
 
-<div id="content-top-5">
-    <?php require_once 'chartPages/Top5SanPham.php'?>
+<div id="content-chart">
 </div>
 
 <script>
     
+    const RenderTop5Chart = `<style>
+    .main {
+        margin: auto;
+        text-align: center;
+    }
+
+    .row {}
+
+    .so-do-tron,.so-do-cot {
+        border: 5px solid black;
+    }
+</style>
+
+<div class="grid main">
+<h4>TOP 5 SẢN PHẨM BÁN CHẠY NHẤT TRONG THÁNG</h4>
+
+    <div class="row">
+        <div class=" col l-7 so-do-cot" style="min-height: 50px; ">
+            <div id="so-do-cot" style="width:100%;  height:500px;"></div>
+        </div>
+        <div class="col l-5 so-do-tron" style=" min-height: 50px;">
+            <div id="so-do-tron" style="width:100%;  height:500px;">
+            </div>
+        </div>
+    </div>
+
+</div>`;
+
+function renderTop5Chart()
+{
+   document.getElementById("content-chart").innerHTML = RenderTop5Chart ;
+
+}
 $(document).ready(function () {
    
-   console.log(document.getElementById("content-top-5")) ;
-    
+    renderTop5Chart()
 
 })
 </script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/admin/Top5SanPham.js"></script>
