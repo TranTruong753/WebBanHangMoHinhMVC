@@ -37,7 +37,7 @@ body {
 }
 
 .content {
-    padding: 20px 8px 10px;
+    padding: 20px 12px 10px;
     background-color: #fff;
     border-radius: 8px;
     height: 100%;
@@ -52,12 +52,10 @@ body {
 .header {
     background: var(--blue-color-02);
     width: 100%;
-    height: 8px;
+    height: 0px;
 }
 
-.header h1 {
-    margin: 0;
-}
+
 
 /* .titleText {
 
@@ -119,7 +117,7 @@ body {
   }
 
   .table td {
-    font-size: 14px;
+    font-size: 16px;
   }
 
 /* css  switch checkbox*/
