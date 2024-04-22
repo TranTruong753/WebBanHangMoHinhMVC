@@ -22,34 +22,40 @@
           while($row = $result->fetch_assoc())
           {
             $html .=  " <tr>
-            <th style='text-align: center;' scope='row'>".$row['MaNhanVien']."</th>
-            <td style='text-align: center;'>".$row['TenNhanVien']."</td>
-            <td style='text-align: center;'>".$row['SoDienThoai']."</td>
-            <td style='text-align: center;'>".$row['CCCD']."</td>
-            <td style='text-align: center;'>".$row['NgaySinh']."</td>
-            <td style='text-align: center;'>
+            <td>".$row['MaNhanVien']."</td>
+            <td>".$row['TenNhanVien']."</td>
+            <td>".$row['SoDienThoai']."</td>
+            <td>".$row['CCCD']."</td>
+            <td>".$row['NgaySinh']."</td>
+            <td>
+              <label class='switch'>
   
-            <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-              <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaNhanVien']."' type='checkbox' value='1'";
-              if ($row["TrangThai"] == 1) {
-                $html .= "checked";
+              <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaNhanVien']."' type='checkbox' value='1'";
+                if ($row["TrangThai"] == 1) {
+                  $html .= "checked";
 
-              }
-              $html .="
+                }
+                $html .=">
+                <span class='slider round'></span>
+              </label>
               
             </td>
-            <td style='text-align: center;'>
+            <td>
             <!-- link  để chuyển sang trang nhóm quyền -->
-              <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  >Xóa</a>| 
+              <div class ='btn-wrap'>
+              <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  ><i class='bx bx-x'></i></a> 
+              <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'><i class='bx bxs-edit'></i></a> 
               ";
               if($this->NhanVienModel->kiemTraTaiKhoanNv($row['MaNhanVien'],$arr)==1){
                 //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
-                $html .= "<a href='#!' id='".$row["MaNhanVien"]."'>Đã có tài khoản</a>";
+                $html .= "<a class = 'btn btn-account account-true' href='#!' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
               }
               else {
-                $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'>Cấp tài khoản</a>";
+                $html .= "<a class = 'btn btn-account account-false'href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
               }
-            $html .="
+            $html .=" 
+              </div>
             </td>
           </tr> ";
             

@@ -1,7 +1,10 @@
 :root{
-    --first-color: #EDEDED;
-    --second-color:#3068c8;
-    --white-color:#12192C;
+    /* --first-color: #EDEDED; */
+    --first-color: #2196F3;
+    /* --second-color:#3068c8; */
+    --second-color:#fff;
+    /* --white-color:#12192C; */
+    --white-color:#fff;
     --body-font:'DVN-Poppins';
     --small-font-size:0.875rem;
 

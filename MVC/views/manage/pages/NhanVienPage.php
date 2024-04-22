@@ -1,27 +1,44 @@
 <?php
 $PhanTrangModel = new PhanTrangModel();
 ?>
-<div>
+<div class="">
   <h1 class="styleText-01">Quản Lý Nhân Viên</h1>
 </div>
-<div class="search">
-  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên nhân viên">
-  <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
-<!-- Nút sang form dữ liệu nhóm quyền  -->
-<input type="submit" class="" onclick="DieuHuong()" value="Thêm">
 
-<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
+<div class="search-wrap">
+  <div class="search">
+    <input type="text" class="input_search" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên nhân viên">
+    <label class="btn btn_search" for="btnSearch">
+      <i class='bx bx-search'></i>
+      <input type="button" id="btnSearch" value="" hidden>
+    </label>
+   
+  </div>
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <div class="block-wrap">
+    <label class="btn btn_reset" for="btnRefresh">
+      <i class='bx bx-reset'></i>
+      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+    </label>
+    <div class="btn btn_add"> 
+      <i class='bx bx-plus'></i>
+      <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+    </div>
+  </div>
+  
+</div>
+
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Số Điện Thoại</th>
-      <th scope="col" style="text-align: center;">CCCD</th>
-      <th scope="col" style="text-align: center;">Ngày Sinh</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th style="text-align: center;">ID</th>
+      <th>Họ và tên</th>
+      <th>Số Điện Thoại</th>
+      <th>CCCD</th>
+      <th>Ngày Sinh</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">

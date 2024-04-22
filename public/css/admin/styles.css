@@ -1,14 +1,23 @@
 * {
     box-sizing: border-box;
 }
-/* html {
-    font-size: 62.5%;
-} */
+
+
+:root {
+ --blue-color-01: #63c7ff;
+ --blue-color-02:#2196F3;
+ --red--color-01:#FF4742;
+}
 
 body {
     /* font-size: 1.6rem; */
     font-family: "Poppins", sans-serif;
     background: var(--primary-color);
+}
+
+.main {
+    height: 100%;
+    background: var(--blue-color-02);
 }
 
 .container {
@@ -20,29 +29,34 @@ body {
 
 .all
 {
-    margin-left: 80px;
+    margin-left: 57px;
+    padding-right: 10px;
+    padding-left: 15px;
     transition: 0.4s;
+    background: var(--blue-color-02);
+}
+
+.content {
+    padding: 20px 8px 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 100%;
 }
 
 .showContainer
 {
-    margin-left: 300px;
+    margin-left: 280px;
     transition: 0.4s;
 }
 
-.btn {
-    --width-btn: 120px;
-    cursor: pointer;
-    color: #333;
-    font-size: 1.6rem;
-    font-weight: bold;
-    background: #63c7ff;
-    /* max-height: 42px;
-    min-height: 42px; */
-    width: var(--width-btn);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+.header {
+    background: var(--blue-color-02);
+    width: 100%;
+    height: 8px;
+}
+
+.header h1 {
+    margin: 0;
 }
 
 /* .titleText {
@@ -51,66 +65,261 @@ body {
 
 
 .styleText-01 {
-    font-size: 4.2rem;
+    font-size: 42px;
     font-weight: 700;
 }
 
 .styleText-02 {
-    font-size: 1.8rem;
+    font-size: 18px;
     font-weight: 500;
 }
 
 .styleText-03 {
-    font-size: 1.6rem;
+    font-size: 16px;
     font-weight: 400;
 }
 
 .styleText-04 {
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 400;
 }
 
 .styleText-05 {
-    font-size: 1.3rem;
+    font-size: 13px;
     font-weight: 400;
 }
 
 
-
-/* 
-.all
-{
-    margin-left: 64px;
-}
-
-.header{
-    height: 50px;
+/* css bảng */
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
     width: 100%;
-    background-color: red;
+    margin: 20px 0;
+  }
+  
+  .table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    vertical-align:middle;
+  }
+  
+  .table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .table tr:hover {background-color: #ddd;}
+  
+  .table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: var(--blue-color-02);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
 
+  .table td {
+    font-size: 14px;
+  }
+
+/* css  switch checkbox*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* button */
+/* css tìm kiếm nút  */
+  button,input[type = button] {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-weight:inherit;
+  }
+
+.search-wrap {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.container {
-    margin-top: 50px;
-    margin-left: 100px;
+ .search, .block-wrap {
+    display: flex;
+    align-items: center;
+ }
+
+ .block-wrap {
+    column-gap: 5px;
+ }
+  
+.btn {
+    --width-btn: 120px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    background: var(--blue-color-02);
+    /* max-height: 42px;
+    min-height: 42px; */
+    width: var(--width-btn);
+    height: 38px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
 }
 
-.row{
-    margin-right: 50px;
+/* nút thêm */
+
+.btn_add {
+    --width-btn: 120px;
+    font-size: 24px;
 }
 
-.btnAdd{
-    width: 150px;
-    background-color: green;
-    color: black;
-    padding: 10px;
-    margin-left: 900px;
-    display: block;
+.btn_add i {
     
+    font-weight: inherit; 
 }
 
-.showContainer
-{
-    margin-left: 285px;
-    transition: 0.4s;
-}    */
+/* nút tìm kiếm */
+.btn_search {
+    --width-btn: 42px;
+    border-radius: 0 8px 8px 0;
+}
+
+.btn_search i {
+    font-size: 24px;
+    font-weight: inherit; 
+}
+
+/* ô tìm kiếm */
+
+.input_search {
+    font-size: 16px;
+    outline: none;
+    padding-left: 15px;
+    padding-right: 10px;
+    height: 38px;
+    border: 2px solid var(--blue-color-02);
+    border-radius: 8px 0 0 8px;
+}
+
+
+/* nút tải lại */
+.btn_reset {
+    --width-btn: 42px;
+    background-color: var(--red--color-01);
+    border-color:  var(--red--color-01);
+}
+
+.btn_reset i {
+    font-size: 32px;
+}
+
+/* nút chức năng */
+.btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
+}
+.btn_delete, .btn_fix, .btn-account {
+    --width-btn: 32px;
+    height: 32px;
+}
+
+.btn_delete {
+    background-color: var(--red--color-01);
+    border-color:  var(--red--color-01);
+}
+
+.btn_delete i , .btn_fix i{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.account-true {
+    cursor: initial;
+    transform: none;
+    background: #ddd;
+}
+
+/* css hiệu ứng nút */
+
+.btn i {
+    transition: 0.2s;
+}
+
+
+.btn:hover i {
+    transform: scale(1.2);
+}
+
+.account-true:hover i {
+    transform: none;
+}
+
+
+
+
+
+
