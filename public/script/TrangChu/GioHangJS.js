@@ -24,6 +24,7 @@ const smallImages = document.querySelectorAll('.content__img-item');
     //     });
 
     function change(){   // sự kiện lấy số lượng tồn khi chọn màu săc
+        const largeImage = document.getElementById('largeImage');
         const element = document.getElementsByName('content__info-title')[0];
         const masp=element.id;
         var soluong ="";
@@ -45,25 +46,18 @@ const smallImages = document.querySelectorAll('.content__img-item');
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
 
-
-       
-
-        
-
-       alert(makichco);
-    $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
-        masp: masp,mamausac : mamausac, makichco: makichco},function(data){
-        $("#content__info-color").html("Màu sắc :"+tenmausac);   
-        $("#SoLuong").html(data);
-        soluong = data;
-    })
-      
     
-     
-
-   
-        
-    }
+        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
+            masp: masp,mamausac : mamausac, makichco: makichco},function(data){
+            $("#content__info-color").html("Màu sắc :"+tenmausac);   
+            $("#SoLuong").html(data);
+            soluong = data;
+        })
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietSanPham/GetImg",{
+            masp: masp,mamausac : mamausac},function(data){
+            largeImage.src= "http://localhost/WebBanHangMoHinhMVC/public/img/"+data;
+        })
+}
 
     document.getElementById("content__input-select").onchange = function() {  // sự kiện lấy số lượng tồn khi chọn size
         const element = document.getElementsByName('content__info-title')[0];

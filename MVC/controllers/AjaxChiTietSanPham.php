@@ -22,6 +22,17 @@
                 }
             }
         }
+
+        function GetImg(){
+            $masp = $_POST['masp'];
+            $mamausac = $_POST['mamausac'];
+            $result =$this->chiTietSp->Getimgsp($masp,$mamausac);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo $row['HinhAnh'];
+                }
+            }
+        }
     
 
     }

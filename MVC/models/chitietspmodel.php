@@ -1,9 +1,9 @@
 <?php
 class chitietspmodel extends DB{
 
-    public function Getimgsp($masp){
+    public function Getimgsp($masp,$mamausac){
         $qr = 'SELECT HinhAnh 
-        FROM chitietsanpham where MaSanPham="'.$masp.'" GROUP BY HinhAnh';
+        FROM chitietsanpham where MaSanPham="'.$masp.'" and MaMauSac="'.$mamausac.'" GROUP BY MaMauSac';
         $row=mysqli_query($this->con, $qr);
         return $row;
 

@@ -57,13 +57,13 @@
                 <div class="content__img">
                     <div class="content__img-list">
                             <?php
-                            if ($data['img']->num_rows > 0) {
-                                while ($row = $data['img']->fetch_assoc()) {
-                                        echo  '
-                                        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'"
-                                         alt="" class="content__img-item" onclick="changeLargeImage(\'http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'\')">';
-                                }
-                            }
+                            // if ($data['img']->num_rows > 0) {
+                            //     while ($row = $data['img']->fetch_assoc()) {
+                            //             echo  '
+                            //             <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'"
+                            //              alt="" class="content__img-item" onclick="changeLargeImage(\'http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'\')">';
+                            //     }
+                            // }
                             echo '</div>';
                             if ($data['imgmain']->num_rows > 0) {
                                 while ($row = $data['imgmain']->fetch_assoc()) {
