@@ -1,27 +1,41 @@
 <?php
 $PhanTrangModel = new PhanTrangModel();
 ?>
-<div style="text-align: center;">
-  <h1 style=" margin-bottom: 20px;">Quản Lý Khách Hàng</h1>
+<div class="styleText-01">
+  <h1>Quản Lý Khách Hàng</h1>
 </div>
 
-<div class="search">
-  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên khách hàng">
-  <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
-<!-- Nút sang form dữ liệu nhóm quyền  -->
-<input type="submit" onclick="DieuHuong()" value="Thêm">
+  <div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên khách hàng">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+     <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+      </div>
+    </div>
+  </div>
 
-<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Số Điện Thoại</th>
-      <th scope="col" style="text-align: center;">Giới Tính</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Số Điện Thoại</th>
+      <th>Giới Tính</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">

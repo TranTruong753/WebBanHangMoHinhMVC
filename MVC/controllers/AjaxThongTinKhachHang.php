@@ -121,33 +121,37 @@ class AjaxThongTinKhachHang extends controller {
           while($row = $result->fetch_assoc())
           {
             $html .=  " <tr>
-            <th style='text-align: center;' scope='row'>".$row['MaKhachHang']."</th>
-            <td style='text-align: center;'>".$row['TenKhachHang']."</td>
-            <td style='text-align: center;'>".$row['SoDienThoai']."</td>
-            <td style='text-align: center;'>".$row['GioiTinh']."</td>
-            <td style='text-align: center;'>
-  
+            <td>".$row['MaKhachHang']."</td>
+            <td>".$row['TenKhachHang']."</td>
+            <td>".$row['SoDienThoai']."</td>
+            <td>".$row['GioiTinh']."</td>
+            <td>
+            <label class='switch'>
             <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
               <input onchange='DoiTrangThaiKhachHang(this)' id='".$row['MaKhachHang']."' type='checkbox' value='1'";
               if ($row["TrangThai"] == 1) {
                 $html .= "checked";
 
               }
-              $html .="
-              
+              $html .=">
+              <span class='slider round'></span>
+              </label>
             </td>
             <td style='text-align: center;'>
-            <!-- link  để chuyển sang trang nhóm quyền -->
-            <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  >Xóa</a>| 
-            ";
-            if($this->KhachHangModel->kiemTraTaiKhoanKh($row['MaKhachHang'],$arr)==1){
-              //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
-              $html .= "<a href='#!' id='".$row["MaKhachHang"]."'>Đã có tài khoản</a>";
-            }
-            else {
-              $html .= "<a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanKhachHangPage,".$row["MaKhachHang"]."' id='".$row["MaKhachHang"]."'>Cấp tài khoản</a>";
-            }
-          $html .="
+              <div class ='btn-wrap'>
+                <!-- link  để chuyển sang trang nhóm quyền -->
+                <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  ><i class='bx bx-x'></i></a>
+                <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'><i class='bx bxs-edit'></i></a>  
+                ";
+                if($this->KhachHangModel->kiemTraTaiKhoanKh($row['MaKhachHang'],$arr)==1){
+                  //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
+                  $html .= "<a class = 'btn btn-account account-true' href='#!' id='".$row["MaKhachHang"]."'><i class='bx bxs-user-account'></i></a>";
+                }
+                else {
+                  $html .= "<a class = 'btn btn-account account-false' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanKhachHangPage,".$row["MaKhachHang"]."' id='".$row["MaKhachHang"]."'><i class='bx bxs-user-account'></i></a>";
+                }
+              $html .="
+            </div>
           </td>
         </tr> ";
             
