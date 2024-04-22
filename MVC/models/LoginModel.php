@@ -14,7 +14,7 @@ class LoginModel extends DB{
     public function addDangKiTK($email,$mk){
         $quyen="1";
         $qr = "INSERT INTO taikhoan
-        VALUES (NULL,'$email',NULL, '$mk','$quyen','1')";
+        VALUES (NULL,'$email','$mk','$quyen','1')";
         if($row=mysqli_query($this->con, $qr)){
             return true;
         }
@@ -24,8 +24,8 @@ class LoginModel extends DB{
 
     public function TimTKKH($email,$mk){
         
-        $qr ='SELECT * FROM taikhoan INNER JOIN khachhang on taikhoan.MaNguoiDung=khachhang.MaKhachHang  
-        where (taikhoan.MaNguoiDung="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
+        $qr ='SELECT * FROM taikhoan INNER JOIN khachhang on taikhoan.TenDangNhap=khachhang.MaKhachHang  
+        where (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
         $row=mysqli_query($this->con, $qr);
         return $row;
         
@@ -34,8 +34,8 @@ class LoginModel extends DB{
     public function TimTKNV($email,$mk){
         
         $qr ='SELECT * FROM taikhoan  
-        INNER JOIN nhanvien on taikhoan.MaNhanVien=nhanvien.MaNhanVien where
-        (taikhoan.MaNhanVien="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
+        INNER JOIN nhanvien on taikhoan.TenDangNhap=nhanvien.MaNhanVien where
+        (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
         $row=mysqli_query($this->con, $qr);
         return $row;
         
