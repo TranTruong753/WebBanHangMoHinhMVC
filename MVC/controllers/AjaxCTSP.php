@@ -168,7 +168,7 @@ class AjaxCTSP extends controller {
               <label class="switch">
   
               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                <input onchange="DoiTrangThaiCTSP(this)" id="'.$row['MaChiTietSanPham'].'tt" type="checkbox" value="1"';
+                <input onchange="DoiTrangThaiCTSP(this)" id="trangthai" value="'.$row['MaChiTietSanPham'].'" type="checkbox" value="1"';
                 if ($row["TrangThaiCTSP"] == 1) {
                   $html .= "checked";
 

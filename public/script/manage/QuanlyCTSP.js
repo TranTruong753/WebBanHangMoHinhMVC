@@ -118,9 +118,9 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
 })
 
 function DoiTrangThaiCTSP(ojt){
-  var mactsp = ojt.id;
+  var mactsp = ojt.value;
   alert(mactsp);
-  var checkBox = document.getElementById(mactsp);
+  var checkBox = document.getElementById("trangthai");
   var result = confirm("Bạn có muốn đổi trạng thái?");
   if (result == true) {
     if (checkBox.checked == true) {

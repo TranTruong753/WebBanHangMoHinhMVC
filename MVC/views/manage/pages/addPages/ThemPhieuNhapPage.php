@@ -192,8 +192,8 @@ $(document).on("click", "#btnSearch", function() {
   })
 })
 function loadID(ojt){
-    document.getElementById('mactsp').value=ojt.value;
-    //alert(ojt.id);
+    document.getElementById('mactsp').value=ojt.id;
+    
 }
 function them(){
   masp=$('#sanpham').val();
