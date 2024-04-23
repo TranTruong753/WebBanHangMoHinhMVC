@@ -12,7 +12,7 @@ class AjaxThanhToan extends controller{
     public $SanPhamModel;
 
     function __construct(){
-        $this->KhachHangModel= $this->model("TrangChuKHModel");
+        $this->KhachHangModel= $this->model("KhachHangModel");
         $this->GioHangModel= $this->model("GioHangModel");
         $this->HoaDonModel= $this->model("HoaDonModel");
         $this->chitietspmodel= $this->model("chitietspmodel");
@@ -35,18 +35,13 @@ class AjaxThanhToan extends controller{
         $pttt=$_POST['pttt'];
         $tongtien=$_POST['tongtien'];
         $result=$this->HoaDonModel->GetAllHoaDon();
-        $dem=0;
+        $dem=1;
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $dem++;
             }
         }
-        $makh="";
-        if(isset($_SESSION['email'])){
-            $makh=$_SESSION['email'];
-        }
-        else 
-        {$makh= "none";}
+        
         if($sdt==""){
             $resultKH=$this->KhachHangModel->TimKHbyID($makh);
             if ($resultKH->num_rows > 0) {

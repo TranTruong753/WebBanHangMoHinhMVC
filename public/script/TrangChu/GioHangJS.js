@@ -141,5 +141,46 @@ function addgiohang() {
     else {
         alert("Bạn chưa đăng nhập");
     }
-    };                                   
+    }
+function muangay(){
+    const element = document.getElementsByName('content__info-title')[0];
+    const masp=element.id;
+    var mamausac = ""; 
+    var radioButtons = document.getElementsByName("mausac");
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked === true) {
+            mamausac=radioButtons[i].value;
+        }
+    }
+    var slton=document.getElementById("SoLuong").innerHTML;
+    
+    var ktmakh = document.getElementsByName("user")[0];
+    
+    if(ktmakh){
+        var makh=ktmakh.id;
+        
+        const selectElement = document.getElementById("content__input-select");
+        const makichco = selectElement.value;
+        
+        const sl = document.getElementById('content__input-number').value;
+        
+        if( parseInt(sl)<= parseInt(slton)){
+            
+            //alert(1);
+            $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
+            masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
+                alert("Thêm thanh công");
+                 $("#cart-preview").html(data);
+                 var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang";
+        window.location.assign(url);
+                })
+        }
+        else if(mamausac=="")alert("bạn chưa chọn màu sắc");
+        else alert("Số lượng đã vượt quá số lượng tồn");
+    }
+    else {
+        alert("Bạn chưa đăng nhập");
+    }
+
+}                               
                                     

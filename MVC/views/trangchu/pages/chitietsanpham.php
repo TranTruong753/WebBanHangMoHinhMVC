@@ -155,7 +155,7 @@
                                 <div class="content__input"><button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
                                 </div>
                                 
-                                <div class="content__input"><button class="btn ">Mua ngay</button></div>
+                                <div class="content__input"><button onclick="muangay()" class="btn ">Mua ngay</button></div>
                             </form>
                         </div>
                     </div>
