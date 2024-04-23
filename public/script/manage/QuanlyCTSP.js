@@ -104,7 +104,7 @@ var index = 1;
 var size = 4;
 var masp=document.getElementById('masp').value;
 var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco"+  
-" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' and chitietsanpham.TrangThai= 1";
+" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' ";
 
 
 
@@ -116,6 +116,36 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
   loadPhanTrang("chitietsanpham", index, size, sql, "");
 
 })
+
+function DoiTrangThaiCTSP(ojt){
+  var mactsp = ojt.id;
+  alert(mactsp);
+  var checkBox = document.getElementById(mactsp);
+  var result = confirm("Bạn có muốn đổi trạng thái?");
+  if (result == true) {
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DoiTrangThai", {
+        mactsp: mactsp,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DoiTrangThai", {
+        mactsp: mactsp,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    }
+    alert(checkBox.checked);// alert(trangThai);
+  }
+  loadTable("", index, size)
+  loadPhanTrang("chitietsanpham", index, size, sql, tmpKey)
+
+}
 
 
 function loadTable(key, index, size) {

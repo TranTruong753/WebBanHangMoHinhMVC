@@ -16,6 +16,7 @@
       <th scope="col" style="text-align: center;">Màu sắc</th>
       <th scope="col" style="text-align: center;">Kích cở</th>
       <th scope="col" style="text-align: center;">Số lượng tồn</th>
+      <th scope="col" style="text-align: center;">Trạng thái</th>
       
     </tr>
   </thead>

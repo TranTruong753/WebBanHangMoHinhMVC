@@ -4,6 +4,7 @@ class AjaxSanPham extends controller {
 
     private $SanPhamModel;
     private $chitietspmodel;
+    private $KhuyenMaiModel;
     public function __construct() {
        $this->SanPhamModel = $this->model("SanPhamModel");
        $this->chitietspmodel = $this->model("chitietspmodel");
@@ -90,6 +91,20 @@ class AjaxSanPham extends controller {
               <td style="text-align: center;">'.$row["TenTheLoai"].'</td>
               <td style="text-align: center;">'.$row["TenChatLieu"].'</td>
               <td style="text-align: center;">'.$row["TenThuongHieu"].'</td>
+              <td>
+              <label class="switch">
+  
+              <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                <input onchange="DoiTrangThaiSP(this)" id="'.$row['MaSanPham'].'" type="checkbox" value="1"';
+                if ($row["TrangThaiSP"] == 1) {
+                  $html .= "checked";
+
+                }
+                $html .='>
+                <span class="slider round"></span>
+              </label>
+              
+            </td>
               <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaSanPham"].'">Xóa</button> | 
               <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'">Sản Phẩm Con</a> </pre></td>
             </tr>';
@@ -110,6 +125,12 @@ class AjaxSanPham extends controller {
             echo $row['GiaNhap'];
     }
    }
+}
+public function DoiTrangThai()
+{
+    $masp = $_POST['masp'];
+    $trangThai = $_POST['trangThai'];
+    $this->SanPhamModel->updateTrangThai($masp,$trangThai);
 }
 
 }

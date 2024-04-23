@@ -1,3 +1,6 @@
+
+
+
 function addSP(){
     var masanpham=document.getElementById("masanpham").value;
     var tensanpham=" ";
@@ -95,8 +98,7 @@ function XoaSP(ojt)
   var sql=" INNER JOIN theloai on  sanpham.MaTheLoai=theloai.MaTheLoai"+  
   " INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu"+  
   " INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu"+
-  " INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai"+ 
-   " Where sanpham.TrangThai= 1 ";
+  " INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai";
 
 
    // load khi chạy trang
@@ -107,6 +109,34 @@ function XoaSP(ojt)
     loadPhanTrang("sanpham", index, size, sql, "");
 
   })
+  function DoiTrangThaiSP(ojt){
+    var masp = ojt.id;
+    var checkBox = document.getElementById(masp);
+    var result = confirm("Bạn có muốn đổi trạng thái?");
+    if (result == true) {
+      if (checkBox.checked == true) {
+        var trangThai = 1;
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DoiTrangThai", {
+          masp: masp,
+          trangThai: trangThai
+        }, function(data) {
+          // alert(data);
+        })
+      } else {
+        var trangThai = 0;
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DoiTrangThai", {
+          masp: masp,
+          trangThai: trangThai
+        }, function(data) {
+          // alert(data);
+        })
+      }
+      
+    }
+    loadTable("", index, size)
+    loadPhanTrang("sanpham", index, size, sql, tmpKey)
+  
+  }
 
   //hàm load phân trnag 
   function loadPhanTrang(tableName, index, size, condition = "", key = "") {

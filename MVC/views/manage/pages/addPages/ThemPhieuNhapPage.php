@@ -192,7 +192,7 @@ $(document).on("click", "#btnSearch", function() {
   })
 })
 function loadID(ojt){
-    document.getElementById('mactsp').value=ojt.id;
+    document.getElementById('mactsp').value=ojt.value;
     //alert(ojt.id);
 }
 function them(){

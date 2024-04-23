@@ -71,6 +71,8 @@ class AjaxCTSP extends controller {
                   <td style="text-align: center;">'. $row["TenMauSac"].'</td>
                   <td style="text-align: center;">'. $row["TenKichCo"].'</td>
                   <td style="text-align: center;">'. $row["SoLuongTon"].'</td>
+                  <td>
+              
                   
                 </tr>';
               }
@@ -162,6 +164,20 @@ class AjaxCTSP extends controller {
               <td style="text-align: center;">'.$row["TenMauSac"].'</td>
               <td style="text-align: center;">'.$row["TenKichCo"].'</td>
               <td style="text-align: center;">'.$row["SoLuongTon"].'</td>
+              <td>
+              <label class="switch">
+  
+              <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                <input onchange="DoiTrangThaiCTSP(this)" id="'.$row['MaChiTietSanPham'].'tt" type="checkbox" value="1"';
+                if ($row["TrangThaiCTSP"] == 1) {
+                  $html .= "checked";
+
+                }
+                $html .='>
+                <span class="slider round"></span>
+              </label>
+              
+            </td>
               <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'">Sửa</a>|
                <button  onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'">Xóa</button> | 
               <br> </pre></td>
@@ -174,6 +190,12 @@ class AjaxCTSP extends controller {
         }
         
    }
+   public function DoiTrangThai()
+{
+    $mactsp = $_POST['mactsp'];
+    $trangThai = $_POST['trangThai'];
+    $this->chitietspmodel->updateTrangThai($mactsp,$trangThai);
+}
 
 }
 

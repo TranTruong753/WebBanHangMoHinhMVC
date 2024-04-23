@@ -20,6 +20,7 @@
       <th scope="col" style="text-align: center;">Thể Loại</th>
       <th scope="col" style="text-align: center;">Chất Liệu</th>
       <th scope="col" style="text-align: center;">Thương Hiệu</th>
+      <th scope="col" style="text-align: center;">Trạng thái</th>
       <th scope="col" style="text-align: center;">Thao Tác</th>
     </tr>
   </thead>
