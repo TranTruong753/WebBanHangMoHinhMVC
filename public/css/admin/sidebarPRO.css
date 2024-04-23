@@ -48,7 +48,7 @@ a{
     position: fixed;
     top: 0;
     left: 0;
-    width: 65px;
+    width: 285px;
     height: 100vh;
     background: var(--first-color);
     font-family: var(--body-font);
@@ -69,9 +69,16 @@ a{
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-#sidebar_icon{
+.sidebar_logo img {
+    width: 100%;
+}
+
+.sidebar_icon{
     font-size: 1.75rem;
     margin-right: 0.75rem;
     color: var(--white-color);
@@ -109,7 +116,7 @@ a{
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    height: 60px;
+    height: 40px;
     /* margin-bottom: 1rem; */
     border-radius: 0.5rem;
     color: var(--white-color);
@@ -134,17 +141,26 @@ a{
 
 .sidebar_link:hover{
     background: var(--second-color);
-    color: var(--first-color);
 }
 
 .sidebar_sublink:hover{
     background: var(--second-color);
-    color: var(--first-color);
 }
 
-.show{
-    width: 285px;
+.sidebar_link:hover .sidebar_text
+, .sidebar_link:hover .sidebar_icon
+, .sidebar_link:hover .sidebar_left_icon
+{
+    color: var(--first-color) !important;
 }
+
+.sidebar_sublink:hover .sidebar_text, .sidebar_sublink:hover #sidebar_icon{
+    color: var(--first-color) !important    ;
+}
+
+/* .show{
+    width: 285px;
+} */
 
 .rotate{
     transform: rotate(180deg);
@@ -152,9 +168,9 @@ a{
     right: 0.5rem;
 }
 
-.edit{
+/* .edit{
     height: 40px;
-}
+} */
 
 .showsub{
     display: block;

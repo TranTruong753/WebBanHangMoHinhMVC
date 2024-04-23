@@ -33,7 +33,7 @@
    
     <div class="main">
         <div class="header"></div>
-        <div class="all">
+        <div class="all showContainer">
             <div class="">
                 <div class="">
                     <?php
