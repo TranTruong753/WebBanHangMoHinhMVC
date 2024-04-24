@@ -1,7 +1,6 @@
 
 
 
-var arrThongKe=[['Sản Phẩm', 'Số Lượng']];
 $(document).ready(function(){
     $.ajax({
         url:"http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getDanhSachThongKeTrong1Thang",

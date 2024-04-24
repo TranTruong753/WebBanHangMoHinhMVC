@@ -3,8 +3,12 @@
 class AjaxChucNang extends controller {
 
     private $ChucNangModel;
+    private $ChiTietQuyenModel;
+    private $NhomQuyenModel;
     public function __construct() {
         $this->ChucNangModel = $this->model("ChucNangModel");
+        $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
+        $this->NhomQuyenModel = $this->model("NhomQuyenModel");
     }
 
     public function DoiTrangThai () {
@@ -62,8 +66,34 @@ class AjaxChucNang extends controller {
         }
         else echo 0;
     }
+
     
 
+    public function getSidebar()
+    {
+        $result = $this->ChucNangModel->getDanhSachCoTrangThai();
+        $json = "[";
+        $count = $result->num_rows;
+        // $MaNhomQuyen = $this->NhomQuyenModel->getMaNhomQuyenQuaTenDangNhap($_SESSION('email'));
+        $MaNhomQuyen = 3;
+        if($result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc())
+            {
+               if($this->ChucNangModel->KiemTraChucNang($MaNhomQuyen,$row["MaChucNang"])==1)
+               {
+                $json .= '"'.$row['TenChucNang'].'"';
+                    $json .= ",";
+               }
+            }
+           
+        }
+        $json = substr($json, 0, -1);
+        $json .= ']';
+        echo $json;
+    }
+    
+   
     public function getDanhSach()
 {
     $key = $_POST["key"];

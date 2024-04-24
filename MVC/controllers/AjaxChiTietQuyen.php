@@ -61,7 +61,7 @@ class AjaxChiTietQuyen extends controller
             echo "false";
         }
     }
-
+    
     public function getDanhSach()
     {
         $key = $_POST["key"];

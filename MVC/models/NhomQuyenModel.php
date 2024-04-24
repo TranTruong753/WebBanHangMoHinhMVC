@@ -11,6 +11,18 @@ class NhomQuyenModel extends DB{
         else return 0;
     }
 
+    public function getMaNhomQuyenQuaTenDangNhap($TenDangNhap) {
+        $qr = "SELECT * FROM taikhoan where TenDangNhap = '$TenDangNhap'";
+        $result = $this->con->query($qr);
+        if($result->num_rows>0)
+        {
+            while($row = $result->fetch_assoc())
+            {
+                return $row['MaNhomQuyen'];
+            }
+        }
+        else return 0;
+    }
     public function KiemTraChiTietQuyenSuDung($ma)
     {
         $qr = "SELECT * FROM chitietquyen where MaNhomQuyen = $ma";

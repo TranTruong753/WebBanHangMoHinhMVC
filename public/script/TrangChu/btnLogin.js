@@ -1,3 +1,4 @@
+//Đăng ký tài khoản
 function onclickbtn(){
     var email = document.getElementById("email").value;
     var ten = document.getElementById("UserName").value;
@@ -26,6 +27,8 @@ function onclickbtn(){
     });
 }
 
+
+// đăng xuất
 function Logout(){    
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/Logout",{},function(data){
         alert("Dang xuat thanh cong")
@@ -33,6 +36,8 @@ function Logout(){
     });
 
 };
+
+// đăng nhập
 function onclickbtnDN(){
     var email = document.getElementById("email").value;
     var mk = document.getElementById("Password").value;
