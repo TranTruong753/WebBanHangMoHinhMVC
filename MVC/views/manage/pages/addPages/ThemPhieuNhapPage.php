@@ -13,7 +13,7 @@
 ?>
 <form method="post">
     <label for="">Mã Phiếu Nhập</label> <br>
-    <input type="text" id="mapn" value="PN00<?php echo $dem+1;?>"> <br>
+    <input type="text" id="mapn" value="PN00<?php echo $dem+1;?>" disabled> <br>
     <label for="">Chọn Sản Phẩm</label><br>
     <select name="" id="sanpham"  class="">
         <?php
@@ -38,7 +38,7 @@
         ?>
     </select><br>
     <label for="">Mã Chi Tiết Sản Phẩm</label> <br>
-    <input type="text" id="mactsp" value=""> <br>
+    <input type="text" id="mactsp" value="" disabled> <br>
 
     <label for="">Giá nhập</label> <br>
     <input type="text" id="gianhap" value=""> <br>
@@ -47,10 +47,10 @@
     <input type="number" name="" id="soluong" class="content__input-number" value="1"  min="1" > <br>
 
     <label for="">Thành tiền</label> <br>
-    <input type="text" id="thanhtien" value=""> <br>
+    <input type="text" id="thanhtien" value="" disabled> <br>
 
     <label for="">Tổng tiền</label> <br>
-    <input type="text" id="tongtien" value=""> <br>
+    <input type="text" id="tongtien" value="0" disabled> <br>
 
     <label for="">Nhập Mã Nhân Viên</label> <br>
     <input type="text" id="nhanvien" value=""> <br>
@@ -117,19 +117,33 @@
     $(document).ready(function(){
         masp=$('#sanpham').val();
         document.getElementById('mactsp').value=" ";        
-        gianhap(masp);        
+        gianhap(masp);  
+        //thay đổi sản phẩm      
         $('#sanpham').on('change',(e)=>{
             e.preventDefault();
             masp=$('#sanpham').val();
             index = 1;
             size = 4;
             document.getElementById('mactsp').value=" ";
-            gianhap(masp);
+            
+            const Item = arr.find(item => item.masp === masp);
+            if (Item) {
+              document.getElementById('gianhap').disabled = true;
+              document.getElementById('gianhap').value=Item.gn;
+            } else {
+              document.getElementById('gianhap').disabled = false;
+              gianhap(masp);
+            }
             loadTable("", index, size);
 
         });
         
         $('#soluong').on('change', (event) => {
+           sl =$('#soluong').val();
+           gn =$('#gianhap').val();
+          document.getElementById('thanhtien').value=parseInt(sl)*parseInt(gn);
+        });
+        $('#gianhap').on('keyup', (event) => {
            sl =$('#soluong').val();
            gn =$('#gianhap').val();
           document.getElementById('thanhtien').value=parseInt(sl)*parseInt(gn);
@@ -201,6 +215,7 @@ function them(){
   sl=$("#soluong").val();
   gn=$("#gianhap").val();
   var tt=$("#thanhtien").val();
+  if(document.getElementById('mactsp').value!=" "){
   //Hàm này trả về phần tử đầu tiên trong mảng thỏa mãn điều kiện. Nếu tìm thấy, bạn cập nhật lại soluong
   const existingItem = arr.find(item => item.mactsp === mactsp);
   if (existingItem) {
@@ -225,6 +240,14 @@ function them(){
       //alert(data);
     }
   })
+  const Item = arr.find(item => item.masp === masp);
+  if (Item) {
+    document.getElementById('gianhap').disabled = true;
+  } else {
+    document.getElementById('gianhap').disabled = false;
+  }
+}
+else alert("bạn chưa chọn chi tiết sản phẩm");
 
 }
 function XoaCTPN(ojt){
@@ -247,9 +270,16 @@ function XoaCTPN(ojt){
       //alert(data);
     }
   })
+  const Item = arr.find(item => item.masp === masp);
+  if (Item) {
+    document.getElementById('gianhap').disabled = true;
+  } else {
+    document.getElementById('gianhap').disabled = false;
+  }
 }
 
 function Nhaphang(){
+  if(arr.length!=0){
   var mapn=document.getElementById('mapn').value;
   var today = new Date();
   var ngaynhap = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -277,5 +307,7 @@ function Nhaphang(){
              window.location.assign(url);
     }
   })
+}
+else alert("Bạn chưa chọn sản phẩm để nhập hàng");
 }
 </script>

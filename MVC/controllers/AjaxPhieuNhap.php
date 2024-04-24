@@ -59,6 +59,11 @@ class AjaxPhieuNhap extends controller {
         while($row = $resultSP->fetch_assoc()){
           $slton=$row['SoLuongTonSP']+$arr[$i]['sl'];
           $this->SanPhamModel->UpdateSP($arr[$i]['masp'],$slton);
+          if($row['GiaNhap']!=$arr[$i]['gn'])
+          { 
+            $giasp=(float)$arr[$i]['gn']*2-((float)$arr[$i]['gn']*(float)$row['MucKhuyenMai'])/100;
+            $this->SanPhamModel->UpdateGNSP($arr[$i]['masp'],$arr[$i]['gn'],$giasp);
+          }
         }
       }
       $resultCTSP=$this->chitietspmodel->GettheoMactsp($arr[$i]['mactsp']);

@@ -49,20 +49,20 @@ class AjaxSanPham extends controller {
     }
     function DeleteSP(){
         $masp = $_POST["masp"];
-        $result= $this->chitietspmodel->GetCTSP($masp);
-        if ($result->num_rows == 0) {
+        // $result= $this->chitietspmodel->GetCTSP($masp);
+        // if ($result->num_rows == 0) {
             $this->SanPhamModel->DeleteSP($masp);
             $data=json_encode(["kq"=>true]);
             echo $data;
 
-        }
-        else {
-            $this->SanPhamModel->UpdateTTSP($masp);
-            $data=json_encode(["kq"=>true]);
-            echo $data;
-        }
+        // }
+        // else {
+        //     $this->SanPhamModel->UpdateTTSP($masp);
+        //     $data=json_encode(["kq"=>true]);
+        //     echo $data;
+        // }
             
-        }
+         }
         
         // else echo "false";
         

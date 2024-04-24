@@ -32,6 +32,12 @@
            return true;
         return false;
     }
+    public function UpdateGNSP($masp,$gn,$giasp){
+        $qr = 'UPDATE sanpham set GiaNhap = "'.$gn.'",GiaSanPham="'.$giasp.'" where MaSanPham = "'.$masp.'"';
+        if(mysqli_query($this->con, $qr))
+           return true;
+        return false;
+    }
     public function UpdateSPMoi($masp,$tensp,$giasp,$matheloai,$machatlieu,$makm){
         $qr = 'UPDATE sanpham set TenSanPham = "'.$tensp.'",MaTheLoai = "'.$matheloai.'",GiaSanPham = "'.$giasp.'",
         MaChatLieu = "'.$machatlieu.'",MaKhuyenMai = "'.$makm.'" where MaSanPham = "'.$masp.'"';

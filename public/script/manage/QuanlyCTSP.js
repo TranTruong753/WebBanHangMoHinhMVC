@@ -72,7 +72,7 @@ function updateCTSP(){
 function DeleteCTSP(ojt){
     
     var mactsp=ojt.id;
-    let choice = confirm("Bạn có chắc muốn xóa không!");
+    let choice = confirm("Lưu ý: Chi tiết sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
     if (choice) {
        
     $.ajax({
@@ -119,7 +119,7 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
 
 function DoiTrangThaiCTSP(ojt){
   var mactsp = ojt.value;
-  alert(mactsp);
+  
   var checkBox = document.getElementById("trangthai"+mactsp);
   var result = confirm("Bạn có muốn đổi trạng thái?");
   if (result == true) {
@@ -140,7 +140,7 @@ function DoiTrangThaiCTSP(ojt){
         // alert(data);
       })
     }
-    alert(checkBox.checked);// alert(trangThai);
+    
   }
   loadTable("", index, size)
   loadPhanTrang("chitietsanpham", index, size, sql, tmpKey)

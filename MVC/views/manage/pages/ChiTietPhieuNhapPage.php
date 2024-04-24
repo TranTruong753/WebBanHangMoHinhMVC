@@ -96,7 +96,7 @@ $(document).on("click", ".btnPhanTrang", function() {
   })
   // xử lý số trang đã chọn
   // alert(tmpKey)
-  loadPhanTrang("chitietsanpham", index, size, sql, tmpKey);
+  loadPhanTrang("chitietphieunhap", index, size, sql, tmpKey);
 })
 //Xử lý khi nhấn nút tìm kiếm
 $(document).on("click", "#btnSearch", function() {

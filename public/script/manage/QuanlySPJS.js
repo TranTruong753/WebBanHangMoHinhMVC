@@ -61,7 +61,7 @@ function updateSP(){
 }
 function XoaSP(ojt)
   { 
-    let choice = confirm("Bạn có chắc muốn xóa không!");
+    let choice = confirm("Lưu ý: sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
     if (choice) {
         var masp=ojt.id;
         //alert(masp);
