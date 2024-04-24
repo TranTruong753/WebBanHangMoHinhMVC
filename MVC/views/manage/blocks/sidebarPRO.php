@@ -14,7 +14,7 @@
                                     <i class='bx bx-chevron-down sidebar_left_icon' id="sidebar_left_icon"></i>
                             </a>
                             <ul class="sidebar_submenu_link" id="sublist1">
-                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_sublink">
+                                    <!-- <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_sublink">
                                             <span class="sidebar_text">Tài Khoản</span>
                                     </a>
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage" class="sidebar_sublink">
@@ -76,7 +76,7 @@
                             <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKePage" class="sidebar_link">
                                     <i class='bx bx-bar-chart-alt-2 sidebar_icon'></i>
                                     <span class="sidebar_text">Thống kê</span>
-                            </a>
+                            </a> -->
                     </ul>
             </div>
     </div>
