@@ -3,7 +3,7 @@
                     <div class="sidebar_logo">
                             <img src="<?php echo Root ?>public/img/logo.png" alt="" class="">
                     </div>
-                    <ul class="sidebar_menu_list">
+                    <ul class="sidebar_menu_list" id = "sidebar_menu_list">
                             <a href="<?php "http://localhost/WebBanHangMoHinhMVC/admin/default/SanPhamPage"; ?>" class="sidebar_link">
                                     <i class='bx bx-cart sidebar_icon'></i>
                                     <span class="sidebar_text">Quản lý sản phẩm</span>
@@ -82,10 +82,16 @@
     </div>
     <script>
             $(document).ready(function() {
-                // loadSidebar();
+                // var element = document.getElementById("sidebar_menu_list");
+                // element.scrollTop = element.scrollHeight;
+                var div = document.getElementById('sidebar_menu_list');
+    // Thiết lập thuộc tính overflow của div thành auto
+    div.style.overflow = 'auto';
+                loadSidebar();
             })
 
             function loadSidebar() {
+                
                     var sidebbar = ``;
                     $.ajax({
                             url: "http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/getSidebar",
