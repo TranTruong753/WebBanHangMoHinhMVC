@@ -87,7 +87,7 @@ const smallImages = document.querySelectorAll('.content__img-item');
     function thanhtoan() {
         
         
-        var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang";
+        var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/none";
         window.location.assign(url);
 
     }
@@ -131,8 +131,9 @@ function addgiohang() {
             //alert(1);
             $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
             masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
+                const jsonObject = JSON.parse(data);
                 alert("Thêm thanh công");
-                 $("#cart-preview").html(data);
+                 $("#cart-preview").html(jsonObject.html);
                 })
         }
         else if(mamausac=="")alert("bạn chưa chọn màu sắc");
@@ -169,9 +170,11 @@ function muangay(){
             //alert(1);
             $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
             masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
-                alert("Thêm thanh công");
-                 $("#cart-preview").html(data);
-                 var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang";
+                const jsonObject = JSON.parse(data);
+                
+                 $("#cart-preview").html(jsonObject.html);
+                
+                 var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/"+jsonObject.mactsp;
         window.location.assign(url);
                 })
         }

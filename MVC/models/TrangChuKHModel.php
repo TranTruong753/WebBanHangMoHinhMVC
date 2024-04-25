@@ -30,7 +30,7 @@ class TrangChuKHModel extends DB{
             $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai
             INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai  
             where chungloai.MaChungLoai ='$cl' AND concat(sanpham.TenSanPham) like '%$key%' AND  
-            sanpham.TrangThaiSPSP= 1 and chitietsanpham.TrangThaiCTSPCTSP= 1"; 
+            sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1"; 
 
             $qr .= " GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
             $qr .= " LIMIT $batDau,$soLuong";
@@ -42,7 +42,7 @@ class TrangChuKHModel extends DB{
         {
             $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai
             INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai 
-            where chungloai.MaChungLoai ='$cl' AND sanpham.TrangThaiSPSP= 1 and chitietsanpham.TrangThaiCTSPCTSP= 1
+            where chungloai.MaChungLoai ='$cl' AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1
              GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;

@@ -59,3 +59,11 @@ function clicka(ojt){
     //alert(tongtien);
     }
 }
+
+$(document).ready(function() {
+    var mactsp=document.getElementById('mactspgh').value;
+    var id=document.getElementById(mactsp);
+    //alert(id);
+    clicka(id);
+  
+  })

@@ -140,9 +140,15 @@
                                             $tongtien=$tongtien+$row['SoLuong']*$row['GiaSanPham'];
                                                 echo  '
                                     <tr class="table-title table-line">
-                                        <td class="table-product">
-                                            <input class="procedure-input__check" type="checkbox" onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'">
-                                            <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'"><span  class="procedure-label__tick"></span></label>                                  
+                                        <td class="table-product">';
+                                        if($row['MaChiTietSanPham']== $data['CTSP']){
+                                            echo '<input type="hidden" id="mactspgh" value="'.$row['MaChiTietSanPham'].'">
+                                            <input class="procedure-input__check" type="checkbox" checked  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >
+                                            ';
+                                        } else {
+                                            echo '<input class="procedure-input__check" type="checkbox"  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >';
+                                        }
+                                           echo' <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'" ><span  class="procedure-label__tick"></span></label>                                  
                                             <div class="table-product__info">
                                                 <img class="table-product__img" src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="">
                                                 <div class="table-title-wrap">
