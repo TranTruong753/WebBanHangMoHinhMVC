@@ -46,23 +46,25 @@ class AjaxTheLoai extends controller{
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaTheLoai']."</th>
-               <td style='text-align: center;'>".$row['MaChungLoai']."</td>
-               <td style='text-align: center;'>".$row['TenTheLoai']."</td>
-               <td style='text-align: center;'>
+               <td>".$row['MaTheLoai']."</td>
+               <td>".$row['MaChungLoai']."</td>
+               <td>".$row['TenTheLoai']."</td>
+               <td>
      
                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                 <input onchange='DoiTrangThaiTheLoai(this)' id='".$row['MaTheLoai']."' type='checkbox' value='1'";
+               <label class='switch'>  
+               <input onchange='DoiTrangThaiTheLoai(this)' id='".$row['MaTheLoai']."' type='checkbox' value='1'";
                  if ($row["TrangThai"] == 1) {
                    $html .= "checked = 'checked'";
  
                  }
-                 $html .="
-                 
+                 $html .=">
+                 <span class='slider round'></span>
+              </label>
                </td>
-               <td style='text-align: center;'>
+               <td>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTheLoaiPage,".$row['MaTheLoai']."'>Sửa</a></pre>
+                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTheLoaiPage,".$row['MaTheLoai']."'><i class='bx bxs-edit'></i></a>
                </td>
              </tr> ";
                

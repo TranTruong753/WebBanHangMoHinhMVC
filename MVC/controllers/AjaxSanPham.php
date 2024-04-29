@@ -105,7 +105,7 @@ class AjaxSanPham extends controller {
               </label>
               
             </td>
-              <td style="text-align: center;">
+              <td>
                 <a  class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bxs-edit"></i></a>  
                 <button class = "btn btn_delete"   onclick="XoaSP(this)" id="'.$row["MaSanPham"].'"><i class="bx bx-x"></i></button> 
                 </br>
