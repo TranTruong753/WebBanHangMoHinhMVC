@@ -85,8 +85,8 @@
                 // var element = document.getElementById("sidebar_menu_list");
                 // element.scrollTop = element.scrollHeight;
                 var div = document.getElementById('sidebar_menu_list');
-    // Thiết lập thuộc tính overflow của div thành auto
-    div.style.overflow = 'auto';
+                // Thiết lập thuộc tính overflow của div thành auto
+                div.style.overflow = 'auto';
                 loadSidebar();
             })
 
@@ -154,7 +154,7 @@
                                         sidebbar += `  <a href="`+href+`" class="sidebar_link">
                                     <i class='`+icon+`'></i>
                                     <span class="sidebar_text">`+item+`</span>
-                            </a>`;
+                                        </a>`;
                                     }
                                 
                                 );

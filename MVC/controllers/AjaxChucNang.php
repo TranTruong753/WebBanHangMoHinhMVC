@@ -75,12 +75,12 @@ class AjaxChucNang extends controller {
         $json = "[";
         $count = $result->num_rows;
         // $MaNhomQuyen = $this->NhomQuyenModel->getMaNhomQuyenQuaTenDangNhap($_SESSION('email'));
-        $MaNhomQuyen = 3;
+        // $MaNhomQuyen = 3;
         if($result->num_rows > 0)
         {
             while($row = $result->fetch_assoc())
             {
-               if($this->ChucNangModel->KiemTraChucNang($MaNhomQuyen,$row["MaChucNang"])==1)
+               if($this->ChucNangModel->KiemTraChucNang($_SESSION['MaNhomQuyen'],$row["MaChucNang"])==1)
                {
                 $json .= '"'.$row['TenChucNang'].'"';
                     $json .= ",";
