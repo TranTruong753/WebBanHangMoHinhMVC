@@ -26,6 +26,7 @@
   </thead>
   <tbody class="table-group-divider">
   <input type="submit" onclick="DieuHuong()" value="Thêm">
+  <input type="button" onclick="Lamtuoi()" value="Làm tươi">
   <tbody class="table-group-divider row-table">
   </tbody>
 </table>

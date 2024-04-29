@@ -109,6 +109,17 @@ function XoaSP(ojt)
     loadPhanTrang("sanpham", index, size, sql, "");
 
   })
+  function Lamtuoi(){
+
+    
+    document.getElementById("txtFind").value = "";
+    tmpKey = "";
+      index = 1;
+      size = 4;
+      loadTable("", index, size)
+      loadPhanTrang("sanpham", index, size, sql, "");
+  
+  }
   function DoiTrangThaiSP(ojt){
     var masp = ojt.id;
     var checkBox = document.getElementById(masp);
