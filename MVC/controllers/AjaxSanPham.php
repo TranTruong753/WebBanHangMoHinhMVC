@@ -82,15 +82,15 @@ class AjaxSanPham extends controller {
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr> 
-              <th style="text-align: center;" scope="row">'.$row["MaSanPham"].'</th>
-              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
-              <td style="text-align: center;">'.$row["GiaSanPham"].'</td>
-              <td style="text-align: center;">'.$row["SoLuongTonSP"].'</td>
-              <td style="text-align: center;">'.$row["GiaNhap"].'</td>
-              <td style="text-align: center;">'.$row["TenKhuyenMai"].'-'.$row["MucKhuyenMai"].'%</td>
-              <td style="text-align: center;">'.$row["TenTheLoai"].'</td>
-              <td style="text-align: center;">'.$row["TenChatLieu"].'</td>
-              <td style="text-align: center;">'.$row["TenThuongHieu"].'</td>
+              <td>'.$row["MaSanPham"].'</td>
+              <td>'.$row["TenSanPham"].'</td>
+              <td>'.$row["GiaSanPham"].'</td>
+              <td>'.$row["SoLuongTonSP"].'</td>
+              <td>'.$row["GiaNhap"].'</td>
+              <td>'.$row["TenKhuyenMai"].'-'.$row["MucKhuyenMai"].'%</td>
+              <td>'.$row["TenTheLoai"].'</td>
+              <td>'.$row["TenChatLieu"].'</td>
+              <td>'.$row["TenThuongHieu"].'</td>
               <td>
               <label class="switch">
   
@@ -105,8 +105,12 @@ class AjaxSanPham extends controller {
               </label>
               
             </td>
-              <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'">Sửa</a> | <button  onclick="XoaSP(this)" id="'.$row["MaSanPham"].'">Xóa</button> | 
-              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'">Sản Phẩm Con</a> </pre></td>
+              <td style="text-align: center;">
+                <a  class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bxs-edit"></i></a>  
+                <button class = "btn btn_delete"   onclick="XoaSP(this)" id="'.$row["MaSanPham"].'"><i class="bx bx-x"></i></button> 
+                </br>
+                <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'">Sản Phẩm Con</a>
+              </td>
             </tr>';
               
             }

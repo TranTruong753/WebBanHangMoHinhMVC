@@ -69,22 +69,26 @@ class AjaxNhomQuyen extends controller
             while($row = $result->fetch_assoc())
             {
               $html .=  " <tr>
-              <th style='text-align: center;' scope='row'>".$row['MaNhomQuyen']."</th>
-              <td style='text-align: center;'>".$row['TenNhomQuyen']."</td>
-              <td style='text-align: center;'>
-    
+              <td>".$row['MaNhomQuyen']."</td>
+              <td>".$row['TenNhomQuyen']."</td>
+              <td>
+              <label class='switch'>
               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
                 <input onchange='DoiTrangThaiNhomQuyen(this)' id='".$row['MaNhomQuyen']."' type='checkbox' value='1'";
                 if ($row["TrangThai"] == 1) {
                   $html .= "checked = 'checked'";
 
                 }
-                $html .="
+                $html .=">
+                <span class='slider round'></span>
+              </label>  
                 
               </td>
               <td style='text-align: center;'>
               <!-- link  để chuyển sang trang nhóm quyền -->
-                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'  >Xóa</a></pre>
+                <a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'><i class='bx bx-x'></i></a>  
+                <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'><i class='bx bxs-edit'></i></a>
+                             
               </td>
             </tr> ";
               

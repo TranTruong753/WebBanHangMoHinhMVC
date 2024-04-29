@@ -108,18 +108,24 @@ class AjaxChucNang extends controller {
         {
             $render .= "
             <tr>
-          <th style='text-align: center;' scope='row'>". $row['MaChucNang'] ."</th>
-          <td style='text-align: center;'>". $row['TenChucNang'] ."</td>
+                <td>". $row['MaChucNang'] ."</td>
+                <td>". $row['TenChucNang'] ."</td>
+                <td>
+                    <label class='switch'>
+                    <input onchange='DoiTrangThaiChucNang(this)' id='". $row['MaChucNang'] ."' type='checkbox' value='1'";  
+                        
+                        if ($row['TrangThai'] == 1) {
+                            $render.= "checked = 'checked'";
+                        }
+                            $render .= "/>
+                        <span class='slider round'></span>
+                    </label>  
+                </td>
           <td style='text-align: center;'>
-            <input onchange='DoiTrangThaiChucNang(this)' id='". $row['MaChucNang'] ."' type='checkbox' value='1'";  
-            
-            if ($row['TrangThai'] == 1) {
-            $render.= "checked = 'checked'";
-        }
-            $render .= "/>
-          </td>
-          <td style='text-align: center;'>
-            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a> | <a href='' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'>Xóa</a></pre>
+       
+            <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>
+            <a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>
+             
           </td>
         </tr>
             ";

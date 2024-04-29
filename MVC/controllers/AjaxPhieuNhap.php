@@ -27,14 +27,17 @@ class AjaxPhieuNhap extends controller {
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr> 
-              <th style="text-align: center;" scope="row">'.$row["MaPhieuNhap"].'</th>
-              <td style="text-align: center;">'.$row["NgayNhap"].'</td>
-              <td style="text-align: center;">'.$row["TongTien"].'</td>
-              <td style="text-align: center;">'.$row["TenNhaCungCap"].'</td>
-              <td style="text-align: center;">'.$row["TenNhanVien"].'</td>
+              <td>'.$row["MaPhieuNhap"].'</td>
+              <td>'.$row["NgayNhap"].'</td>
+              <td>'.$row["TongTien"].'</td>
+              <td>'.$row["TenNhaCungCap"].'</td>
+              <td>'.$row["TenNhanVien"].'</td>
               
-              <td style="text-align: center;"><pre> 
-              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'">Chi Tiết</a> </pre></td>
+              <td style="text-align: center;">
+              
+                <a title = "chi tiết" class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'"><i class="bx bx-dots-horizontal-rounded" ></i></a> 
+             
+              </td>
             </tr>';
             }
             echo $html;

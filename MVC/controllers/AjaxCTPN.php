@@ -25,12 +25,12 @@ class AjaxCTPN extends controller {
          
         for($i=0;$i<count($arr);$i++){
          $html .=  '<tr> 
-                <th style="text-align: center;" scope="row">'.$arr[$i]['mactsp'].'</th>
-                <td style="text-align: center;">'.$arr[$i]['masp'].'</td>
-                <td style="text-align: center;">'.$arr[$i]['sl'].'</td>
-                <td style="text-align: center;">'.$arr[$i]['gn'].'</td>
-                <td style="text-align: center;">'.$arr[$i]['tt'].'</td>
-                <td style="text-align: center;"><pre><button  onclick="XoaCTPN(this)" id="'.$arr[$i]['mactsp'].'">Xóa</button> </pre></td>
+                  <td>'.$arr[$i]['mactsp'].'</td>
+                  <td>'.$arr[$i]['masp'].'</td>
+                  <td>'.$arr[$i]['sl'].'</td>
+                  <td>'.$arr[$i]['gn'].'</td>
+                  <td>'.$arr[$i]['tt'].'</td>
+                  <td><pre><button  onclick="XoaCTPN(this)" id="'.$arr[$i]['mactsp'].'">Xóa</button> </pre></td>
                </tr>';
                $tongtien=$tongtien+$arr[$i]['tt'];
         }
@@ -56,11 +56,11 @@ class AjaxCTPN extends controller {
             {
               $html .=  '<tr> 
               
-              <th style="text-align: center;" scope="row">'.$row["MaChiTietSanPham"].'</th>
-              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
-              <td style="text-align: center;">'.$row["SoLuong"].'</td>
-              <td style="text-align: center;">'.$row["TienNhap"].'</td>
-              <td style="text-align: center;">'.$row["ThanhTien"].'</td>
+              <td>'.$row["MaChiTietSanPham"].'</td>
+              <td>'.$row["TenSanPham"].'</td>
+              <td>'.$row["SoLuong"].'</td>
+              <td>'.$row["TienNhap"].'</td>
+              <td>'.$row["ThanhTien"].'</td>
               
               
             </tr>';
