@@ -22,6 +22,12 @@ class Admin extends controller
             $this->data["Data"] = $SanPhamModel->getDanhSachAdmin();
             $this->data["detail"] = "SanPhamPage";
         } 
+        else if ($this->pageName == "MainPage") {            
+           
+            $this->data["Data"]= [];
+            $this->data["detail"] = "MainPage";
+
+        } 
         //quản lý tài khoản 
         else if ($this->pageName == "TaiKhoanPage") {            
             $TaiKhoanModel = $this->model("TaiKhoanModel");

@@ -52,7 +52,7 @@ function onclickbtnDN(){
         }
         else if(data.length== 4){
             alert("DN thành công");
-            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default/ThongKePage");
+            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default/MainPage");
             
         }
         else alert("Thông tin tài khoản hoặc mật khẩu không chính xác");
