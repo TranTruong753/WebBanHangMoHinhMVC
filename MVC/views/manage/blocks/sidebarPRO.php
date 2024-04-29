@@ -4,7 +4,7 @@
                             <img src="<?php echo Root ?>public/img/logo.png" alt="" class="">
                     </div>
                     <ul class="sidebar_menu_list" id = "sidebar_menu_list">
-                            <a href="<?php "http://localhost/WebBanHangMoHinhMVC/admin/default/SanPhamPage"; ?>" class="sidebar_link">
+                            <!-- <a href="<?php "http://localhost/WebBanHangMoHinhMVC/admin/default/SanPhamPage"; ?>" class="sidebar_link">
                                     <i class='bx bx-cart sidebar_icon'></i>
                                     <span class="sidebar_text">Quản lý sản phẩm</span>
                             </a>
@@ -14,7 +14,7 @@
                                     <i class='bx bx-chevron-down sidebar_left_icon' id="sidebar_left_icon"></i>
                             </a>
                             <ul class="sidebar_submenu_link" id="sublist1">
-                                    <!-- <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_sublink">
+                                    <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage" class="sidebar_sublink">
                                             <span class="sidebar_text">Tài Khoản</span>
                                     </a>
                                     <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage" class="sidebar_sublink">
@@ -129,6 +129,7 @@
                                                 case 'Kích Cỡ': hrefMain = "KichCoPage";
                                                 break;
                                                 case 'Màu Sắc': hrefMain = "MauSacPage";
+                                                icon = 'bx bxs-color';
                                                 break;
                                                 case 'Nhà Cung Cấp': hrefMain = "NhaCungCapPage";
                                                 icon = 'bx bx-task sidebar_icon';

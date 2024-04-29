@@ -1,4 +1,3 @@
-<input style="display: none;" type="checkbox" id="params" value='<?php echo $data['DanhSach']['index'] . "/" . $data["DanhSach"]['sizePage'] ?>'>
 
 
 <style></style>
@@ -35,13 +34,11 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
-  var index;
-  var size;
+  var index =1;
+  var size=4;
   $(document).ready(function() {
     // alert($("#params").val());
-    $arrPhanTang = $("#params").val().split("/");
-    index = $arrPhanTang[0];
-    size = $arrPhanTang[1];
+    // $arrPhanTang = $("#params").val().split("/");
     loadTable(index, size);
     loadPhanTrang("chucnang", index, size, "", tmpKey)
 

@@ -69,7 +69,7 @@ if ($index == "Sửa") {
                     if(data == 1)
                     {
                         alert("Thêm chức năng thành công!")
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4";
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage";
                     }
                     else if(data == 0 )
                     {
