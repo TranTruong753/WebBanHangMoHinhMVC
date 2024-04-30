@@ -28,23 +28,26 @@ class AjaxTaiKhoan extends controller {
             while($row = $result->fetch_assoc())
             {
               $html .=  " <tr>
-              <th style='text-align: center;' scope='row'>".$row['MaTaiKhoan']."</th>
-              <td style='text-align: center;'>".$row['TenDangNhap']."</td>
-              <td style='text-align: center;'>".$row['MatKhau']."</td>
-              <td style='text-align: center;'>".$row['TenNhomQuyen']."</td>            
-              <td style='text-align: center;'>
-              <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaTaiKhoan']."' type='checkbox' value='1'";
-                if ($row["TrangThai"] == 1) {
-                  $html .= "checked";
-  
-                }
-                $html .="
-                
+              <td>".$row['MaTaiKhoan']."</td>
+              <td>".$row['TenDangNhap']."</td>
+              <td>".$row['MatKhau']."</td>
+              <td>".$row['TenNhomQuyen']."</td>            
+              <td>
+                <label class='switch'>
+                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                  <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaTaiKhoan']."' type='checkbox' value='1'";
+                  if ($row["TrangThai"] == 1) {
+                    $html .= "checked";
+    
+                  }
+                  $html .=">
+                  <span class='slider round'></span>
+                </label>  
               </td>
               <td style='text-align: center;'>
-              <!-- link  để chuyển sang trang nhóm quyền -->
-                <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$row['MaTaiKhoan']."'>Sửa</a> | <a href='#' onclick='btnXoa(this)' id='".$row["MaTaiKhoan"] ."'  >Xóa</a></pre>
+              <!-- link  để chuyển sang trang nhóm quyền --> 
+                <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaTaiKhoan"] ."'  ><i class='bx bx-x'></i></a>              
+                <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$row['MaTaiKhoan']."'><i class='bx bxs-edit'></i></a>                              
               </td>
             </tr> ";
               

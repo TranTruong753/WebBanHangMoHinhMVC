@@ -116,6 +116,14 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
   loadPhanTrang("chitietsanpham", index, size, sql, "");
 
 })
+function Lamtuoi(){
+  document.getElementById("txtFind").value = "";
+    tmpKey = "";
+      index = 1;
+      size = 4;
+      loadTable("", index, size)
+      loadPhanTrang("chitietsanpham", index, size, sql, "");
+}
 
 function DoiTrangThaiCTSP(ojt){
   var mactsp = ojt.value;

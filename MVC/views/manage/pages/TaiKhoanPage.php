@@ -3,54 +3,54 @@ $PhanTrangModel = new PhanTrangModel();
 ?>
 <table class="table">
   <style></style>
-  <div style="text-align: center;">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Tài Khoản</h1>
+  <div>
+    <h1 class="styleText-01">Quản Lý Tài Khoản</h1>
   </div>
-  <div class="search">
+  <div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên đăng nhập">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <div class="search">
     <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên nhân viên">
     <input type="button" id="btnSearch" value="Tìm Kiếm">
-  </div>
-<!-- Nút sang form dữ liệu nhóm quyền  -->
-<input type="submit" class="" onclick="DieuHuong()" value="Tạo tài khoản">
+  </div> -->
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <!-- <input type="submit" class="" onclick="DieuHuong()" value="Tạo tài khoản">
 
-<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
+  <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi"> -->
+
+
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên Đăng Nhập</th>
-      <th scope="col" style="text-align: center;">Mật Khẩu</th>
-      <th scope="col" style="text-align: center;">Nhóm Quyền</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>ID</th>
+      <th>Tên Đăng Nhập</th>
+      <th>Mật Khẩu</th>
+      <th>Nhóm Quyền</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">
-
-    <!-- <?php
-    if ($data['DanhSach']->num_rows > 0) {
-      while ($row = $data['DanhSach']->fetch_assoc()) {
-    ?>
-        <tr>
-          <th style="text-align: center;" scope="row"><?php echo $row["MaTaiKhoan"] ?></th>
-          <td style="text-align: center;"><?php if($row["TenDangNhap"] != "") echo $row["TenDangNhap"]; else echo "x"; ?></td>
-          <td style="text-align: center;"><?php echo $row["MatKhau"] ?></td>
-          <td style="text-align: center;"><?php echo $row["TenNhomQuyen"] ?></td>
-          <td style="text-align: center;">
-            <input onchange="DoiTrangThaiTaiKhoan(this)" id="<?php echo $row["MaTaiKhoan"] ?>" type="checkbox" value="1" <?php if ($row["TrangThai"] == 1) {
-                                                                                                                              echo "checked = 'checked'";
-                                                                                                                            }
-                                                                                                                            ?> />
-          </td>
-          <td style="text-align: center;">
-            <pre><a href="">Sửa</a></pre>
-          </td>
-        </tr>
-    <?php
-      }
-    } ?> -->
-
-
   </tbody>
+
 </table>
 
 <div class="PhanTrang">

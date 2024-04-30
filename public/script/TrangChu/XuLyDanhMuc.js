@@ -41,11 +41,27 @@ $(document).ready(function(){
 
     }
     else {
-        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/TimSP",{tensp : Tensp},function(data){
-        document.getElementById("search-form__input").value = Tensp;
-        $("#product__lista").html(data);
-
-     });
+      var key = Tensp;
+      index = 1;
+      size = 4;
+      tmpKey = key;
+      $.ajax({
+        url: 'http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP',
+        type: 'post',
+        dataType: 'html',
+        data: {
+          key: key,
+          index: index,
+          size: size,
+          
+        },
+        success: function(data) {
+          console.log(data)
+          $("#product__lista").html(data);
+        }
+      })
+      // xử lý số trang đã chọn
+      loadPhanTrang("chitietsanpham", index, size, sqlbt, key);
 
      }
     

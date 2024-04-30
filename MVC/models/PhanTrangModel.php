@@ -17,7 +17,7 @@ class PhanTrangModel extends DB{
                     and ctq.MaChucNang = cn.MaChucNang $condition ";
         }
       
-        echo $qr;   
+        // echo $qr;   
        
         $result = $this->con->query($qr)->num_rows;
         $total = ceil($result/$sizePage);

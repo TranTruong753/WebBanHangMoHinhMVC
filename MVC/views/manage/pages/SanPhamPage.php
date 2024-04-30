@@ -1,31 +1,52 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <table class="table">
 <style></style>
-<div style="text-align: center;">
-<h1 >Quản Lý Sản Phẩm</h1>
+
+<h1 class="styleText-01">Quản Lý Sản Phẩm</h1>
+
+
+<div class="search-wrap">
+  <div class="search">
+    <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+    <label class="btn btn_search" for="btnSearch">
+      <i class='bx bx-search'></i>
+      <input type="button" id="btnSearch" value="" hidden>
+    </label>
+  </div>
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <div class="block-wrap">
+    <label class="btn btn_reset" for="btnRefresh">
+      <i class='bx bx-reset'></i>
+      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+    </label>
+    <div class="btn btn_add"> 
+      <i class='bx bx-plus'></i>
+      <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+    </div>
+  </div>
+</div>
 
 </div>
-<div class="search">
-  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+<!-- <div class="search">
+  <input type="text" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
+</div> -->
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Giá</th>
-      <th scope="col" style="text-align: center;">Số lượng tồn</th>
-      <th scope="col" style="text-align: center;">Giá nhập</th>
-      <th scope="col" style="text-align: center;">Khuyến mãi</th>
-      <th scope="col" style="text-align: center;">Thể Loại</th>
-      <th scope="col" style="text-align: center;">Chất Liệu</th>
-      <th scope="col" style="text-align: center;">Thương Hiệu</th>
-      <th scope="col" style="text-align: center;">Trạng thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Giá</th>
+      <th>Số lượng tồn</th>
+      <th>Giá nhập</th>
+      <th>Khuyến mãi</th>
+      <th>Thể Loại</th>
+      <th>Chất Liệu</th>
+      <th>Thương Hiệu</th>
+      <th>Trạng thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
-  <tbody class="table-group-divider">
-  <input type="submit" onclick="DieuHuong()" value="Thêm">
   <tbody class="table-group-divider row-table">
   </tbody>
 </table>

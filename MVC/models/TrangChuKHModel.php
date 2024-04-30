@@ -1,7 +1,7 @@
 <?php
 class TrangChuKHModel extends DB{
     public function GetTrangChuKHModel(){
-        $qr = 'SELECT sanpham.MaSanPham ,sanpham.TenSanPham,sanpham.GiaSanPham, chitietsanpham.HinhAnh 
+        $qr = 'SELECT sanpham.MaSanPham ,sanpham.TenSanPham,sanpham.GiaSanPham, chitietsanpham.HinhAnh  
         FROM chitietsanpham INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham GROUP BY sanpham.MaSanPham ';
         // $row=mysqli_query($this->con, $qr);
         return $this->con->query($qr);
@@ -28,7 +28,8 @@ class TrangChuKHModel extends DB{
         if($key!="")
         {
             $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai
-            INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai  
+            INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai 
+            INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai 
             where chungloai.MaChungLoai ='$cl' AND concat(sanpham.TenSanPham) like '%$key%' AND  
             sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1"; 
 
@@ -41,7 +42,7 @@ class TrangChuKHModel extends DB{
         else
         {
             $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai
-            INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai 
+            INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai
             where chungloai.MaChungLoai ='$cl' AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1
              GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
             $qr .= " Limit $batDau,$soLuong";
@@ -71,7 +72,8 @@ class TrangChuKHModel extends DB{
 
         if($key!="")
         {
-            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where sanpham.MaTheLoai ='$tl' 
+            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham 
+            INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai  where sanpham.MaTheLoai ='$tl' 
             AND concat(sanpham.TenSanPham) like '%$key%' AND 
             sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1"; 
 
@@ -83,7 +85,8 @@ class TrangChuKHModel extends DB{
         }
         else
         {
-            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where sanpham.MaTheLoai ='$tl' 
+            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham 
+            INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai where sanpham.MaTheLoai ='$tl' 
              AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
@@ -107,6 +110,7 @@ class TrangChuKHModel extends DB{
         if($key!="")
         {
             $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham 
+            INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai 
             where concat(sanpham.TenSanPham) like '%$key%' and sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1"; 
 
             $qr .= " GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
@@ -117,7 +121,8 @@ class TrangChuKHModel extends DB{
         }
         else
         {
-            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham
+            $qr .= " INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  
+            INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai
              where  sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 GROUP BY chitietsanpham.MaSanPham ORDER BY sanpham.Masanpham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;

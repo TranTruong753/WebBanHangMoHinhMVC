@@ -39,7 +39,7 @@ $this->GioHang= $this->model("GioHangModel");
                                     class="product__img"
                                 />
                                 <span class="product__img-sale"
-                                    >-50%</span
+                                    >-'. $row["MucKhuyenMai"].'%</span
                                 >
                             </div>
 
@@ -83,7 +83,7 @@ $this->GioHang= $this->model("GioHangModel");
                               class="product__img"
                           />
                           <span class="product__img-sale"
-                              >-50%</span
+                          >-'. $row["MucKhuyenMai"].'%</span
                           >
                       </div>
 
@@ -175,7 +175,7 @@ $this->GioHang= $this->model("GioHangModel");
                               class="product__img"
                           />
                           <span class="product__img-sale"
-                              >-50%</span
+                          >-'. $row["MucKhuyenMai"].'%</span
                           >
                       </div>
 
@@ -362,7 +362,7 @@ $this->GioHang= $this->model("GioHangModel");
             $thanhtien=0;
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo    '
+                    echo'
                     <li class="cart-item">
                     <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
                     <div class="cart-item__content">
@@ -381,9 +381,9 @@ $this->GioHang= $this->model("GioHangModel");
                 </li>';
                 $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
                 }
-                echo '</ul>
+                echo'</ul>
                     <div class="cart__buy">
-                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price"><?php echo $thanhtien ;?></span></div>
+                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien .'</span></div>
                         <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                     </div>';
             }

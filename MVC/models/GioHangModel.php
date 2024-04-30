@@ -20,7 +20,7 @@ class GioHangModel extends DB{
         {$makh= "none";}
         $qr = 'SELECT * FROM chitietsanpham INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham
         INNER JOIN giohang on chitietsanpham.MaChiTietSanPham = giohang.MaChiTietSanPham INNER JOIN mausac on chitietsanpham.MaMauSac=mausac.MaMauSac
-        INNER JOIN kichco on chitietsanpham.MaKichco=kichco.MaKichco where giohang.MaKhachHang="'.$makh.'"';
+        INNER JOIN kichco on chitietsanpham.MaKichco=kichco.MaKichco where giohang.MaKhachHang="'.$makh.'" ORDER BY chitietsanpham.MaChiTietSanPham DESC' ;
         $row=mysqli_query($this->con, $qr);
         return $row;
     }

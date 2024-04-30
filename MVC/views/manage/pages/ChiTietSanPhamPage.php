@@ -25,6 +25,7 @@
 ?>
   <tbody class="table-group-divider">
   <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm">
+  <input type="button"   onclick="Lamtuoi()" value="làm tươi">
   <input type="hidden" id="masp"  value="<?php echo $masp?>">
   <tbody class="table-group-divider row-table">
   </tbody>
