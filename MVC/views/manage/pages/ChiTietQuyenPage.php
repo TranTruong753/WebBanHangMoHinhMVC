@@ -39,7 +39,7 @@ $ChucNangModel = new ChucNangModel();
   <br>
   <label for="SelectChucNang">Chức Năng</label>
   <select name="SelectChucNang" id="SelectChucNang">
-    <option value="">--Hãy chọn một nhóm quyền--</option>
+    <option value="">--Hãy chọn một chức năng--</option>
     <?php
     $DanhSachChucNang = $ChucNangModel->getDanhSachCoTrangThai();
     if ($DanhSachChucNang->num_rows > 0) {

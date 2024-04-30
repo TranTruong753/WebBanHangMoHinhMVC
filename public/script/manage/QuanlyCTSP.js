@@ -72,7 +72,7 @@ function updateCTSP(){
 function DeleteCTSP(ojt){
     
     var mactsp=ojt.id;
-    let choice = confirm("Bạn có chắc muốn xóa không!");
+    let choice = confirm("Lưu ý: Chi tiết sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
     if (choice) {
        
     $.ajax({
@@ -104,7 +104,7 @@ var index = 1;
 var size = 4;
 var masp=document.getElementById('masp').value;
 var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco"+  
-" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' and chitietsanpham.TrangThai= 1";
+" on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' ";
 
 
 
@@ -116,6 +116,44 @@ var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JO
   loadPhanTrang("chitietsanpham", index, size, sql, "");
 
 })
+function Lamtuoi(){
+  document.getElementById("txtFind").value = "";
+    tmpKey = "";
+      index = 1;
+      size = 4;
+      loadTable("", index, size)
+      loadPhanTrang("chitietsanpham", index, size, sql, "");
+}
+
+function DoiTrangThaiCTSP(ojt){
+  var mactsp = ojt.value;
+  
+  var checkBox = document.getElementById("trangthai"+mactsp);
+  var result = confirm("Bạn có muốn đổi trạng thái?");
+  if (result == true) {
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DoiTrangThai", {
+        mactsp: mactsp,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DoiTrangThai", {
+        mactsp: mactsp,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    }
+    
+  }
+  loadTable("", index, size)
+  loadPhanTrang("chitietsanpham", index, size, sql, tmpKey)
+
+}
 
 
 function loadTable(key, index, size) {

@@ -30,6 +30,10 @@
                                     <div class="product-item__row">
                             
                                     <span>Số hoá đơn:'.$row['MaHoaDon'].'</span>';
+                                    if($row['TrangThai']==-1){
+                                        echo'<span class="product-item__column-span">Đã hủy</span>';
+                                    }
+                                    else
                                     if($row['TrangThai']==0){
                                         echo'<span class="product-item__column-span">Đang đợi xử lý</span>';
                                     }

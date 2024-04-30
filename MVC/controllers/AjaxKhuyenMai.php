@@ -49,11 +49,15 @@ class AjaxKhuyenMai extends controller{
             while($row = $result->fetch_assoc())
             {
                 $html .= "<tr>
-                <th style='text-align: center;' scope='row'>".$row["MaKhuyenMai"]."</th>
-                <td style='text-align: center;'>".$row["TenKhuyenMai"]."</td>
-                <td style='text-align: center;'>".$row["MucKhuyenMai"]."%</td>
-                <td style='text-align: center;'><input type='checkbox' id='".$row["MaKhuyenMai"]."' onchange='DoiTrangThaiKhuyenMai(this)'/></td>
-                <td style='text-align: center;'><pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'>Sửa</a> |  <a href=''>Xóa</a> | <a href=''>Chi Tiết</a> </pre></td>
+                <td>".$row["MaKhuyenMai"]."</td>
+                <td>".$row["TenKhuyenMai"]."</td>
+                <td>".$row["MucKhuyenMai"]."%</td>
+                <td><input type='checkbox' id='".$row["MaKhuyenMai"]."' onchange='DoiTrangThaiKhuyenMai(this)'/></td>
+                <td>
+                    <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'>Sửa</a>
+                    <a href=''>Xóa</a>
+                    <a href=''>Chi Tiết</a>
+                </td>
               </tr>";
             }
         }

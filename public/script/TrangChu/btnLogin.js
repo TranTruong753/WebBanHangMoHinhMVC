@@ -1,3 +1,4 @@
+//Đăng ký tài khoản
 function onclickbtn(){
     var email = document.getElementById("email").value;
     var ten = document.getElementById("UserName").value;
@@ -26,6 +27,8 @@ function onclickbtn(){
     });
 }
 
+
+// đăng xuất
 function Logout(){    
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/Logout",{},function(data){
         alert("Dang xuat thanh cong")
@@ -33,6 +36,8 @@ function Logout(){
     });
 
 };
+
+// đăng nhập
 function onclickbtnDN(){
     var email = document.getElementById("email").value;
     var mk = document.getElementById("Password").value;
@@ -47,7 +52,7 @@ function onclickbtnDN(){
         }
         else if(data.length== 4){
             alert("DN thành công");
-            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default");
+            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default/MainPage");
             
         }
         else alert("Thông tin tài khoản hoặc mật khẩu không chính xác");

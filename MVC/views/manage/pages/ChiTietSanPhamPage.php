@@ -16,6 +16,7 @@
       <th scope="col" style="text-align: center;">Màu sắc</th>
       <th scope="col" style="text-align: center;">Kích cở</th>
       <th scope="col" style="text-align: center;">Số lượng tồn</th>
+      <th scope="col" style="text-align: center;">Trạng thái</th>
       
     </tr>
   </thead>
@@ -24,6 +25,7 @@
 ?>
   <tbody class="table-group-divider">
   <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm">
+  <input type="button"   onclick="Lamtuoi()" value="làm tươi">
   <input type="hidden" id="masp"  value="<?php echo $masp?>">
   <tbody class="table-group-divider row-table">
   </tbody>

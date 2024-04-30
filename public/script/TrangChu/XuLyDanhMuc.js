@@ -8,7 +8,7 @@ var size = 4;
 var sqlCL="";
 var sqlTL="";
 var sqlbt="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where "+
-" sanpham.TrangThai= 1 and chitietsanpham.TrangThai= 1 ";
+" sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 ";
 $(document).ready(function(){
     //alert(1);
      chungloai= document.getElementById("chungloai").value;
@@ -27,7 +27,7 @@ $(document).ready(function(){
        
         loadTableTL(tmpKey, index, size);
         sqlTL="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where sanpham.MaTheLoai ='"+theloai+"'"+
-        " AND sanpham.TrangThai= 1 and chitietsanpham.TrangThai= 1 ";
+        " AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 ";
         loadPhanTrangTL("chitietsanpham", index, size, sqlTL, tmpKey);
 
     }
@@ -35,17 +35,33 @@ $(document).ready(function(){
         //alert(chungloai);
         sqlCL="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai"+
         " INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai "+
-        " where chungloai.MaChungLoai ='"+chungloai+"' AND sanpham.TrangThai= 1 and chitietsanpham.TrangThai= 1 ";
+        " where chungloai.MaChungLoai ='"+chungloai+"' AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 ";
         loadPhanTrangCL("chitietsanpham", index, size, sqlCL, tmpKey);
         loadTableCL(tmpKey, index, size);
 
     }
     else {
-        $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/TimSP",{tensp : Tensp},function(data){
-        document.getElementById("search-form__input").value = Tensp;
-        $("#product__lista").html(data);
-
-     });
+      var key = Tensp;
+      index = 1;
+      size = 4;
+      tmpKey = key;
+      $.ajax({
+        url: 'http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP',
+        type: 'post',
+        dataType: 'html',
+        data: {
+          key: key,
+          index: index,
+          size: size,
+          
+        },
+        success: function(data) {
+          console.log(data)
+          $("#product__lista").html(data);
+        }
+      })
+      // xử lý số trang đã chọn
+      loadPhanTrang("chitietsanpham", index, size, sqlbt, key);
 
      }
     
@@ -68,7 +84,7 @@ function getSP(ojt){
     
     sqlCL="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham INNER JOIN theloai on sanpham.MaTheLoai=theloai.MaTheLoai"+
         " INNER JOIN chungloai on chungloai.MaChungLoai=theloai.MaChungLoai "+
-        " where chungloai.MaChungLoai ='"+chungloai+"' AND sanpham.TrangThai= 1 and chitietsanpham.TrangThai= 1 ";
+        " where chungloai.MaChungLoai ='"+chungloai+"' AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 ";
         
         loadTableCL(tmpKey, index, size);
         loadPhanTrangCL("chitietsanpham", index, size, sqlCL, tmpKey);
@@ -85,7 +101,7 @@ function getTL(ojt){
     
     loadTableTL(tmpKey, index, size);
     sqlTL="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where sanpham.MaTheLoai ='"+theloai+"'"+
-    " AND sanpham.TrangThai= 1 and chitietsanpham.TrangThai= 1 ";
+    " AND sanpham.TrangThaiSP= 1 and chitietsanpham.TrangThaiCTSP= 1 ";
     loadPhanTrangTL("chitietsanpham", index, size, sqlTL, tmpKey);
     
     

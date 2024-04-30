@@ -39,7 +39,7 @@ $this->GioHang= $this->model("GioHangModel");
                                     class="product__img"
                                 />
                                 <span class="product__img-sale"
-                                    >-50%</span
+                                    >-'. $row["MucKhuyenMai"].'%</span
                                 >
                             </div>
 
@@ -83,7 +83,7 @@ $this->GioHang= $this->model("GioHangModel");
                               class="product__img"
                           />
                           <span class="product__img-sale"
-                              >-50%</span
+                          >-'. $row["MucKhuyenMai"].'%</span
                           >
                       </div>
 
@@ -175,7 +175,7 @@ $this->GioHang= $this->model("GioHangModel");
                               class="product__img"
                           />
                           <span class="product__img-sale"
-                              >-50%</span
+                          >-'. $row["MucKhuyenMai"].'%</span
                           >
                       </div>
 
@@ -283,6 +283,13 @@ $this->GioHang= $this->model("GioHangModel");
         $mamausac=$_POST['mamausac'];
         $makichco=$_POST['makichco'];
         $sl=$_POST['sl'];
+        $html='';
+        $resultctsp=$this->GioHang->TimkiemCTSP($masp,$mamausac,$makichco);
+        if ($resultctsp->num_rows > 0) {
+            while ($row = $resultctsp->fetch_assoc()) {
+                $mactsp=$row['MaChiTietSanPham'];
+            }
+        }
         $this->GioHang->addGioHang($makh,$masp,$mamausac,$makichco,$sl);
         $result=$this->GioHang->GetAll();
         
@@ -294,13 +301,13 @@ $this->GioHang= $this->model("GioHangModel");
                 $result->data_seek(0);
             }
 
-        echo'       
+        $html.='       
         <div class="cart-message">Có <span class="cart-message__number">'.$SL.'</span> <span style="color: red;">sản phẩm</span> trong giỏ hàng</div>
         <ul class="cart__list">';
             $thanhtien=0;
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo    '
+                    $html.='
                     <li class="cart-item">
                     <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
                     <div class="cart-item__content">
@@ -319,13 +326,15 @@ $this->GioHang= $this->model("GioHangModel");
                 </li>';
                 $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
                 }
-                echo '</ul>
+                $html.='</ul>
                     <div class="cart__buy">
-                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price"><?php echo $thanhtien ;?></span></div>
+                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien .'</span></div>
                         <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                     </div>';
             }
-            else echo "<div > Bạn Chưa Chọn Sản Phẩm </div>";
+            else $html.="<div > Bạn Chưa Chọn Sản Phẩm </div>";
+            $data=json_encode(["html"=>$html,"mactsp"=>$mactsp]);
+            echo $data;
             
                 
 
@@ -353,7 +362,7 @@ $this->GioHang= $this->model("GioHangModel");
             $thanhtien=0;
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo    '
+                    echo'
                     <li class="cart-item">
                     <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="" class="cart-item__img">
                     <div class="cart-item__content">
@@ -372,9 +381,9 @@ $this->GioHang= $this->model("GioHangModel");
                 </li>';
                 $thanhtien= $thanhtien + $row['SoLuong'] * $row['GiaSanPham'];
                 }
-                echo '</ul>
+                echo'</ul>
                     <div class="cart__buy">
-                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price"><?php echo $thanhtien ;?></span></div>
+                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien .'</span></div>
                         <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                     </div>';
             }

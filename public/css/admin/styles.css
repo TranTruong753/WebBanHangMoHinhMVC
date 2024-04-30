@@ -30,8 +30,7 @@ body {
 .all
 {
     margin-left: 57px;
-    padding-right: 10px;
-    padding-left: 15px;
+    padding-left: 8px;
     transition: 0.4s;
     background: var(--blue-color-02);
 }
@@ -39,7 +38,7 @@ body {
 .content {
     padding: 20px 12px 10px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 8px 0 0 0 ;
     height: 100%;
 }
 

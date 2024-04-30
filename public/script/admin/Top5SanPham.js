@@ -1,7 +1,6 @@
 
 
-
-var arrThongKe=[['Sản Phẩm', 'Số Lượng']];
+var arrThongKe=[]
 $(document).ready(function(){
     $.ajax({
         url:"http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getDanhSachThongKeTrong1Thang",
@@ -10,13 +9,13 @@ $(document).ready(function(){
         data:{},
         success:function(data)
         {
-            // console.log("trước")
-            // console.log("data:"+ data.trim()  );
-            // console.log("xong")
+            console.log("trước")
+            console.log("data:"+ data.trim()  );
+            console.log("xong")
 
 
             var json = JSON.parse(data.trim())
-            console.log(json)
+            console.log("json:"+json)
             arrThongKe = [...arrThongKe, ...json]
             
         }

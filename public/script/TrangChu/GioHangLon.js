@@ -4,7 +4,7 @@ function test(){
     sdt= document.getElementById('sdt').value;
     var diachi="";
     diachi=document.getElementById('diachi').value;
-    var tongtien= document.getElementById('tongtien').innerHTML;
+    var tongtien= document.getElementById('thanhtien').innerHTML;
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var radioButtons = document.getElementsByName("product");
@@ -31,7 +31,7 @@ function test(){
         else{
             $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/thanhtoan",{arr: arr,sdt:sdt,diachi:diachi,date:date,pttt: pttt,tongtien: tongtien},function(data){
                 $("#procedure-wrap").html(data);
-                 alert("thanh toán thành công");
+                 alert("Thanh toán thành công");
                 var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
                 window.location.assign(url);
                 
@@ -39,3 +39,31 @@ function test(){
         }
     
 }
+
+function clicka(ojt){
+    if(ojt.checked)
+    {
+        var tongtien=document.getElementById('tongtien').innerHTML;
+        tongtien= parseFloat(tongtien)+parseFloat(ojt.value);
+        var thanhtien=parseFloat(tongtien)+80000;
+        $("#tongtien").html(tongtien);
+        $("#thanhtien").html(thanhtien);
+        //alert(tongtien);
+    }
+    else {
+    var tongtien=document.getElementById('tongtien').innerHTML;
+    tongtien= parseFloat(tongtien)-parseFloat(ojt.value);
+    var thanhtien=parseFloat(tongtien)+80000;
+    $("#tongtien").html(tongtien);
+    $("#thanhtien").html(thanhtien);
+    //alert(tongtien);
+    }
+}
+
+$(document).ready(function() {
+    var mactsp=document.getElementById('mactspgh').value;
+    var id=document.getElementById(mactsp);
+    //alert(id);
+    clicka(id);
+  
+  })

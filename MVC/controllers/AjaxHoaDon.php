@@ -36,7 +36,7 @@ class AjaxHoaDon extends controller{
 
     public function getDanhSachThongKeTrong1Thang() {
       $result = $this->HoaDonModel->getDanhSachHoaDonTrong1Thang();
-      $render = "[";
+      $render = '[["Sản Phẩm","Số Lượng"],';
       for($i = 0 ; $i < count($result);$i++)
       {
         $render.= '["'.$result[$i][0].'",'.$result[$i][1].']';

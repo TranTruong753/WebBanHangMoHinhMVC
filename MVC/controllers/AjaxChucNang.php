@@ -3,8 +3,12 @@
 class AjaxChucNang extends controller {
 
     private $ChucNangModel;
+    private $ChiTietQuyenModel;
+    private $NhomQuyenModel;
     public function __construct() {
         $this->ChucNangModel = $this->model("ChucNangModel");
+        $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
+        $this->NhomQuyenModel = $this->model("NhomQuyenModel");
     }
 
     public function DoiTrangThai () {
@@ -62,8 +66,34 @@ class AjaxChucNang extends controller {
         }
         else echo 0;
     }
+
     
 
+    public function getSidebar()
+    {
+        $result = $this->ChucNangModel->getDanhSachCoTrangThai();
+        $json = "[";
+        $count = $result->num_rows;
+        // $MaNhomQuyen = $this->NhomQuyenModel->getMaNhomQuyenQuaTenDangNhap($_SESSION('email'));
+        // $MaNhomQuyen = 3;
+        if($result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc())
+            {
+               if($this->ChucNangModel->KiemTraChucNang($_SESSION['MaNhomQuyen'],$row["MaChucNang"])==1)
+               {
+                $json .= '"'.$row['TenChucNang'].'"';
+                    $json .= ",";
+               }
+            }
+           
+        }
+        $json = substr($json, 0, -1);
+        $json .= ']';
+        echo $json;
+    }
+    
+   
     public function getDanhSach()
 {
     $key = $_POST["key"];
@@ -78,18 +108,24 @@ class AjaxChucNang extends controller {
         {
             $render .= "
             <tr>
-          <th style='text-align: center;' scope='row'>". $row['MaChucNang'] ."</th>
-          <td style='text-align: center;'>". $row['TenChucNang'] ."</td>
+                <td>". $row['MaChucNang'] ."</td>
+                <td>". $row['TenChucNang'] ."</td>
+                <td>
+                    <label class='switch'>
+                    <input onchange='DoiTrangThaiChucNang(this)' id='". $row['MaChucNang'] ."' type='checkbox' value='1'";  
+                        
+                        if ($row['TrangThai'] == 1) {
+                            $render.= "checked = 'checked'";
+                        }
+                            $render .= "/>
+                        <span class='slider round'></span>
+                    </label>  
+                </td>
           <td style='text-align: center;'>
-            <input onchange='DoiTrangThaiChucNang(this)' id='". $row['MaChucNang'] ."' type='checkbox' value='1'";  
-            
-            if ($row['TrangThai'] == 1) {
-            $render.= "checked = 'checked'";
-        }
-            $render .= "/>
-          </td>
-          <td style='text-align: center;'>
-            <pre><a href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'>Sửa</a> | <a href='' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'>Xóa</a></pre>
+       
+            <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>
+            <a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>
+             
           </td>
         </tr>
             ";

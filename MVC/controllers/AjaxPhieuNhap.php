@@ -27,14 +27,17 @@ class AjaxPhieuNhap extends controller {
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr> 
-              <th style="text-align: center;" scope="row">'.$row["MaPhieuNhap"].'</th>
-              <td style="text-align: center;">'.$row["NgayNhap"].'</td>
-              <td style="text-align: center;">'.$row["TongTien"].'</td>
-              <td style="text-align: center;">'.$row["TenNhaCungCap"].'</td>
-              <td style="text-align: center;">'.$row["TenNhanVien"].'</td>
+              <td>'.$row["MaPhieuNhap"].'</td>
+              <td>'.$row["NgayNhap"].'</td>
+              <td>'.$row["TongTien"].'</td>
+              <td>'.$row["TenNhaCungCap"].'</td>
+              <td>'.$row["TenNhanVien"].'</td>
               
-              <td style="text-align: center;"><pre> 
-              <br> <a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'">Chi Tiết</a> </pre></td>
+              <td style="text-align: center;">
+              
+                <a title = "chi tiết" class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'"><i class="bx bx-dots-horizontal-rounded" ></i></a> 
+             
+              </td>
             </tr>';
             }
             echo $html;
@@ -59,6 +62,11 @@ class AjaxPhieuNhap extends controller {
         while($row = $resultSP->fetch_assoc()){
           $slton=$row['SoLuongTonSP']+$arr[$i]['sl'];
           $this->SanPhamModel->UpdateSP($arr[$i]['masp'],$slton);
+          if($row['GiaNhap']!=$arr[$i]['gn'])
+          { 
+            $giasp=(float)$arr[$i]['gn']*2-((float)$arr[$i]['gn']*(float)$row['MucKhuyenMai'])/100;
+            $this->SanPhamModel->UpdateGNSP($arr[$i]['masp'],$arr[$i]['gn'],$giasp);
+          }
         }
       }
       $resultCTSP=$this->chitietspmodel->GettheoMactsp($arr[$i]['mactsp']);

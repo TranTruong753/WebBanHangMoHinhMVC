@@ -18,12 +18,14 @@ class ChucNangModel extends DB{
         return $this->con->query($qr);
     }
     
+   
     public function getDanhSachCoTrangThai()
     {
         $qr = "SELECT * From chucnang where TrangThai = 1";
         return $this->con->query($qr);
     }
 
+    
     public function insert($tenChucNang,$trangThai)
     {
         $qr = "INSERT INTO chucnang VALUES ('null','$tenChucNang','$trangThai')";
@@ -48,6 +50,15 @@ class ChucNangModel extends DB{
         {
             return 0;
         }
+    }
+
+
+    public function KiemTraChucNang($MaNhomQuyen,$MaChucNang){
+        $qr = "SELECT * FROM chitietquyen WHERE MaNhomQuyen = '$MaNhomQuyen' and MaChucNang = '$MaChucNang' ";
+        if($this->con->query($qr)->num_rows>0)
+        return 1;
+        else return 0;
+
     }
 
     public function KiemTraChiTietQuyenSuDung($ma) {

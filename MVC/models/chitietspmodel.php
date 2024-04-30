@@ -3,7 +3,7 @@ class chitietspmodel extends DB{
 
     public function Getimgsp($masp,$mamausac){
         $qr = 'SELECT HinhAnh 
-        FROM chitietsanpham where MaSanPham="'.$masp.'" and MaMauSac="'.$mamausac.'" GROUP BY MaMauSac';
+        FROM chitietsanpham where MaSanPham="'.$masp.'" and MaMauSac="'.$mamausac.'" and TrangThaiCTSP= 1 GROUP BY MaMauSac';
         $row=mysqli_query($this->con, $qr);
         return $row;
 
@@ -12,14 +12,14 @@ class chitietspmodel extends DB{
 
     public function Getanhchinhsp($masp){
         $qr = 'SELECT HinhAnh 
-        FROM chitietsanpham where MaSanPham="'.$masp.'" limit 1';
+        FROM chitietsanpham where MaSanPham="'.$masp.'" and TrangThaiCTSP= 1 limit 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
 
     public function Getkichcosp($masp){
         $qr = 'SELECT kichco.MaKichCo, kichco.TenKichCo FROM chitietsanpham INNER JOIN kichco 
-        on chitietsanpham.MaKichCo= kichco.MaKichCo WHERE chitietsanpham.MaSanPham="'.$masp.'" GROUP BY kichco.MaKichCo;';
+        on chitietsanpham.MaKichCo= kichco.MaKichCo WHERE chitietsanpham.MaSanPham="'.$masp.'" and chitietsanpham.TrangThaiCTSP= 1 GROUP BY kichco.MaKichCo;';
         $row=mysqli_query($this->con, $qr);
         return $row;
 
@@ -28,7 +28,7 @@ class chitietspmodel extends DB{
 
     public function Getmausacsp($masp){
         $qr = 'SELECT mausac.MaMauSac, mausac.TenMauSac FROM chitietsanpham INNER JOIN mausac 
-        on chitietsanpham.MaMauSac= mausac.MaMauSac WHERE chitietsanpham.MaSanPham="'.$masp.'" GROUP BY mausac.MaMauSac';
+        on chitietsanpham.MaMauSac= mausac.MaMauSac WHERE chitietsanpham.MaSanPham="'.$masp.'" and chitietsanpham.TrangThaiCTSP= 1 GROUP BY mausac.MaMauSac';
         $row=mysqli_query($this->con, $qr);
         return $row;
 
@@ -37,7 +37,7 @@ class chitietspmodel extends DB{
 
     public function Getthongtinsp($masp){
         $qr = 'SELECT  MaSanPham,TenSanPham,GiaSanPham
-        FROM sanpham  where MaSanPham="'.$masp.'"';
+        FROM sanpham  where MaSanPham="'.$masp.'" and sanpham.TrangThaiSP= 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
@@ -58,8 +58,8 @@ class chitietspmodel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
-    public function UpdateTTCTSP($mactsp){
-        $qr = 'UPDATE chitietsanpham set TrangThai = 0 where MaChiTietSanPham = "'.$mactsp.'"';
+    public function updateTrangThai($mactsp,$trangThai){
+        $qr = 'UPDATE chitietsanpham set TrangThaiCTSP = "'.$trangThai.'" where MaChiTietSanPham = "'.$mactsp.'"';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
@@ -69,7 +69,7 @@ class chitietspmodel extends DB{
         FROM chitietsanpham INNER JOIN mausac 
         on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
         on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
-        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  sanpham.MaSanPham="'.$masp.'"';
+        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  sanpham.MaSanPham="'.$masp.'" and chitietsanpham.TrangThaiCTSP= 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
@@ -89,7 +89,7 @@ class chitietspmodel extends DB{
         FROM chitietsanpham INNER JOIN kichco 
         ON chitietsanpham.MaKichCo = kichco.MaKichCo 
         AND chitietsanpham.MaSanPham = '$masp'
-        AND chitietsanpham.MaMauSac = '$mausac'
+        AND chitietsanpham.MaMauSac = '$mausac' where chitietsanpham.TrangThaiCTSP= 1
         GROUP BY kichco.MaKichCo"    
         ;
         $row=mysqli_query($this->con, $qr);
@@ -106,7 +106,7 @@ class chitietspmodel extends DB{
         FROM chitietsanpham INNER JOIN mausac 
         on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
         on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
-        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  chitietsanpham.MaChiTietSanPham="'.$mactsp.'"';
+        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  chitietsanpham.MaChiTietSanPham="'.$mactsp.'" and chitietsanpham.TrangThaiCTSP= 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
@@ -137,7 +137,8 @@ class chitietspmodel extends DB{
             on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
             on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
             on sanpham.MaSanPham=chitietsanpham.MaSanPham 
-            where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and chitietsanpham.MaSanPham= '$masp' and chitietsanpham.TrangThai= 1"; 
+            where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and 
+            chitietsanpham.MaSanPham= '$masp' "; 
 
             $qr .= " ORDER BY Machitietsanpham DESC";
             $qr .= " LIMIT $batDau,$soLuong";
@@ -150,7 +151,7 @@ class chitietspmodel extends DB{
             $qr .= " INNER JOIN mausac 
             on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
             on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
-            on sanpham.MaSanPham=chitietsanpham.MaSanPham where  chitietsanpham.MaSanPham= '$masp' and chitietsanpham.TrangThai= 1 ORDER BY MaChiTietSanPham DESC";
+            on sanpham.MaSanPham=chitietsanpham.MaSanPham where  chitietsanpham.MaSanPham= '$masp'  ORDER BY MaChiTietSanPham DESC";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

@@ -1,30 +1,52 @@
-<input style="display: none;" type="checkbox" id="params" value='<?php echo $data['DanhSach']['index'] . "/" . $data["DanhSach"]['sizePage'] ?>'>
 
 
-<style></style>
-<div style="text-align: center;">
-  <h1 style=" margin-bottom: 20px;">Quản Lý Chức Năng</h1>
+<div>
+  <h1 class="styleText-01">Quản Lý Chức Năng</h1>
+</div>
 
-
-  <div style="text-align: start;">
+  <!-- <div style="text-align: start;">
     <input type="text" id="txtSearch" style="min-width: 300px;" placeholder="Nhập mã hoặc tên chức năng">
     <input type="button" value="Tìm kiếm" onclick="btnSearch()">
     <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
     <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi">
-  </div>
-  <table class="table">
+  </div> -->
 
-</div>
-<thead>
-  <tr>
-    <th scope="col" style="text-align: center;">ID</th>
-    <th scope="col" style="text-align: center;">Tên</th>
-    <th scope="col" style="text-align: center;">Trạng Thái</th>
-    <th scope="col" style="text-align: center;">Thao Tác</th>
-  </tr>
-</thead>
-<tbody class="table-group-divider row-table">
-</tbody>
+  <div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtSearch" placeholder="Nhập mã hoặc tên chức năng">
+      <label class="btn btn_search" for="btnSearch" onclick="btnSearch()">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuongSangTrangThem()" value="Thêm">
+      </div>
+    </div>
+  </div>
+
+
+  
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider row-table">
+  </tbody>
 </table>
 
 <div class="PhanTrang">
@@ -35,13 +57,11 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
-  var index;
-  var size;
+  var index =1;
+  var size=4;
   $(document).ready(function() {
     // alert($("#params").val());
-    $arrPhanTang = $("#params").val().split("/");
-    index = $arrPhanTang[0];
-    size = $arrPhanTang[1];
+    // $arrPhanTang = $("#params").val().split("/");
     loadTable(index, size);
     loadPhanTrang("chucnang", index, size, "", tmpKey)
 

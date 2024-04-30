@@ -45,7 +45,7 @@ class AjaxLogin extends controller{
                 while ($row = $resultNV->fetch_assoc()) {
                     $_SESSION['email']=$email;
                     $_SESSION['Ten']=$row['TenNhanVien'];
-                            
+                    $_SESSION['MaNhomQuyen']=  $row['MaNhomQuyen'];     
                     echo "NV";
                 }
     } else echo "false";

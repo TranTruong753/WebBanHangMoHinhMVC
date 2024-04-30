@@ -15,35 +15,35 @@ function changeButton(){
     }
 
 }
-function checkKeyEmail() {
-    var email = document.getElementById("email").value;
+// function checkKeyEmail() {
+//     var email = document.getElementById("email").value;
 
 
-    var message_email = document.getElementById("error-message-email");
+//     var message_email = document.getElementById("error-message-email");
 
-    if(email.length > 0){
-        if(checkPatternEmail(email)){
-            message_email.classList.remove("error-message");
-            message_email.innerHTML ="";
-            return true;
-        }else {
-            message_email.classList.add("error-message"); 
-            message_email.innerHTML ="Email sai định dạng!"
-        }
+//     if(email.length > 0){
+//         if(checkPatternEmail(email)){
+//             message_email.classList.remove("error-message");
+//             message_email.innerHTML ="";
+//             return true;
+//         }else {
+//             message_email.classList.add("error-message"); 
+//             message_email.innerHTML ="Email sai định dạng!"
+//         }
 
-    }else if (email.length <= 0){
-        message_email.classList.add("error-message"); 
-        message_email.innerHTML ="Không được để trống!"
-    }
+//     }else if (email.length <= 0){
+//         message_email.classList.add("error-message"); 
+//         message_email.innerHTML ="Không được để trống!"
+//     }
 
-    return false;
+//     return false;
 
-}
+// }
 
-function checkPatternEmail(email) {
-    var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
-    return pattern.test(email);
-}
+// function checkPatternEmail(email) {
+//     var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+//     return pattern.test(email);
+// }
 
 
 function checkPassword() {
@@ -80,9 +80,9 @@ function checkPatterPin(pin) {
 // add event 
 
 
-var eventEmailInput = document.getElementById("email");
-eventEmailInput.addEventListener("keyup", checkKeyEmail);
-eventEmailInput.addEventListener("blur", checkKeyEmail);
+// var eventEmailInput = document.getElementById("email");
+// eventEmailInput.addEventListener("keyup", checkKeyEmail);
+// eventEmailInput.addEventListener("blur", checkKeyEmail);
 
 
 var eventPinInput = document.getElementById("Password");
@@ -97,12 +97,12 @@ eventform.addEventListener("blur", changeButton);
 function checkAllInput(){
     var check = true ;
    
-    var email = document.getElementById("email").value;
+    // var email = document.getElementById("email").value;
 
-    if(email.length == 0 || !checkPatternEmail(email)){
-        check = false;    
+    // if(email.length == 0 || !checkPatternEmail(email)){
+    //     check = false;    
 
-    }
+    // }
 
 
     var password = document.getElementById("Password").value;

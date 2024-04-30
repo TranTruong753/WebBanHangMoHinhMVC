@@ -80,18 +80,16 @@ class ChiTietQuyenModel extends DB{
         return 0;
     }
 
-    public function KiemTraHanhDong($MaNhomQuyen,$MaChucNang,$HanhDong)
-    {
-        $qr = 'SELECT * From chitietquyen Where MaNhomQuyen  = '.$MaNhomQuyen.' and MaChucNang = '.$MaChucNang.' and HanhDong = N\''.$HanhDong.'\'';
-        if($this->con->query($qr)->num_rows >0) 
+    public function KiemTraHanhDong($HanhDong,$MaNhomQuyen,$MaChucNang) {
+        $qr = 'SELECT * FROM chitietquyen where MaNhomQuyen = "'.$MaNhomQuyen.'" and MaChucNang = "'.$MaChucNang.'" and HanhDong = "'.$HanhDong.'" ';
+        if($this->con->query($qr)->num_rows > 0 )
         {
-            return 1 ;
-        }
-
-        return 0;
-
+            return 1;
+        } else return 0;
+        
     }
 
+    
 
     public function updateTrangThai($MaNhomQuyen,$MaChucNang,$HanhDong)
     {

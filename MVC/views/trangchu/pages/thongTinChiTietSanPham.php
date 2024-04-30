@@ -12,7 +12,8 @@
         <?php
             if($data['CTHD']->num_rows>0){
             $row = $data['CTHD']->fetch_assoc();
-            $tongtien=$row['TongTien'];
+            $tongtien=$row['TongTien']-80000;
+            $thanhtien=$row['TongTien'];
             echo '<h2 class="client-title-01">Chi Tiết Đơn Hàng # '.$row['MaHoaDon'].'</h2>
             <h3 class="client-title-02 detail-date">Ngày đặt hàng:'.$row['NgayLap'].' </h3>
             </header>
@@ -87,13 +88,13 @@
                         <span>'.$tongtien.' VND</span>
                 </div>
                     
-                    <div class="detail-row">
-                        <span>Giảm trừ</span>
-                        <span>0 VND</span>
-                    </div>
+                <div class="detail-row">
+                <span>Phí vận chuyển</span>
+                <span>80000 VND</span>
+                </div>
                 <div class="detail-row">
                         <span>Tổng thanh toán</span>
-                        <span>'.$tongtien.' VND</span>
+                        <span>'.$thanhtien.' VND</span>
                 </div>
             </div>
         </div>
