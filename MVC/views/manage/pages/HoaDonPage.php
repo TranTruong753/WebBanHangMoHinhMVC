@@ -16,14 +16,16 @@
       <th scope="col" style="text-align: center;">Ngày Lập</th>
       <th scope="col" style="text-align: center;">Tổng Tiền</th>
       <th scope="col" style="text-align: center;">Hình Thức TT</th>
-      <th scope="col" style="text-align: center;">Mã Thuế</th>
+      <!-- <th scope="col" style="text-align: center;">Mã Thuế</th> -->
       <th scope="col" style="text-align: center;">Mã Khách Hàng</th>
       <th scope="col" style="text-align: center;">Số Điện Thoại</th>
       <th scope="col" style="text-align: center;">Địa Chỉ</th>
-      <th scope="col" style="text-align: center;">Mã Khuyến Mãi</th>
+      <!-- <th scope="col" style="text-align: center;">Mã Khuyến Mãi</th> -->
       <th scope="col" style="text-align: center;">Mã Nhân Viên</th>
       <th scope="col" style="text-align: center;">Đã xử lý</th>
       <th scope="col" style="text-align: center;">Đã giao</th>
+      <th scope="col" style="text-align: center;">Đã huỷ</th>
+      <th scope="col" style="text-align: center;">Thao tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">
@@ -36,12 +38,25 @@
 <script>
 function DoiTrangThaiHoaDon(obj) {
     var ma = obj.id;
-    var trangThai = obj.value; // Giá trị trạng thái của ô checkbox
-    var checkBoxes = document.querySelectorAll("input[type='checkbox'][id='" + ma + "']");
+    var trangThai = obj.value; // Giá trị trạng thái của radio button
+    var radioButtons = document.querySelectorAll("input[type='radio'][id='" + ma + "']");
     var result;
 
+    // Kiểm tra xem radio button nào được chọn
+    var selectedRadioButton = null;
+    radioButtons.forEach(function(radioButton) {
+        if (radioButton.checked) {
+            selectedRadioButton = radioButton;
+        }
+    });
+
+    if (selectedRadioButton === null) {
+        alert("Vui lòng chọn một trạng thái."); // Thông báo nếu không có radio button nào được chọn
+        return;
+    }
+
     result = confirm("Bạn có muốn đổi trạng thái?");
-    
+
     if (result == true) {
         // Gửi yêu cầu AJAX với trạng thái tương ứng
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/DoiTrangThai", {
@@ -51,16 +66,17 @@ function DoiTrangThaiHoaDon(obj) {
             alert(data); // Hiển thị thông báo
         });
 
-        // Đảm bảo chỉ một ô checkbox được chọn
-        checkBoxes.forEach(function(checkbox) {
-            if (checkbox != obj) {
-                checkbox.checked = false;
+        // Đảm bảo chỉ một radio button được chọn
+        radioButtons.forEach(function(radioButton) {
+            if (radioButton != selectedRadioButton) {
+                radioButton.checked = false;
             }
         });
     } else {
-        obj.checked = !obj.checked; // Đảo ngược trạng thái của ô checkbox nếu người dùng không chấp nhận thay đổi
+        obj.checked = !obj.checked; // Đảo ngược trạng thái của radio button nếu người dùng không chấp nhận thay đổi
     }
 }
+
 
 
 

@@ -315,6 +315,12 @@ class Admin extends controller
             $this->data["detail"] = "updatePages/SuaSanPhamPage";
             $this->data["Data"] = ["CL"=>$cl,"TL"=>$tl,"SP"=>$sp,"KM"=>$km];
         }
+        else if ($this->pageName == "ChiTietHoaDonPage") {
+            $mahd=$this->params[1];
+            // $cthd=$this->model( "ChiTietHoaDonModel")->GettheoMaHoaDon($mahd);
+            $this->data["detail"] = "ChiTietHoaDonPage";
+            $this->data["Data"] = ["MAHD"=>$mahd];
+        }
       //form thống kê
         else if($this->pageName == "Top5SanPham")
         {

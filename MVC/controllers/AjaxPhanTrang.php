@@ -63,6 +63,26 @@ class AjaxPhanTrang extends controller{
             {
                 $varibleEqual.= "  MaMauSac,TenMauSac";
             }
+            if($table == 'chatlieu')
+            {
+                $varibleEqual.= "  MaChatLieu,TenChatLieu";
+            }
+            if($table == 'kichco')
+            {
+                $varibleEqual.= "  MaKichCo,TenKichCo";
+            }
+            if($table == 'nhacungcap')
+            {
+                $varibleEqual.= "  MaNhaCungCap,TenNhaCungCap";
+            }
+            if($table == 'hoadon')
+            {
+                $varibleEqual.= "  MaHoaDon";
+            }
+            if($table == 'chitiethoadon')
+            {
+                $varibleEqual.= "  MaHoaDon";
+            }
             if($table == 'chitietphieunhap')
             {   //$masp=$_POST["masp"];
                 $varibleEqual.= "  chitietphieunhap.MaChiTietSanPham,sanpham.TenSanPham";
