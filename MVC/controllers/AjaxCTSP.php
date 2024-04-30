@@ -17,8 +17,6 @@ class AjaxCTSP extends controller {
         $fileurl=$file['file']['name'];
         $data= json_encode(['success'=>"true",'src'=>$fileurl]);
         echo $data; 
-
-        
     }
 
     function InsertCTSP(){

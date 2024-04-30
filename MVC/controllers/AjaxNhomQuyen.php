@@ -61,11 +61,10 @@ class AjaxNhomQuyen extends controller
         $numberItem = $_POST['size'];
 
         $html="";
-        
        
         if($this->NhomQuyenModel->getDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
         {
-            $result=$this->NhomQuyenModel->getDanhSach($key,$pageIndex,$numberItem);
+            $result = $this->NhomQuyenModel->getDanhSach($key,$pageIndex,$numberItem);
             while($row = $result->fetch_assoc())
             {
               $html .=  " <tr>
@@ -89,7 +88,6 @@ class AjaxNhomQuyen extends controller
             </tr> ";
               
             }
-
             echo $html;
         }
         

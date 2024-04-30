@@ -75,7 +75,7 @@ class AjaxChucNang extends controller {
         $json = "[";
         $count = $result->num_rows;
         // $MaNhomQuyen = $this->NhomQuyenModel->getMaNhomQuyenQuaTenDangNhap($_SESSION('email'));
-        // $MaNhomQuyen = 3;
+        $_SESSION['MaNhomQuyen'] = 3;
         if($result->num_rows > 0)
         {
             while($row = $result->fetch_assoc())

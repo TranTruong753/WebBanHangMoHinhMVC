@@ -7,11 +7,7 @@ class Admin extends controller
     protected $params = [];
     function default($params=[])
     {
-
-        
         $this->params = $this->paramsProcess($params);
-        
-
         if(isset($this->params[0]))
         {
             $this->pageName= $this->params[0];
@@ -36,7 +32,6 @@ class Admin extends controller
             // $this->data["Data"]= $TaiKhoanModel->getDanhSach();
             $this->data["Data"]= [];
             $this->data["detail"] = "TaiKhoanPage";
-
         } 
         else if ($this->pageName == "SuaTaiKhoanPage") {
             $NhanVienModel = $this->model( "NhanVienModel");
@@ -76,7 +71,6 @@ class Admin extends controller
             if(isset($this->params[1])) $this->data["MaKhachHang"] = $this->params[1];
             $this->data["Data"] = ["index"=>"CấpKh","MaKhachHang"=>$this->data["MaKhachHang"]];
         }  
-
         else if ($this->pageName == "NhomQuyenPage") {
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
@@ -125,7 +119,6 @@ class Admin extends controller
             $this->data["Data"] = $NhaCungCapModel->getDanhSach();
             $this->data["detail"] = "NhaCungCapPage";
         }
-
         // nhân viên
         else if ($this->pageName == "NhanVienPage") {
             // $NhanVienModel = $this->model("NhanVienModel");
@@ -334,8 +327,7 @@ class Admin extends controller
 
         $this->view("manage/manage", $this->data);
     }
-
-
+    
     public function paramsProcess($data)
     {
         if (isset($data)) {
