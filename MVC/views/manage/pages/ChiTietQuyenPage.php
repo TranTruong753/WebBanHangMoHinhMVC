@@ -16,26 +16,38 @@ $NhomQuyenModel = new NhomQuyenModel();
 $ChiTietQuyenModel = new ChiTietQuyenModel();
 $ChucNangModel = new ChucNangModel();
 ?>
-<div style="text-align: center;">
-  <h1 style=" margin-bottom: 20px;">Quản Lý Chi Tiết Quyền</h1>
+<div>
+  <h1 class="styleText-01">Quản Lý Chi Tiết Quyền</h1>
 </div>
 <div class="formThemChiTietQuyen" id="formThemChiTietQuyen">
+
   <!-- Selected Nhóm Quyền -->
   <label for="SelectNhomQuyen">Nhóm Quyền</label>
-  <select name="NhomQuyen" id="SelectNhomQuyen">
-    <option value="">--Hãy chọn một nhóm quyền--</option>
-    <?php
-    $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
-    if ($DanhSachNhomQuyen->num_rows > 0) {
-      while ($row = $DanhSachNhomQuyen->fetch_assoc()) {
-    ?>
-        <option value="<?php echo $row["MaNhomQuyen"] ?>"><?php echo $row["TenNhomQuyen"] ?></option>
-    <?php
+
+  <div class="custom-select">
+    <select class="" name="NhomQuyen" id="SelectNhomQuyen">
+      <option value="">--Hãy chọn một nhóm quyền--</option>
+      <?php
+      $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
+      if ($DanhSachNhomQuyen->num_rows > 0) {
+        while ($row = $DanhSachNhomQuyen->fetch_assoc()) {
+      ?>
+          <option value="<?php echo $row["MaNhomQuyen"] ?>"><?php echo $row["TenNhomQuyen"] ?></option>
+      <?php
+        }
       }
-    }
-    ?>
-  </select>
+      ?>
+    </select>
+  </div>
   <!-- selected Chức Năng -->
+  
+  
+  
+  
+  
+
+
+
   <br>
   <label for="SelectChucNang">Chức Năng</label>
   <select name="SelectChucNang" id="SelectChucNang">
@@ -59,45 +71,117 @@ $ChucNangModel = new ChucNangModel();
   <label for="HanhDong">Hành Động</label>
   <br>
   <div class="CheckBoxHanhDong">
+    <div class="checkbox-wrapper-46">
+      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xem" type="checkbox" value="Xem" />
+      <label class="cbx" for="xem">
+        <span>
+          <svg width="12px" height="10px" viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <span>Xem</span>
+      </label>
+    </div>
+
+    <div class="checkbox-wrapper-46">
+      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="them" type="checkbox" value="Thêm" />
+      <label class="cbx" for="them">
+        <span>
+          <svg width="12px" height="10px" viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <span>Thêm</span>
+      </label>
+    </div>
+
+    <div class="checkbox-wrapper-46">
+      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xoa" type="checkbox" value="Xóa" />
+      <label class="cbx" for="xoa">
+        <span>
+          <svg width="12px" height="10px" viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <span>Xóa</span>
+      </label>
+    </div>
+
+    <div class="checkbox-wrapper-46">
+      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="sua" type="checkbox" value="Sửa" />
+      <label class="cbx" for="sua">
+        <span>
+          <svg width="12px" height="10px" viewbox="0 0 12 10">
+            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+          </svg>
+        </span>
+        <span>Sửa</span>
+      </label>
+    </div>
+    <!-- 
     <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xem">Xem</input>
     <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Thêm">Thêm</input>
     <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xóa">Xóa</input>
-    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Sửa">Sửa</input>
+    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Sửa">Sửa</input> -->
   </div>
 
 
   <!-- button -->
 
-  <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+  <!-- <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm"> -->
+  <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+      </div>
+
+  <div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtSearch" placeholder="Tìm kiếm theo Mã hoặc Tên">
+      <label class="btn btn_search" for="btnSearch" onclick="btnSearch()">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+     <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <!-- <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+      </div> -->
+    </div>
+  </div>
+  <div>
+      <!-- <input type="text" id="txtSearch" placeholder="Nhóm quyền(Chức Năng)">
+      <input type="button" value="Tìm kiếm" onclick="btnSearch()"> -->
+
+      <input type="button" id="btnLuu" onclick="LuuDuLieuHanhDong()" value="Lưu">
+      <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">
+      <!-- <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi"> -->
+  </div>
 
   <!-- </form> -->
 </div>
 
 
 <table class="table">
-  <style></style>
-
   <thead>
 
-    <div style="background-color: black;">
-      <input type="text" id="txtSearch" style="min-width: 300px;" placeholder="Nhóm quyền(Chức Năng)">
-      <input type="button" value="Tìm kiếm" onclick="btnSearch()">
-
-      <input type="button" id="btnLuu" onclick="LuuDuLieuHanhDong()" value="Lưu">
-      <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">
-      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi">
-
-    </div>
+   
 
 
     <tr>
-      <th style="text-align: left;">Chọn</th>
-      <th scope="col" style="text-align: center;">Nhóm Quyền</th>
-      <th scope="col" style="text-align: center;">Chức Năng</th>
-      <th scope="col" style="text-align: center;">Xem</th>
-      <th scope="col" style="text-align: center;">Thêm</th>
-      <th scope="col" style="text-align: center;">Xóa</th>
-      <th scope="col" style="text-align: center;">Sửa</th>
+      <th>Chọn</th>
+      <th>Nhóm Quyền</th>
+      <th>Chức Năng</th>
+      <th>Xem</th>
+      <th>Thêm</th>
+      <th>Xóa</th>
+      <th>Sửa</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row_table">
