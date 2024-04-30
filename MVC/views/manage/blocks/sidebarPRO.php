@@ -149,9 +149,10 @@
                                                 case 'Thống Kê': hrefMain = "ThongKePage";
                                                 icon = 'bx bx-bar-chart-alt-2 sidebar_icon';
                                                 break;
-                                                case 'Hóa Đơn': hrefMain = "HoaDonPage";
-                                                icon = 'bx bx-bar-chart-alt-2 sidebar_icon';
-                                                break;
+                                                default:
+                                                        hrefMain = "MainPage";
+                                                        icon = '';
+                                                        break;
                                         }
                                         var href  = hrefDefault + hrefMain;
                                         sidebbar += `  <a href="`+href+`" class="sidebar_link">
