@@ -9,21 +9,22 @@
     }
 
 ?>
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>
 <?php if ($index == "Thêm") {
-    echo    "<h1>Form Thêm Nhân viên</h1>";
+    echo    "<h1 class = 'styleText-02' >Form Thêm Nhân viên</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1>Form Sửa Nhân viên</h1>";
+    echo "<h1 class = 'styleText-02' >Form Sửa Nhân viên</h1>";
 }
 ?>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>
 
-<form action="" method="post">
+
+<form action="" method="post" class="form_add">
     <?php 
         if($index == "Sửa"){
             echo "
-            <div>
-                <label for='userId'>Mã nhân viên</label>
-                <input type='text' id='userId' name='userId' readonly
+            <div class='input-add_wrap'>
+                <label for='userId'  class='styleText-04 label-add'> Mã nhân viên</label>
+                <input type='text' id='userId' name='userId' readonly class='input-add'
                 value='".$item["MaNhanVien"]."'
                 >
               
@@ -33,9 +34,9 @@
     ?>
    
 
-   <div>
-        <label for="userName">Họ và tên</label>
-        <input type="text" id="userName" name="userName"
+   <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="userName">Họ và tên</label>
+        <input class="input-add" type="text" id="userName" name="userName" placeholder="Nhập họ và tên"
 
         <?php 
         if($index == "Sửa"){
@@ -48,9 +49,9 @@
         <div id="error-userName" style="color: red;"></div>
    </div>
 
-    <div>
-        <label for="userPhone">Số điện thoại</label>
-        <input type="tel" id="userPhone" name="userPhone"
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="userPhone">Số điện thoại</label>
+        <input class="input-add" type="tel" id="userPhone" name="userPhone" placeholder="Nhập số điện thoại"
         <?php 
         if($index == "Sửa"){
             echo "value ='{$item['SoDienThoai']}'";
@@ -61,9 +62,9 @@
         <div id="error-userPhone" style="color: red;"></div>
     </div>
 
-   <div>
-        <label for="CCCD">CCCD</label>
-        <input type="text" id="userCCCD" name="CCCD"
+   <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="CCCD">CCCD</label>
+        <input class="input-add" type="text" id="userCCCD" name="CCCD" placeholder="Nhập cccd"
             <?php 
             if($index == "Sửa"){
                 echo "value ='{$item['CCCD']}'";
@@ -74,9 +75,9 @@
         <div id="error-userCCCD" style="color: red;"></div>
    </div>
 
-    <div>
-        <label for="date">Ngày sinh</label>
-        <input type="date" id="date" name="date"
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="date">Ngày sinh</label>
+        <input class="input-add" type="date" id="date" name="date"
         <?php 
         if($index == "Sửa"){
             echo "value ='{$item['NgaySinh']}'";
@@ -90,15 +91,15 @@
     <?php 
         if($index=="Sửa"){
             echo '
-            <div class="">
-                <button type="button" onclick="btnEdit()">Cập nhật</button>
+            <div class="input-add_wrap">
+                <button class = "btn" type="button" onclick="btnEdit()">Cập nhật</button>
             </div>
             ';
         }
         else{
             echo '
-            <div class="">
-                <button type="button" onclick = "btnAdd()">Thêm</button>
+            <div class="input-add_wrap">
+                <button class = "btn" type="button" onclick = "btnAdd()">Thêm</button>
             </div>
             ';
         }

@@ -30,160 +30,166 @@ else if ($index == "CấpKh") {
 ?>
 
 <?php 
+    if ($index == "Thêm") {
+        echo    "<h1 class = 'styleText-02' >Tạo tài khoản</h1>";
+    } else if ($index == "Sửa") {
+        echo "<h1 class = 'styleText-02' >Sửa tài khoản</h1>";
+    } else if($index == "CấpNv"||$index == "CấpKh"){
+        echo "<h1 class = 'styleText-02' >Cấp tài khoản</h1>";
+    }
+
     if($index == "Sửa" || $index == "Thêm"){
-        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage"> Trang quản lý tài khoản></a>';
+        echo '<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage"> Trang quản lý tài khoản></a>';
     }
     else if($index == "CấpNv"){
-        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>';
-    } else if($index == "CấpKv"){
-        echo '<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage"> Trang quản lý khách hàng></a>';
+        echo '<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>';
+    } else if($index == "CấpKh"){
+        echo '<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage"> Trang quản lý khách hàng></a>';
     }
 ?>
 
-
-
-<?php if ($index == "Thêm") {
-    echo    "<h1>Form Tạo tài khoản</h1>";
-} else if ($index == "Sửa") {
-    echo "<h1>Form Sửa tài khoản</h1>";
-}
-?>
-
-<form action="" method="post">
+<form action="" method="post" class="form_add">
     <?php 
         if($index == "Sửa"){
             echo '
-            <div>
-                <label for="userID">ID</label>
-                <input type="text" name="userID" id="userID" value="'.$MaTaiKhoan.'" readonly>
+            <div class="input-add_wrap">
+                <label class="styleText-04 label-add" for="userID">ID</label>
+                <input type="text" name="userID" id="userID" value="'.$MaTaiKhoan.'" readonly class="input-add">
             </div>';
         }
     
     ?>
     
 
-    <div>
-        <label for="userLogin" >Tên Đăng nhập</label>
+    <div class="input-add_wrap">
+        <label class='styleText-04 label-add' for="userLogin" >Tên Đăng nhập</label>
         <!-- <input type="text" id="userName" name="userName"> -->
-        <select name="userLogin" id="userLogin">
-            <?php 
-                //sửa 
-                if($index == "Sửa"){
-                    if($itemNvSua == '1'){
-                        echo"<option value='{$arrNv['TenDangNhap']}'>{$arrNv['TenDangNhap']} - {$arrNv['TenNhanVien']}</option>";
-                    }else if($itemKhSua == '1'){
-                        echo"<option value='{$arrKh['TenDangNhap']}'>{$arrKh['TenDangNhap']} - {$arrKh['TenKhachHang']}</option>";
-                    }
-                }
-
-                if($index == "Sửa"||$index == "Thêm"){
-                     //thêm và sửa đều load tất cả tên đăng nhâp
-                    $itemNv = $TaiKhoanModel->loadDsTenDangNha('nhanvien','MaNhanVien');
-                    $itemKh = $TaiKhoanModel->loadDsTenDangNha('khachhang','MaKhachHang');
-                    if($itemNv->num_rows>0)
-                    {
-                        while($row = $itemNv->fetch_assoc())
-                        {
-                            echo"<option value='{$row['MaNhanVien']}'>{$row['MaNhanVien']} - {$row['TenNhanVien']}</option>";
+        <div class="custom-select select-add">
+            <select name="userLogin" id="userLogin">
+                <?php 
+                    //sửa 
+                    if($index == "Sửa"){
+                        if($itemNvSua == '1'){
+                            echo"<option value='{$arrNv['TenDangNhap']}'>{$arrNv['TenDangNhap']} - {$arrNv['TenNhanVien']}</option>";
+                        }else if($itemKhSua == '1'){
+                            echo"<option value='{$arrKh['TenDangNhap']}'>{$arrKh['TenDangNhap']} - {$arrKh['TenKhachHang']}</option>";
                         }
                     }
-                    if($itemKh->num_rows>0)
-                    {
-                        while($row = $itemKh->fetch_assoc())
+    
+                    if($index == "Sửa"||$index == "Thêm"){
+                         //thêm và sửa đều load tất cả tên đăng nhâp
+                        $itemNv = $TaiKhoanModel->loadDsTenDangNha('nhanvien','MaNhanVien');
+                        $itemKh = $TaiKhoanModel->loadDsTenDangNha('khachhang','MaKhachHang');
+                        if($itemNv->num_rows>0)
                         {
-                            echo"<option value='{$row['MaKhachHang']}'>{$row['MaKhachHang']} - {$row['TenKhachHang']}</option>";
+                            while($row = $itemNv->fetch_assoc())
+                            {
+                                echo"<option value='{$row['MaNhanVien']}'>{$row['MaNhanVien']} - {$row['TenNhanVien']}</option>";
+                            }
                         }
+                        if($itemKh->num_rows>0)
+                        {
+                            while($row = $itemKh->fetch_assoc())
+                            {
+                                echo"<option value='{$row['MaKhachHang']}'>{$row['MaKhachHang']} - {$row['TenKhachHang']}</option>";
+                            }
+                        }
+                   
                     }
-               
-                }
-
-                if($index == "CấpNv")
-                {
-                    echo"<option value='{$itemNvCap['MaNhanVien']}'>{$itemNvCap['MaNhanVien']} - {$itemNvCap['TenNhanVien']}</option>";
-                }else if($index == "CấpKh"){
-                    echo"<option value='{$itemKhCap['MaKhachHang']}'>{$itemKhCap['MaKhachHang']} - {$itemKhCap['TenKhachHang']}</option>";
-                }
-               
-            
-            ?>
-            
-        </select>
+    
+                    if($index == "CấpNv")
+                    {
+                        echo"<option value='{$itemNvCap['MaNhanVien']}'>{$itemNvCap['MaNhanVien']} - {$itemNvCap['TenNhanVien']}</option>";
+                    }else if($index == "CấpKh"){
+                        echo"<option value='{$itemKhCap['MaKhachHang']}'>{$itemKhCap['MaKhachHang']} - {$itemKhCap['TenKhachHang']}</option>";
+                    }
+                   
+                
+                ?>
+                
+            </select>
+        </div>
        
    </div>
   
-   <div>
-        <label for="userPw">mật khẩu</label>
-        <input type="text" id="userPw" name="userPw"  maxlength="6" minlength="6" value="123456" placeholder="Mật khẩu ...">
+   <div class="input-add_wrap">
+        <label class='styleText-04 label-add' for="userPw">mật khẩu</label>
+        <input type="text" id="userPw" name="userPw"  maxlength="6" minlength="6" value="123456" placeholder="Nhập mật khẩu ..." class='input-add'>
         <div id="error-userPw" style="color: red;"></div>
    </div>
-   <div>
-        <label for="userPhanQuyen">Nhóm Quyên</label>
-        <select name="userPhanQuyen" id="userPhanQuyen">
-                <?php
-                    if($index == "Sửa") {
-                        $keyMaNhomQuyen = '';
 
-                        if($itemNvSua == '1'){
-                            $keyMaNhomQuyen = $arrNv['MaNhomQuyen'];
-                            echo"<option value='{$arrNv['MaNhomQuyen']}'>{$arrNv['MaNhomQuyen']} - {$arrNv['TenNhomQuyen']}</option>";
-                        }else if($itemKhSua == '1'){
-                            $keyMaNhomQuyen = $arrKh['MaNhomQuyen'];
-                            echo"<option value='{$arrKh['MaNhomQuyen']}'>{$arrKh['MaNhomQuyen']} - {$arrKh['TenNhomQuyen']}</option>";
-                        }
-                        $itemNqSua = $NhomQuyenModel->getDanhSachAllNotMa($keyMaNhomQuyen);
-                        if($itemNqSua->num_rows>0)
-                        {
-                            while($row = $itemNqSua->fetch_assoc())
-                            {
-                                echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";
+   <div class="input-add_wrap">
+        <label class='styleText-04 label-add' for="userPhanQuyen">Nhóm Quyên</label>
+        <div class="custom-select select-add">
+            <select name="userPhanQuyen" id="userPhanQuyen">
+                    <?php
+                        if($index == "Sửa") {
+                            $keyMaNhomQuyen = '';
+    
+                            if($itemNvSua == '1'){
+                                $keyMaNhomQuyen = $arrNv['MaNhomQuyen'];
+                                echo"<option value='{$arrNv['MaNhomQuyen']}'>{$arrNv['MaNhomQuyen']} - {$arrNv['TenNhomQuyen']}</option>";
+                            }else if($itemKhSua == '1'){
+                                $keyMaNhomQuyen = $arrKh['MaNhomQuyen'];
+                                echo"<option value='{$arrKh['MaNhomQuyen']}'>{$arrKh['MaNhomQuyen']} - {$arrKh['TenNhomQuyen']}</option>";
                             }
-                        }
-                        
-                      
-                    }
-                
-                    else if($index == "Thêm" || $index == "CấpNv" ){
-                        $itemNq = $NhomQuyenModel->getDanhSachAll();                      
-                        if($itemNq->num_rows>0)
-                        {
-                            while($row = $itemNq->fetch_assoc())
-                            {                             
-                                echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";                               
-                            }
-                        }
-                    }
-
-                    else if($index == "CấpKh"){
-                        $itemNq = $NhomQuyenModel->getDanhSachAll();                      
-                        if($itemNq->num_rows>0)
-                        {
-                            while($row = $itemNq->fetch_assoc())
+                            $itemNqSua = $NhomQuyenModel->getDanhSachAllNotMa($keyMaNhomQuyen);
+                            if($itemNqSua->num_rows>0)
                             {
-                                if($row['MaNhomQuyen']=='1'){
-
+                                while($row = $itemNqSua->fetch_assoc())
+                                {
                                     echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";
-
+                                }
+                            }
+                            
+                          
+                        }
+                    
+                        else if($index == "Thêm" || $index == "CấpNv" ){
+                            $itemNq = $NhomQuyenModel->getDanhSachAll();                      
+                            if($itemNq->num_rows>0)
+                            {
+                                while($row = $itemNq->fetch_assoc())
+                                {                             
+                                    echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";                               
                                 }
                             }
                         }
-                    }
-                     
-                ?>
-        </select>
+    
+                        else if($index == "CấpKh"){
+                            $itemNq = $NhomQuyenModel->getDanhSachAll();                      
+                            if($itemNq->num_rows>0)
+                            {
+                                while($row = $itemNq->fetch_assoc())
+                                {
+                                    if($row['MaNhomQuyen']=='1'){
+    
+                                        echo"<option value='{$row['MaNhomQuyen']}'>{$row['MaNhomQuyen']} - {$row['TenNhomQuyen']}</option>";
+    
+                                    }
+                                }
+                            }
+                        }
+                         
+                    ?>
+            </select>
+        </div>
         
    </div>
-
-   <?php 
-        if ($index == "Thêm") {
-           echo '<button type="button" onclick = "btnAdd()">Tạo tài khoản</button>';
-        }else if($index == "Sửa"){
-            echo '<button type="button"  onclick = "btnEdit()">Cập nhật tài khoản</button>';
-        }else if($index == "CấpNv" ){
-            echo '<button type="button" onclick = "btnAddNv()">Cấp tài khoản</button>';
-        }else if($index == "CấpKh"){
-            echo '<button type="button" onclick = "btnAddKh()">Cấp tài khoản</button>';
-        }
-   ?>
+    <div class="input-add_wrap">
+        <?php 
+            if ($index == "Thêm") {
+            echo '<button class = "btn" style = "--width-btn:160px;" type="button" onclick = "btnAdd()">Tạo tài khoản</button>';
+            }else if($index == "Sửa"){
+                echo '<button class = "btn" style = "--width-btn:200px;" type="button"  onclick = "btnEdit()">Cập nhật tài khoản</button>';
+            }else if($index == "CấpNv" ){
+                echo '<button class = "btn" style = "--width-btn:200px;" type="button" onclick = "btnAddNv()">Cấp tài khoản</button>';
+            }else if($index == "CấpKh"){
+                echo '<button class = "btn" style = "--width-btn:200px;" type="button" onclick = "btnAddKh()">Cấp tài khoản</button>';
+            }
+    ?>
+    </div>
+  
    
 </form>
 

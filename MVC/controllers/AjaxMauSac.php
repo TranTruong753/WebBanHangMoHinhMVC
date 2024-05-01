@@ -44,22 +44,23 @@ class AjaxMauSac extends controller{
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaMauSac']."</th>
-               <td style='text-align: center;'>".$row['TenMauSac']."</td>
-               <td style='text-align: center;'>
-     
+               <td>".$row['MaMauSac']."</td>
+               <td>".$row['TenMauSac']."</td>
+               <td>
+                <label class='switch'>
                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
                  <input onchange='DoiTrangThaiMauSac(this)' id='".$row['MaMauSac']."' type='checkbox' value='1'";
                  if ($row["TrangThai"] == 1) {
                    $html .= "checked = 'checked'";
  
                  }
-                 $html .="
-                 
+                 $html .=">
+                  <span class='slider round'></span>
+                </label>  
                </td>
                <td style='text-align: center;'>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'>Sửa</a></pre>
+                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'><i class='bx bxs-edit'></i></a>
                </td>
              </tr> ";
                

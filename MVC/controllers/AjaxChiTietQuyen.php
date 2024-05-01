@@ -74,18 +74,90 @@ class AjaxChiTietQuyen extends controller
             while ($row = $result->fetch_assoc()) {
                 $html .= " <tr> ";
 
-                $html.=" <th><input type='checkbox' class='CheckBoxXoa' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "'></th>
-                  <th style='text-align: center;' scope='row'> " . $this->NhomQuyenModel->getTenNhomQuyenTuMa($row['MaNhomQuyen']) . "</th>
-                  <td style='text-align: center;'>" . $this->ChucNangModel->getTenChucNangTuMa($row['MaChucNang']) . "</td>
-                  <td style='text-align: center;'><input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem' ";
+                $html.=" 
+                <td>
+                 
+                <!--   xóa <input type='checkbox' class='CheckBoxXoa' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "'>  -->
+                    
+                    <div class='checkbox-wrapper-46'>
+                        <input class='inp-cbx CheckBoxXoa' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "' type='checkbox' value='Xem' />
+                        <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "'>
+                            <span>
+                            <svg width='12px' height='10px' viewbox='0 0 12 10'>
+                                <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
+                            </svg>
+                            </span>                           
+                        </label>
+                    </div>
+                    
+                </td>
+                <td> " . $this->NhomQuyenModel->getTenNhomQuyenTuMa($row['MaNhomQuyen']) . "</td>
+                <td>" . $this->ChucNangModel->getTenChucNangTuMa($row['MaChucNang']) . "</td>
+                <td>
+                    <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem'> -->
+                    <div class='checkbox-wrapper-46'>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem' type='checkbox'/>
+                        <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem'>
+                            <span>
+                            <svg width='12px' height='10px' viewbox='0 0 12 10'>
+                                <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
+                            </svg>
+                            </span>
+                        </label>
+                    </div>
+                    ";
                 if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Xem')) $html .= "checked = 'checked'; >";
-                   $html.="</td><td style='text-align: center;'><input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm' ";
+                   $html.="
+                </td>                   
+                <td>
+                    <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm'> --> 
+                    <div class='checkbox-wrapper-46'>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm' type='checkbox'/>
+                        <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm'>
+                            <span>
+                            <svg width='12px' height='10px' viewbox='0 0 12 10'>
+                                <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
+                            </svg>
+                            </span>
+                        </label>
+                    </div>
+                    ";
                 if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Thêm')) $html .= " checked = 'checked' >";
-                   $html.="</td><td style='text-align: center;'><input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa' ";
+                   $html.="
+                </td>
+                <td>
+                    <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa'> --> 
+                    <div class='checkbox-wrapper-46'>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa' type='checkbox'/>
+                        <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa'>
+                            <span>
+                            <svg width='12px' height='10px' viewbox='0 0 12 10'>
+                                <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
+                            </svg>
+                            </span>
+                        </label>
+                    </div>
+                    ";
                 if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Xóa'))  $html .= " checked = 'checked'>"; 
-                    $html.="</td><td style='text-align: center;'><input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa' ";
+                    $html.="
+                </td>
+                <td>
+                    <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa'> --> 
+                    <div class='checkbox-wrapper-46'>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa' type='checkbox'/>
+                        <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa'>
+                            <span>
+                            <svg width='12px' height='10px' viewbox='0 0 12 10'>
+                                <polyline points='1.5 6 4.5 9 10.5 1'></polyline>
+                            </svg>
+                            </span>
+                        </label>
+                    </div>
+                    ";
                 if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Sửa')) $html .= "checked = 'checked'>";
-               $html.="</td></tr>";
+               $html.="
+                </td>
+               </tr>";
             }
         }
         echo $html;

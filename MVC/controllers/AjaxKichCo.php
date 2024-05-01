@@ -49,22 +49,25 @@ public function getDanhSachKC()
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaKichCo']."</th>
-               <td style='text-align: center;'>".$row['TenKichCo']."</td>
-               <td style='text-align: center;'>
-     
-               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                 <input onchange='DoiTrangThaiKichCo(this)' id='".$row['MaKichCo']."' type='checkbox' value='1'";
-                 if ($row["TrangThai"] == 1) {
-                   $html .= "checked = 'checked'";
- 
-                 }
-                 $html .="
-                 
+               <td>".$row['MaKichCo']."</td>
+               <td>".$row['TenKichCo']."</td>
+               <td>
+                <label class='switch'>
+                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                  <input onchange='DoiTrangThaiKichCo(this)' id='".$row['MaKichCo']."' type='checkbox' value='1'";
+                  if ($row["TrangThai"] == 1) {
+                    $html .= "checked = 'checked'";
+  
+                  }
+                  $html .=">
+                  <span class='slider round'></span>
+                </label>   
                </td>
-               <td style='text-align: center;'>
+               <td>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKichCoPage,".$row['MaKichCo']."'>Sửa</a></pre>
+                 
+                 <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKichCoPage,".$row['MaKichCo']."'><i class='bx bxs-edit'></i></a>
+                
                </td>
              </tr> ";
                

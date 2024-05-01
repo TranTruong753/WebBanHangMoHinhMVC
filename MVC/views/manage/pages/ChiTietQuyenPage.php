@@ -1,16 +1,3 @@
-<style>
-  /* .formThemChiTietQuyen {
-    width: 100%;
-    min-height: 300px;
-    background-color: red;
-    display: none;
-  }
-
-  .hidden {
-    display: block;
-  } */
-</style>
-
 <?php
 $NhomQuyenModel = new NhomQuyenModel();
 $ChiTietQuyenModel = new ChiTietQuyenModel();
@@ -21,118 +8,120 @@ $ChucNangModel = new ChucNangModel();
 </div>
 <div class="formThemChiTietQuyen" id="formThemChiTietQuyen">
 
-  <!-- Selected Nhóm Quyền -->
-  <label for="SelectNhomQuyen">Nhóm Quyền</label>
-
-  <div class="custom-select">
-    <select class="" name="NhomQuyen" id="SelectNhomQuyen">
-      <option value="">--Hãy chọn một nhóm quyền--</option>
-      <?php
-      $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
-      if ($DanhSachNhomQuyen->num_rows > 0) {
-        while ($row = $DanhSachNhomQuyen->fetch_assoc()) {
-      ?>
-          <option value="<?php echo $row["MaNhomQuyen"] ?>"><?php echo $row["TenNhomQuyen"] ?></option>
-      <?php
-        }
-      }
-      ?>
-    </select>
-  </div>
-  <!-- selected Chức Năng -->
-  
-  
-  
-  
-  
-
-
-
-  <br>
-  <label for="SelectChucNang">Chức Năng</label>
-  <select name="SelectChucNang" id="SelectChucNang">
-    <option value="">--Hãy chọn một chức năng--</option>
-    <?php
-    $DanhSachChucNang = $ChucNangModel->getDanhSachCoTrangThai();
-    if ($DanhSachChucNang->num_rows > 0) {
-      while ($row = $DanhSachChucNang->fetch_assoc()) {
-    ?>
-        <option value="<?php echo $row["MaChucNang"] ?>"><?php echo $row["TenChucNang"] ?></option>
-    <?php
-      }
-    }
-    ?>
-  </select>
-
-  <br>
-
-
-  <!-- selected Hành Động -->
-  <label for="HanhDong">Hành Động</label>
-  <br>
-  <div class="CheckBoxHanhDong">
-    <div class="checkbox-wrapper-46">
-      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xem" type="checkbox" value="Xem" />
-      <label class="cbx" for="xem">
-        <span>
-          <svg width="12px" height="10px" viewbox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-        </span>
-        <span>Xem</span>
-      </label>
-    </div>
-
-    <div class="checkbox-wrapper-46">
-      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="them" type="checkbox" value="Thêm" />
-      <label class="cbx" for="them">
-        <span>
-          <svg width="12px" height="10px" viewbox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-        </span>
-        <span>Thêm</span>
-      </label>
-    </div>
-
-    <div class="checkbox-wrapper-46">
-      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xoa" type="checkbox" value="Xóa" />
-      <label class="cbx" for="xoa">
-        <span>
-          <svg width="12px" height="10px" viewbox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-        </span>
-        <span>Xóa</span>
-      </label>
-    </div>
-
-    <div class="checkbox-wrapper-46">
-      <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="sua" type="checkbox" value="Sửa" />
-      <label class="cbx" for="sua">
-        <span>
-          <svg width="12px" height="10px" viewbox="0 0 12 10">
-            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-          </svg>
-        </span>
-        <span>Sửa</span>
-      </label>
-    </div>
-    <!-- 
-    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xem">Xem</input>
-    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Thêm">Thêm</input>
-    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xóa">Xóa</input>
-    <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Sửa">Sửa</input> -->
-  </div>
-
-
-  <!-- button -->
-
-  <!-- <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm"> -->
-  <div class="btn btn_add"> 
-        <i class='bx bx-plus'></i>
-        <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+ <div class="block-add">
+   <div class="select-wrap">
+      <!-- Selected Nhóm Quyền -->
+      <div>
+        <label for="SelectNhomQuyen">Nhóm Quyền:</label>
+      
+        <div class="custom-select">
+          <select class="" name="NhomQuyen" id="SelectNhomQuyen">
+            <option value="">--Hãy chọn một nhóm quyền--</option>
+            <?php
+            $DanhSachNhomQuyen = $NhomQuyenModel->getDanhSachCoTrangThai();
+            if ($DanhSachNhomQuyen->num_rows > 0) {
+              while ($row = $DanhSachNhomQuyen->fetch_assoc()) {
+            ?>
+                <option value="<?php echo $row["MaNhomQuyen"] ?>"><?php echo $row["TenNhomQuyen"] ?></option>
+            <?php
+              }
+            }
+            ?>
+          </select>
+        </div>
       </div>
+      
+      <!-- selected Chức Năng -->
+      <div>
+        <label for="SelectChucNang">Chức Năng:</label>
+      
+        <div class="custom-select">
+          <select name="SelectChucNang" id="SelectChucNang">
+            <option value="">--Hãy chọn một chức năng--</option>
+            <?php
+            $DanhSachChucNang = $ChucNangModel->getDanhSachCoTrangThai();
+            if ($DanhSachChucNang->num_rows > 0) {
+              while ($row = $DanhSachChucNang->fetch_assoc()) {
+            ?>
+                <option value="<?php echo $row["MaChucNang"] ?>"><?php echo $row["TenChucNang"] ?></option>
+            <?php
+              }
+            }
+            ?>
+          </select>
+        </div>
+      </div>
+  
+   </div>
+  
+    <!-- selected Hành Động -->
+    <div class="checkBox-wrap">
+      <label for="HanhDong">Hành Động:</label>  
+      <div class="CheckBoxHanhDong">
+        <div class="checkbox-wrapper-46">
+          <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xem" type="checkbox" value="Xem" />
+          <label class="cbx" for="xem">
+            <span>
+              <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </svg>
+            </span>
+            <span>Xem</span>
+          </label>
+        </div>
+    
+        <div class="checkbox-wrapper-46">
+          <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="them" type="checkbox" value="Thêm" />
+          <label class="cbx" for="them">
+            <span>
+              <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </svg>
+            </span>
+            <span>Thêm</span>
+          </label>
+        </div>
+    
+        <div class="checkbox-wrapper-46">
+          <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="xoa" type="checkbox" value="Xóa" />
+          <label class="cbx" for="xoa">
+            <span>
+              <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </svg>
+            </span>
+            <span>Xóa</span>
+          </label>
+        </div>
+    
+        <div class="checkbox-wrapper-46">
+          <input class="inp-cbx ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" id="sua" type="checkbox" value="Sửa" />
+          <label class="cbx" for="sua">
+            <span>
+              <svg width="12px" height="10px" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </svg>
+            </span>
+            <span>Sửa</span>
+          </label>
+        </div>
+        <!-- 
+        <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xem">Xem</input>
+        <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Thêm">Thêm</input>
+        <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Xóa">Xóa</input>
+        <input type="checkbox" class="ThemCheckBoxHanhDong" name="ThemCheckBoxHanhDong" value="Sửa">Sửa</input> -->
+      </div>
+    </div>
+  
+  
+    <!-- button -->
+  
+    <!-- <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm"> -->
+    <div class="btn btn_add"> 
+      <i class='bx bx-plus'></i>
+      <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+    </div>
+ </div>
 
   <div class="search-wrap">
     <div class="search">
@@ -155,25 +144,19 @@ $ChucNangModel = new ChucNangModel();
       </div> -->
     </div>
   </div>
-  <div>
-      <!-- <input type="text" id="txtSearch" placeholder="Nhóm quyền(Chức Năng)">
-      <input type="button" value="Tìm kiếm" onclick="btnSearch()"> -->
-
-      <input type="button" id="btnLuu" onclick="LuuDuLieuHanhDong()" value="Lưu">
-      <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">
-      <!-- <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi"> -->
-  </div>
+  
 
   <!-- </form> -->
+</div>
+
+<div>     
+      <input type="button" id="btnLuu" onclick="LuuDuLieuHanhDong()" value="Lưu">
+      <input type="button" id="btnXoa" onclick="XoaDuLieuChiTietQuyenDaChon()" value="Xóa">    
 </div>
 
 
 <table class="table">
   <thead>
-
-   
-
-
     <tr>
       <th>Chọn</th>
       <th>Nhóm Quyền</th>
@@ -393,3 +376,4 @@ $ChucNangModel = new ChucNangModel();
     }
   }
 </script>
+

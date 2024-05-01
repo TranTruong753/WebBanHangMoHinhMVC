@@ -7,33 +7,35 @@ if ($index == "Sửa") {
 }
 ?>
 
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,0,8"> Trang Khách hàng></a>
 <?php if ($index == "Thêm") {
-    echo    "<h1>Form Thêm Khách hàng</h1>";
+    echo    "<h1 class = 'styleText-02'>Form Thêm Khách hàng</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1>Form Sửa Khách hàng</h1>";
+    echo "<h1 class = 'styleText-02'>Form Sửa Khách hàng</h1>";
 }
 ?>
 
-<form method="post">
+
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,0,8"> Trang Khách hàng></a>
+
+
+<form method="post" class="form_add" >
    
-     <div>
-        <label for='idClient'>Mã khách hàng</label>
-        <input type='text' id='idClient' name='userId'<?php
+     <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for='idClient'>Email khách hàng</label>
+        <input class="input-add" type='text' id='idClient' name='userId' placeholder="Nhập email "
+        <?php
             if($index == "Sửa"){
                 echo "readonly value ='{$item['MaKhachHang']}'";
             }
         
-        ?> 
-        
-        >
+        ?> >
         <div id="error-userId" style="color:red;"></div>
               
     </div>
    
-    <div>
-        <label for="nameClient">Họ và tên khách hàng</label>
-        <input type="text" name="" id="nameClient"
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="nameClient">Họ và tên khách hàng</label>
+        <input class="input-add" type="text" name="" id="nameClient" placeholder="Nhập họ và tên"
          <?php 
             if($index == "Sửa"){
                 echo "value ='{$item['TenKhachHang']}'";
@@ -43,9 +45,9 @@ if ($index == "Sửa") {
         >
         <div id="error-userName" style="color:red;"></div>
     </div>
-    <div>
-        <label for="phoneClient">Số điện thoại khách hàng</label>
-        <input type="text" name="" id="phoneClient"
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="phoneClient">Số điện thoại khách hàng</label>
+        <input class="input-add" type="text" name="" id="phoneClient"  placeholder="Nhập số điện thoại"
          <?php 
             if($index == "Sửa"){
                 echo "value ='{$item['SoDienThoai']}'";
@@ -55,44 +57,62 @@ if ($index == "Sửa") {
         >
         <div id="error-userPhone" style="color:red;"></div>
     </div>
-    <div>
-        <label for="sexClient">Giới tính</label>
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="sexClient">Giới tính</label>
         
-          <div>
-                <input type="radio" name="sexClient" id="" value="Nam"
-                <?php
-                if($index == "Sửa"){
-                     if($item['GioiTinh']=="Nam"){
-                        echo 'checked';
+          <div class="add-form-radio-wrap">
+                <div class="radio-wrap">
+                    <input type="radio" name="sexClient" id="boy" value="Nam" class="add-form__raido-input" hidden
+                    <?php
+                    if($index == "Sửa"){
+                         if($item['GioiTinh']=="Nam"){
+                            echo 'checked';
+                        }
                     }
-                }
-                   
-                ?>
-                >Nam
+                       
+                    ?>
+                    > 
+                    <label class="add-form__radio-label" for="boy"
+                    ><span></span>
+                    Nam
+                    </label>
+                </div>
             
             
-                <input type="radio" name="sexClient" id="" value="Nữ"
-                <?php
-                if($index == "Sửa"){
-                     if($item['GioiTinh']=="Nữ"){
-                        echo 'checked';
+                <div class="radio-wrap">
+                    <input type="radio" name="sexClient" id="girl" value="Nữ" class="add-form__raido-input" hidden
+                    <?php
+                    if($index == "Sửa"){
+                         if($item['GioiTinh']=="Nữ"){
+                            echo 'checked';
+                        }
                     }
-                }
-                   
-                ?>
-                >Nữ
+                       
+                    ?>
+                    >
+                    <label class="add-form__radio-label" for="girl"
+                    ><span></span>
+                    Nữ
+                    </label>
+                </div>
             
             
-                <input type="radio" name="sexClient" id="" value="Khác"
-                <?php
-                if($index == "Sửa"){
-                    if($item['GioiTinh']=="Khác"){
-                        echo 'checked';
+               <div class="radio-wrap">
+                    <input type="radio" name="sexClient" id="other" value="Khác" class="add-form__raido-input" hidden
+                    <?php
+                    if($index == "Sửa"){
+                        if($item['GioiTinh']=="Khác"){
+                            echo 'checked';
+                        }
                     }
-                }
-                    
-                ?>
-                >Khác
+                        
+                    ?>
+                    >
+                    <label class="add-form__radio-label" for="other"
+                    ><span></span>
+                    Khác
+                    </label>
+               </div>
           </div>
 
           <div id="error-userGioiTinh" style="color: red;"></div>
@@ -103,15 +123,15 @@ if ($index == "Sửa") {
     <?php 
         if($index=="Sửa"){
             echo '
-            <div class="">
-                <button type="button" onclick="btnEdit()">Cập nhật</button>
+            <div class="input-add_wrap">
+                <button class = "btn" type="button" onclick="btnEdit()">Cập nhật</button>
             </div>
             ';
         }
         else{
             echo '
-            <div class="">
-                <button type="button" onclick = "btnAdd()">Thêm</button>
+            <div class="input-add_wrap">
+                <button class = "btn" type="button" onclick = "btnAdd()">Thêm</button>
             </div>
             ';
         }

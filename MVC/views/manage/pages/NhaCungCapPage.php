@@ -1,24 +1,46 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<div style="text-align: center; ">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Nhà Cung Cấp</h1>
+  <div>
+    <h1 class="styleText-01">Quản Lý Nhà Cung Cấp</h1>
   </div>
 
-<div class="search">
+<!-- <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div>
 <input type="submit" onclick="DieuHuong()" value="Thêm">
-<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
+<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi"> -->
+
+<div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên nhà cung cấp">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+     <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+      </div>
+    </div>
+  </div>
+
 <table class="table">
   <thead>
-    <hr>
     <tr>
-      <th scope="col" style="text-align: center;">Mã Nhà Cung Cấp</th>
-      <th scope="col" style="text-align: center;">Tên Nhà Cung Cấp</th>
-      <th scope="col" style="text-align: center;">Số điện thoại</th>
-      <th scope="col" style="text-align: center;">Địa Chỉ</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>Mã Nhà Cung Cấp</th>
+      <th>Tên Nhà Cung Cấp</th>
+      <th>Số điện thoại</th>
+      <th>Địa Chỉ</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">

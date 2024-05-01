@@ -1,32 +1,54 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<table class="table">
-<style></style>
-<div style="text-align: center;">
-<h1 >Quản Lý Sản Phẩm</h1>
+<?php
+    $masp=$data['DanhSach']["MASP"];
+?>
+<div>
+  <h1 class="styleText-01">Quản Lý Chi Tiết Sản Phẩm</h1>
 </div>
-<div class="search">
+<!-- <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
+</div> -->
+<!-- <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm"> -->
+<!-- <input type="button"   onclick="Lamtuoi()" value="làm tươi"> -->
+<input type="hidden" id="masp"  value="<?php echo $masp?>">
+
+<div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên chi tiết sản phẩm">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+     <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="Lamtuoi()" value="" hidden>
+      </label>
+      <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input id="<?php echo $masp?>" type="button" class="" onclick="DieuHuong(this)" value="Thêm">
+      </div>
+    </div>
+  </div>
+
+<table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">Hình ảnh</th>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Màu sắc</th>
-      <th scope="col" style="text-align: center;">Kích cở</th>
-      <th scope="col" style="text-align: center;">Số lượng tồn</th>
-      <th scope="col" style="text-align: center;">Trạng thái</th>
+      <th>Hình ảnh</th>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Màu sắc</th>
+      <th>Kích cở</th>
+      <th>Số lượng tồn</th>
+      <th>Trạng thái</th>
+      <th>Thao tác</th>
       
     </tr>
   </thead>
-  <?php
-  $masp=$data['DanhSach']["MASP"];
-?>
-  <tbody class="table-group-divider">
-  <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm">
-  <input type="button"   onclick="Lamtuoi()" value="làm tươi">
-  <input type="hidden" id="masp"  value="<?php echo $masp?>">
   <tbody class="table-group-divider row-table">
   </tbody>
 </table>

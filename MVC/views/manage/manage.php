@@ -32,20 +32,21 @@
 <body>
    
     <div class="main">
-        <div class="header"></div>
+        <!-- <div class="header"></div> -->
         <div class="all showContainer">
             <div class="">
-                <div class="">
-                    <?php
-                    require_once "blocks/sidebarPRO.php";
-                    ?>
-                </div>
-                <div class="content">
-                    <?php
+                <?php
+                require_once "blocks/sidebarPRO.php";
+                ?>
+            </div>
+            <div class="content">
+                <?php
                     // print_r($data["Data"]);
                     $this->view("manage/pages/" . $data['detail'], ["DanhSach" => $data["Data"]]);
                     ?>
-                </div>
+                <!-- <div class="">
+                    
+                </div> -->
             </div>
 
         </div>

@@ -1,13 +1,13 @@
 <?php
 $PhanTrangModel = new PhanTrangModel();
 ?>
-<div class="styleText-01">
-  <h1>Quản Lý Khách Hàng</h1>
+<div>
+  <h1 class="styleText-01">Quản Lý Khách Hàng</h1>
 </div>
 
   <div class="search-wrap">
     <div class="search">
-      <input type="text" class="input_search" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc Tên khách hàng">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên khách hàng">
       <label class="btn btn_search" for="btnSearch">
         <i class='bx bx-search'></i>
         <input type="button" id="btnSearch" value="" hidden>

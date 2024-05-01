@@ -49,7 +49,7 @@ class AjaxCTSP extends controller {
                   <th scope="col" style="text-align: center;">Tên</th>
                   <th scope="col" style="text-align: center;">Màu sắc</th>
                   <th scope="col" style="text-align: center;">Kích cở</th>
-                  <th scope="col" style="text-align: center;">Số lượng tồn</th>
+                  <th scope="col" style="text-align: center;">Số lượng tồn</th>                 
                   
                 </tr>
               </thead>
@@ -155,14 +155,14 @@ class AjaxCTSP extends controller {
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr id="'.$row["MaChiTietSanPham"].'" onclick="loadID(this)"> 
-              <th style="text-align: center;" scope="row">
-                <img weight= 300px height=400px  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
-              </th>
-              <th style="text-align: center;" scope="row">'.$row["MaChiTietSanPham"].'</th>
-              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
-              <td style="text-align: center;">'.$row["TenMauSac"].'</td>
-              <td style="text-align: center;">'.$row["TenKichCo"].'</td>
-              <td style="text-align: center;">'.$row["SoLuongTon"].'</td>
+              <td>
+                <img  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
+              </td>
+              <td>'.$row["MaChiTietSanPham"].'</td>
+              <td>'.$row["TenSanPham"].'</td>
+              <td>'.$row["TenMauSac"].'</td>
+              <td>'.$row["TenKichCo"].'</td>
+              <td>'.$row["SoLuongTon"].'</td>
               <td>
               <label class="switch">
   
@@ -177,9 +177,11 @@ class AjaxCTSP extends controller {
               </label>
               
             </td>
-              <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'">Sửa</a>|
-               <button  onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'">Xóa</button> | 
-              <br> </pre></td>
+            <td>
+              <a class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'"><i class="bx bxs-edit"></i></a>
+              <button class = "btn btn_delete" onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'"><i class="bx bx-x"></i></button> 
+             
+            </td>
               
             </tr>';
               

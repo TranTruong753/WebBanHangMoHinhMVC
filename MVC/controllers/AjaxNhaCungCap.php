@@ -49,24 +49,26 @@ class AjaxNhaCungCap extends controller{
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaNhaCungCap']."</th>
-               <td style='text-align: center;'>".$row['TenNhaCungCap']."</td>
-               <td style='text-align: center;'>".$row['SoDienThoai']."</td>
-               <td style='text-align: center;'>".$row['DiaChi']."</td>
-               <td style='text-align: center;'>
-     
-               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                 <input onchange='DoiTrangThaiNhaCungCap(this)' id='".$row['MaNhaCungCap']."' type='checkbox' value='1'";
-                 if ($row["TrangThai"] == 1) {
-                   $html .= "checked = 'checked'";
- 
-                 }
-                 $html .="
-                 
+               <td>".$row['MaNhaCungCap']."</td>
+               <td>".$row['TenNhaCungCap']."</td>
+               <td>".$row['SoDienThoai']."</td>
+               <td>".$row['DiaChi']."</td>
+               <td>
+                <label class='switch'>
+                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                  <input onchange='DoiTrangThaiNhaCungCap(this)' id='".$row['MaNhaCungCap']."' type='checkbox' value='1'";
+                  if ($row["TrangThai"] == 1) {
+                    $html .= "checked = 'checked'";
+  
+                  }
+                  $html .=">
+                  <span class='slider round'></span>
+                </label>    
                </td>
-               <td style='text-align: center;'>
+               <td>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhaCungCapPage,".$row['MaNhaCungCap']."'>Sửa</a></pre>
+                 
+               <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhaCungCapPage,".$row['MaNhaCungCap']."'><i class='bx bxs-edit'></i></a>
                </td>
              </tr> ";
                
