@@ -1,6 +1,6 @@
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<h1 style="text-align: center;">Thống Kê</h1>
+<h1 class="styleText-02">Thống Kê</h1>
 
 <label for="select"></label>
 <select name="select" id="selectThongKe" onchange="changeSelectThongKe(this)">

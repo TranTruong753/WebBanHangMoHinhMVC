@@ -60,7 +60,9 @@ body {
 /* .titleText {
 
 } */
-
+.main_page {
+  text-align: center;
+}
 
 .styleText-01 {
     font-size: 42px;
@@ -536,6 +538,13 @@ body {
   border-radius: 8px;
 }
 
+.form_add-product {
+  padding: 10px 20px;
+  border: 2px solid #2196F3;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
 .label-add {
   display: block;
   margin-bottom: 7px;
@@ -630,6 +639,25 @@ body {
 
 .form-add__link:hover {
   text-decoration: underline;
+}
+
+/* css nhập hàng */
+.form_header {
+  margin-top: 10px;
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: 1fr 3fr;
+}
+
+.form_bottom {
+  min-height: 200px;
+}
+
+.show {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border: 2px solid var(--blue-color-02);
 }
 
 

@@ -11,99 +11,149 @@
     }
     
 ?>
-<form method="post">
-    <label for="">Mã Phiếu Nhập</label> <br>
-    <input type="text" id="mapn" value="PN00<?php echo $dem+1;?>" disabled> <br>
-    <label for="">Chọn Sản Phẩm</label><br>
-    <select name="" id="sanpham"  class="">
-        <?php
-        if ($sp->num_rows > 0) {
-            while ($row = $sp->fetch_assoc()) {
-                    echo '<option onclick="change(this)" value="'.$row['MaSanPham'].'" >'.$row['MaSanPham'].'-'.$row['TenSanPham'].'</option>
-                         ';
-            }
-        }
-        ?>
-    </select><br>
-    
-    
-    <label for="">Chọn Nhà Cung Cấp</label><br>
-    <select name="" id="ncc"  class="" >
-        <?php
-        if ($ncc->num_rows > 0) {
-            while ($row = $ncc->fetch_assoc()) {
-                    echo '<option   value="'.$row['MaNhaCungCap'].'" >'.$row['MaNhaCungCap'].'-'.$row['TenNhaCungCap'].'</option>';
-            }
-        }
-        ?>
-    </select><br>
-    <label for="">Mã Chi Tiết Sản Phẩm</label> <br>
-    <input type="text" id="mactsp" value="" disabled> <br>
+<h1 class = 'styleText-02' >Nhập hàng</h1>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage"> Quay về trang quản lý nhập hàng></a>
 
-    <label for="">Giá nhập</label> <br>
-    <input type="text" id="gianhap" value=""> <br>
-
-    <label for="">Nhập số lượng</label> <br>
-    <input type="number" name="" id="soluong" class="content__input-number" value="1"  min="1" > <br>
-
-    <label for="">Thành tiền</label> <br>
-    <input type="text" id="thanhtien" value="" disabled> <br>
-
-    <label for="">Tổng tiền</label> <br>
-    <input type="text" id="tongtien" value="0" disabled> <br>
-
-    <label for="">Nhập Mã Nhân Viên</label> <br>
-    <input type="text" id="nhanvien" value=""> <br>
-
-    
-
-    <button type = "button" onclick="them()">Thêm</button>
-    <button type = "button" onclick="Nhaphang()">Nhập Hàng</button>
-    
-</form>
-    <table class="table">
-        <style></style>
-        <div style="text-align: center;">
-        <h1 >Chi tiết Sản Phẩm</h1>
+<div class="form_header form_add-product">
+  <form method="post" class="">
+      <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="mapn">Mã Phiếu Nhập</label> 
+        <input class='input-add' type="text" id="mapn" value="PN00<?php echo $dem+1;?>" disabled> 
+      </div>
+      <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="sanpham">Chọn Sản Phẩm</label>
+        <div class="custom-select select-add">
+          <select name="" id="sanpham"  class="">
+              <?php
+              if ($sp->num_rows > 0) {
+                  while ($row = $sp->fetch_assoc()) {
+                          echo '<option onclick="change(this)" value="'.$row['MaSanPham'].'" >'.$row['MaSanPham'].'-'.$row['TenSanPham'].'</option>
+                               ';
+                  }
+              }
+              ?>
+          </select>
         </div>
-        <div class="search">
+      </div>
+      
+      
+      <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="">Chọn Nhà Cung Cấp</label>
+        <div class="custom-select select-add">
+          <select name="" id="ncc"  class="" >
+              <?php
+              if ($ncc->num_rows > 0) {
+                  while ($row = $ncc->fetch_assoc()) {
+                          echo '<option   value="'.$row['MaNhaCungCap'].'" >'.$row['MaNhaCungCap'].'-'.$row['TenNhaCungCap'].'</option>';
+                  }
+              }
+              ?>
+          </select>
+        </div>
+      </div>
+     <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="mactsp">Mã Chi Tiết Sản Phẩm</label> 
+        <input class='input-add' type="text" id="mactsp" value="" disabled> 
+     </div>
+  
+      <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="gianhap">Giá nhập</label> 
+        <input class='input-add' type="text" id="gianhap" value=""> 
+      </div>
+  
+     <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="soluong">Nhập số lượng</label> 
+        <input class='input-add' type="number" name="" id="soluong" class="content__input-number" value="1"  min="1" >
+     </div> 
+  
+     <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="thanhtien">Thành tiền</label> 
+        <input class='input-add' type="text" id="thanhtien" value="" disabled> 
+     </div>
+  
+     <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="tongtien">Tổng tiền</label> 
+        <input class='input-add' type="text" id="tongtien" value="0" disabled> 
+     </div>
+  
+     <div class = "input-add_wrap">
+        <label class='styleText-04 label-add' for="nhanvien">Nhập Mã Nhân Viên</label> 
+        <input class='input-add' type="text" id="nhanvien" value=""> 
+     </div>
+  
+      
+  
+     <div class = "input-add_wrap">
+        <button class="btn" type = "button" onclick="them()">Thêm</button>
+        <button class="btn" type = "button" onclick="Nhaphang()">Nhập Hàng</button>
+     </div>
+      
+  </form>
+  <div class="table_product">
+    <div>
+        <h1 class="styleText-03">Chọn Chi tiết Sản Phẩm</h1>
+    </div>
+    <!-- <div class="search">
         <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
         <input type="button" id="btnSearch" value="Tìm Kiếm">
-        </div>
+    </div> -->
+
+   
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    
+    
+
+    <table class="table">
+        
+        
         <thead>
             <tr>
-            <th scope="col" style="text-align: center;">Hình ảnh</th>
-            <th scope="col" style="text-align: center;">ID</th>
-            <th scope="col" style="text-align: center;">Tên</th>
-            <th scope="col" style="text-align: center;">Màu sắc</th>
-            <th scope="col" style="text-align: center;">Kích cở</th>
-            <th scope="col" style="text-align: center;">Số lượng tồn</th>
-            
+              <th>Hình ảnh</th>
+              <th>ID</th>
+              <th>Tên</th>
+              <th>Màu sắc</th>
+              <th>Kích cở</th>
+              <th>Số lượng tồn</th>
+              <th>Trang thái</th>
+              <th>Thao tác</th>
             </tr>
         </thead>
         
         <tbody class="table-group-divider row-table">
         </tbody>
     </table>
-    <table class="table">
-        <style></style>
-        <div style="text-align: center;">
-        <h1 >Các sp dc nhập</h1>
-        <thead>
-            <tr>
-            
-            <th scope="col" style="text-align: center;">ID</th>
-            <th scope="col" style="text-align: center;">ID SP</th>
-            <th scope="col" style="text-align: center;">Số lượng</th>
-            <th scope="col" style="text-align: center;">Giá Nhập</th>
-            <th scope="col" style="text-align: center;">Thành Tiền</th>
-            
-            </tr>
-        </thead>
-        
-        <tbody class="table-group-divider row-table1">
-        </tbody>
-    </table>
+  </div>
+</div>
+
+<div class="form_bottom form_add-product">
+  <h1 class="styleText-03">Danh sách sản phẩm nhập</h1>
+  
+  <table class="table">
+      
+      <thead>
+          <tr>
+          
+            <th>ID</th>
+            <th>ID SP</th>
+            <th>Số lượng</th>
+            <th>Giá Nhập</th>
+            <th>Thành Tiền</th>
+            <th>Thao tác</th>
+          
+          </tr>
+      </thead>
+      
+      <tbody class="table-group-divider row-table1">
+      </tbody>
+  </table>
+</div>
+<br>
     
 
 <!-- <script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlySPJS.js"></script> -->

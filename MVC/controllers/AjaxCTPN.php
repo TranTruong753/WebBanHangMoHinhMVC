@@ -30,7 +30,9 @@ class AjaxCTPN extends controller {
                   <td>'.$arr[$i]['sl'].'</td>
                   <td>'.$arr[$i]['gn'].'</td>
                   <td>'.$arr[$i]['tt'].'</td>
-                  <td><pre><button  onclick="XoaCTPN(this)" id="'.$arr[$i]['mactsp'].'">Xóa</button> </pre></td>
+                  <td>                 
+                     <button class ="btn btn_delete" onclick="XoaCTPN(this)" id="'.$arr[$i]['mactsp'].'"><i class="bx bx-x"></i></button>                  
+                  </td>
                </tr>';
                $tongtien=$tongtien+$arr[$i]['tt'];
         }

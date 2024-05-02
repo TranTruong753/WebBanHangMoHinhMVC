@@ -10,12 +10,12 @@
 
 ?>
 <?php if ($index == "Thêm") {
-    echo    "<h1 class = 'styleText-02' >Form Thêm Nhân viên</h1>";
+    echo    "<h1 class = 'styleText-02' >Thêm Nhân viên</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1 class = 'styleText-02' >Form Sửa Nhân viên</h1>";
+    echo "<h1 class = 'styleText-02' >Sửa Nhân viên</h1>";
 }
 ?>
-<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Trang quản lý nhân viên></a>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage"> Quay về trang quản lý nhân viên></a>
 
 
 <form action="" method="post" class="form_add">

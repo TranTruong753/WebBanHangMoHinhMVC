@@ -5,6 +5,8 @@
 <div>
   <h1 class="styleText-01">Quản Lý Chi Tiết Sản Phẩm</h1>
 </div>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/SanPhamPage"> Quay về Trang Sản Phẩm></a>
+
 <!-- <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">

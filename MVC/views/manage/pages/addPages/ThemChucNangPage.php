@@ -6,42 +6,52 @@ if ($index == "Sửa") {
     
 }
 ?>
-
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4"> Quay về trang quản lý chức năng></a>
 <?php if ($index == "Thêm") {
-    echo    "<h1>Form Thêm Chức Năng</h1>";
+    echo    "<h1 class = 'styleText-02'>Thêm Chức Năng</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1>Form Sửa Chức Năng</h1>";
+    echo "<h1 class = 'styleText-02'>Sửa Chức Năng</h1>";
 }
 ?>
 
-<form method="post">
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage"> Quay về trang quản lý chức năng></a>
 
-    <label for="MaChucNang">Mã Chức Năng</label>
-    <Br>
-    <input id="MaChucNang" name="MaChucNang" type="text" disabled="disabled" value="<?php if ($index == "Sửa") echo $MaChucNang ?>">
-    <Br>
-    <label for="TenChucNang">Tên Chức Năng</label>
-    <Br>
-    <input id="TenChucNang" name="TenChucNang" type="text"  value="<?php if($index == "Sửa") echo $ChucNangModel->getTenChucNangTuMa($MaChucNang) ?>">
-    <Br>
-    <span id="errorTen" name="errorTen" style="color: red;"></span>
-    <Br>
-    <input id="btnLuu" type="button" onclick="<?php
-                                                if ($index == "Thêm") {
-                                                    echo "ThemDuLieuChucNang()";
-                                                } else if ($index == "Sửa") {
-                                                    echo "SuaDuLieuChucNang()";
-                                                } ?>"
-    value="
-    <?php
-    if ($index == "Thêm") {
-        echo "Thêm";
-    } else if ($index == "Sửa") {
-        echo "Cập Nhật";
-    } ?>
-    
-    ">
+
+<form method="post" class="form_add">
+
+   <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="MaChucNang">Mã Chức Năng</label>    
+        <input class="input-add" id="MaChucNang" name="MaChucNang" type="text" disabled="disabled" value="<?php if ($index == "Sửa") echo $MaChucNang ?>">    
+   </div>
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="TenChucNang">Tên Chức Năng</label>    
+        <input class="input-add" id="TenChucNang" name="TenChucNang" type="text"  value="<?php if($index == "Sửa") echo $ChucNangModel->getTenChucNangTuMa($MaChucNang) ?>"> 
+        <span id="errorTen" name="errorTen" style="color: red;"></span>  
+    </div>   
+      
+    <div class="input-add_wrap">
+        <button class="btn" id="btnLuu" type="button" onclick="<?php
+                                                    if ($index == "Thêm") {
+                                                        echo "ThemDuLieuChucNang()";
+                                                    } else if ($index == "Sửa") {
+                                                        echo "SuaDuLieuChucNang()";
+                                                    } ?>"
+        value="
+        <?php
+        if ($index == "Thêm") {
+            echo "Thêm";
+        } else if ($index == "Sửa") {
+            echo "Cập Nhật";
+        } ?>
+        
+        "> 
+            <?php
+            if ($index == "Thêm") {
+                echo "Thêm";
+            } else if ($index == "Sửa") {
+                echo "Cập Nhật";
+            } ?>
+        </button>
+    </div>
 </form>
 
 <script>

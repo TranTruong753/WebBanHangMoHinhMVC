@@ -6,41 +6,56 @@ if ($index == "Sửa") {
 }
 ?>
 
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,0,8"> Trang Nhóm Quyền></a>
+
 <?php if ($index == "Thêm") {
-    echo    "<h1>Form Thêm Nhóm Quyền</h1>";
+    echo    "<h1 class = 'styleText-02' >Thêm Nhóm Quyền</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1>Form Sửa Nhóm Quyền</h1>";
+    echo "<h1 class = 'styleText-02' >Sửa Nhóm Quyền</h1>";
 }
 ?>
 
-<form method="post">
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage"> Quay về Trang Nhóm Quyền></a>
 
-    <label for="MaNhomQuyen">Mã Nhóm Quyền</label>
-    <Br>
-    <input id="MaNhomQuyen" name="MaNhomQuyen" type="text" disabled="disabled" value="<?php if ($index == "Sửa") echo $MaNhomQuyen ?>">
-    <Br>
-    <label for="TenNhomQuyen">Tên Nhóm Quyền</label>
-    <Br>
-    <input id="TenNhomQuyen" name="TenNhomQuyen" type="text" onkeyup="hienThiBtn()" value="<?php if($index == "Sửa") echo $NhomQuyenModel->getTenNhomQuyenTuMa($MaNhomQuyen) ?>">
-    <Br>
-    <span id="errorTen" name="errorTen" style="color: red;"></span>
-    <Br>
-    <input id="btnLuu" type="button" onclick="<?php
-                                                if ($index == "Thêm") {
-                                                    echo "ThemDuLieuNhomQuyen()";
-                                                } else if ($index == "Sửa") {
-                                                    echo "SuaDuLieuNhomQuyen()";
-                                                } ?>"
-    value="
-    <?php
-    if ($index == "Thêm") {
-        echo "Thêm";
-    } else if ($index == "Sửa") {
-        echo "Cập Nhật";
-    } ?>
-    
-    ">
+<form method="post" class="form_add">
+
+   <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="MaNhomQuyen">Mã Nhóm Quyền</label>
+        
+        <input class="input-add" id="MaNhomQuyen" name="MaNhomQuyen" type="text" disabled="disabled" value="<?php if ($index == "Sửa") echo $MaNhomQuyen ?>">
+        
+   </div>
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="TenNhomQuyen">Tên Nhóm Quyền</label>
+        
+        <input class="input-add" id="TenNhomQuyen" name="TenNhomQuyen" type="text" onkeyup="hienThiBtn()" value="<?php if($index == "Sửa") echo $NhomQuyenModel->getTenNhomQuyenTuMa($MaNhomQuyen) ?>">
+        
+        <span id="errorTen" name="errorTen" style="color: red;"></span>
+        
+    </div>
+   <div class="input-add_wrap">
+        <button class="btn" id="btnLuu" type="button" onclick="<?php
+                                                    if ($index == "Thêm") {
+                                                        echo "ThemDuLieuNhomQuyen()";
+                                                    } else if ($index == "Sửa") {
+                                                        echo "SuaDuLieuNhomQuyen()";
+                                                    } ?>"
+        value="
+        <?php
+        if ($index == "Thêm") {
+            echo "Thêm";
+        } else if ($index == "Sửa") {
+            echo "Cập Nhật";
+        } ?>
+        
+        ">
+            <?php
+            if ($index == "Thêm") {
+                echo "Thêm";
+            } else if ($index == "Sửa") {
+                echo "Cập Nhật";
+            } ?>
+        </button>
+   </div>
 </form>
 
 <script>

@@ -1,1 +1,1 @@
-<h1>Chào Mừng Bạn Đến Với Cửa Hàng</h1>
+<div class="main_page"><h1 class="styleText-01">Chào Mừng Bạn Đến Với Cửa Hàng</h1></div>
