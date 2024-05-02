@@ -124,7 +124,7 @@
                                                 break;
                                                 case 'Thể Loại': hrefMain = "TheLoaiPage";
                                                 break;
-                                                case 'Chất Liệu': hrefMain = "ChatLieuPagePage";
+                                                case 'Chất Liệu': hrefMain = "ChatLieuPage";
                                                 break;
                                                 case 'Kích Cỡ': hrefMain = "KichCoPage";
                                                 break;
