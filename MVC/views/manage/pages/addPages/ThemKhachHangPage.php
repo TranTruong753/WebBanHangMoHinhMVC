@@ -8,14 +8,14 @@ if ($index == "Sửa") {
 ?>
 
 <?php if ($index == "Thêm") {
-    echo    "<h1 class = 'styleText-02'>Form Thêm Khách hàng</h1>";
+    echo    "<h1 class = 'styleText-02'>Thêm Khách hàng</h1>";
 } else if ($index == "Sửa") {
-    echo "<h1 class = 'styleText-02'>Form Sửa Khách hàng</h1>";
+    echo "<h1 class = 'styleText-02'>Sửa Khách hàng</h1>";
 }
 ?>
 
 
-<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,0,8"> Trang Khách hàng></a>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage"> Quay Về Trang Khách hàng></a>
 
 
 <form method="post" class="form_add" >

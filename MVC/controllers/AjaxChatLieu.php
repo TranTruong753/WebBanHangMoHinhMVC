@@ -48,23 +48,25 @@ class AjaxChatLieu extends controller{
              $result=$this->ChatLieuModel->getDanhSachCL($key,$pageIndex,$numberItem);
              while($row = $result->fetch_assoc())
              {
-               $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaChatLieu']."</th>
-               <td style='text-align: center;'>".$row['TenChatLieu']."</td>
-               <td style='text-align: center;'>
-     
-               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                 <input onchange='DoiTrangThaiChatLieu(this)' id='".$row['MaChatLieu']."' type='checkbox' value='1'";
-                 if ($row["TrangThai"] == 1) {
-                   $html .= "checked = 'checked'";
- 
-                 }
-                 $html .="
-                 
+               $html .=  " 
+               <tr>
+               <td>".$row['MaChatLieu']."</td>
+               <td>".$row['TenChatLieu']."</td>
+               <td>
+                <label class='switch'>
+                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                  <input onchange='DoiTrangThaiChatLieu(this)' id='".$row['MaChatLieu']."' type='checkbox' value='1'";
+                  if ($row["TrangThai"] == 1) {
+                    $html .= "checked = 'checked'";
+  
+                  }
+                  $html .=">
+                 <span class='slider round'></span>
+                </label>  
                </td>
                <td style='text-align: center;'>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChatLieuPage,".$row['MaChatLieu']."'>Sửa</a></pre>
+                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChatLieuPage,".$row['MaChatLieu']."'><i class='bx bxs-edit'></i></a>
                </td>
              </tr> ";
                
