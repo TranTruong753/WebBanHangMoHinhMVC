@@ -87,6 +87,49 @@
         <button class="btn" type = "button" onclick="addCTSP()" value="thêm">Thêm</button>
     </div>
 </form>
-<div id="ctsp"></div>
-
+<div id="ctsp">
+<table class="table">
+<style></style>
+<div style="text-align: center;">
+<h1 >Quản Lý Sản Phẩm</h1>
+</div>
+    <thead>
+    <tr>
+        <th scope="col" style="text-align: center;">Hình ảnh</th>
+        <th scope="col" style="text-align: center;">ID</th>
+        <th scope="col" style="text-align: center;">Tên</th>
+        <th scope="col" style="text-align: center;">Màu sắc</th>
+        <th scope="col" style="text-align: center;">Kích cở</th>
+        <th scope="col" style="text-align: center;">Số lượng tồn</th>                 
+        
+    </tr>
+    </thead>
+    
+    <tbody class="table-group-divider">
+    <?php
+        $resultctsp=$data["DanhSach"]["DSCTSP"];
+        if($resultctsp->num_rows > 0)
+        {
+          while($row = $resultctsp->fetch_assoc())
+          {
+            echo'
+         <tr> 
+              <th style="text-align: center;" scope="row">
+                <img weight= 300px height=400px src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
+              </th>
+              <th style="text-align: center;" scope="row">'. $row["MaChiTietSanPham"].'</th>
+              <td style="text-align: center;">'.$row["TenSanPham"].'</td>
+              <td style="text-align: center;">'. $row["TenMauSac"].'</td>
+              <td style="text-align: center;">'. $row["TenKichCo"].'</td>
+              <td style="text-align: center;">'. $row["SoLuongTon"].'</td>
+              <td>
+          
+              
+            </tr>';
+          }
+        }
+    ?>
+  </tbody>
+</table>
+</div>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyCTSP.js"></script>

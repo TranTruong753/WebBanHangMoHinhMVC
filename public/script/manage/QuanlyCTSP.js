@@ -31,7 +31,7 @@ function addCTSP(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{mactsp:mactsp,
         masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
             var decodedData = JSON.parse(data);
-         //alert(decodedData.echo);
+         alert(decodedData.echo);
          if(decodedData.kq==true){
             alert("them thanh cong");
             $("#ctsp").html(decodedData.echo);

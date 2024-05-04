@@ -36,7 +36,7 @@ class AjaxCTSP extends controller {
            if( $this->chitietspmodel->InsertCTSP($mactsp,$masp,$mamausac,$makichco,$hinhanh)){
             //echo "them thanh cong";
             
-            $resultctsp=$this->chitietspmodel->GetCTSP($masp);
+            $resultctsp=$this->chitietspmodel->GetCTSPAdmin($masp);
             $t=$t.'<table class="table">
             <style></style>
             <div style="text-align: center;">
@@ -79,7 +79,7 @@ class AjaxCTSP extends controller {
               </tbody>
               </table>';
            }
-           else $t= "them that bai";
+           
            $data=json_encode(["kq"=>true,"echo"=>$t]);
             echo $data;
         }

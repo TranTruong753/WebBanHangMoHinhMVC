@@ -74,6 +74,16 @@ class chitietspmodel extends DB{
         return $row;
     }
 
+    public function GetCTSPAdmin($masp){
+        $qr = 'SELECT *
+        FROM chitietsanpham INNER JOIN mausac 
+        on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
+        on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
+        on sanpham.MaSanPham=chitietsanpham.MaSanPham  where  sanpham.MaSanPham="'.$masp.'"';
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
+
     public function GetAllCTSP(){
         $qr = 'SELECT *
         FROM chitietsanpham INNER JOIN mausac 
