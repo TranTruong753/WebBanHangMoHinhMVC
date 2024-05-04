@@ -2,14 +2,31 @@
 <?php
 class AjaxHoaDon extends controller{
     public $HoaDonModel;
+    private $chitietspmodel;
+    private $ChiTietHoaDonModel;
+    private $SanPhamModel;
     public function __construct(){
        $this->HoaDonModel= $this->model("HoaDonModel");
+       $this->chitietspmodel = $this->model("chitietspmodel");
+       $this->ChiTietHoaDonModel= $this->model("ChiTietHoaDonModel");
+       $this->SanPhamModel=$this->model("SanPhamModel");
     }
 
     public function DoiTrangThai(){
         $ma=$_POST["ma"];
         $trangThai = $_POST["trangThai"];
-        
+        if($trangThai==-1){
+          $result=$this->ChiTietHoaDonModel->GetCTSPHD($ma);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    
+                    $sltonctsp=$row['SoLuongTon']+$row['SoLuong'];
+                    $sltonsp=$row['SoLuongTonSP']+$row['SoLuong'];
+                    $this->chitietspmodel->UpdateCTSP($row['MaChiTietSanPham'],$sltonctsp);
+                    $this->SanPhamModel->UpdateSP($row['MaSanPham'],$sltonsp);
+                }
+            }
+        }
         $this->HoaDonModel->updateTrangThai($ma,$trangThai);
     }
 

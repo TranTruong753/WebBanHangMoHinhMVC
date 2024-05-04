@@ -22,7 +22,16 @@ class ChiTietHoaDonModel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+    
+    function GetCTSPHD($mahd){
+        $qr = 'SELECT *
+        from chitiethoadon INNER JOIN chitietsanpham 
+        on chitietsanpham.MaChiTietSanPham= chitiethoadon.MaChiTietSanPham 
+        INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham 
+        WHERE chitiethoadon.MaHoaDon="'.$mahd.'"';
+        return $this->con->query($qr);
 
+    }
     public function getDanhSach($key,$pageIndex,$soLuong,$mahd)
     {
         trim($key);
