@@ -13,27 +13,6 @@ class AjaxHoaDon extends controller{
         $this->HoaDonModel->updateTrangThai($ma,$trangThai);
     }
 
-    // public function InsertNCC(){
-    //     $tenncc=$_POST["tenncc"];
-    //     $sdt=$_POST["sdt"];
-    //     $dc=$_POST["dc"];
-    //     if($this->NhaCungCapModel->InsertNCC($tenncc,$sdt,$dc)){
-    //         echo "true";
-    //     }
-    //     else echo "false";
-    // }
-
-    // public function UpdateNCC(){
-    //     $mancc=$_POST["mancc"];
-    //     $tenncc=$_POST["tenncc"];
-    //     $sdt=$_POST["sdt"];
-    //     $dc=$_POST["dc"];
-    //     if($this->NhaCungCapModel->UpdateNCC($mancc,$tenncc,$sdt,$dc)){
-    //         echo "true";
-    //     }
-    //     else echo "false";   
-    // }
-
     public function getDanhSachThongKeTrong1Thang() {
       $result = $this->HoaDonModel->getDanhSachHoaDonTrong1Thang();
       $render = '[["Sản Phẩm","Số Lượng"],';
@@ -56,9 +35,9 @@ class AjaxHoaDon extends controller{
          $html="";
          
         
-         if($this->HoaDonModel->GetAllHoaDon($key,$pageIndex,$numberItem)->num_rows >0)
+         if($this->HoaDonModel->getDSHD($key,$pageIndex,$numberItem)->num_rows >0)
          {
-             $result=$this->HoaDonModel->GetAllHoaDon($key,$pageIndex,$numberItem);
+             $result=$this->HoaDonModel->getDSHD($key,$pageIndex,$numberItem);
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>

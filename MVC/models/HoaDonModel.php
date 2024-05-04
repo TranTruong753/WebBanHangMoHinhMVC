@@ -6,8 +6,8 @@ class HoaDonModel extends DB{
         $qr = 'SELECT *
         from hoadon where MaKhachHang="'.$makh.'"';
         return $this->con->query($qr);
-
     }
+
     function GetAllHoaDon(){
         $qr = 'SELECT *
         from hoadon ';
@@ -83,6 +83,40 @@ class HoaDonModel extends DB{
        
     }
 
+    public function getDSHD($key,$pageIndex,$soLuong)
+    {
+        trim($key);
+        // Kiểm tra đang ở trang
+        // echo "pageIndex:".$pageIndex;
+        if($pageIndex == "" || $pageIndex <= 0 )
+        {
+            $pageIndex = 1;
+        }
+
+        $batDau = ($pageIndex-1)*$soLuong;
+        
+        $qr = "SELECT * FROM hoadon";
+
+        if($key!="")
+        {
+            $qr .= " where concat(MaHoaDon,SoDienThoai) like '%$key%'"; 
+
+            $qr .= " ORDER BY MaHoaDon DESC";
+            $qr .= " LIMIT $batDau,$soLuong";
+
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " ORDER BY MaHoaDon DESC";
+            $qr .= " Limit $batDau,$soLuong";
+            // echo $qr;
+            return $this->con->query($qr);
+        }
+        // $qr="SELECT * from nhomquyen";
+        // return $this->con->query($qr);
+    }
 
 //     SELECT sp.TenSanPham, SUM(cthd.ThanhTien)
 // FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp
