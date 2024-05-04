@@ -4,7 +4,7 @@ var size = 4;
 var sql="";
 
 
-  // load khi chạy trang
+ // load khi chạy trang
   $(document).ready(function() {
   index = 1;
   size = 4;
@@ -125,3 +125,4 @@ $.ajax({
 
 loadPhanTrang("hoadon", index, size, "", key);
 })
+

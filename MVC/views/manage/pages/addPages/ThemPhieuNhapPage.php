@@ -23,7 +23,8 @@
       <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="sanpham">Chọn Sản Phẩm</label>
         <div class="custom-select select-add">
-          <select name="" id="sanpham"  class="">
+          <select name="" id=""  class="">
+            <option value="">Hãy chọn sản phẩm</option>
               <?php
               if ($sp->num_rows > 0) {
                   while ($row = $sp->fetch_assoc()) {
@@ -40,7 +41,9 @@
       <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="">Chọn Nhà Cung Cấp</label>
         <div class="custom-select select-add">
+      
           <select name="" id="ncc"  class="" >
+          <option value="">Hãy chọn nhà cung cấp</option>
               <?php
               if ($ncc->num_rows > 0) {
                   while ($row = $ncc->fetch_assoc()) {
@@ -169,24 +172,24 @@
         document.getElementById('mactsp').value=" ";        
         gianhap(masp);  
         //thay đổi sản phẩm      
-        $('#sanpham').on('change',(e)=>{
-            e.preventDefault();
-            masp=$('#sanpham').val();
-            index = 1;
-            size = 4;
-            document.getElementById('mactsp').value=" ";
+        // $('#sanpham').on('change',(e)=>{
+        //     e.preventDefault();
+        //     masp=$('#sanpham').val();
+        //     index = 1;
+        //     size = 4;
+        //     document.getElementById('mactsp').value=" ";
             
-            const Item = arr.find(item => item.masp === masp);
-            if (Item) {
-              document.getElementById('gianhap').disabled = true;
-              document.getElementById('gianhap').value=Item.gn;
-            } else {
-              document.getElementById('gianhap').disabled = false;
-              gianhap(masp);
-            }
-            loadTable("", index, size);
+        //     const Item = arr.find(item => item.masp === masp);
+        //     if (Item) {
+        //       document.getElementById('gianhap').disabled = true;
+        //       document.getElementById('gianhap').value=Item.gn;
+        //     } else {
+        //       document.getElementById('gianhap').disabled = false;
+        //       gianhap(masp);
+        //     }
+        //     loadTable("", index, size);
 
-        });
+        // });
         
         $('#soluong').on('change', (event) => {
            sl =$('#soluong').val();
@@ -360,4 +363,23 @@ function Nhaphang(){
 }
 else alert("Bạn chưa chọn sản phẩm để nhập hàng");
 }
+
+function change(ojt){
+  alert(ojt.id);
+  masp=ojt.id;
+  index = 1;
+  size = 4;
+  document.getElementById('mactsp').value=" ";
+  
+  const Item = arr.find(item => item.masp === masp);
+  if (Item) {
+    document.getElementById('gianhap').disabled = true;
+    document.getElementById('gianhap').value=Item.gn;
+  } else {
+    document.getElementById('gianhap').disabled = false;
+    gianhap(masp);
+  }
+  loadTable("", index, size);
+}
+
 </script>

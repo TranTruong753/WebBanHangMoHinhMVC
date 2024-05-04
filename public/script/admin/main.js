@@ -18,11 +18,17 @@ for (i = 0; i < l; i++) {
   /*for each element, create a new DIV that will contain the option list:*/
   b = document.createElement("DIV");
   b.setAttribute("class", "select-items select-hide");
+  b.setAttribute("id", "sanpham");
   for (j = 1; j < ll; j++) {
     /*for each option in the original select element,
     create a new DIV that will act as an option item:*/
     c = document.createElement("DIV");
     c.innerHTML = selElmnt.options[j].innerHTML;
+    c.setAttribute("id", selElmnt.options[j].value);
+    if(c.id.includes("SP")){
+      c.setAttribute("onclick","change(this)");
+    }
+  
     c.addEventListener("click", function(e) {
         /*when an item is clicked, update the original select box,
         and the selected item:*/
@@ -57,6 +63,8 @@ for (i = 0; i < l; i++) {
       this.classList.toggle("select-arrow-active");
     });
 }
+
+
 function closeAllSelect(elmnt) {
   /*a function that will close all select boxes in the document,
   except the current select box:*/

@@ -10,7 +10,7 @@
 <input type="submit" onclick="DieuHuong()" value="Thêm">
 <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi"> -->
 
-<div class="search-wrap">
+  <div class="search-wrap">
     <div class="search">
       <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
       <label class="btn btn_search" for="btnSearch">

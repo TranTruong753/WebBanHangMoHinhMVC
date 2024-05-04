@@ -62,50 +62,64 @@ class AjaxHoaDon extends controller{
              while($row = $result->fetch_assoc())
              {
                $html .=  " <tr>
-               <th style='text-align: center;' scope='row'>".$row['MaHoaDon']."</th>
-               <td style='text-align: center;'>".$row['NgayLap']."</td>
-               <td style='text-align: center;'>".$row['TongTien']."</td>
-               <td style='text-align: center;'>".$row['HinhThucThanhToan']."</td>
+               <td>".$row['MaHoaDon']."</td>
+               <td>".$row['NgayLap']."</td>
+               <td>".$row['TongTien']."</td>
+               <td>".$row['HinhThucThanhToan']."</td>
               
-               <td style='text-align: center;'>".$row['MaKhachHang']."</td>
-               <td style='text-align: center;'>".$row['SoDienThoai']."</td>
-               <td style='text-align: center;'>".$row['DiaChi']."</td>
+               <td>".$row['MaKhachHang']."</td>
+               <td>".$row['SoDienThoai']."</td>
+               <td>".$row['DiaChi']."</td>
               
-               <td style='text-align: center;'>".$row['MaNhanVien']."</td>
-               <td style='text-align: center;'>
+               <td>".$row['MaNhanVien']."</td>
+               <td>
+              
+               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+               <!--<div class='radio-wrap radio-wrap_flex'> -->
+                 <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox add-form__raido-input' type='radio' value='1' ";
+                 if ($row["TrangThai"] == 1) {
+                     $html .= " checked='checked'";
+                 }
+                 $html .= "> 
+                 <!--  <label class='add-form__radio-label' for='".$row['MaHoaDon']."1'
+                    ><span class='add-form__raido-span'></span>                    
+                  </label>
+               </div>     -->       
+           
+                 
+               </td>
+               <td>
      
                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-               <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox' type='radio' value='1'";
-               if ($row["TrangThai"] == 1) {
-                   $html .= " checked='checked'";
-               }
-               $html .= ">";              
-                 $html .="
+               <!--<div class = 'radio-wrap radio-wrap_flex'> -->
+                 <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox add-form__raido-input' type='radio' value='2' ";
+                 if ($row["TrangThai"] == 2) {
+                     $html .= " checked='checked'";
+                 }
+                 $html .= ">
+                 <!--   <label class='add-form__radio-label' for='".$row['MaHoaDon']."2'
+                    ><span class='add-form__raido-span'></span>                    
+                  </label>   
+              </div>     -->     
+               
                  
                </td>
-               <td style='text-align: center;'>
-     
-               <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-               <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox' type='radio' value='2'";
-               if ($row["TrangThai"] == 2) {
-                   $html .= " checked='checked'";
-               }
-               $html .= ">";              
-                 $html .="
+               <td>
+               <!-- <div class = 'radio-wrap radio-wrap_flex'> -->
+                 <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox' type='radio' value='-1' ";
+                 if ($row["TrangThai"] == -1) {
+                     $html .= " checked='checked'";
+                 }
+                 $html .= ">
+                <!-- <label class='add-form__radio-label' for='".$row['MaHoaDon']."3'
+                    ><span class='add-form__raido-span'></span>                    
+                  </label>
+               </div> -->
                  
                </td>
-               <td style='text-align: center;'>
-               <input onchange='DoiTrangThaiHoaDon(this)' id='".$row['MaHoaDon']."' class= 'single-checkbox' type='radio' value='-1'";
-               if ($row["TrangThai"] == -1) {
-                   $html .= " checked='checked'";
-               }
-               $html .= ">";              
-                 $html .="
-                 
-               </td>
-               <td style='text-align: center;'>
+               <td>
                <!-- link  để chuyển sang trang nhóm quyền -->
-                 <pre><a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietHoaDonPage,".$row['MaHoaDon']."'>Chi tiết</a></pre>
+                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietHoaDonPage,".$row['MaHoaDon']."' title = 'chi tiết'><i class='bx bx-dots-horizontal-rounded'></i></a>
                </td>
              </tr> ";
                

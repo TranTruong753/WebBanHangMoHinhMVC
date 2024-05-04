@@ -1,28 +1,33 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<table class="table">
-<style></style>
-<div style="text-align: center;">
-<h1 >Quản Lý Chi Tiết Hoá Đơn</h1>
+<?php
+   $mahd=$data['DanhSach']["MAHD"];
+?>
+<div>
+  <h1 class="styleText-02">Chi Tiết Hoá Đơn <?php echo $mahd?></h1>
+  <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/HoaDonPage"> Quay về Trang Hóa Đơn></a>
+
 </div>
-<div class="search">
+ 
+<!-- <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
+</div> -->
+
+<!-- <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm"> -->
+<input type="hidden" id="mahd"  value="<?php echo $mahd ;?>">
+
+<table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">Mã Chi Tiết Sản Phẩm</th>
-      <th scope="col" style="text-align: center;">Tên Sản Phẩm</th>
-      <th scope="col" style="text-align: center;">Số Lượng</th>
-      <th scope="col" style="text-align: center;">Thành Tiền</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>Mã Chi Tiết Sản Phẩm</th>
+      <th>Tên Sản Phẩm</th>
+      <th>Số Lượng</th>
+      <th>Thành Tiền</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
-  <?php
-  $mahd=$data['DanhSach']["MAHD"];
-?>
+ 
   <tbody class="table-group-divider">
-  <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm">
-  <input type="hidden" id="mahd"  value="<?php echo $mahd ;?>">
   <tbody class="table-group-divider row-table">
   </tbody>
 </table>

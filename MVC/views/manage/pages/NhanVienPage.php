@@ -32,7 +32,7 @@ $PhanTrangModel = new PhanTrangModel();
 <table class="table">
   <thead>
     <tr>
-      <th style="text-align: center;">ID</th>
+      <th>ID</th>
       <th>Họ và tên</th>
       <th>Số Điện Thoại</th>
       <th>CCCD</th>

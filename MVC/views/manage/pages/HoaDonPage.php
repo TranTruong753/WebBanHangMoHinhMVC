@@ -1,31 +1,54 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<div style="text-align: center; ">
-    <h1 style=" margin-bottom: 20px;">Quản Lý Hoá Đơn</h1>
+  <div>
+    <h1 class = 'styleText-01' >Quản Lý Hoá Đơn</h1>
+  </div>
+  
+  <!-- <div class="search">
+    <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên hoá đơn">
+    <input type="button" id="btnSearch" value="Tìm Kiếm">
+  </div>
+  <input type="submit" onclick="DieuHuong()" value="Thêm">
+  <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi"> -->
+
+  <div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="" hidden>
+      </label>
+    </div>
+    <!-- Nút sang form dữ liệu nhóm quyền  -->
+     <!-- Nút sang form dữ liệu nhóm quyền  -->
+    <div class="block-wrap">
+      <label class="btn btn_reset" for="btnRefresh">
+        <i class='bx bx-reset'></i>
+        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+      </label>
+      <!-- <div class="btn btn_add"> 
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
+      </div> -->
+    </div>
   </div>
 
-<div class="search">
-  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên hoá đơn">
-  <input type="button" id="btnSearch" value="Tìm Kiếm">
-</div>
-<input type="submit" onclick="DieuHuong()" value="Thêm">
-<input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi">
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">Mã HD</th>
-      <th scope="col" style="text-align: center;">Ngày Lập</th>
-      <th scope="col" style="text-align: center;">Tổng Tiền</th>
-      <th scope="col" style="text-align: center;">Hình Thức TT</th>
-      <!-- <th scope="col" style="text-align: center;">Mã Thuế</th> -->
-      <th scope="col" style="text-align: center;">Mã Khách Hàng</th>
-      <th scope="col" style="text-align: center;">Số Điện Thoại</th>
-      <th scope="col" style="text-align: center;">Địa Chỉ</th>
-      <!-- <th scope="col" style="text-align: center;">Mã Khuyến Mãi</th> -->
-      <th scope="col" style="text-align: center;">Mã Nhân Viên</th>
-      <th scope="col" style="text-align: center;">Đã xử lý</th>
-      <th scope="col" style="text-align: center;">Đã giao</th>
-      <th scope="col" style="text-align: center;">Đã huỷ</th>
-      <th scope="col" style="text-align: center;">Thao tác</th>
+      <th>Mã HD</th>
+      <th>Ngày Lập</th>
+      <th>Tổng Tiền</th>
+      <th>Hình Thức TT</th>
+      <!-- <th>Mã Thuế</th> -->
+      <th>Mã Khách Hàng</th>
+      <th>Số Điện Thoại</th>
+      <th>Địa Chỉ</th>
+      <!-- <th>Mã Khuyến Mãi</th> -->
+      <th>Mã Nhân Viên</th>
+      <th>Đã xử lý</th>
+      <th>Đã giao</th>
+      <th>Đã huỷ</th>
+      <th>Thao tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row-table">

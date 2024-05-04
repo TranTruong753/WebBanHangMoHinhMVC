@@ -73,7 +73,7 @@ if ($index == "Sửa") {
                     ?>
                     > 
                     <label class="add-form__radio-label" for="boy"
-                    ><span></span>
+                    ><span class="add-form__raido-span"></span>
                     Nam
                     </label>
                 </div>
@@ -91,7 +91,7 @@ if ($index == "Sửa") {
                     ?>
                     >
                     <label class="add-form__radio-label" for="girl"
-                    ><span></span>
+                    ><span class="add-form__raido-span"></span>
                     Nữ
                     </label>
                 </div>
@@ -109,7 +109,7 @@ if ($index == "Sửa") {
                     ?>
                     >
                     <label class="add-form__radio-label" for="other"
-                    ><span></span>
+                    ><span class="add-form__raido-span"></span>
                     Khác
                     </label>
                </div>

@@ -2,6 +2,7 @@
 <?php
 class AjaxChiTietHoaDon extends controller{
     public $ChiTietHoaDonModel;
+    public $HoaDonModel;
     public function __construct(){
        $this->ChiTietHoaDonModel= $this->model("ChiTietHoaDonModel");
     }
@@ -30,13 +31,15 @@ class AjaxChiTietHoaDon extends controller{
              while($row = $result->fetch_assoc())
              {
                $html .=  ' 
-               <th style="text-align: center;" scope="row">'.$row["MaChiTietSanPham"].'</th>
-               <td style="text-align: center;">'.$row["TenSanPham"].'</td>
-               <td style="text-align: center;">'.$row["SoLuong"].'</td>
-               <td style="text-align: center;">'.$row["ThanhTien"].'</td>
-               <td style="text-align: center;"><pre><a href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'">Sửa</a>|
-                <button  onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'">Xóa</button> | 
-               <br> </pre></td>
+               <td>'.$row["MaChiTietSanPham"].'</td>
+               <td>'.$row["TenSanPham"].'</td>
+               <td>'.$row["SoLuong"].'</td>
+               <td>'.$row["ThanhTien"].'</td>
+               <td>
+                    <button  class = "btn btn_delete" onclick="DeleteCTSP(this)" id="'.$row["MaChiTietSanPham"].'"><i class="bx bx-x"></i></button>  
+                    <a class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChiTietSanPhamPage,'.$row["MaChiTietSanPham"].'"><i class="bx bxs-edit"></i></a>
+                                               
+               </td>
                
              </tr>';
                
