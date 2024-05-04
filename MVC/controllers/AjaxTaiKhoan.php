@@ -35,7 +35,7 @@ class AjaxTaiKhoan extends controller {
               <td>
                 <label class='switch'>
                 <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
-                  <input onchange='DoiTrangThaiNhanVien(this)' id='".$row['MaTaiKhoan']."' type='checkbox' value='1'";
+                  <input onchange='DoiTrangThaiTaiKhoan(this)' id='".$row['MaTaiKhoan']."' type='checkbox' value='1'";
                   if ($row["TrangThai"] == 1) {
                     $html .= "checked";
     

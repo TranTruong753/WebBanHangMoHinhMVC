@@ -173,8 +173,8 @@ body {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
   }
   
   input:checked + .slider {
@@ -194,10 +194,12 @@ body {
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
+    
   }
   
   .slider.round:before {
     border-radius: 50%;
+    
   }
 
   /* button */

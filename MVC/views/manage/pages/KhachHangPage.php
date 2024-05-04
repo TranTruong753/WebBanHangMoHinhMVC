@@ -172,8 +172,8 @@ $PhanTrangModel = new PhanTrangModel();
         })
       // }
     }
-    loadTable(tmpKey, index, size)
-    loadPhanTrang("khachhang", index, size, "", tmpKey)
+    // loadTable(tmpKey, index, size)
+    // loadPhanTrang("khachhang", index, size, "", tmpKey)
 
 
   }

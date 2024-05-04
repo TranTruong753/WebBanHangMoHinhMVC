@@ -9,6 +9,30 @@ class TaiKhoanModel extends DB{
     //     return $this->con->query($qr);
     // }
     
+    public function getItemByIdTk($maTk,&$arr){
+        $qr = "SELECT taikhoan.* , nhomquyen.TenNhomQuyen 
+        FROM taikhoan, nhomquyen 
+        where taikhoan.MaTaiKhoan = '$maTk' 
+        And nhomquyen.MaNhomQuyen = taiKhoan.MaNhomQuyen 
+        ";
+
+        $result = $this->con->query($qr);
+        if($result->num_rows>0)
+        {
+        //    return  $result ;
+        while($row = $result->fetch_assoc())
+            {
+                $arr = ["MaTaiKhoan"=>$row["MaTaiKhoan"]
+                ,"TenDangNhap"=>$row["TenDangNhap"],"MatKhau"=>$row["MatKhau"]
+                ,"MaNhomQuyen"=>$row["MaNhomQuyen"],"TrangThai"=>$row["TrangThai"]
+                ,"TenNhomQuyen"=>$row["TenNhomQuyen"]
+                ,"MatKhau"=>$row["MatKhau"]];
+                return 1;
+            }
+        }
+        return 0;
+    }
+
     public function getItemById($maTk,$table,$maKey,$nameKey,&$arr)
     {
         $arr = [];
@@ -29,7 +53,7 @@ class TaiKhoanModel extends DB{
                 ,"TenDangNhap"=>$row["TenDangNhap"],"MatKhau"=>$row["MatKhau"]
                 ,"MaNhomQuyen"=>$row["MaNhomQuyen"],"TrangThai"=>$row["TrangThai"]
                 ,"$nameKey" => $row["$nameKey"],"TenNhomQuyen"=>$row["TenNhomQuyen"]
-                ];
+                ,"MatKhau"=>$row["MatKhau"]];
                 return 1;
             }
         }

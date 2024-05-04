@@ -6,11 +6,13 @@ $KhachHangModel = new KhachHangModel();
 $index = $data["DanhSach"]["index"];
 if ($index == "Sửa") {
     $MaTaiKhoan = $data["DanhSach"]["MaTaiKhoan"];
+    $arrTk = [];
     $arrNv = [];
     $arrKh = [];
+    $itemTk = $TaiKhoanModel->getItemByIdTk($MaTaiKhoan,$arrTk);
     $itemNvSua = $TaiKhoanModel->getItemById($MaTaiKhoan,'nhanvien','MaNhanVien','TenNhanVien', $arrNv);
     $itemKhSua = $TaiKhoanModel->getItemById($MaTaiKhoan,'khachhang','MaKhachHang','TenKhachHang', $arrKh);
-    // echo  $itemKhSua;
+    // echo  $itemTk;
     // echo  $itemNvSua;
     // print_r($arrKh);
     // print_r($arrNv);
@@ -114,7 +116,19 @@ else if ($index == "CấpKh") {
   
    <div class="input-add_wrap">
         <label class='styleText-04 label-add' for="userPw">mật khẩu</label>
-        <input type="text" id="userPw" name="userPw"  maxlength="6" minlength="6" value="123456" placeholder="Nhập mật khẩu ..." class='input-add'>
+        <input type="text" id="userPw" name="userPw"  maxlength="6" minlength="6" 
+        <?php
+            if($index == "Sửa")
+            {
+                echo "value= '{$arrTk['MatKhau']}'";
+            }
+            else {
+                echo "value='123456'";
+            }
+        ?>
+        
+        
+         placeholder="Nhập mật khẩu ..." class='input-add'>
         <div id="error-userPw" style="color: red;"></div>
    </div>
 

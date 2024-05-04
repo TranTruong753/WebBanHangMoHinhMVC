@@ -170,26 +170,26 @@ $PhanTrangModel = new PhanTrangModel();
     var checkBox = document.getElementById(ma)
     // var result = confirm("Bạn có muốn đổi trạng thái?");
     // if (result == true) {
-      if (checkBox.checked == true) {
-        var trangThai = 1;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
-          // alert(data);
-        })
-      } else {
-        var trangThai = 0;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
-          // alert(data);
-        })
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
       // }
     }
-    loadTable(tmpKey, index, size)
-    loadPhanTrang("nhanvien", index, size, "", tmpKey)
+    // loadTable(tmpKey, index, size)
+    // loadPhanTrang("nhanvien", index, size, "", tmpKey)
 
 
   }
