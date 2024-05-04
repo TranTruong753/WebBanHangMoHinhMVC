@@ -151,11 +151,11 @@ $PhanTrangModel = new PhanTrangModel();
   function DoiTrangThaiKhachHang(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
-    var result = confirm("Bạn có muốn đổi trạng thái?");
-    var trangThai = 1;
-    if (result == true) {
+    // var result = confirm("Bạn có muốn đổi trạng thái?");
+    // var trangThai = 1;
+    // if (result == true) {
       if (checkBox.checked == true) {
-        // var trangThai = 1;
+        var trangThai = 1;
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/DoiTrangThai", {
           ma: ma,
           trangThai: trangThai
@@ -170,7 +170,7 @@ $PhanTrangModel = new PhanTrangModel();
         }, function(data) {
           // alert(data);
         })
-      }
+      // }
     }
     loadTable(tmpKey, index, size)
     loadPhanTrang("khachhang", index, size, "", tmpKey)

@@ -123,8 +123,8 @@ function XoaSP(ojt)
   function DoiTrangThaiSP(ojt){
     var masp = ojt.id;
     var checkBox = document.getElementById(masp);
-    var result = confirm("Bạn có muốn đổi trạng thái?");
-    if (result == true) {
+    // var result = confirm("Bạn có muốn đổi trạng thái?");
+    // if (result == true) {
       if (checkBox.checked == true) {
         var trangThai = 1;
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DoiTrangThai", {
@@ -143,7 +143,7 @@ function XoaSP(ojt)
         })
       }
       
-    }
+    // }
     loadTable("", index, size)
     loadPhanTrang("sanpham", index, size, sql, tmpKey)
   

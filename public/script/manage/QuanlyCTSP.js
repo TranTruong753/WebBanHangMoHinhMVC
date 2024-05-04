@@ -31,7 +31,7 @@ function addCTSP(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{mactsp:mactsp,
         masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
             var decodedData = JSON.parse(data);
-         //alert(decodedData.echo);
+         alert(decodedData.echo);
          if(decodedData.kq==true){
             alert("them thanh cong");
             $("#ctsp").html(decodedData.echo);
@@ -129,8 +129,8 @@ function DoiTrangThaiCTSP(ojt){
   var mactsp = ojt.value;
   
   var checkBox = document.getElementById("trangthai"+mactsp);
-  var result = confirm("Bạn có muốn đổi trạng thái?");
-  if (result == true) {
+  // var result = confirm("Bạn có muốn đổi trạng thái?");
+  // if (result == true) {
     if (checkBox.checked == true) {
       var trangThai = 1;
       $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DoiTrangThai", {
@@ -149,7 +149,7 @@ function DoiTrangThaiCTSP(ojt){
       })
     }
     
-  }
+  // }
   loadTable("", index, size)
   loadPhanTrang("chitietsanpham", index, size, sql, tmpKey)
 

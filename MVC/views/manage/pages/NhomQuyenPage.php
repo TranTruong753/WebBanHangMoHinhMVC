@@ -228,8 +228,8 @@ $PhanTrangModel = new PhanTrangModel();
   function DoiTrangThaiNhomQuyen(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
-    var result = confirm("Bạn có muốn đổi trạng thái?");
-    if (result == true) {
+    // var result = confirm("Bạn có muốn đổi trạng thái?");
+    // if (result == true) {
       if (checkBox.checked == true) {
         var trangThai = 1;
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/DoiTrangThai", {
@@ -237,7 +237,7 @@ $PhanTrangModel = new PhanTrangModel();
           trangThai: trangThai
         }, function(data) {
 
-          alert(data);
+          // alert(data);
         })
       } else {
         var trangThai = 0;
@@ -245,9 +245,9 @@ $PhanTrangModel = new PhanTrangModel();
           ma: ma,
           trangThai: trangThai
         }, function(data) {
-          alert(data);
+          // alert(data);
         })
-      }
+    //   }
     }
     loadTable(tmpKey, index, size)
     loadPhanTrang("nhomquyen", index, size, "", tmpKey)
