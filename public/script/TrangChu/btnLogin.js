@@ -47,15 +47,35 @@ function onclickbtnDN(){
         //  alert(data.length);
         
         if(data.length== 6){
-            alert("DN thành công");
-            window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");
+            // alert("DN thành công");
+            swal({
+                title: "Đăng nhập thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+            }).then(function () {
+             window.location.assign("http://localhost/WebBanHangMoHinhMVC/home/trangchu");
+            })
         }
         else if(data.length== 4){
-            alert("DN thành công");
-            window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default/MainPage");
+            // alert("DN thành công");
+            swal({
+                title: "Đăng nhập thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+            }).then(function () {
+                window.location.assign("http://localhost/WebBanHangMoHinhMVC/Admin/default/MainPage");
+            })
+           
             
         }
-        else alert("Thông tin tài khoản hoặc mật khẩu không chính xác");
+        else {
+            swal({
+                title: "Lỗi! Thông tin tài khoản hoặc mật khẩu không chính xác!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+            })
+        }
+            // alert("Thông tin tài khoản hoặc mật khẩu không chính xác");
     });
 
 };

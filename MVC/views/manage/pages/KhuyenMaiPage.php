@@ -17,10 +17,10 @@
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
       </label>
-      <div class="btn btn_add"> 
+      <label class="btn btn_add" for="dieuhuong"> 
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
-      </div>
+        <input type="button" class="" onclick="DieuHuong()" id="dieuhuong" value="Thêm">
+      </label>
     </div>
   </div>
 
@@ -28,11 +28,11 @@
 <style></style>
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">ID</th>
-      <th scope="col" style="text-align: center;">Tên</th>
-      <th scope="col" style="text-align: center;">Mức Khuyến Mãi</th>
-      <th scope="col" style="text-align: center;">Trạng Thái</th>
-      <th scope="col" style="text-align: center;">Thao Tác</th>
+      <th>ID</th>
+      <th>Tên</th>
+      <th>Mức Khuyến Mãi</th>
+      <th>Trạng Thái</th>
+      <th>Thao Tác</th>
     </tr>
   </thead>
   <tbody class="table-group-divider row_table">
@@ -58,21 +58,53 @@ $(document).ready(function() {
 
 function btnXoa(obj)
   {
-    var ma = obj.id;
+    // var ma = obj.id;
 
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/delete',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
+    //   $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/delete',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     ma: ma,
+    //   },
+    //   success: function(data) {
+    //     alert(data);
+    //   }
+    //  })
+    // loadTable(tmpKey,index,size)
+    // loadPhanTrang("khuyenmai",index,size,"",tmpKey)
+
+    var ma = obj.id;
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    loadTable(tmpKey,index,size)
-    loadPhanTrang("khuyenmai",index,size,"",tmpKey)
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/delete',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    ma: ma,
+                },
+                success: function(data) {
+                    swal("Dữ liệu đã xóa thành công!", {
+                        icon: "success",
+                    });
+                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                    loadTable(tmpKey, index, size);
+                    loadPhanTrang("khuyenmai", index, size, "", tmpKey);
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
+    
   }
 
 function loadTable(key,index,size)

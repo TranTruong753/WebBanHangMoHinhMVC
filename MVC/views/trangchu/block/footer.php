@@ -202,5 +202,8 @@
     </footer>
      <!-- lấy giao diện facebook -->
     <div id="fb-root"></div>
+    <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
+    <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v19.0" nonce="FiyLCZGW"></script>
 

@@ -144,8 +144,8 @@ function XoaSP(ojt)
       }
       
     // }
-    loadTable("", index, size)
-    loadPhanTrang("sanpham", index, size, sql, tmpKey)
+    // loadTable("", index, size)
+    // loadPhanTrang("sanpham", index, size, sql, tmpKey)
   
   }
 

@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="<?php echo Root ?>public/css/manage/table.css"> -->
     <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/sidebarPRO.css">
     <link rel="stylesheet" href="<?php echo Root ?>public/css/admin/styles.css">
-
+     <!-- Include SweetAlert library -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     <title>Trang Quản trị</title>
@@ -60,5 +61,6 @@
         <script src="http://localhost/WebBanHangMoHinhMVC/public/script/admin/PhanTrang.js"></script>
         <script src="<?php echo Root . "public/script/admin/main.js" ?>"></script>
         <script src="<?php echo Root ."public/script/admin/sidebarPRO.js" ?>"></script>
+  
 
 </html>

@@ -216,7 +216,7 @@ else if ($index == "CấpKh") {
         var TenDangNhap = document.getElementById("userLogin").value.trim();
         var MatKhau = document.getElementById("userPw").value.trim();
         var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
-        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        // alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
         if(checkForm(MatKhau)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",
@@ -230,15 +230,26 @@ else if ($index == "CấpKh") {
                 success: function(data)
                 {               
                    
-                    alert(data);
+                   
                     if(data == 1)
                     {
-                        alert("Thêm dữ liệu thành công!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage";
+                        // alert("Thêm dữ liệu thành công!");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage";
+                        })
                     }                             
                     else 
                     {
-                        alert("Thêm dữ liệu thất bại!");
+                        swal({
+                            title: "Lỗi! Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
+                        // alert("Thêm dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }
@@ -251,7 +262,7 @@ else if ($index == "CấpKh") {
         var TenDangNhap = document.getElementById("userLogin").value.trim();
         var MatKhau = document.getElementById("userPw").value.trim();
         var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
-        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        // alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
         if(checkForm(MatKhau)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",
@@ -264,16 +275,24 @@ else if ($index == "CấpKh") {
                 },
                 success: function(data)
                 {               
-                   
-                    alert(data);
+                                      
                     if(data == 1)
                     {
-                        alert("Thêm dữ liệu thành công!");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage";
+                        })
                     }                             
                     else 
                     {
-                        alert("Thêm dữ liệu thất bại!");
+                        swal({
+                            title: "Lỗi! Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }
@@ -286,7 +305,7 @@ else if ($index == "CấpKh") {
         var TenDangNhap = document.getElementById("userLogin").value.trim();
         var MatKhau = document.getElementById("userPw").value.trim();
         var MaNhomQuyen = document.getElementById("userPhanQuyen").value.trim();
-        alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
+        // alert( " " + TenDangNhap +" " + MatKhau +" " + MaNhomQuyen);  
         if(checkForm(MatKhau)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/insert",
@@ -300,15 +319,24 @@ else if ($index == "CấpKh") {
                 success: function(data)
                 {               
                    
-                    alert(data);
+                    // alert(data);
                     if(data == 1)
                     {
-                        alert("Thêm dữ liệu thành công!");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage";
+                        })
                     }                             
                     else 
                     {
-                        alert("Thêm dữ liệu thất bại!");
+                        swal({
+                            title: "Lỗi! Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }
@@ -337,15 +365,25 @@ else if ($index == "CấpKh") {
                 success: function(data)
                 {               
                    
-                    alert(data);
+                    // alert(data);
                     if(data == 1)
                     {
-                        alert("Cập nhật dữ liệu thành công!");
+                        swal({
+                            title: "Cập nhật thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/TaiKhoanPage";
+                        })
                     }                             
                     else 
                     {
-                        alert("Cập nhật dữ liệu thất bại!");
+                        // alert("Cập nhật dữ liệu thất bại!");
+                        swal({
+                            title: "Cập nhật thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }

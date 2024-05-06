@@ -1,48 +1,73 @@
 <?php
-
-$index = $data["DanhSach"]["index"];
-$MaKhuyenMai = "";
-$item = [];
-if($index == "Sửa")
-{
-    $KhuyenMaiModel = $data["DanhSach"]["KhuyenMaiModel"];
-    $MaKhuyenMai = $data["DanhSach"]["MaKhuyenMai"];
-    $item = $KhuyenMaiModel->getItemById($MaKhuyenMai);
-}
+    $index = $data["DanhSach"]["index"];
+    $MaKhuyenMai = "";
+    $item = [];
+    if($index == "Sửa")
+    {
+        $KhuyenMaiModel = $data["DanhSach"]["KhuyenMaiModel"];
+        $MaKhuyenMai = $data["DanhSach"]["MaKhuyenMai"];
+        $item = $KhuyenMaiModel->getItemById($MaKhuyenMai);
+    }
 ?>
-<a href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage">Quay về trang quản lý khuyến mãi></a>
-<h1>Form <?php if($index == "Thêm"){echo "Thêm";}else if($index == "Sửa") echo "Sửa";?> Khuyến Mãi</h1>
+<h1 class = 'styleText-02'><?php if($index == "Thêm"){echo "Thêm";}else if($index == "Sửa") echo "Sửa";?> Khuyến Mãi</h1>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage">Quay về trang quản lý khuyến mãi></a>
 
-<div class="form">
+
+<form method="post" class="form_add">
     <?php
     if($index == "Sửa")
     {
-        echo "<label for='MaKhuyenMai'>Mã Khuyến Mãi</label>
-        <br>
-        <input type='text' name='MaKhuyenMai' id='MaKhuyenMai' value='".$item["MaKhuyenMai"]."' disabled='disabled' />
-        <br>";
+        echo "
+       <div class = 'input-add_wrap'>
+            <label class='styleText-04 label-add' for='MaKhuyenMai'>Mã Khuyến Mãi</label>
+            
+            <input class='input-add' type='text' name='MaKhuyenMai' id='MaKhuyenMai' value='".$item["MaKhuyenMai"]."' disabled='disabled' />
+       </div>
+        ";
     }
     ?>
-    <label for="TenKhuyenMai">Tên Khuyến Mãi</label>
-    <br>
-    <input type="text" name="TenKhuyenMai" id="TenKhuyenMai" value="<?php if($index == "Sửa") echo $item["TenKhuyenMai"] ?>" />
-    <br>
-    <span class="errorTenKhuyenMai" style="color: red;"></span>
-    <br>
-    <label for="MucKhuyenMai">Mức Khuyến Mãi</label>
-    <br>
-    <input type="text" name="MucKhuyenMai" id="MucKhuyenMai" value="<?php if($index == "Sửa") echo $item["MucKhuyenMai"] ?>">
-    <br>
-    <span class="errorMucKhuyenMai" style="color: red;"></span>
-    <br>
-    <input type="button" onclick="<?php if($index == "Thêm"){echo "btnAdd()";}else if($index == "Sửa") {echo "btnEdit()";}?>" value="Lưu">
-</div>
+    <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="TenKhuyenMai">Tên Khuyến Mãi</label>
+        
+        <input class="input-add" type="text" name="TenKhuyenMai" id="TenKhuyenMai" value="<?php if($index == "Sửa") echo $item["TenKhuyenMai"] ?>" />
+        
+        <span class="errorTenKhuyenMai" style="color: red;"></span>
+    </div>
+    
+   <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="MucKhuyenMai">Mức Khuyến Mãi</label>
+        
+        <input class="input-add" type="text" name="MucKhuyenMai" id="MucKhuyenMai" value="<?php if($index == "Sửa") echo $item["MucKhuyenMai"] ?>">
+        
+        <span class="errorMucKhuyenMai" style="color: red;"></span>
+   </div>
+    
+   <div class="input-add_wrap">
+        <button type="button" onclick="
+        <?php 
+        if($index == 'Thêm')
+            {echo 'btnAdd()';}
+        else if($index == 'Sửa') 
+            {echo 'btnEdit()';}
+        
+        ?>
+        " value="Lưu" class="btn">
+         <?php 
+            if($index == 'Thêm')
+                {echo 'Thêm';}
+            else if($index == 'Sửa') 
+                {echo 'Sửa';}
+        
+        ?>
+        </button>
+   </div>
+</form>
 
 <script>
     $(document).ready(function() {
         // alert(kiemTraMucKhuyenMai("61"));
     })
-
+    // showAlert();
     // xử lý sự kiện thêm khuyến mãi
     function btnAdd() {
         var TenKhuyenMai = document.getElementById("TenKhuyenMai").value;
@@ -59,13 +84,32 @@ if($index == "Sửa")
                 },
                 success: function(data)
                 {
-                    alert(data);
-                    window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    // alert(data);
+                    swal({
+                        title: "Thêm thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    }).then(function () {
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    });
+                    
+                    // setTimeout(function () {
+                    //     window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                    // }, 5000);
+                   
                 }
             })
         }
         // console.log(MucKhuyenMai);
     }
+
+    // function showAlert() {
+    //     swal({
+    //         title: "Thành công!",
+    //         text: "Nhấn vào nút để tiếp tục!",
+    //         icon: "success",
+    //     });
+    // }
 
     // xử lý sự kiện sửa khuyến mãi
      function btnEdit() {
@@ -87,17 +131,32 @@ if($index == "Sửa")
                 {
                     if(data == 1)
                     {
-                        alert("Cập nhật dữ liệu thành công!");
+                        // alert("Cập nhật dữ liệu thành công!");
+                        swal({
+                            title: "Cập nhật thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
                         window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                        });
+                       // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
-                    else if(data == -1)
-                    {
-                        alert("Tên Khuyến Mãi Đã Tồn Tại, Vui Lòng chọn tên khác") ;
-                    }
+                    // else if(data == -1)
+                    // {
+                    //     alert("Tên Khuyến Mãi Đã Tồn Tại, Vui Lòng chọn tên khác") ;
+                    // }
                     else
                     {
-                        alert("Cập nhật dữ liệu thất bại!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                        // alert("Cập nhật dữ liệu thất bại!");
+
+                        swal({
+                            title: "Lỗi! Cập nhật thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
+                        // .then(function () {
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
+                        // });
                     }
                 }
             })

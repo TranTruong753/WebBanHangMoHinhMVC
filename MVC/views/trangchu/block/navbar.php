@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <title>Navbar</title> -->
        <!-- link icon -->
-    <link
+    <!-- <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body> -->
     
     <!-- nav -->
     <nav class="fixed">
@@ -215,7 +215,7 @@
         </nav>
 </body>
 
-</html>
-<script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
+<!-- </html> -->
+<!-- <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
-<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script> -->

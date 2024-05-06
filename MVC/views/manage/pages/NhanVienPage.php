@@ -20,10 +20,10 @@ $PhanTrangModel = new PhanTrangModel();
       <i class='bx bx-reset'></i>
       <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
     </label>
-    <div class="btn btn_add"> 
+    <label for="dieuhuong" class="btn btn_add"> 
       <i class='bx bx-plus'></i>
-      <input type="button" class="" onclick="DieuHuong()" value="Thêm">
-    </div>
+      <input id="dieuhuong" type="button" class="" onclick="DieuHuong()" value="Thêm">
+    </label>
   </div>
   
 </div>
@@ -128,40 +128,70 @@ $PhanTrangModel = new PhanTrangModel();
   function btnXoa(obj)
   {
     var ma = obj.id;
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
+    //   $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     ma: ma,
+    //   },
+    //   success: function(data) {
+    //     alert(data);
+    //   }
+    // })
+    // loadTable(tmpKey,index,size)
+    // loadPhanTrang("nhanvien",index,size,"",tmpKey)
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    loadTable(tmpKey,index,size)
-    loadPhanTrang("nhanvien",index,size,"",tmpKey)
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    ma: ma,
+                },
+                success: function(data) {
+                    swal("Dữ liệu đã xóa thành công!", {
+                        icon: "success",
+                    });
+                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                    loadTable(tmpKey, index, size);
+
+                    loadPhanTrang("nhanvien", index, size, "", tmpKey);
+
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
   }
 
-  // Xử lý cấp tài khoản
-  function btnCap(obj)
-  {
-    var ma = obj.id;
-    var ma = obj.id;
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
-    })
-    loadTable(tmpKey,index,size)
-    loadPhanTrang("nhanvien",index,size,"",tmpKey)
-  }
+  
+  // function btnCap(obj)
+  // {
+  //   var ma = obj.id;
+  //     $.ajax({
+  //     url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/XoaDuLieuNhanVien',
+  //     type: 'post',
+  //     dataType: 'html',
+  //     data: {
+  //       ma: ma,
+  //     },
+  //     success: function(data) {
+  //       alert(data);
+  //     }
+  //   })
+  //   loadTable(tmpKey,index,size)
+  //   loadPhanTrang("nhanvien",index,size,"",tmpKey)
+  // }
 
 
   // Hàm Đổi Trạng Thái của Khách Hàng khi tick vào check box Trạng Thái

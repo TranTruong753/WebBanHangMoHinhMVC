@@ -113,11 +113,11 @@
     })
 
     function btnAdd() {
-        var tenNhanVien = document.getElementById("userName").value.Trim();
-        var sdt = document.getElementById("userPhone").value.Trim();
-        var cccd = document.getElementById("userCCCD").value.Trim();
-        var ngaySinh = document.getElementById("date").value.Trim();
-        alert(cccd);
+        var tenNhanVien = document.getElementById("userName").value.trim();
+        var sdt = document.getElementById("userPhone").value.trim();
+        var cccd = document.getElementById("userCCCD").value.trim();
+        var ngaySinh = document.getElementById("date").value.trim();
+        // alert(cccd);
         if(checkForm(tenNhanVien,sdt,cccd,ngaySinh)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhanVien/insert",
@@ -133,11 +133,17 @@
                 {               
                     var errorUserPhone = document.getElementById("error-userPhone");
                     var errorUserCccd = document.getElementById("error-userCCCD");
-                    alert(data);
+                    // alert(data);
                     if(data == 1)
                     {
-                        alert("Thêm dữ liệu thành công!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4";
+                        // alert("Thêm dữ liệu thành công!");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage";
+                        })
                     }
                     else if(data == -3){
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
@@ -145,18 +151,23 @@
 
                     }
                     else if(data == -1){
-                        alert("Số điện thoại bị trùng!");
+                        // alert("Số điện thoại bị trùng!");
                         errorUserCccd.innerHTML = "";                 
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
                     } 
                     else if(data == -2){
-                        alert("CCCD bị trùng!");  
+                        // alert("CCCD bị trùng!");  
                         errorUserPhone.innerHTML = "";                  
                         errorUserCccd.innerHTML = "CCCD bị trùng!";
                     }                 
                     else 
                     {
-                        alert("Thêm dữ liệu thất bại!");
+                        swal({
+                            title: "Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
+                        // alert("Thêm dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }
@@ -166,11 +177,11 @@
     }
 
     function btnEdit() {
-        var maNhanVien = document.getElementById("userId").value.Trim();
-        var tenNhanVien = document.getElementById("userName").value.Trim();
-        var sdt = document.getElementById("userPhone").value.Trim();
-        var cccd = document.getElementById("userCCCD").value.Trim();
-        var ngaySinh = document.getElementById("date").value.Trim();
+        var maNhanVien = document.getElementById("userId").value.trim();
+        var tenNhanVien = document.getElementById("userName").value.trim();
+        var sdt = document.getElementById("userPhone").value.trim();
+        var cccd = document.getElementById("userCCCD").value.trim();
+        var ngaySinh = document.getElementById("date").value.trim();
         alert(tenNhanVien+sdt+cccd+ngaySinh);
         if(checkForm(tenNhanVien,sdt,cccd,ngaySinh)){
             $.ajax({
@@ -188,11 +199,17 @@
                 {
                     var errorUserPhone = document.getElementById("error-userPhone");
                     var errorUserCccd = document.getElementById("error-userCCCD");
-                    alert(data);
+                    // alert(data);
                     if(data == 1)
                     {
-                        alert("Cập nhật dữ liệu thành công!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage,1,4";
+                        // alert("Cập nhật dữ liệu thành công!");
+                        swal({
+                            title: "Cập nhật thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
+                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhanVienPage";
+                        })
                     }
                     else if(data == -3){
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
@@ -200,18 +217,23 @@
 
                     }
                     else if(data == -1){
-                        alert("Số điện thoại bị trùng!");
+                        // alert("Số điện thoại bị trùng!");
                         errorUserCccd.innerHTML = "";                 
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
                     } 
                     else if(data == -2){
-                        alert("CCCD bị trùng!");  
+                        // alert("CCCD bị trùng!");  
                         errorUserPhone.innerHTML = "";                  
                         errorUserCccd.innerHTML = "CCCD bị trùng!";
                     }                 
                     else 
                     {
-                        alert("Cập nhật dữ liệu thất bại!");
+                        swal({
+                            title: "Cập nhật thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
+                        // alert("Cập nhật dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }

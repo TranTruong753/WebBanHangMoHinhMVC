@@ -28,10 +28,11 @@ class AjaxKhuyenMai extends controller{
         $MaKhuyenMai = $_POST["MaKhuyenMai"];
         $TenKhuyenMai =  $_POST["TenKhuyenMai"];
         $MucKhuyenMai = $_POST["MucKhuyenMai"];
-        if($this->KhuyenMaiModel->KiemTraTonTaiQuaTen($TenKhuyenMai) == 1)
-        {
-            echo "-1";
-        }else
+        // if($this->KhuyenMaiModel->KiemTraTonTaiQuaTen($TenKhuyenMai) == 1)
+        // {
+        //     echo "-1";
+        // }
+       // else
 
         {
             if($this->KhuyenMaiModel->update($MaKhuyenMai,$TenKhuyenMai,$MucKhuyenMai) == 1)

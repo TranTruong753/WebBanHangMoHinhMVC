@@ -146,9 +146,9 @@ if ($index == "Sửa") {
     })
 
     function btnAdd() {
-        var maKhachHang = document.getElementById("idClient").value.Trim();
-        var tenKhachHang = document.getElementById("nameClient").value.Trim();
-        var sdt = document.getElementById("phoneClient").value.Trim();
+        var maKhachHang = document.getElementById("idClient").value.trim();
+        var tenKhachHang = document.getElementById("nameClient").value.trim();
+        var sdt = document.getElementById("phoneClient").value.trim();
         var radioButtons = document.getElementsByName("sexClient");
         var gioitinh="";
         for (var i = 0; i < radioButtons.length; i++) {
@@ -171,13 +171,19 @@ if ($index == "Sửa") {
                 {
                     var errorUserPhone = document.getElementById("error-userPhone");
                     var errorUserId = document.getElementById("error-userId");
-                    alert(data);
+                    // alert(data);
                     if(data == 1)
                     {
                         errorUserId.innerHTML = "";
                         errorUserPhone.innerHTML = "";
-                        alert("Thêm dữ liệu thành công!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,1,4";
+                        // alert("Thêm dữ liệu thành công!");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage";
+                        })
                     }
                     else if(data == -3){
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
@@ -196,7 +202,12 @@ if ($index == "Sửa") {
                                             
                     else
                     {
-                        alert("Thêm dữ liệu thất bại!");
+                        // alert("Thêm dữ liệu thất bại!");
+                        swal({
+                            title: "Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }
@@ -206,9 +217,9 @@ if ($index == "Sửa") {
     }
 
     function btnEdit() {
-        var maKhachHang = document.getElementById("idClient").value.Trim();
-        var tenKhachHang = document.getElementById("nameClient").value.Trim();
-        var sdt = document.getElementById("phoneClient").value.Trim();
+        var maKhachHang = document.getElementById("idClient").value.trim();
+        var tenKhachHang = document.getElementById("nameClient").value.trim();
+        var sdt = document.getElementById("phoneClient").value.trim();
         var radioButtons = document.getElementsByName("sexClient");
         var gioitinh ="";
         for (var i = 0; i < radioButtons.length; i++) {
@@ -231,17 +242,28 @@ if ($index == "Sửa") {
                 {
                     if(data == 1)
                     {
-                        alert("Cập nhật dữ liệu thành công!");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage,1,4";
+                        // alert("Cập nhật dữ liệu thành công!");
+                        swal({
+                            title: "Cập nhật thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                        }).then(function () {
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhachHangPage";
+                        })
                     }
                     if(data == -1){
-                        alert("Số điện thoại bị trùng!");
+                        // alert("Số điện thoại bị trùng!");
                         var errorUserPhone = document.getElementById("error-userPhone");
                         errorUserPhone.innerHTML = "Số điện thoại bị trùng!";
                     }                          
                     if(data==0)
                     {
-                        alert("Cập nhật dữ liệu thất bại!");
+                        swal({
+                            title: "Cập nhật thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                        })
+                        // alert("Cập nhật dữ liệu thất bại!");
                         // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/KhuyenMaiPage";
                     }
                 }

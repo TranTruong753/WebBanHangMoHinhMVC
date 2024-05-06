@@ -20,10 +20,10 @@ $PhanTrangModel = new PhanTrangModel();
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
       </label>
-      <div class="btn btn_add"> 
+      <label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
-      </div>
+        <input type="button" class="" onclick="DieuHuong()" id="dieuhuong" value="Thêm">
+      </label>
     </div>
   </div>
 
@@ -129,21 +129,55 @@ $PhanTrangModel = new PhanTrangModel();
   //Xử lý khi nhấn nút xóa
   function btnXoa(obj)
   {
-    var ma = obj.id;
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/delete',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
-    })
-    loadTable(tmpKey, index, size);
+    // var ma = obj.id;
 
-    loadPhanTrang("taikhoan", index, size, "", tmpKey);
+    //   $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/delete',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     ma: ma,
+    //   },
+    //   success: function(data) {
+    //     alert(data);
+    //   }
+    // })
+    // loadTable(tmpKey, index, size);
+
+    // loadPhanTrang("taikhoan", index, size, "", tmpKey);
+
+    var ma = obj.id;
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxTaiKhoan/delete',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    ma: ma,
+                },
+                success: function(data) {
+                    swal("Dữ liệu đã xóa thành công!", {
+                        icon: "success",
+                    });
+                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                    loadTable(tmpKey, index, size);
+
+                    loadPhanTrang("taikhoan", index, size, "", tmpKey);
+
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
   }
 
   function DoiTrangThaiTaiKhoan(obj) {
