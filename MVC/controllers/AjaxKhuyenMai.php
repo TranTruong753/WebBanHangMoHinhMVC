@@ -6,7 +6,12 @@ class AjaxKhuyenMai extends controller{
     public function __construct() {
         $this->KhuyenMaiModel = $this->model("KhuyenMaiModel");
     }
-
+    public function DoiTrangThai()
+    {
+        $ma = $_POST['ma'];
+        $trangThai = $_POST['trangThai'];
+        $this->KhuyenMaiModel->updateTrangThai($ma,$trangThai);
+    }
     public function insert()
     {
         $TenKhuyenMai =  $_POST["TenKhuyenMai"];
@@ -36,7 +41,17 @@ class AjaxKhuyenMai extends controller{
         }
        
     }
-
+    public function delete()
+    {
+      //được xóa khi trang thái bằng 0 trong DB
+        $ma = $_POST["ma"];
+        if($this->KhuyenMaiModel->delete($ma)){
+          echo 'Xóa tài khoản Thành Công!';
+        }else{
+          echo 'Xóa tài khoản Thất bại!';
+        }
+   
+      }
     public function getDanhSach() {
         $key = $_POST["key"];
         $index = $_POST["index"];
@@ -52,11 +67,21 @@ class AjaxKhuyenMai extends controller{
                 <td>".$row["MaKhuyenMai"]."</td>
                 <td>".$row["TenKhuyenMai"]."</td>
                 <td>".$row["MucKhuyenMai"]."%</td>
-                <td><input type='checkbox' id='".$row["MaKhuyenMai"]."' onchange='DoiTrangThaiKhuyenMai(this)'/></td>
                 <td>
-                    <a href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'>Sửa</a>
-                    <a href=''>Xóa</a>
-                    <a href=''>Chi Tiết</a>
+                <label class='switch'>
+                <!-- Xử lý đổi khi click vào check Box để đổi trạng thái -- -->
+                  <input onchange='DoiTrangThaiKhuyenMai(this)' id='".$row['MaKhuyenMai']."' type='checkbox' value='1'";
+                  if ($row["TrangThai"] == 1) {
+                    $html .= "checked = 'checked'";
+  
+                  }
+                  $html .=">
+                  <span class='slider round'></span>
+                </label>  
+                </td>
+                <td>
+                    <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'><i class='bx bxs-edit'></i></a>
+                    <a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaKhuyenMai"] ."'><i class='bx bx-x'></i></a>
                 </td>
               </tr>";
             }

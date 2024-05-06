@@ -11,12 +11,19 @@ class KhuyenMaiModel extends DB {
         if($key != "")
         {
             $qr .= " WHERE concat(MaKhuyenMai,TenKhuyenMai,MucKhuyenMai)";
+            $qr .= " ORDER BY MaKhuyenMai DESC ";
+            $qr .= " LIMIT $start,$size ";
+
+            return $this->con->query($qr);
+        }
+        else
+        {
+            $qr .= " ORDER BY MaKhuyenMai DESC";
+            $qr .= " Limit $start,$size";
+            // echo $qr;
+            return $this->con->query($qr);
         }
 
-        $qr .= " ORDER BY MaKhuyenMai DESC ";
-        $qr .= " LIMIT $start,$size ";
-
-        return $this->con->query($qr);
     }
 
     public function insert($TenKhuyenMai,$MucKhuyenMai)
@@ -53,6 +60,17 @@ class KhuyenMaiModel extends DB {
         else return 0;
     }
 
+    public function delete($ma)
+    {
+        $qr = "DELETE FROM khuyenmai where MaKhuyenMai = $ma";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
     public function KiemTraTonTaiQuaTen($TenKhuyenMai)
     {
         $qr = "SELECT * FROM khuyenmai where TenKhuyenMai = '$TenKhuyenMai'";
@@ -65,6 +83,17 @@ class KhuyenMaiModel extends DB {
     public function getAllKM(){
         $qr = "SELECT * FROM khuyenmai where TrangThai=1";
         return $this->con->query($qr);
+    }
+    public function updateTrangThai($ma,$trangThai)
+    {
+        $qr = "UPDATE khuyenmai set TrangThai = $trangThai where MaKhuyenMai = $ma";
+        if($this->con->query($qr))
+        {
+            echo "Đổi Trạng Thái Thành Công!";
+        }else
+        {
+            echo "Đổi Trạng Thái Thất Bại!";
+        }
     }
 }
 ?>
