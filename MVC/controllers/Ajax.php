@@ -45,8 +45,13 @@ $this->GioHang= $this->model("GioHangModel");
 
                             <div class="product__content">
                                 <div class="product__content-price">'
-                                .$row["GiaSanPham"].'VND
-                                </div>
+                                .number_format($row["GiaSanPham"], 0, ',', '.').
+                                // number: Số cần định dạng.
+                                // decimals: Số lượng chữ số sau dấu thập phân. Nếu không được chỉ định, mặc định là 0.
+                                // decimal_separator: Dấu phân cách thập phân. 
+                                // thousand_separator: Dấu phân cách hàng nghìn. 
+                                
+                                ' VNĐ</div>
                                 <p class="product__content-title">'
                                     .$row["TenSanPham"].'
                                 </p>
@@ -89,7 +94,7 @@ $this->GioHang= $this->model("GioHangModel");
 
                       <div class="product__content">
                           <div class="product__content-price">'
-                          .$row["GiaSanPham"].'VND
+                          .number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
                           </div>
                           <p class="product__content-title">'
                               .$row["TenSanPham"].'
@@ -131,7 +136,7 @@ $this->GioHang= $this->model("GioHangModel");
 
         //                         <div class="product__content">
         //                             <div class="product__content-price">'
-        //                             .$row["GiaSanPham"].'VND
+        //                             .$row["GiaSanPham"].'VNĐ
         //                             </div>
         //                             <p class="product__content-title">'
         //                                 .$row["TenSanPham"].'
@@ -181,7 +186,7 @@ $this->GioHang= $this->model("GioHangModel");
 
                       <div class="product__content">
                           <div class="product__content-price">'
-                          .$row["GiaSanPham"].'VND
+                          .number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
                           </div>
                           <p class="product__content-title">'
                               .$row["TenSanPham"].'
@@ -220,7 +225,7 @@ $this->GioHang= $this->model("GioHangModel");
 
         //                         <div class="product__content">
         //                             <div class="product__content-price">'
-        //                             .$row["GiaSanPham"].'VND
+        //                             .$row["GiaSanPham"].'VNĐ
         //                             </div>
         //                             <p class="product__content-title">'
         //                                 .$row["TenSanPham"].'
@@ -259,7 +264,7 @@ $this->GioHang= $this->model("GioHangModel");
     
                                 <div class="product__content">
                                     <div class="product__content-price">'
-                                    .$row["GiaSanPham"].'VND
+                                    .$row["GiaSanPham"].'VNĐ
                                     </div>
                                     <p class="product__content-title">'
                                         .$row["TenSanPham"].'
@@ -316,7 +321,7 @@ $this->GioHang= $this->model("GioHangModel");
                         <div class="cart-item__info">
                             <div class="cart-item__number">'.$row['SoLuong'].'</div>
                             <span>X</span>
-                            <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                            <span class="cart-item__price">'.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ</span>
                         </div>
                         <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
                             <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
@@ -328,7 +333,7 @@ $this->GioHang= $this->model("GioHangModel");
                 }
                 $html.='</ul>
                     <div class="cart__buy">
-                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien .'</span></div>
+                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.number_format($thanhtien, 0, ',', '.').' VNĐ</span></div>
                         <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                     </div>';
             }
@@ -371,7 +376,7 @@ $this->GioHang= $this->model("GioHangModel");
                         <div class="cart-item__info">
                             <div class="cart-item__number">'.$row['SoLuong'].'</div>
                             <span>X</span>
-                            <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                            <span class="cart-item__price">'.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ</span>
                         </div>
                         <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
                             <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
@@ -383,7 +388,7 @@ $this->GioHang= $this->model("GioHangModel");
                 }
                 echo'</ul>
                     <div class="cart__buy">
-                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien .'</span></div>
+                        <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.number_format($thanhtien, 0, ',', '.').' VNĐ</span></div>
                         <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                     </div>';
             }

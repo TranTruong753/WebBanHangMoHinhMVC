@@ -128,7 +128,7 @@
                                                     <div class="cart-item__info">
                                                         <div class="cart-item__number">'.$row['SoLuong'].'</div>
                                                         <span>X</span>
-                                                        <span class="cart-item__price">'.$row['GiaSanPham'].'</span>
+                                                        <span class="cart-item__price">'.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ</span>
                                                     </div>
                                                     <div class="cart-item__icon" id="'.$row['MaChiTietSanPham'].'" onclick="test(this)" value="'.$row['MaChiTietSanPham'].'">
                                                         <i class="fa-solid fa-trash" id= "'.$row['MaChiTietSanPham'].'" value=""></i>
@@ -140,7 +140,7 @@
                                             }
                                             echo '</ul>
                                                 <div class="cart__buy">
-                                                    <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.$thanhtien.'</span></div>
+                                                    <div class="cart__buy-wrap">Tổng: <span class="cart-buy__price">'.number_format($thanhtien, 0, ',', '.').' VNĐ</span></div>
                                                     <span class="cart__buy-btn" id="cart__buy-btn" onclick="thanhtoan()" title="Thanh toán">Thanh toán</span>
                                                 </div>';
                                         }
@@ -218,3 +218,4 @@
 </html>
 <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
+<script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>

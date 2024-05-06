@@ -93,7 +93,7 @@ const smallImages = document.querySelectorAll('.content__img-item');
     }
     function test(ojt) {
         var mactsp=ojt.id;
-        alert(mactsp);
+        //alert(mactsp);
         $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
             alert("xóa thành công");
             

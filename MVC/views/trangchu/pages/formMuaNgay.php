@@ -132,6 +132,7 @@
                                         <th>Tổng tính</th>
                                         <th>Xóa</th>
                                     </tr>
+                                    <div id="getds">
                                     <?php
                                     
                                     if ($data['GH']->num_rows > 0) {
@@ -164,18 +165,20 @@
                                         '.$row['SoLuong'].'
                                         </td>
                                         <td>
-                                        '.$row['GiaSanPham'].' VNĐ
+                                        '.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
                                         </td>
                                         <td>
-                                        '.$row['SoLuong']*$row['GiaSanPham'].' VNĐ
+                                        '.number_format($row['SoLuong']*$row['GiaSanPham'], 0, ',', '.').' VNĐ
                                         </td>
                                         <td>
-                                            <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
+                                            <div class="table__icon" id="xoa'.$row['MaChiTietSanPham'].'"  onclick="Delete(this)"><i class="fa-solid fa-trash"></i></div>
+                                            <input type="hidden" id="xoa'.$row['MaChiTietSanPham'].'x" value="'.$row['MaChiTietSanPham'].'">
                                         </td>
                                     </tr>';
                                     
                                         }
                                     }?>
+                                    </div>
 
                                 </table>
                             </div>
@@ -350,18 +353,21 @@
                                <div class="procedure__price-wrap">
                                     <div class="procedure__row">
                                         <span>Tổng tiền hàng</span>
-                                        <span class="procedure__price" id="tongtien">0</span>VNĐ
+                                        <span class="procedure__price" id="hientongtien">0 VNĐ</span>
+                                        <input type="hidden" id="tongtien" value="0">
                                     </div>
                                     <div class="procedure__row">
                                         <span>Phí vận chuyển</span>
-                                        <span class="procedure__price">80000 </span>VNĐ
+                                        <span class="procedure__price">80.000 VNĐ</span>
+                                        <input type="hidden" id="phivanchuyen" value="80000">
                                     </div>
                                </div>
 
                                <div class="procedure__price-wrap no--line">
                                     <div class="procedure__row">
                                                 <span>Tổng thanh toán</span>
-                                                <span class="procedure__price" id="thanhtien">80000</span>VNĐ
+                                                <span class="procedure__price" id="hienthanhtien">80.000 VNĐ</span>
+                                                <input type="hidden" id="thanhtien" value="80000">
                                     </div>
                                 </div>
                                <button type="button" class="procedure__btn btn btn--primary" onclick="test()">Thanh toán</button>

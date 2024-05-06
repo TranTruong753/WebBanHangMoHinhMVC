@@ -96,13 +96,13 @@
                     <div class="content__info">
                         <div class="content__info-inner">
                             <!-- <h2 class="content__info-title">Áo Dài Cách Tân Nữ Lụa Tay Loe</h2>
-                            <p class="content__info-price">399.000 VND</p> -->
+                            <p class="content__info-price">399.000 VNĐ</p> -->
                             <?php
                             if ($data['thongtin']->num_rows > 0) {
                                 while ($row = $data['thongtin']->fetch_assoc()) {
                                         echo    '
                                         <h2 class="content__info-title" name = "content__info-title" id ="'.$row['MaSanPham'].'">'.$row['TenSanPham'].'</h2>
-                                        <p class="content__info-price" id ="content__info-price">'.$row['GiaSanPham'].'</p>';
+                                        <p class="content__info-price" id ="content__info-price">'.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ</p>';
                                     }
                             }
                             ?>

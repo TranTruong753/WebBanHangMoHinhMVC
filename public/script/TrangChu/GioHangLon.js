@@ -4,7 +4,7 @@ function test(){
     sdt= document.getElementById('sdt').value;
     var diachi="";
     diachi=document.getElementById('diachi').value;
-    var tongtien= document.getElementById('thanhtien').innerHTML;
+    var tongtien= document.getElementById('thanhtien').value;
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var radioButtons = document.getElementsByName("product");
@@ -40,22 +40,41 @@ function test(){
     
 }
 
+function Delete(ojt){
+    var mactsp=document.getElementById(ojt.id+"x").value;
+    //alert(mactsp);
+    $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
+    //alert("xóa thành công");
+    $("#cart-preview").html(data);
+    })
+    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/Delete",{},function(data){
+    //alert("xóa thành công");
+    $("#getds").html(data);
+    })
+}
+
 function clicka(ojt){
     if(ojt.checked)
     {
-        var tongtien=document.getElementById('tongtien').innerHTML;
+        var tongtien=document.getElementById('tongtien').value;
         tongtien= parseFloat(tongtien)+parseFloat(ojt.value);
         var thanhtien=parseFloat(tongtien)+80000;
-        $("#tongtien").html(tongtien);
-        $("#thanhtien").html(thanhtien);
+        $("#tongtien").val(tongtien);
+        //alert($("#tongtien").val());
+        $("#hientongtien").html(tongtien.toLocaleString('vi-VN')+" VNĐ");
+        $("#thanhtien").val(thanhtien);
+        $("#hienthanhtien").html(thanhtien.toLocaleString('vi-VN')+" VNĐ");
         //alert(tongtien);
     }
     else {
-    var tongtien=document.getElementById('tongtien').innerHTML;
+    var tongtien=document.getElementById('tongtien').value;
     tongtien= parseFloat(tongtien)-parseFloat(ojt.value);
     var thanhtien=parseFloat(tongtien)+80000;
-    $("#tongtien").html(tongtien);
-    $("#thanhtien").html(thanhtien);
+    $("#tongtien").val(tongtien);
+    //alert($("#tongtien").val());
+    $("#hientongtien").html(tongtien.toLocaleString('vi-VN')+" VNĐ");
+    $("#thanhtien").val(thanhtien);
+    $("#hienthanhtien").html(thanhtien.toLocaleString('vi-VN')+" VNĐ");
     //alert(tongtien);
     }
 }
