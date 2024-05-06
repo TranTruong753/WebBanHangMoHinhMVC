@@ -54,7 +54,7 @@
                 
                                                     <div class="product-item__info-wrap">
                                                         <span class="product-item__info-span">Tổng tiền hàng:</span>
-                                                        <span>'.$row['TongTien'].' VNĐ</span>
+                                                        <span>'.number_format($row['TongTien'], 0, ',', '.').' VNĐ</span>
                                                     </div>
                 
                                                     <div class="product-item__info-wrap">
@@ -63,7 +63,7 @@
                                                     </div>
                                             </div>
                                             <div class="product-item__info-price">
-                                                        <span>Tổng thanh toán:'.$row['TongTien'].' VNĐ</span>
+                                                        <span>Tổng thanh toán:'.number_format($row['TongTien'], 0, ',', '.').' VNĐ</span>
                                             </div>
                                         
                                             

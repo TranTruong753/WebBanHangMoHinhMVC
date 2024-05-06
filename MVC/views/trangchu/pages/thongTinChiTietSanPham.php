@@ -66,10 +66,10 @@
                     '.$row['SoLuong'].'
                     </td>
                     <td>
-                    '.$row['ThanhTien'].' VNĐ
+                    '.number_format($row['ThanhTien'], 0, ',', '.').' VNĐ
                     </td>
                     <td>
-                    '.$row['SoLuong']*$row['ThanhTien'].' VNĐ
+                    '.number_format($row['SoLuong']*$row['ThanhTien'], 0, ',', '.').' VNĐ
                     </td>
                    
                 </tr>';
@@ -85,16 +85,16 @@
             <div class="detail-bottom__price">
                 <div class="detail-row">
                         <span>Tổng tiền hàng</span>
-                        <span>'.$tongtien.' VND</span>
+                        <span>'.number_format($tongtien, 0, ',', '.').' VND</span>
                 </div>
                     
                 <div class="detail-row">
                 <span>Phí vận chuyển</span>
-                <span>80000 VND</span>
+                <span>80.000 VND</span>
                 </div>
                 <div class="detail-row">
                         <span>Tổng thanh toán</span>
-                        <span>'.$thanhtien.' VND</span>
+                        <span>'.number_format($thanhtien, 0, ',', '.').' VND</span>
                 </div>
             </div>
         </div>

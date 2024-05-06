@@ -69,21 +69,15 @@ class AjaxThanhToan extends controller{
                 }
             }
         }
-        echo '<div class="procedure-left__header">
-        <input class="procedure-input__check"  type="checkbox" name="allProduct" id="allProduct">
-        <label class="procedure-label__check" for="allProduct"><span class="procedure-label__tick"></span></label>
-        <label for="allProduct">Tất cả</label>
-    </div>
-    <table class="procedure__table table">
-        <!-- tiêu đề -->
-        <tr class="table table-title">
-            <th style="text-align: left; padding-left:30px;">Sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Tổng tính</th>
-            <th>Xóa</th>
-        </tr>';
-        $resultKQ=$this->GioHangModel->GetAll();
+    }
+
+      
+
+      function Delete(){
+        if(isset($_SESSION['email'])){
+            $makh=$_SESSION['email'];
+        }
+        $resultKQ=$this->GioHangModel->GetAll($makh);
         if ($resultKQ->num_rows > 0) {
             while ($row = $resultKQ->fetch_assoc()) {
                 echo    '
@@ -106,10 +100,10 @@ class AjaxThanhToan extends controller{
                     '.$row['SoLuong'].'
                     </td>
                     <td>
-                    '.$row['GiaSanPham'].' VNĐ
+                    '.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
                     </td>
                     <td>
-                    '.$row['SoLuong']*$row['GiaSanPham'].' VNĐ
+                    '.number_format($row['SoLuong']*$row['GiaSanPham'], 0, ',', '.').' VNĐ
                     </td>
                     <td>
                         <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
@@ -117,7 +111,8 @@ class AjaxThanhToan extends controller{
                 </tr>';
             }
         }
-      }
+    }
+
 
 
 
