@@ -53,7 +53,7 @@ class ChiTietHoaDonModel extends DB{
             on sanpham.MaSanPham=chitietsanpham.MaSanPham
             where concat(chitiethoadon.MaChiTietSanPham,sanpham.TenSanPham) like '%$key%' and chitiethoadon.MaHoaDon= '$mahd'"; 
 
-            $qr .= " ORDER BY MaHoaDon DESC";
+            $qr .= " ORDER BY chitiethoadon.MaHoaDon DESC";
             $qr .= " LIMIT $batDau,$soLuong";
 
             echo $qr;
@@ -64,13 +64,11 @@ class ChiTietHoaDonModel extends DB{
             $qr .= " INNER JOIN chitietsanpham 
             on chitiethoadon.MaChiTietSanPham= chitietsanpham.MaChiTietSanPham INNER JOIN sanpham 
             on sanpham.MaSanPham=chitietsanpham.MaSanPham where chitiethoadon.MaHoaDon='$mahd'
-            ORDER BY chitietsanpham.MaSanPham DESC";
+            ORDER BY chitiethoadon.MaHoaDon DESC";
             $qr .= " Limit $batDau,$soLuong";
             echo $qr;
             return $this->con->query($qr);
         }
-        // $qr="SELECT * from nhomquyen";
-        // return $this->con->query($qr);
     }
     
 }

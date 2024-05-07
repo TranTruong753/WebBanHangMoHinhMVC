@@ -7,6 +7,11 @@
     <option value="Top5">Top 5 sản phẩm bán chạy nhất trong tháng</option>
     <option value="">Thống kê theo Khoảng tgian</option>
 </select>
+<!-- <form method="post" action="process.php">
+    Từ ngày: <input type="date" name="tuNgay">
+    Đến ngày: <input type="date" name="denNgay">
+    <input type="submit" value="Submit">
+</form> -->
 
 <div id="content-chart">
 </div>

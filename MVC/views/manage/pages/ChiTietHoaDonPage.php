@@ -23,7 +23,6 @@
       <th>Tên Sản Phẩm</th>
       <th>Số Lượng</th>
       <th>Thành Tiền</th>
-      <th>Thao Tác</th>
     </tr>
   </thead>
  
