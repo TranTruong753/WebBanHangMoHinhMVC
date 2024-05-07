@@ -82,6 +82,7 @@ class AjaxChucNang extends controller {
             {
                if($this->ChucNangModel->KiemTraChucNang($_SESSION['MaNhomQuyen'],$row["MaChucNang"])==1)
                {
+                $_SESSION[$row['TenChucNang']] = $row['MaChucNang'];
                 $json .= '"'.$row['TenChucNang'].'"';
                     $json .= ",";
                }
@@ -106,6 +107,7 @@ class AjaxChucNang extends controller {
     {
         while($row = $result->fetch_assoc())
         {
+            $_SESSION[$row['TenChucNang']] = $row["MaChucNang"];
             $render .= "
             <tr>
                 <td>". $row['MaChucNang'] ."</td>
