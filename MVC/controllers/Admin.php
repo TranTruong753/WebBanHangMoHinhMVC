@@ -7,6 +7,7 @@ class Admin extends controller
     protected $params = [];
     function default($params=[])
     {
+        $ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
         $this->params = $this->paramsProcess($params);
         if(isset($this->params[0]))
         {
@@ -33,7 +34,7 @@ class Admin extends controller
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"]= $TaiKhoanModel->getDanhSach();
-            $this->data["Data"]= [];
+            $this->data["Data"]= ["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "TaiKhoanPage";
         } 
         else if ($this->pageName == "SuaTaiKhoanPage") {
@@ -85,7 +86,7 @@ class Admin extends controller
             // $this->data["Data"]["index"] = $this->params[1];
             // $this->data["Data"]["sizePage"]= $this->params[2];
             // $this->data["Data"] = $ChucNangModel->getDanhSach("",$this->params[1],$this->params[2]);
-            $this->data["Data"]=[];
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "ChucNangPage";
         } else if ($this->pageName == "ChiTietQuyenPage") {
             $ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
@@ -95,7 +96,7 @@ class Admin extends controller
             $this->data["detail"] = "ChiTietQuyenPage";
         } else if ($this->pageName == "NhapHangPage") {
             $this->data["detail"] = "NhapHangPage";
-            $this->data["Data"]= [];
+            $this->data["Data"]= ["ChiTietQuyenModel"=>$ChiTietQuyenModel];
         } else if ($this->pageName == "ThuongHieuPage") {
             $ThuongHieuModel = $this->model("ThuongHieuModel");
             $this->data["Data"]= $ThuongHieuModel->getDanhSach();
