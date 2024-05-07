@@ -51,11 +51,20 @@ class AjaxNhomQuyen extends controller
     if($this->NhomQuyenModel->KiemTraTaiKhoanSuDung($ma) == 1 ) $checkChuaSuDung=false;
     if($checkChuaSuDung == true)
     {
-      if($this->NhomQuyenModel->delete($ma)==1) echo 'Xóa Nhóm Quyền Thành Công!';
-      else echo 'Xóa Nhóm Quyền Thất Bại!';
+      if($this->NhomQuyenModel->delete($ma)==1){
+        echo '1';
+       // echo 'Xóa Nhóm Quyền Thành Công!';
+      }
+      else{
+       // echo 'Xóa Nhóm Quyền Thất Bại!';
+       echo '0';
+      }
     }
-      else echo "Nhóm Quyền Đã Được Sử Dụng";
+      else echo '-1';
+        //echo "Nhóm Quyền Đã Được Sử Dụng";
+      
    }
+
    public function getDanhSach()
    {
         $key = $_POST['key'];
@@ -85,7 +94,8 @@ class AjaxNhomQuyen extends controller
               </label>  
                 
               </td>
-              <td style='text-align: center;'>
+              <td>
+                <div class ='btn-wrap'>
               <!-- link  để chuyển sang trang nhóm quyền -->";
 
               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhóm Quyền"])==1)
@@ -98,7 +108,8 @@ class AjaxNhomQuyen extends controller
               }
                   
                 
-                    $html.="         
+                    $html.="   
+                    </div>      
               </td>
             </tr> ";
               

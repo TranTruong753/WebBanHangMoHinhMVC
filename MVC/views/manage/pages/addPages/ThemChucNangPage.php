@@ -78,12 +78,24 @@ if ($index == "Sửa") {
                     document.getElementById("errorTen").innerHTML = "";
                     if(data == 1)
                     {
-                        alert("Thêm chức năng thành công!")
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage";
+                        // alert("Thêm chức năng thành công!")
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage";
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                         }).then(function(){
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage";
+                         })
                     }
                     else if(data == 0 )
                     {
-                        alert("Thêm chức năng thất bại!")
+                        // alert("Thêm chức năng thất bại!")
+                        swal({
+                            title: "Thêm thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                         })
                     }
 
                 }
@@ -117,12 +129,25 @@ if ($index == "Sửa") {
                     document.getElementById("errorTen").innerHTML = "";
                     if(data == 1)
                     {
-                        alert("Sửa chức năng thành công!")
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4";
+                        // alert("Sửa chức năng thành công!")
+                        // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage,1,4";
+                        swal({
+                            title: "Cập nhật thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                         }).then(function(){
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/ChucNangPage";
+                         })
+                        
                     }
                     else if(data == 0 )
                     {
-                        alert("Sửa chức năng thất bại!")
+                        // alert("Sửa chức năng thất bại!")
+                        swal({
+                            title: "Cập nhật thất bại!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                         })
                     }
 
                 }

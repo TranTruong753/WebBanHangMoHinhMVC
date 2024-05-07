@@ -38,9 +38,9 @@ class AjaxChucNang extends controller {
         {
             if($this->ChucNangModel->update($maChucNang,$tenChucNang) == 1)
             {
-                echo 1;
-            }else echo 0;
-        }else echo -1;
+                echo '1';
+            }else echo '0';
+        }else echo '-1';
        
     }
 
@@ -51,9 +51,9 @@ class AjaxChucNang extends controller {
         {
             if($this->ChucNangModel->delete($maChucNang) == 1)
             {
-                echo 1;
-            }else echo 0;
-        }else echo -1;
+                echo '1';
+            }else echo '0';
+        }else echo '-1';
        
     }
 
@@ -123,7 +123,9 @@ class AjaxChucNang extends controller {
                         <span class='slider round'></span>
                     </label>  
                 </td>
-          <td style='text-align: center;'>";
+          <td>
+            <div class ='btn-wrap'>
+          ";
 
           if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1)
           {
@@ -132,7 +134,7 @@ class AjaxChucNang extends controller {
           if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1){
             $render.="<a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>";
           }
-         $render.="    
+         $render.="  </div>  
           </td>
         </tr>
             ";

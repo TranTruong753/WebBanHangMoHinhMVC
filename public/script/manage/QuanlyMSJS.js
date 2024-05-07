@@ -2,13 +2,37 @@ function addMS(){
     // var tenchatlieu=" ";
     var tenmausac=document.getElementById("tenmausac").value;
     if(!tenmausac){
-        alert("Không được để trống tên màu sắc");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxMauSac/InsertMS",{tenms: tenmausac},function(data){
-        alert(data);
+        // alert("Không được để trống tên màu sắc");
+        swal({
+            title: "Lôi! Không được để trống tên màu sắc",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxMauSac/InsertMS",{tenms: tenmausac},function(data){
+        // alert(data);
+        // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/MauSacPage";
-                window.location.assign(url);
-    });
+        // window.location.assign(url);
+        if(data.length == 6){
+                // alert(data);
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Thêm thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }    
+      });
+    }
+   
     }
 
 function UpdateMS(){
@@ -16,13 +40,37 @@ function UpdateMS(){
     var mamausac=document.getElementById("mamausac").value;
     var tenmausac=document.getElementById("tenmausac").value;
     if(!tenmausac){
-        alert("Không được để trống tên màu sắc");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxMauSac/UpdateMS",{mams: mamausac,tenms: tenmausac},function(data){
-        alert(data);
+        // alert("Không được để trống tên màu sắc");
+        swal({
+            title: "Lôi! Không được để trống tên màu sắc",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxMauSac/UpdateMS",{mams: mamausac,tenms: tenmausac},function(data){
+        // alert(data);
+        // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/MauSacPage";
-                window.location.assign(url);
+        // window.location.assign(url);
+        if(data.length == 6){
+                    // alert(data);
+                    swal({
+                        title: "Cập nhật thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    }).then(function () {
+                        window.location.assign(url);
+                    })
+                }else {
+                    swal({
+                        title: "Cập nhật thất bại!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "error",
+                    })
+                }
     });
+    }
+  
     }
 
     var tmpKey = "";

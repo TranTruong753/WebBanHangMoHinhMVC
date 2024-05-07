@@ -2,26 +2,75 @@ function addKC(){
     // var tenchatlieu=" ";
     var tenkichco=document.getElementById("tenkichco").value;
     if(!tenkichco){
-        alert("Không được để trống tên kích cỡ");
+        // alert("Không được để trống tên kích cỡ");
+        swal({
+            title: "Lỗi! Không được để trống tên kích cỡ",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
     } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxKichCo/InsertKC",{tenkc: tenkichco},function(data){
-        alert(data);
-        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/KichCoPage";
-                window.location.assign(url);
-    });
+    else{
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxKichCo/InsertKC",{tenkc: tenkichco},function(data){
+            // alert(data); 
+            // alert(data.length);
+            var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/KichCoPage";
+             if(data.length == 6){
+                // alert(data);
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Thêm thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }    
+            // window.location.assign(url);
+        });
+    }
+  
     }
 function UpdateKC(){
     // var tenchatlieu=" ";
     var makichco=document.getElementById("makichco").value;
     var tenkichco=document.getElementById("tenkichco").value;
     if(!tenkichco){
-        alert("Không được để trống tên kích cỡ");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxKichCo/UpdateKC",{makc: makichco,tenkc: tenkichco},function(data){
-        alert(data);
+        // alert("Không được để trống tên kích cỡ");
+        swal({
+            title: "Lỗi! Không được để trống tên kích cỡ",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxKichCo/UpdateKC",{makc: makichco,tenkc: tenkichco},function(data){
+        // alert(data);
+        // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/KichCoPage";
-                window.location.assign(url);
+         if(data.length == 6){
+                // alert(data);
+                swal({
+                    title: "Cập nhật thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Cập nhật thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }       
+        // window.location.assign(url);
     });
+    }
+    
     }
 
     var tmpKey = "";

@@ -27,10 +27,10 @@
     $ChiTietQuyenModel = $this->data['Data']['ChiTietQuyenModel'];
     if ($ChiTietQuyenModel->KiemTraHanhDong("Thêm", $_SESSION['MaNhomQuyen'], $_SESSION['Chức Năng'])) {
     ?>
-      <div class="btn btn_add">
+      <label for="dieuhuong" class="btn btn_add">
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuongSangTrangThem()" value="Thêm">
-      </div>
+        <input type="button" class="" onclick="DieuHuongSangTrangThem()" value="Thêm" id="dieuhuong">
+      </label>
     <?php
     }
     ?>
@@ -148,22 +148,71 @@
 
   function btnXoa(obj) {
     var MaChucNang = obj.id;
-    $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        MaChucNang: MaChucNang,
-      },
-      success: function(data) {
-        // alert(data);
-        if (data == 1) alert("Xóa chức năng thành công!")
-        else if (data == 0) alert("Xóa chức năng thất bại!");
-        else if (data == -1) alert("Chức năng đang được sử dụng!");
-      }
+    // $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     MaChucNang: MaChucNang,
+    //   },
+    //   success: function(data) {
+    //     // alert(data);
+    //     if (data == 1) alert("Xóa chức năng thành công!")
+    //     else if (data == 0) alert("Xóa chức năng thất bại!");
+    //     else if (data == -1) alert("Chức năng đang được sử dụng!");
+    //   }
+    // })
+    // loadTable(index, size, tmpKey)
+    // loadPhanTrang("chucnang", index, size, "", tmpKey)
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    loadTable(index, size, tmpKey)
-    loadPhanTrang("chucnang", index, size, "", tmpKey)
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                  MaChucNang: MaChucNang,
+                },
+                success: function(data) {
+                 
+                  if(data == 1)
+                  {
+                    // alert("Cập nhật dữ liệu thành công!");
+                    swal({
+                        title: "Xóa thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    })
+                  }else if(data == -1){
+                    swal({
+                          title: "Lỗi! Chức năng đang được sử dụng!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }else{
+                    swal({
+                          title: "Lỗi! Xóa thất bại!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }
+                  
+                  // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                  loadTable(index, size, tmpKey)
+                  loadPhanTrang("chucnang", index, size, "", tmpKey)
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
   }
 
   function DieuHuongSangTrangThem() {
