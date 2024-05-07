@@ -35,11 +35,21 @@
 
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Ngày nhập</th>
-      <th>Tông tiền</th>
-      <th>Nhà cung cấp</th>
-      <th>Nhân viên</th>
+      <th>ID
+      <button value="MaPhieuNhap" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Ngày nhập
+      <button value="NgayNhap" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Tông tiền
+      <button value="TongTien" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Nhà cung cấp
+      <button value="TenNhaCungCap" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Nhân viên
+      <button value="TenNhanVien" onclick="getArrange(this)">^</button>
+      </th>
       <th>Thao tác</th>
       
     </tr>

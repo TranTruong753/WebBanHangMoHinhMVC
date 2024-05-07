@@ -99,6 +99,8 @@ function DeleteCTSP(ojt){
 
 }
 
+var arrange="ASC";
+var properties="MaChiTietSanPham";
 var tmpKey = "";
 var index = 1;
 var size = 4;
@@ -106,13 +108,23 @@ var masp=document.getElementById('masp').value;
 var sql=" INNER JOIN mausac on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco"+  
 " on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham on sanpham.MaSanPham=chitietsanpham.MaSanPham Where chitietsanpham.MaSanPham ='"+masp+"' ";
 
-
+function getArrange(ojt){
+  //alert(ojt.value);
+  //arrange=ojt.value;
+  properties=ojt.value;
+  if(arrange=="DESC")
+    arrange="ASC"
+  else arrange="DESC"
+  loadTable("", index, size,arrange,properties);
+  loadPhanTrang("chitietsanpham", index, size, sql, "");
+  
+}
 
  // load khi chạy trang
  $(document).ready(function() {
   index = 1;
   size = 4;
-  loadTable("", index, size)
+  loadTable("", index, size,arrange,properties)
   loadPhanTrang("chitietsanpham", index, size, sql, "");
 
 })
@@ -150,13 +162,13 @@ function DoiTrangThaiCTSP(ojt){
     }
     
   // }
-  loadTable("", index, size)
+  loadTable("", index, size,arrange,properties)
   loadPhanTrang("chitietsanpham", index, size, sql, tmpKey)
 
 }
 
 
-function loadTable(key, index, size) {
+function loadTable(key, index, size,arrange,properties) {
   $.ajax({
     url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSach",
     type: "post",
@@ -165,7 +177,9 @@ function loadTable(key, index, size) {
       key: tmpKey,
       index: index,
       size: size,
-      masp : masp
+      masp : masp,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       $(".row-table").html(data)
@@ -190,7 +204,9 @@ $(document).on("click", ".btnPhanTrang", function() {
       key: tmpKey,
       index: index,
       size: size,
-      masp : masp
+      masp : masp,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       $(".row-table").html(data)
@@ -214,7 +230,9 @@ $(document).on("click", "#btnSearch", function() {
       key: key,
       index: index,
       size: size,
-      masp : masp
+      masp : masp,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       console.log(data)

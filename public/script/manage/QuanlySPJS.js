@@ -89,9 +89,20 @@ function XoaSP(ojt)
     }
     
   }
+  function getArrange(ojt){
+    //alert(ojt.value);
+    //arrange=ojt.value;
+    properties=ojt.value;
+    if(arrange=="DESC")
+      arrange="ASC"
+    else arrange="DESC"
+    loadTable("", index, size,arrange,properties);
+    loadPhanTrangtest("sanpham", index, size, sql, "");
+    
+  }
 
-
-
+  var arrange="ASC";
+  var properties="MaSanPham";
   var tmpKey = "";
   var index = 1;
   var size = 4;
@@ -105,8 +116,9 @@ function XoaSP(ojt)
    $(document).ready(function() {
     index = 1;
     size = 4;
-    loadTable("", index, size)
-    loadPhanTrang("sanpham", index, size, sql, "");
+    
+    loadTable("", index, size,arrange,properties)
+    loadPhanTrangtest("sanpham", index, size, sql, "");
 
   })
   function Lamtuoi(){
@@ -116,7 +128,9 @@ function XoaSP(ojt)
     tmpKey = "";
       index = 1;
       size = 4;
-      loadTable("", index, size)
+      arrange="ASC";
+      properties="MaSanPham";
+      loadTable("", index, size,arrange,$properties)
       loadPhanTrang("sanpham", index, size, sql, "");
   
   }
@@ -150,17 +164,19 @@ function XoaSP(ojt)
   }
 
   //hàm load phân trnag 
-  function loadPhanTrang(tableName, index, size, condition = "", key = "") {
+  function loadPhanTrangtest(tableName, index, size, condition = "", key = "") {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhanTrang/getPhanTrang",
       type: "post",
       dataType: "html",
       data: {
+        //arrange:arrange,
         key: key,
         table: tableName,
         condition: condition,
         index: index,
         size: size
+        
       },
       success: function(data) {
         console.log(data)
@@ -170,7 +186,7 @@ function XoaSP(ojt)
 
     })
   }
- function loadTable(key, index, size) {
+ function loadTable(key, index, size,arrange,properties) {
     $.ajax({
       url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/getDanhSach",
       type: "post",
@@ -178,7 +194,9 @@ function XoaSP(ojt)
       data: {
         key: tmpKey,
         index: index,
-        size: size
+        size: size,
+        arrange:arrange,
+        properties:properties
       },
       success: function(data) {
         $(".row-table").html(data)
@@ -202,7 +220,9 @@ function XoaSP(ojt)
       data: {
         key: tmpKey,
         index: index,
-        size: size
+        size: size,
+        arrange:arrange,
+        properties:properties
       },
       success: function(data) {
         $(".row-table").html(data)
@@ -226,6 +246,8 @@ function XoaSP(ojt)
         key: key,
         index: index,
         size: size,
+        arrange:arrange,
+        properties:properties
       },
       success: function(data) {
         console.log(data)

@@ -12,6 +12,7 @@ class AjaxPhanTrang extends controller{
         $condition = $_POST["condition"];
         $index =$_POST["index"];
         $size = $_POST["size"];
+        //$arrange= $_POST['arrange'];
         // echo "table: $table <br>";
         // print_r($_POST);
         
@@ -101,13 +102,14 @@ class AjaxPhanTrang extends controller{
             } 
             
             
-            $condition .= " concat($varibleEqual) like '%$key%'";
+            $condition .= " concat($varibleEqual) like '%$key%' ";
             
 
             //này ko đc xóa của tao nhe mấy con cờ hó
             if($table == 'chitietquyen')
             {
-                $condition = " and  concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%' ";
+                $condition = " and  concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%'";
+                //$condition = " and  concat(nq.TenNhomQuyen,cn.TenChucNang) like '%$key%' ORDER BY MaSanPham $arrange";
 
             }
             // print_r("condition(AjaxChiTietQUyen): ".$condition) ;

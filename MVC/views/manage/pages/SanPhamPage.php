@@ -46,11 +46,23 @@
 </div> -->
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Tên</th>
-      <th>Giá</th>
-      <th>Số lượng tồn</th>
-      <th>Giá nhập</th>
+      <th>
+        ID
+        <button value="MaSanPham" onclick="getArrange(this)">^</button>
+      </th>
+      
+      <th>Tên
+      <button value="TenSanPham" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Giá
+      <button value="GiaSanPham" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Số lượng tồn
+      <button value="SoLuongTonSP" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Giá nhập
+      <button value="GiaNhap" onclick="getArrange(this)">^</button>
+      </th>
       <th>Khuyến mãi</th>
       <th>Thể Loại</th>
       <th>Chất Liệu</th>

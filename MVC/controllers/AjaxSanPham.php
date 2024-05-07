@@ -73,13 +73,14 @@ class AjaxSanPham extends controller {
         $key = $_POST['key'];
         $pageIndex = $_POST['index'];
         $numberItem = $_POST['size'];
-
+        $arrange= $_POST['arrange'];
+        $properties=$_POST['properties'];
         $html="";
         
        
-        if($this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
+        if($this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem,$arrange,$properties)->num_rows >0)
         {
-            $result=$this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem);
+            $result=$this->SanPhamModel->GetAllDanhSach($key,$pageIndex,$numberItem,$arrange,$properties);
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr> 

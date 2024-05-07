@@ -145,13 +145,14 @@ class AjaxCTSP extends controller {
         $pageIndex = $_POST['index'];
         $numberItem = $_POST['size'];
         $masp=$_POST['masp'];
-
+        $arrange= $_POST['arrange'];
+        $properties=$_POST['properties'];
         $html="";
         
        
-        if($this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp)->num_rows >0)
+        if($this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp,$arrange,$properties)->num_rows >0)
         {
-            $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp);
+            $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp,$arrange,$properties);
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr id="'.$row["MaChiTietSanPham"].'" onclick="loadID(this)"> 

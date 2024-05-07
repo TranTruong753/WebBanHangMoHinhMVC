@@ -66,7 +66,7 @@
         return false;
     }
 
-    public function GetAllDanhSach($key,$pageIndex,$soLuong)
+    public function GetAllDanhSach($key,$pageIndex,$soLuong,$arrange,$properties)
     {
         trim($key);
         // Kiểm tra đang ở trang
@@ -88,7 +88,7 @@
             INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai  
             where concat(sanpham.MaSanPham,sanpham.TenSanPham,sanpham.GiaSanPham,theloai.TenTheloai,chatlieu.TenChatLieu,khuyenmai.TenKhuyenMai) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaSanPham DESC";
+            $qr .= " ORDER BY $properties $arrange";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -100,7 +100,7 @@
             INNER JOIN chatlieu on sanpham.MaChatLieu = chatlieu.MaChatLieu  
             INNER JOIN thuonghieu on sanpham.MaThuongHieu = thuonghieu.MaThuongHieu
             INNER JOIN khuyenmai on sanpham.MaKhuyenMai = khuyenmai.MaKhuyenMai 
-            ORDER BY MaSanPham DESC";
+            ORDER BY $properties $arrange";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

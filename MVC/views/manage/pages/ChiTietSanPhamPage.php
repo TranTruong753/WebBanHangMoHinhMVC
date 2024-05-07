@@ -41,11 +41,21 @@
   <thead>
     <tr>
       <th>Hình ảnh</th>
-      <th>ID</th>
-      <th>Tên</th>
-      <th>Màu sắc</th>
-      <th>Kích cở</th>
-      <th>Số lượng tồn</th>
+      <th>ID
+      <button value="MaChiTietSanPham" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Tên
+      
+      </th>
+      <th>Màu sắc
+      <button value="TenMauSac" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Kích cở
+      <button value="TenKichCo" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Số lượng tồn
+      <button value="SoLuongTon" onclick="getArrange(this)">^</button>
+      </th>
       <th>Trạng thái</th>
       <th>Thao tác</th>
       

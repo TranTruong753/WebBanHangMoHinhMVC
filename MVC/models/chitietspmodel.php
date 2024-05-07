@@ -127,7 +127,7 @@ class chitietspmodel extends DB{
            return true;
         return false;
     }
-    public function getDanhSach($key,$pageIndex,$soLuong,$masp)
+    public function getDanhSach($key,$pageIndex,$soLuong,$masp,$arrange,$properties)
     {
         trim($key);
         // Kiểm tra đang ở trang
@@ -150,7 +150,7 @@ class chitietspmodel extends DB{
             where concat(chitietsanpham.Machitietsanpham,mausac.TenMauSac,kichco.TenKichCo) like '%$key%' and 
             chitietsanpham.MaSanPham= '$masp' "; 
 
-            $qr .= " ORDER BY Machitietsanpham DESC";
+            $qr .= " ORDER BY $properties $arrange";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -161,7 +161,7 @@ class chitietspmodel extends DB{
             $qr .= " INNER JOIN mausac 
             on chitietsanpham.MaMauSac= mausac.MaMauSac INNER JOIN kichco  
             on chitietsanpham.MaKichCo= kichco.MaKichCo INNER JOIN sanpham 
-            on sanpham.MaSanPham=chitietsanpham.MaSanPham where  chitietsanpham.MaSanPham= '$masp'  ORDER BY MaChiTietSanPham DESC";
+            on sanpham.MaSanPham=chitietsanpham.MaSanPham where  chitietsanpham.MaSanPham= '$masp'  ORDER BY $properties $arrange";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

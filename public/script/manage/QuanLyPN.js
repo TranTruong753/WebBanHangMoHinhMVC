@@ -4,12 +4,13 @@ var size = 4;
 var sql ="INNER JOIN nhacungcap "+
 "on phieunhap.MaNhaCungCap= nhacungcap.MaNhaCungCap INNER JOIN nhanvien  "+
 "on phieunhap.MaNhanVien= nhanvien.MaNhanVien where nhacungcap.TrangThai=1"
-
+var arrange="ASC";
+var properties="MaPhieuNhap";
  // load khi chạy trang
  $(document).ready(function() {
   index = 1;
   size = 4;
-  loadTable("", index, size)
+  loadTable("", index, size,arrange,properties)
   loadPhanTrang("phieunhap", index, size, sql, "");
 
 })
@@ -52,11 +53,22 @@ function btnXoa(obj)
       alert(data);
     }
   })
-  loadTable(tmpKey,index,size)
+  loadTable("", index, size,arrange,properties)
   loadPhanTrang("phieunhap",index,size,"",tmpKey)
 }
 
-function loadTable(key, index, size) {
+function getArrange(ojt){
+  //alert(ojt.value);
+  //arrange=ojt.value;
+  properties=ojt.value;
+  if(arrange=="DESC")
+    arrange="ASC"
+  else arrange="DESC"
+  loadTable("", index, size,arrange,properties);
+  loadPhanTrang("phieunhap", index, size, sql, "");
+  
+}
+function loadTable(key, index, size,arrange,properties) {
   $.ajax({
     url: "http://localhost/WebBanHangMoHinhMVC/AjaxPhieuNhap/getDanhSach",
     type: "post",
@@ -64,7 +76,9 @@ function loadTable(key, index, size) {
     data: {
       key: tmpKey,
       index: index,
-      size: size
+      size: size,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       $(".row-table").html(data)
@@ -88,7 +102,9 @@ $(document).on("click", ".btnPhanTrang", function() {
     data: {
       key: tmpKey,
       index: index,
-      size: size
+      size: size,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       $(".row-table").html(data)
@@ -112,6 +128,8 @@ $(document).on("click", "#btnSearch", function() {
       key: key,
       index: index,
       size: size,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       console.log(data)
