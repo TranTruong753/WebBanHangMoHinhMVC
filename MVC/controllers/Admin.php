@@ -79,7 +79,7 @@ class Admin extends controller
             $NhomQuyenModel = $this->model("NhomQuyenModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"] = $NhomQuyenModel->getDanhSach("",$this->params[1],$this->params[2]);
-            $this->data["Data"] = [];
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "NhomQuyenPage";
         } else if ($this->pageName == "ChucNangPage") {
             $ChucNangModel = $this->model("ChucNangModel");
@@ -103,24 +103,29 @@ class Admin extends controller
             $this->data["detail"] = "ThuongHieuPage";
         } else if ($this->pageName == "TheLoaiPage") {
             $TheLoaiModel = $this->model("TheLoaiModel");
-            $this->data["Data"]= $TheLoaiModel->GetTheLoaiModel();
+            // $this->data["Data"]= $TheLoaiModel->GetTheLoaiModel();
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "TheLoaiPage";
         } else if ($this->pageName == "ChatLieuPage") {
             $ChatLieuModel = $this->model("ChatLieuModel");
-            $this->data["Data"] = $ChatLieuModel->getDanhSach();
+            // $this->data["Data"] = $ChatLieuModel->getDanhSach();
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "ChatLieuPage";
         } else if ($this->pageName == "KichCoPage") {
             $KichCoModel = $this->model("KichCoModel");
-            $this->data["Data"] = $KichCoModel->getDanhSach();
+            // $this->data["Data"] = $KichCoModel->getDanhSach();
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "KichCoPage";
         } else if ($this->pageName == "MauSacPage") {
             $MauSacModel = $this->model("MauSacModel");
-            $this->data["Data"] = $MauSacModel->getDanhSach();
+            // $this->data["Data"] = $MauSacModel->getDanhSach();
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "MauSacPage";
         }
         else if ($this->pageName == "NhaCungCapPage") {
             $NhaCungCapModel = $this->model("NhaCungCapModel");
-            $this->data["Data"] = $NhaCungCapModel->getDanhSach();
+            // $this->data["Data"] = $NhaCungCapModel->getDanhSach();
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "NhaCungCapPage";
         }
         // nhân viên
@@ -128,7 +133,7 @@ class Admin extends controller
             // $NhanVienModel = $this->model("NhanVienModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"] = $NhanVienModel->getDanhSach("",$this->params[1],$this->params[2]);
-            $this->data["Data"] = [];
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "NhanVienPage";
         }
         else if($this->pageName == "SuaNhanVienPage"){
@@ -147,7 +152,7 @@ class Admin extends controller
             $KhachHangModel = $this->model("KhachHangModel");
             $PhanTrangModel = $this->model("PhanTrangModel");
             // $this->data["Data"] = $KhachHangModel->getDanhSach("",$this->params[1],$this->params[2]);
-            $this->data["Data"] = [];
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
             $this->data["detail"] = "KhachHangPage";
         }
         else if($this->pageName == "SuaKhachHangPage"){
@@ -165,7 +170,7 @@ class Admin extends controller
         else if ($this->pageName == "KhuyenMaiPage") {
             $KhuyenMaiModel = $this->model("KhuyenMaiModel");
             $this->data["detail"] = "KhuyenMaiPage";
-            $this->data["Data"]=[];
+            $this->data["Data"]=["ChiTietQuyenModel"=>$ChiTietQuyenModel];
         }
         else if ($this->pageName == "HoaDonPage") {
             $HoaDonModel = $this->model("HoaDonModel");
@@ -230,6 +235,7 @@ class Admin extends controller
         else if ($this->pageName == "ThemTheLoaiPage") {
             $cl=$this->model( "ChungLoaiModel")->GetChungLoaiModel();
             $this->data["detail"] = "addPages/ThemTheLoaiPage";
+            
             $this->data["Data"] = ["CL"=>$cl];
         }
         else if ($this->pageName == "ThemKichCoPage") {

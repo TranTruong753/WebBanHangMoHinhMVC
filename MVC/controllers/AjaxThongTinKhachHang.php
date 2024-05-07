@@ -1,10 +1,12 @@
 <?php 
 class AjaxThongTinKhachHang extends controller {
     public $KhachHangModel ;
+    private $ChiTietQuyenModel;
 
     function __construct()
     {
         $this->KhachHangModel= $this->model("KhachHangModel");
+        $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
     public function DoiTrangThai()
@@ -139,10 +141,17 @@ class AjaxThongTinKhachHang extends controller {
             </td>
             <td style='text-align: center;'>
               <div class ='btn-wrap'>
-                <!-- link  để chuyển sang trang nhóm quyền -->
-                <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  ><i class='bx bx-x'></i></a>
-                <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'><i class='bx bxs-edit'></i></a>  
-                ";
+                <!-- link  để chuyển sang trang nhóm quyền -->";
+                if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Khách Hàng"])==1)
+              {
+                $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaKhachHang"] ."'  ><i class='bx bx-x'></i></a>";
+              }
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Khách Hàng"])==1)
+              {
+                $html.= "<a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhachHangPage,".$row['MaKhachHang']."'><i class='bx bxs-edit'></i></a>   ";
+              }
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Thêm",$_SESSION["MaNhomQuyen"],$_SESSION["Khách Hàng"])==1)
+              {
                 if($this->KhachHangModel->kiemTraTaiKhoanKh($row['MaKhachHang'],$arr)==1){
                   //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
                   $html .= "<a class = 'btn btn-account account-true' href='#!' id='".$row["MaKhachHang"]."'><i class='bx bxs-user-account'></i></a>";
@@ -150,6 +159,8 @@ class AjaxThongTinKhachHang extends controller {
                 else {
                   $html .= "<a class = 'btn btn-account account-false' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanKhachHangPage,".$row["MaKhachHang"]."' id='".$row["MaKhachHang"]."'><i class='bx bxs-user-account'></i></a>";
                 }
+              }
+               
               $html .="
             </div>
           </td>

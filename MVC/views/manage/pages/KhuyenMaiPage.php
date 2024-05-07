@@ -17,10 +17,17 @@
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
       </label>
-      <label class="btn btn_add" for="dieuhuong"> 
+      <?php
+    if ($this->data['Data']['ChiTietQuyenModel']->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Khuyến Mãi']) == 1) {
+    ?>
+       <label class="btn btn_add" for="dieuhuong"> 
         <i class='bx bx-plus'></i>
         <input type="button" class="" onclick="DieuHuong()" id="dieuhuong" value="Thêm">
       </label>
+    <?php
+    }
+    ?>
+     
     </div>
   </div>
 

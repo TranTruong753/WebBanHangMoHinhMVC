@@ -7,10 +7,12 @@ class AjaxNhomQuyen extends controller
 
     // Must have SayHi()
     private $NhomQuyenModel;
+    private $ChiTietQuyenModel;
     function __construct()
     {
         $this->NhomQuyenModel = $this->model('NhomQuyenModel');
-    }
+        $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
+      }
 
     public function DoiTrangThai()
     {
@@ -84,10 +86,19 @@ class AjaxNhomQuyen extends controller
                 
               </td>
               <td style='text-align: center;'>
-              <!-- link  để chuyển sang trang nhóm quyền -->
-                <a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'><i class='bx bx-x'></i></a>  
-                <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'><i class='bx bxs-edit'></i></a>
-                             
+              <!-- link  để chuyển sang trang nhóm quyền -->";
+
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhóm Quyền"])==1)
+              {
+                $html.= "<a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaNhomQuyen"] ."'><i class='bx bx-x'></i></a>";
+              }
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhóm Quyền"])==1)
+              {
+                $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhomQuyenPage,".$row['MaNhomQuyen']."'><i class='bx bxs-edit'></i></a>   ";
+              }
+                  
+                
+                    $html.="         
               </td>
             </tr> ";
               

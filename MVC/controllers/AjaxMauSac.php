@@ -1,8 +1,10 @@
 <?php
 class AjaxMauSac extends controller{
     public $MauSacModel;
+    private $ChiTietQuyenModel;
     public function __construct(){
        $this->MauSacModel= $this->model("MauSacModel");
+       $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
     public function DoiTrangThai(){
@@ -59,8 +61,12 @@ class AjaxMauSac extends controller{
                 </label>  
                </td>
                <td style='text-align: center;'>
-               <!-- link  để chuyển sang trang nhóm quyền -->
-                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'><i class='bx bxs-edit'></i></a>
+               <!-- link  để chuyển sang trang nhóm quyền -->";
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
+               {
+                $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'><i class='bx bxs-edit'></i></a>";
+               }
+                 $html.="
                </td>
              </tr> ";
                

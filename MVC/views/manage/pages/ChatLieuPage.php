@@ -1,7 +1,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <div>
-    <h1 class="styleText-01">Quản Lý Chất Liệu</h1>
-  </div>
+<div>
+  <h1 class="styleText-01">Quản Lý Chất Liệu</h1>
+</div>
 
 <!-- <div class="search">
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
@@ -10,27 +10,34 @@
 <input type="submit" onclick="DieuHuong()" value="Thêm">
 <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm Tươi"> -->
 
-  <div class="search-wrap">
-    <div class="search">
-      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
-      <label class="btn btn_search" for="btnSearch">
-        <i class='bx bx-search'></i>
-        <input type="button" id="btnSearch" value="" hidden>
-      </label>
-    </div>
-    <!-- Nút sang form dữ liệu nhóm quyền  -->
-     <!-- Nút sang form dữ liệu nhóm quyền  -->
-    <div class="block-wrap">
-      <label class="btn btn_reset" for="btnRefresh">
-        <i class='bx bx-reset'></i>
-        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
-      </label>
-      <div class="btn btn_add"> 
+<div class="search-wrap">
+  <div class="search">
+    <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
+    <label class="btn btn_search" for="btnSearch">
+      <i class='bx bx-search'></i>
+      <input type="button" id="btnSearch" value="" hidden>
+    </label>
+  </div>
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <div class="block-wrap">
+    <label class="btn btn_reset" for="btnRefresh">
+      <i class='bx bx-reset'></i>
+      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+    </label>
+    <?php
+    if ($this->data['Data']['ChiTietQuyenModel']->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Chất Liệu']) == 1) {
+    ?>
+      <div class="btn btn_add">
         <i class='bx bx-plus'></i>
         <input type="button" class="" onclick="DieuHuong()" value="Thêm">
       </div>
-    </div>
+    <?php
+    }
+    ?>
+
   </div>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -49,37 +56,34 @@
 </div>
 
 <script>
-  function DoiTrangThaiChatLieu(obj)
-  {
+  function DoiTrangThaiChatLieu(obj) {
     var ma = obj.id;
     var checkBox = document.getElementById(ma)
     // var result = confirm("Bạn có muốn đổi trạng thái?");
     // if (result == true) {
-      if (checkBox.checked == true) {
-        var trangThai = 1;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
 
-          // alert(data);
-        })
-      } else {
-        var trangThai = 0;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
-          // alert(data);
-        })
-      }
+        // alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    }
     // }
   }
 
-  function DieuHuong()
-  {
-    window.location="http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChatLieuPage";
+  function DieuHuong() {
+    window.location = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ThemChatLieuPage";
   }
-
 </script>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlyCLJS.js"></script>

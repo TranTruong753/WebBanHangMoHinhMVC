@@ -2,8 +2,10 @@
 <?php
 class AjaxNhaCungCap extends controller{
     public $NhaCungCapModel;
+    private $ChiTietQuyenModel;
     public function __construct(){
        $this->NhaCungCapModel= $this->model("NhaCungCapModel");
+       $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
     public function DoiTrangThai(){
@@ -66,9 +68,14 @@ class AjaxNhaCungCap extends controller{
                 </label>    
                </td>
                <td>
-               <!-- link  để chuyển sang trang nhóm quyền -->
+               <!-- link  để chuyển sang trang nhóm quyền -->";
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
+               {
+                $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhaCungCapPage,".$row['MaNhaCungCap']."'><i class='bx bxs-edit'></i></a>";
+               }
+               $html.="
                  
-               <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhaCungCapPage,".$row['MaNhaCungCap']."'><i class='bx bxs-edit'></i></a>
+               
                </td>
              </tr> ";
                

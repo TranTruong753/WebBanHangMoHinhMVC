@@ -1,10 +1,12 @@
 <?php
     class AjaxNhanVien extends controller {
   public $NhanVienModel ;
+  private $ChiTietQuyenModel;
 
     function __construct()
     {
         $this->NhanVienModel= $this->model("NhanVienModel");
+        $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
   public function getDanhSach(){
@@ -44,16 +46,29 @@
             <td>
             <!-- link  để chuyển sang trang nhóm quyền -->
               <div class ='btn-wrap'>
-              <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  ><i class='bx bx-x'></i></a> 
-              <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'><i class='bx bxs-edit'></i></a> 
+               
+               
               ";
-              if($this->NhanVienModel->kiemTraTaiKhoanNv($row['MaNhanVien'],$arr)==1){
-                //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
-                $html .= "<a class = 'btn btn-account account-true' href='#!' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
+
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhân Viên"])==1)
+              {
+                $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaNhanVien"] ."'  ><i class='bx bx-x'></i></a>";
               }
-              else {
-                $html .= "<a class = 'btn btn-account account-false'href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhân Viên"])==1)
+              {
+                $html.= "<a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhanVienPage,".$row['MaNhanVien']."'><i class='bx bxs-edit'></i></a>  ";
               }
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Thêm",$_SESSION["MaNhomQuyen"],$_SESSION["Nhân Viên"])==1)
+              {
+                if($this->NhanVienModel->kiemTraTaiKhoanNv($row['MaNhanVien'],$arr)==1){
+                  //http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$arr["MaTaiKhoan"]."
+                  $html .= "<a class = 'btn btn-account account-true' href='#!' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
+                }
+                else {
+                  $html .= "<a class = 'btn btn-account account-false'href='http://localhost/WebBanHangMoHinhMVC/Admin/default/CapTaiKhoanNhanVienPage,".$row["MaNhanVien"]."' id='".$row["MaNhanVien"]."'><i class='bx bxs-user-account'></i></a>";
+                }
+              }
+              
             $html .=" 
               </div>
             </td>
