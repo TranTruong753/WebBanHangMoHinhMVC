@@ -118,7 +118,7 @@ class AjaxSanPham extends controller {
                 <button class = "btn btn_delete"   onclick="XoaSP(this)" id="'.$row["MaSanPham"].'"><i class="bx bx-x"></i></button> </br> ';
               }
 
-              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xem",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
               {
                 $html.='
                 <a class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bx-dots-horizontal-rounded"></i></a>';
