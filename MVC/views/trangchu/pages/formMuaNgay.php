@@ -132,53 +132,53 @@
                                         <th>Tổng tính</th>
                                         <th>Xóa</th>
                                     </tr>
-                                    <div id="getds">
-                                    <?php
-                                    
-                                    if ($data['GH']->num_rows > 0) {
-                                        while ($row = $data['GH']->fetch_assoc()) {
-                                            $tongtien=0;
-                                            $tongtien=$tongtien+$row['SoLuong']*$row['GiaSanPham'];
-                                                echo  '
-                                    <tr class="table-title table-line">
-                                        <td class="table-product">';
-                                        if($row['MaChiTietSanPham']== $data['CTSP']){
-                                            echo '<input type="hidden" id="mactspgh" value="'.$row['MaChiTietSanPham'].'">
-                                            <input class="procedure-input__check" type="checkbox" checked  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >
-                                            ';
-                                        } else {
-                                            echo '<input class="procedure-input__check" type="checkbox"  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >';
-                                        }
-                                           echo' <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'" ><span  class="procedure-label__tick"></span></label>                                  
-                                            <div class="table-product__info">
-                                                <img class="table-product__img" src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="">
-                                                <div class="table-title-wrap">
-                                                    <p class="table__info-title">'.$row['TenSanPham'].'</p>
-                                                   <div class="table__info-input-wrap">
-                                                        <div class="table__info-size">'.$row['TenKichCo'].'</div>
-                                                        <div class="table__info-color">Color: '.$row['TenMauSac'].'</div>                                                
-                                                   </div>
-                                                </div>
-                                            </div>                                       
-                                        </td>
-                                        <td>
-                                        '.$row['SoLuong'].'
-                                        </td>
-                                        <td>
-                                        '.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
-                                        </td>
-                                        <td>
-                                        '.number_format($row['SoLuong']*$row['GiaSanPham'], 0, ',', '.').' VNĐ
-                                        </td>
-                                        <td>
-                                            <div class="table__icon" id="xoa'.$row['MaChiTietSanPham'].'"  onclick="Delete(this)"><i class="fa-solid fa-trash"></i></div>
-                                            <input type="hidden" id="xoa'.$row['MaChiTietSanPham'].'x" value="'.$row['MaChiTietSanPham'].'">
-                                        </td>
-                                    </tr>';
-                                    
-                                        }
-                                    }?>
-                                    </div>
+                                        <div id="getds">
+                                        <?php
+                                        
+                                        if ($data['GH']->num_rows > 0) {
+                                            while ($row = $data['GH']->fetch_assoc()) {
+                                                $tongtien=0;
+                                                $tongtien=$tongtien+$row['SoLuong']*$row['GiaSanPham'];
+                                                    echo  '
+                                        <tr class="table-title table-line">
+                                            <td class="table-product">';
+                                            if($row['MaChiTietSanPham']== $data['CTSP']){
+                                                echo '<input type="hidden" id="mactspgh" value="'.$row['MaChiTietSanPham'].'">
+                                                <input class="procedure-input__check" type="checkbox" checked  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >
+                                                ';
+                                            } else {
+                                                echo '<input class="procedure-input__check" type="checkbox"  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >';
+                                            }
+                                            echo' <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'" ><span  class="procedure-label__tick"></span></label>                                  
+                                                <div class="table-product__info">
+                                                    <img class="table-product__img" src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="">
+                                                    <div class="table-title-wrap">
+                                                        <p class="table__info-title">'.$row['TenSanPham'].'</p>
+                                                    <div class="table__info-input-wrap">
+                                                            <div class="table__info-size">'.$row['TenKichCo'].'</div>
+                                                            <div class="table__info-color">Color: '.$row['TenMauSac'].'</div>                                                
+                                                    </div>
+                                                    </div>
+                                                </div>                                       
+                                            </td>
+                                            <td>
+                                            '.$row['SoLuong'].'
+                                            </td>
+                                            <td>
+                                            '.number_format($row["GiaSanPham"], 0, ',', '.').' VNĐ
+                                            </td>
+                                            <td>
+                                            '.number_format($row['SoLuong']*$row['GiaSanPham'], 0, ',', '.').' VNĐ
+                                            </td>
+                                            <td>
+                                                <div class="table__icon" id="xoa'.$row['MaChiTietSanPham'].'"  onclick="Delete(this)"><i class="fa-solid fa-trash"></i></div>
+                                                <input type="hidden" id="xoa'.$row['MaChiTietSanPham'].'x" value="'.$row['MaChiTietSanPham'].'">
+                                            </td>
+                                        </tr>';
+                                        
+                                            }
+                                        }?>
+                                        </div>
 
                                 </table>
                             </div>

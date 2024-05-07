@@ -135,7 +135,7 @@
                                 </div>
                                 
                                 <div class="content__input">
-                                    <select name="" id="content__input-select"  class="content__input-select">
+                                    <select id="content__input-select" onchange="changecount()" class="content__input-select">
                                         <option>Vui lòng chọn màu</option>
                                         <!-- <option value="sizeL">L</option>
                                         <option value="sizeM">M</option> -->
