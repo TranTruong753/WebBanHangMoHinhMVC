@@ -15,7 +15,10 @@ class Admin extends controller
      
         if ($this->pageName == "SanPhamPage") {
             $SanPhamModel = $this->model("SanPhamModel");
-            $this->data["Data"] = $SanPhamModel->getDanhSachAdmin();
+            $ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
+
+            // $this->data["Data"] = $SanPhamModel->getDanhSachAdmin();
+            $this->data['Data'] = ['ChiTietQuyenModel'=>$ChiTietQuyenModel];
             $this->data["detail"] = "SanPhamPage";
         } 
         else if ($this->pageName == "MainPage") {            

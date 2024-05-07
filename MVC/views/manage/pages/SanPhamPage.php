@@ -20,10 +20,22 @@
       <i class='bx bx-reset'></i>
       <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
     </label>
-    <div class="btn btn_add"> 
+    <!--  -->
+    <?php
+    $ChiTietQuyenModel = $this->data['Data']['ChiTietQuyenModel'];
+    if( $ChiTietQuyenModel->KiemTraHanhDong("Thêm",$_SESSION['MaNhomQuyen'],$_SESSION['Sản Phẩm']))
+    {
+
+      ?>
+ <div class="btn btn_add"> 
       <i class='bx bx-plus'></i>
       <input type="button" class="" onclick="DieuHuong()" value="Thêm">
     </div>
+      <?php
+    }
+    ?>
+   
+    <!--  -->
   </div>
 </div>
 

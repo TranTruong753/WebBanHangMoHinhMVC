@@ -6,12 +6,11 @@ class AjaxSanPham extends controller {
     private $chitietspmodel;
     private $KhuyenMaiModel;
     private $ChiTietQuyenModel;
-
     public function __construct() {
        $this->SanPhamModel = $this->model("SanPhamModel");
        $this->chitietspmodel = $this->model("chitietspmodel");
        $this->KhuyenMaiModel = $this->model("KhuyenMaiModel");
-      $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
+       $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
     }
     function InsertSP(){
         $masp = $_POST["masp"];
@@ -107,23 +106,26 @@ class AjaxSanPham extends controller {
               </label>
               
             </td>
-              <td>';
+              <td> ';
               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
               {
-              $html.=' <a  class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bxs-edit"></i></a>';
+                $html.= ' <a  class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bxs-edit"></i></a>';
               }
 
               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
               {
-                $html='<button class = "btn btn_delete"   onclick="XoaSP(this)" id="'.$row["MaSanPham"].'"><i class="bx bx-x"></i></button> </br>';
+                $html.='
+                <button class = "btn btn_delete"   onclick="XoaSP(this)" id="'.$row["MaSanPham"].'"><i class="bx bx-x"></i></button> </br> ';
               }
-                
-              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xem",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
+
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Sản Phẩm"])==1)
               {
-                $html = '<a class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bx-dots-horizontal-rounded"></i></a>';
+                $html.='
+                <a class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,'.$row["MaSanPham"].'"><i class="bx bx-dots-horizontal-rounded"></i></a>';
               }
-              
-              $html.='
+               $html.='
+                
+                
               </td>
             </tr>';
               
