@@ -123,11 +123,16 @@ class AjaxChucNang extends controller {
                         <span class='slider round'></span>
                     </label>  
                 </td>
-          <td style='text-align: center;'>
-       
-            <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>
-            <a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>
-             
+          <td style='text-align: center;'>";
+
+          if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1)
+          {
+            $render .= " <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>";
+          }
+          if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1){
+            $render.="<a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>";
+          }
+         $render.="    
           </td>
         </tr>
             ";

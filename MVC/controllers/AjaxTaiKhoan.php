@@ -3,14 +3,15 @@
 class AjaxTaiKhoan extends controller {
 
     private $TaiKhoanModel;
+    private $ChiTietQuyenModel;
     public function __construct() {
        $this->TaiKhoanModel = $this->model("TaiKhoanModel");
-    }
+       $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
+      }
 
     function DoiTrangThai(){
         $ma = $_POST["ma"];
         $trangThai =  $_POST["trangThai"];
-
         $this->TaiKhoanModel->updateTrangThai($ma,$trangThai);
     }
 
@@ -45,10 +46,18 @@ class AjaxTaiKhoan extends controller {
                 </label>  
               </td>
               <td style='text-align: center;'>
-              <!-- link  để chuyển sang trang nhóm quyền --> 
-                <a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaTaiKhoan"] ."'  ><i class='bx bx-x'></i></a>              
-                <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$row['MaTaiKhoan']."'><i class='bx bxs-edit'></i></a>                              
-              </td>
+              <!-- link  để chuyển sang trang nhóm quyền --> ";
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Tài Khoản"])==1)
+              {
+                $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaTaiKhoan"] ."'  ><i class='bx bx-x'></i></a> ";
+              }
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Tài Khoản"])==1)
+              {
+                $html.= "<a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTaiKhoanPage,".$row['MaTaiKhoan']."'><i class='bx bxs-edit'></i></a>  ";
+              }
+
+                                            
+             $html.=" </td>
             </tr> ";
               
             }

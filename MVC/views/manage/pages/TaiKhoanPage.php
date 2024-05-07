@@ -20,9 +20,18 @@ $PhanTrangModel = new PhanTrangModel();
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
       </label>
-      <label for="dieuhuong" class="btn btn_add"> 
+      <?php
+        $ChiTietQuyenModel = $this->data["Data"]["ChiTietQuyenModel"];
+        if($ChiTietQuyenModel->KiemTraHanhDong("Thêm",$_SESSION['MaNhomQuyen'],$_SESSION['Tài Khoản']))
+        {
+          ?>
+<label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
         <input type="button" class="" onclick="DieuHuong()" id="dieuhuong" value="Thêm">
+          <?php
+        }
+      ?>
+      
       </label>
     </div>
   </div>
