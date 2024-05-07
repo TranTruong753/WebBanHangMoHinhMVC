@@ -117,6 +117,7 @@
                             </div>
                        </div>
                        <div class="procedure-left__center table">
+                        <input type="hidden" id="ctspchoose" value="<?php echo $data['CTSP']?>">
                             <div class="procedure-wrap" id ="procedure-wrap">
                                 <div class="procedure-left__header">
                                     <input class="procedure-input__check"  type="checkbox" name="allProduct" id="allProduct">
@@ -132,7 +133,7 @@
                                         <th>Tổng tính</th>
                                         <th>Xóa</th>
                                     </tr>
-                                        <div id="getds">
+                                       
                                         <?php
                                         
                                         if ($data['GH']->num_rows > 0) {
@@ -178,7 +179,7 @@
                                         
                                             }
                                         }?>
-                                        </div>
+                                    
 
                                 </table>
                             </div>

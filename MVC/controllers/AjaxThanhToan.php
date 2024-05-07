@@ -74,16 +74,41 @@ class AjaxThanhToan extends controller{
       
 
       function Delete(){
+        $ctspchoose=$_POST['ctspchoose'];
         if(isset($_SESSION['email'])){
             $makh=$_SESSION['email'];
         }
+        echo '
+        <div class="procedure-left__header">
+            <input class="procedure-input__check"  type="checkbox" name="allProduct" id="allProduct">
+            <label class="procedure-label__check" for="allProduct"><span class="procedure-label__tick"></span></label>
+            <label for="allProduct">Tất cả</label>
+        </div>
+        <table class="procedure__table table">
+            <!-- tiêu đề -->
+            <tr class="table table-title">
+                <th style="text-align: left; padding-left:30px;">Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Tổng tính</th>
+                <th>Xóa</th>
+            </tr>';
         $resultKQ=$this->GioHangModel->GetAll($makh);
         if ($resultKQ->num_rows > 0) {
             while ($row = $resultKQ->fetch_assoc()) {
-                echo    '
-                <tr class="table-title table-line">
-                    <td class="table-product">
-                        <input class="procedure-input__check" type="checkbox" name="product" id="'.$row['MaChiTietSanPham'].'">
+                $tongtien=0;
+                $tongtien=$tongtien+$row['SoLuong']*$row['GiaSanPham'];
+                    echo  '
+        <tr class="table-title table-line">
+            <td class="table-product">';
+            if($row['MaChiTietSanPham']== $ctspchoose){
+                echo '<input type="hidden" id="mactspgh" value="'.$row['MaChiTietSanPham'].'">
+                <input class="procedure-input__check" type="checkbox" checked  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >
+                ';
+            } else {
+                echo '<input class="procedure-input__check" type="checkbox"  onclick="clicka(this)" value="'.$tongtien.'" name="product" id="'.$row['MaChiTietSanPham'].'" >';
+            }
+            echo'
                         <label class="procedure-label__check" for="'.$row['MaChiTietSanPham'].'"><span class="procedure-label__tick"></span></label>                                  
                         <div class="table-product__info">
                             <img class="table-product__img" src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'" alt="">
@@ -106,7 +131,8 @@ class AjaxThanhToan extends controller{
                     '.number_format($row['SoLuong']*$row['GiaSanPham'], 0, ',', '.').' VNĐ
                     </td>
                     <td>
-                        <div class="table__icon"><i class="fa-solid fa-trash"></i></div>
+                    <div class="table__icon" id="xoa'.$row['MaChiTietSanPham'].'"  onclick="Delete(this)"><i class="fa-solid fa-trash"></i></div>
+                    <input type="hidden" id="xoa'.$row['MaChiTietSanPham'].'x" value="'.$row['MaChiTietSanPham'].'">
                     </td>
                 </tr>';
             }

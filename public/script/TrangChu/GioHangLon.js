@@ -30,7 +30,7 @@ function test(){
         }
         else{
             $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/thanhtoan",{arr: arr,sdt:sdt,diachi:diachi,date:date,pttt: pttt,tongtien: tongtien},function(data){
-                $("#procedure-wrap").html(data);
+                //$("#procedure-wrap").html(data);
                  alert("Thanh toán thành công");
                 var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
                 window.location.assign(url);
@@ -41,19 +41,34 @@ function test(){
 }
 
 function Delete(ojt){
+    //alert(1);
+    var ctspchoose=document.getElementById("ctspchoose").value;
     var mactsp=document.getElementById(ojt.id+"x").value;
+    var id=document.getElementById(mactsp);
+    if($("#tongtien").val()!=0){
+        id.checked=false;
+        clicka(id);
+    }
+    
     //alert(mactsp);
     $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
-    //alert("xóa thành công");
-    $("#cart-preview").html(data);
+    alert("xóa thành công");
+        //$("#cart-preview").html(data);
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/Delete",{ctspchoose:ctspchoose},function(data1){
+        //alert(data);
+        $("#procedure-wrap").html(data1);
+        
+        $("#tongtien").val("0");
+        $("#hientongtien").html("0 VNĐ");
+        $("#thanhtien").val(80000);
+        $("#hienthanhtien").html("0 VNĐ");
+        })
     })
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/Delete",{},function(data){
-    //alert("xóa thành công");
-    $("#getds").html(data);
-    })
+    
 }
 
 function clicka(ojt){
+   // alert(1);
     if(ojt.checked)
     {
         var tongtien=document.getElementById('tongtien').value;
