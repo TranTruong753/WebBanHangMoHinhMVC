@@ -11,7 +11,7 @@ class AjaxThongTinKhachHang extends controller {
 
     public function DoiTrangThai()
     {
-        $ma = $_POST['ma'];
+        $ma = $_POST['ma']; 
         $trangThai = $_POST['trangThai'];
         $this->KhachHangModel->updateTrangThai($ma,$trangThai);
     }
