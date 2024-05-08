@@ -30,17 +30,33 @@ function addCTSP(){
     //alert(hinhanh+" "+mactsp+" "+masp+" "+mamausac+" "+makichco);
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{mactsp:mactsp,
         masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
-            var decodedData = JSON.parse(data);
-         //alert(decodedData.echo);
+        var decodedData = JSON.parse(data);
+         alert(decodedData.echo);
          if(decodedData.kq==true){
             alert("them thanh cong");
             $("#ctsp").html(decodedData.echo);
             var soMuoi =parseInt( mactsp.slice(4))+1;
              var mamoi="CTSP"+parseInt(soMuoi);
              $("#mactsp").val(mamoi);
+
+          //    swal({
+          //     title: "Thêm thành công!",
+          //     text: "Nhấn vào nút để tiếp tục!",
+          //     icon: "success",
+          //   }).then(function () {
+          //     $("#ctsp").html(decodedData.echo);
+          //     var soMuoi =parseInt( mactsp.slice(4))+1;
+          //      var mamoi="CTSP"+parseInt(soMuoi);
+          //      $("#mactsp").val(mamoi);
+          // })
          }
          else {
-            alert("chi tiet san pham da ton tại");
+            // alert("chi tiet san pham da ton tại");
+            swal({
+              title: "Lỗi! chi tiet san pham da ton tại!",
+              text: "Nhấn vào nút để tiếp tục!",
+              icon: "error",
+            })
          }
         })
 }
@@ -57,13 +73,25 @@ function updateCTSP(){
         var decodedData = JSON.parse(data);
         //alert(decodedData.echo);
         if(decodedData.kq==true){
-           alert(decodedData.echo);
+          //  alert(decodedData.echo);
            var url = "http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietSanPhamPage,"+masp;
-             window.location.assign(url);
+            //  window.location.assign(url);
+            swal({
+              title: "Cập nhật thành công!",
+              text: "Nhấn vào nút để tiếp tục!",
+              icon: "success",
+            }).then(function () {
+                window.location.assign(url);
+            })
            
         }
         else {
-           alert(decodedData.echo);
+          //  alert(decodedData.echo);
+          swal({
+            title: "Lỗi! "+decodedData.echo,
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+          })
         }
             
         })
@@ -72,30 +100,72 @@ function updateCTSP(){
 function DeleteCTSP(ojt){
     
     var mactsp=ojt.id;
-    let choice = confirm("Lưu ý: Chi tiết sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
-    if (choice) {
+    // let choice = confirm("Lưu ý: Chi tiết sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
+    // if (choice) {
        
-    $.ajax({
-      url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DeleteCTSP",
-      type: "post",
-      dataType: "JSON",
-      data: {
+    // $.ajax({
+    //   url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DeleteCTSP",
+    //   type: "post",
+    //   dataType: "JSON",
+    //   data: {
 
-        mactsp : mactsp
-      },
-      success: function(data) {
-        if(data.kq== true){
-          alert("xoa thanh cong");
+    //     mactsp : mactsp
+    //   },
+    //   success: function(data) {
+    //     if(data.kq== true){
+    //       alert("xoa thanh cong");
           
-          loadTable(tmpKey,index,size,arrange,properties)
-          loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
-        }
-        else {alert("xoa that bai");}
-      }
+    //       loadTable(tmpKey,index,size,arrange,properties)
+    //       loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
+    //     }
+    //     else {alert("xoa that bai");}
+    //   }
+    // })
+    // } else {
+    //     alert("Yêu cầu xóa đã hủy");
+    // }
+
+    swal({
+      title: "Bạn có chắc?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
-    } else {
-        alert("Yêu cầu xóa đã hủy");
-    }
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DeleteCTSP",
+                type: 'post',
+                dataType: 'html',
+                data: {
+                 
+        mactsp : mactsp
+                },
+                success: function(data) {
+                    if(data.kq== true){
+                      swal("Dữ liệu đã xóa thành công!", 
+                      {
+                        icon: "success",
+                      });
+                    }
+                    else {
+                      swal("Dữ liệu đã xóa thất bại!", 
+                      {
+                        icon: "error",
+                      });
+                    }
+                  
+                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                    loadTable(tmpKey,index,size,arrange,properties)
+                    loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
+
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
 
 }
 

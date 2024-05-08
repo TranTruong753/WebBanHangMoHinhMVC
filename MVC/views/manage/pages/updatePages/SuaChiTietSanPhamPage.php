@@ -39,7 +39,7 @@
            </div>
             <div class="show input-add_wrap" id="show">
                 <img src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'
-                    " style = "width:200px; height:250px; object-fit:cover" alt="">
+                    " alt="">
                 <input type="hidden" id ="filename" value ="'.$row['HinhAnh'].'"/>
             </div>
 

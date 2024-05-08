@@ -73,9 +73,16 @@ function updateSP(){
     var khuyenmai=document.getElementById("khuyenmai").value;
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/UpdateSP",{masp : masanpham, tensp: tensanpham, gianhap: gianhap,machatlieu: machatlieu,
     matheloai : matheloai,khuyenmai:khuyenmai},function(data){
-        alert("Cập nhật thành công");
+        // alert("Cập nhật thành công");
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
-                window.location.assign(url);
+        // window.location.assign(url);
+        swal({
+          title: "Cập nhật thành công!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        }).then(function () {
+            window.location.assign(url);
+        })
         //alert(data);
     });
     }
@@ -83,74 +90,74 @@ function updateSP(){
 }
 function XoaSP(ojt)
   { 
-    let choice = confirm("Lưu ý: sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
-    if (choice) {
-        var masp=ojt.id;
-        //alert(masp);
-        $.ajax({
-          url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
-          type: "post",
-          dataType: "JSON",
-          data: {
+    // let choice = confirm("Lưu ý: sản phẩm này sẽ bị xóa hoàn toàn.Bạn có chắc muốn xóa không!");
+    // if (choice) {
+    //     var masp=ojt.id;
+    //     //alert(masp);
+    //     $.ajax({
+    //       url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
+    //       type: "post",
+    //       dataType: "JSON",
+    //       data: {
 
-            masp : masp
-          },
-          success: function(data) {
-            //alert(data.kq);
-            if(data.kq== true){
-              alert("xoa thanh cong");
+    //         masp : masp
+    //       },
+    //       success: function(data) {
+    //         //alert(data.kq);
+    //         if(data.kq== true){
+    //           alert("xoa thanh cong");
               
-              loadTable(tmpKey,index,size,arrange,properties)
-              loadPhanTrangtest("sanpham",index,size,sql,tmpKey)
-            }
-            else {alert("xoa that bai");}
-          }
-        })
-    } else {
-        alert("Yêu cầu xóa đã hủy");
-    }
+    //           loadTable(tmpKey,index,size,arrange,properties)
+    //           loadPhanTrangtest("sanpham",index,size,sql,tmpKey)
+    //         }
+    //         else {alert("xoa that bai");}
+    //       }
+    //     })
+    // } else {
+    //     alert("Yêu cầu xóa đã hủy");
+    // }
 
-    // swal({
-    //   title: "Bạn có chắc?",
-    //   text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
-    //   icon: "warning",
-    //   buttons: true,
-    //   dangerMode: true,
-    // })
-    // .then((willDelete) => {
-    //   var masp=ojt.id;
-    //     if (willDelete) {
-    //         $.ajax({
-    //             url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
-    //             type: 'post',
-    //             dataType: 'html',
-    //             data: {
-    //               masp : masp
-    //             },
-    //             success: function(data) {
-    //                 if(data.kq== true){
-    //                   swal("Dữ liệu đã xóa thành công!", 
-    //                   {
-    //                     icon: "success",
-    //                   });
-    //                 }
-    //                 else {
-    //                   swal("Dữ liệu đã xóa thất bại!", 
-    //                   {
-    //                     icon: "error",
-    //                   });
-    //                 }
+    swal({
+      title: "Bạn có chắc?",
+      text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      var masp=ojt.id;
+        if (willDelete) {
+            $.ajax({
+                url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
+                type: 'post',
+                dataType: 'html',
+                data: {
+                  masp : masp
+                },
+                success: function(data) {
+                    if(data.kq== true){
+                      swal("Dữ liệu đã xóa thành công!", 
+                      {
+                        icon: "success",
+                      });
+                    }
+                    else {
+                      swal("Dữ liệu đã xóa thất bại!", 
+                      {
+                        icon: "error",
+                      });
+                    }
                   
-    //                 // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
-    //                 loadTable(tmpKey,index,size)
-    //                 loadPhanTrang("sanpham",index,size,sql,tmpKey)
+                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                    loadTable(tmpKey,index,size,arrange,properties)
+                    loadPhanTrangtest("sanpham",index,size,sql,tmpKey)
 
-    //             }
-    //         });
-    //     } else {
-    //         swal("Dữ liệu của bạn được an toàn!");
-    //     }
-    // });
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
     
   }
   function getArrange(ojt){
