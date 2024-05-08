@@ -117,14 +117,24 @@
         
         <thead>
             <tr>
-              <th>Hình ảnh</th>
-              <th>ID</th>
-              <th>Tên</th>
-              <th>Màu sắc</th>
-              <th>Kích cở</th>
-              <th>Số lượng tồn</th>
-              <th>Trang thái</th>
-              <th>Thao tác</th>
+            <th>Hình ảnh</th>
+      <th>ID
+      <button value="MaChiTietSanPham" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Tên
+      
+      </th>
+      <th>Màu sắc
+      <button value="TenMauSac" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Kích cở
+      <button value="TenKichCo" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Số lượng tồn
+      <button value="SoLuongTon" onclick="getArrange(this)">^</button>
+      </th>
+      <th>Trạng thái</th>
+      <th>Thao tác</th>
             </tr>
         </thead>
         
@@ -161,6 +171,8 @@
 
 <!-- <script src="http://localhost/WebBanHangMoHinhMVC/public/script/manage/QuanlySPJS.js"></script> -->
 <script>
+    var arrange="ASC";
+    var properties="MaChiTietSanPham";
     var arr=[];
     var tmpKey = "";
     var index = 1;
@@ -201,8 +213,21 @@
            gn =$('#gianhap').val();
           document.getElementById('thanhtien').value=parseInt(sl)*parseInt(gn);
         });
-        loadTable("", index, size);
+        loadTable("", index, size,arrange,properties);
 });
+
+
+function getArrange(ojt){
+  //alert(ojt.value);
+  //arrange=ojt.value;
+  properties=ojt.value;
+  if(arrange=="DESC")
+    arrange="ASC"
+  else arrange="DESC"
+  loadTable("", index, size,arrange,properties);
+  loadPhanTrang("chitietsanpham", index, size, sql, "");
+  
+}
 function gianhap(masp){
   $.ajax({
   url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/getgianhap",
@@ -221,7 +246,7 @@ function gianhap(masp){
   }
 })
 }
-function loadTable(key, index, size) {
+function loadTable(key, index, size,arrange,properties) {
   $.ajax({
     url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSach",
     type: "post",
@@ -230,7 +255,9 @@ function loadTable(key, index, size) {
       key: tmpKey,
       index: index,
       size: size,
-      masp : masp
+      masp : masp,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       $(".row-table").html(data)
@@ -250,7 +277,9 @@ $(document).on("click", "#btnSearch", function() {
       key: key,
       index: index,
       size: size,
-      masp : masp
+      masp : masp,
+      arrange:arrange,
+      properties:properties
     },
     success: function(data) {
       console.log(data)
@@ -263,7 +292,7 @@ function loadID(ojt){
     
 }
 function them(){
-  masp=$('#sanpham').val();
+  // masp=$('#sanpham').val();
   mactsp=$("#mactsp").val();
   sl=$("#soluong").val();
   gn=$("#gianhap").val();
@@ -379,7 +408,7 @@ function change(ojt){
     document.getElementById('gianhap').disabled = false;
     gianhap(masp);
   }
-  loadTable("", index, size);
+  loadTable("", index, size,arrange,properties);
 }
 
 </script>
