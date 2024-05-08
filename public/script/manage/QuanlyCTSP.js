@@ -31,24 +31,24 @@ function addCTSP(){
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/InsertCTSP",{mactsp:mactsp,
         masp: masp,mamausac : mamausac, makichco: makichco, hinhanh:hinhanh},function(data){
         var decodedData = JSON.parse(data);
-         alert(decodedData.echo);
+        //  alert(decodedData.echo);
          if(decodedData.kq==true){
-            alert("them thanh cong");
-            $("#ctsp").html(decodedData.echo);
-            var soMuoi =parseInt( mactsp.slice(4))+1;
-             var mamoi="CTSP"+parseInt(soMuoi);
-             $("#mactsp").val(mamoi);
+            // alert("them thanh cong");
+            // $("#ctsp").html(decodedData.echo);
+            // var soMuoi =parseInt( mactsp.slice(4))+1;
+            //  var mamoi="CTSP"+parseInt(soMuoi);
+            //  $("#mactsp").val(mamoi);
 
-          //    swal({
-          //     title: "Thêm thành công!",
-          //     text: "Nhấn vào nút để tiếp tục!",
-          //     icon: "success",
-          //   }).then(function () {
-          //     $("#ctsp").html(decodedData.echo);
-          //     var soMuoi =parseInt( mactsp.slice(4))+1;
-          //      var mamoi="CTSP"+parseInt(soMuoi);
-          //      $("#mactsp").val(mamoi);
-          // })
+            swal({
+              title: "Thêm thành công!",
+              text: "Nhấn vào nút để tiếp tục!",
+              icon: "success",
+            }).then(function () {
+              $("#ctsp").html(decodedData.echo);
+              var soMuoi =parseInt( mactsp.slice(4))+1;
+               var mamoi="CTSP"+parseInt(soMuoi);
+               $("#mactsp").val(mamoi);
+          })
          }
          else {
             // alert("chi tiet san pham da ton tại");

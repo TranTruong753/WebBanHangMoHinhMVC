@@ -156,7 +156,7 @@ if ($index == "Sửa") {
                 gioitinh= radioButtons[i].value;
             }
         }
-        if(checkForm(tenKhachHang,sdt,gioitinh)){
+        if(checkForm(maKhachHang,tenKhachHang,sdt,gioitinh)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/insert",
                 type:"post",
@@ -227,7 +227,7 @@ if ($index == "Sửa") {
             gioitinh = radioButtons[i].value;
             }
         }
-        if(checkForm(tenKhachHang,sdt,gioitinh)){
+        if(checkForm(maKhachHang,tenKhachHang,sdt,gioitinh)){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/update",
                 type:"post",
@@ -284,25 +284,47 @@ if ($index == "Sửa") {
         return pattern.test(phone);
     }
 
-function checkForm(tenKhachHang,sdt,gioitinh){
+    function checkPatternEmail(email) {
+        var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+        return pattern.test(email);
+    }
+
+function checkForm(email,tenKhachHang,sdt,gioitinh){
+        var resultEmail = true;
         var resultTenKhachHang = true;
         var resultSdt = true;
         var resultGioiTinh = true;
       
-
+        var errorUserEmail = document.getElementById("error-userId");
         var errorUserName = document.getElementById("error-userName");
         var errorUserPhone = document.getElementById("error-userPhone");
         var errorUserGioiTinh = document.getElementById("error-userGioiTinh");
 
+        var errorUserEmailStr = "";
         var errorUserNameStr = "";
         var errorUserPhoneStr ="";
         var errorUserGioiTinhStr =""
       
+        //check id
+        if(email == ""){
+            resultEmail = false;
+            errorUserEmailStr += "Không được để trống!";
+        }else{
+            errorUserEmailStr = "";
+            if(checkPatternEmail(email)){
+                errorUserEmailStr = "";
+                resultEmail = true;
+            } 
+            else {
+                resultEmail = false;
+                errorUserEmailStr += "Email không đúng định dạng!"
+            }
+        }
 
         //check tên 
         if(tenKhachHang==""){
             resultTenKhachHang = false;
-            errorUserNameStr += "Không được để trống!"
+            errorUserNameStr += "Không được để trống!";
         }
         else{
             errorUserNameStr = "";
@@ -339,12 +361,12 @@ function checkForm(tenKhachHang,sdt,gioitinh){
             resultGioiTinh = true;
         }
 
-        
+        errorUserEmail.innerHTML = errorUserEmailStr;        
         errorUserName.innerHTML = errorUserNameStr;
         errorUserPhone.innerHTML = errorUserPhoneStr;
         errorUserGioiTinh.innerHTML = errorUserGioiTinhStr;
 
-        if(resultTenKhachHang&&resultSdt&&resultGioiTinh){
+        if(resultEmail&&resultTenKhachHang&&resultSdt&&resultGioiTinh){
             return true
         }
         return false;

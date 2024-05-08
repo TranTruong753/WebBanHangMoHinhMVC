@@ -29,10 +29,10 @@
       <?php
       if ($this->data["Data"]["ChiTietQuyenModel"]->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Nhập Hàng']) == 1) {
       ?>
-        <div class="btn btn_add" style="--width-btn: 180px;">
+        <label for="dieuhuong" class="btn btn_add" style="--width-btn: 180px;">
           <i class='bx bx-plus'></i>
-          <input type="button" class="" onclick="DieuHuong()" value="Nhập Hàng">
-        </div>
+          <input type="button" class="" onclick="DieuHuong()" value="Nhập Hàng" id="dieuhuong">
+        </label>
       <?php
       }
       ?>

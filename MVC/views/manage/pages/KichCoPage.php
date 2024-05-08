@@ -27,10 +27,10 @@
       <?php
       if ($this->data['Data']['ChiTietQuyenModel']->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Kích Cỡ']) == 1) {
     ?>
-      <div class="btn btn_add"> 
+      <label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
-      </div>
+        <input id="dieuhuong" type="button" class="" onclick="DieuHuong()" value="Thêm">
+      </label>
     <?php
     }
     ?>

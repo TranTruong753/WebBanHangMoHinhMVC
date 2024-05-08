@@ -5,12 +5,25 @@
 ?>
 <input type="hidden" id="mapn" value="<?php echo $mapn ;?> ">
 <div>
-  <h1 >Quản Lý Phiếu nhập</h1>
+  <h1 class="styleText-01" >Chi Tiết Phiếu nhập</h1>
 </div>
-<div class="search">
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage"> Trang quản lý phiếu nhập></a>
+
+<!-- <div class="search">
   <input type="text" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
+</div> -->
+
+<div class="search-wrap">
+    <div class="search">
+      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
+      <label class="btn btn_search" for="btnSearch">
+        <i class='bx bx-search'></i>
+        <input type="button" id="btnSearch" value="Tìm Kiếm" hidden>
+      </label>
+    </div>
 </div>
+
 <table class="table">
   <thead>
     <tr>

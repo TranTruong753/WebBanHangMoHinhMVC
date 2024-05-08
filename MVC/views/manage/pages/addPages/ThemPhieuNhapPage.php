@@ -306,37 +306,44 @@ function them(){
   var tt=$("#thanhtien").val();
   if(document.getElementById('mactsp').value!=" "){
   //Hàm này trả về phần tử đầu tiên trong mảng thỏa mãn điều kiện. Nếu tìm thấy, bạn cập nhật lại soluong
-  const existingItem = arr.find(item => item.mactsp === mactsp);
-  if (existingItem) {
-      existingItem.sl = sl;
-      existingItem.tt = tt;
-  } else {
-      arr.push({ mactsp: mactsp,masp:masp,sl: sl,gn: gn,tt:tt });
-  }
-  //arr.push({ masp: mactsp,sl: sl,gn: gn,tt:tt});
-  // alert(JSON.stringify(arr));
-  $.ajax({
-    url: 'http://localhost/WebBanHangMoHinhMVC/AjaxCTPN/getDanhSach',
-    type: 'post',
-    dataType: 'JSON',
-    data: {
-      arr: arr
-    },
-    success: function(data) {
-      
-      $(".row-table1").html(data.html);
-      document.getElementById('tongtien').value=data.tongtien;
-      //alert(data);
+    const existingItem = arr.find(item => item.mactsp === mactsp);
+    if (existingItem) {
+        existingItem.sl = sl;
+        existingItem.tt = tt;
+    } else {
+        arr.push({ mactsp: mactsp,masp:masp,sl: sl,gn: gn,tt:tt });
     }
-  })
-  const Item = arr.find(item => item.masp === masp);
-  if (Item) {
-    document.getElementById('gianhap').disabled = true;
-  } else {
-    document.getElementById('gianhap').disabled = false;
+    //arr.push({ masp: mactsp,sl: sl,gn: gn,tt:tt});
+    // alert(JSON.stringify(arr));
+    $.ajax({
+      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxCTPN/getDanhSach',
+      type: 'post',
+      dataType: 'JSON',
+      data: {
+        arr: arr
+      },
+      success: function(data) {
+        
+        $(".row-table1").html(data.html);
+        document.getElementById('tongtien').value=data.tongtien;
+        //alert(data);
+      }
+    })
+    const Item = arr.find(item => item.masp === masp);
+    if (Item) {
+      document.getElementById('gianhap').disabled = true;
+    } else {
+      document.getElementById('gianhap').disabled = false;
+    }
   }
-}
-else alert("bạn chưa chọn chi tiết sản phẩm");
+else{
+  // alert("bạn chưa chọn chi tiết sản phẩm");
+  swal({
+    title: "Lỗi! bạn chưa chọn chi tiết sản phẩm!",
+    text: "Nhấn vào nút để tiếp tục!",
+    icon: "error",
+  })
+} 
 
 }
 function XoaCTPN(ojt){
@@ -370,10 +377,20 @@ function XoaCTPN(ojt){
 function Nhaphang(){
   var ncc=document.getElementById('ncc').value;
   if(arr.length==0 ){
-    alert("Bạn chưa chọn sản phẩm để nhập hàng");
+    // alert("Bạn chưa chọn sản phẩm để nhập hàng");
+     swal({
+        title: "Lỗi! Bạn chưa chọn sản phẩm để nhập hàng",
+        text: "Nhấn vào nút để tiếp tục!",
+        icon: "error",
+      })
   }
   else if(ncc==""){
-    alert("Bạn chưa chọn nhà cung cấp");
+    // alert("Bạn chưa chọn nhà cung cấp");
+     swal({
+        title: "Lỗi! Bạn chưa chọn nhà cung cấp!",
+        text: "Nhấn vào nút để tiếp tục!",
+        icon: "error",
+      })
   }
   else {
   var mapn=document.getElementById('mapn').value;
@@ -397,9 +414,17 @@ function Nhaphang(){
       manv:manv
     },
     success: function(data) {
-      alert(data);
+      // alert(data);
       // alert("Nhap hang thanh cong");
-      // var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
+      var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
+      swal({
+        title: "Nhap hang thanh cong!",
+        text: "Nhấn vào nút để tiếp tục!",
+        icon: "success",
+      }).then(function(){
+        window.location.assign(url);
+      })
+      
       //        window.location.assign(url);
     }
   })

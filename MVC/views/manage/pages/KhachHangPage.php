@@ -27,7 +27,7 @@ $PhanTrangModel = new PhanTrangModel();
       <label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
         <input id="dieuhuong" type="button" class="" onclick="DieuHuong()" value="Thêm">
-      </label>>
+      </label>
     <?php
     }
     ?>
