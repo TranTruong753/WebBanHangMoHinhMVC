@@ -4,12 +4,15 @@
     $pn=$data["DanhSach"]["PN"];
     $ncc=$data["DanhSach"]["NCC"];
     $dem=0;
+    $manv="";
     if ($pn->num_rows > 0) {
         while ($row = $pn->fetch_assoc()) {
                 $dem++;
         }
+    }   
+    if(isset($_SESSION['email'])){
+      $manv=$_SESSION['email'];
     }
-    
 ?>
 <h1 class = 'styleText-02' >Nhập hàng</h1>
 <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage"> Quay về trang quản lý nhập hàng></a>
@@ -81,7 +84,7 @@
   
      <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="nhanvien">Nhập Mã Nhân Viên</label> 
-        <input class='input-add' type="text" id="nhanvien" value=""> 
+        <input class='input-add' type="text" id="nhanvien" value="<?php echo $manv?>" readonly> 
      </div>
   
       
