@@ -14,7 +14,7 @@ $(document).ready(function(){
             success: function (data) {
                 //alert(data.success);
                 $("#show").html('<img src="http://localhost/WebBanHangMoHinhMVC/public/img/'+data.src+
-                '" weight=200px height=200px alt="">'
+                '" alt="">'
             +'<input type="hidden" id ="filename" value ="'+data.src+'"/>');
                 
             }

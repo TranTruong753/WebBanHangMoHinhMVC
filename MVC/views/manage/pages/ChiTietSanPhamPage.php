@@ -30,10 +30,10 @@
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="Lamtuoi()" value="" hidden>
       </label>
-      <div class="btn btn_add"> 
+      <label for="<?php echo $masp?>" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
         <input id="<?php echo $masp?>" type="button" class="" onclick="DieuHuong(this)" value="Thêm">
-      </div>
+      </label>
     </div>
   </div>
 

@@ -112,59 +112,63 @@
     
     
 
-    <table class="table">
-        
-        
-        <thead>
+    <div class="table_scroll">
+      <table class="table">
+          
+          
+          <thead>
             <tr>
-            <th>Hình ảnh</th>
-      <th>ID
-      <button value="MaChiTietSanPham" onclick="getArrange(this)">^</button>
-      </th>
-      <th>Tên
-      
-      </th>
-      <th>Màu sắc
-      <button value="TenMauSac" onclick="getArrange(this)">^</button>
-      </th>
-      <th>Kích cở
-      <button value="TenKichCo" onclick="getArrange(this)">^</button>
-      </th>
-      <th>Số lượng tồn
-      <button value="SoLuongTon" onclick="getArrange(this)">^</button>
-      </th>
-      <th>Trạng thái</th>
-      <th>Thao tác</th>
+              <th>Hình ảnh</th>
+              <th>ID
+                <button value="MaChiTietSanPham" onclick="getArrange(this)">^</button>
+              </th>
+              <th>
+                Tên           
+              </th>
+              <th>Màu sắc
+                <button value="TenMauSac" onclick="getArrange(this)">^</button>
+              </th>
+              <th>Kích cở
+                <button value="TenKichCo" onclick="getArrange(this)">^</button>
+              </th>
+              <th>Số lượng tồn
+                <button value="SoLuongTon" onclick="getArrange(this)">^</button>
+              </th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
             </tr>
-        </thead>
-        
-        <tbody class="table-group-divider row-table">
-        </tbody>
-    </table>
+          </thead>
+          
+          <tbody class="table-group-divider row-table">
+          </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
-<div class="form_bottom form_add-product">
+<div class="form_bottom">
   <h1 class="styleText-03">Danh sách sản phẩm nhập</h1>
   
-  <table class="table">
-      
-      <thead>
-          <tr>
-          
-            <th>ID</th>
-            <th>ID SP</th>
-            <th>Số lượng</th>
-            <th>Giá Nhập</th>
-            <th>Thành Tiền</th>
-            <th>Thao tác</th>
-          
-          </tr>
-      </thead>
-      
-      <tbody class="table-group-divider row-table1">
-      </tbody>
-  </table>
+ <div class="table_scroll-bottom">
+    <table class="table">
+        
+        <thead>
+            <tr>
+            
+              <th>ID</th>
+              <th>ID SP</th>
+              <th>Số lượng</th>
+              <th>Giá Nhập</th>
+              <th>Thành Tiền</th>
+              <th>Thao tác</th>
+            
+            </tr>
+        </thead>
+        
+        <tbody class="table-group-divider row-table1">
+        </tbody>
+    </table>
+ </div>
 </div>
 <br>
     

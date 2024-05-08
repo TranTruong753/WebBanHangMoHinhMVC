@@ -37,19 +37,20 @@ class AjaxCTSP extends controller {
             //echo "them thanh cong";
             
             $resultctsp=$this->chitietspmodel->GetCTSPAdmin($masp);
-            $t=$t.'<table class="table">
-            <style></style>
-            <div style="text-align: center;">
-            <h1 >Quản Lý Sản Phẩm</h1>
+            $t=$t.'
+            <div>
+              <h1 class="styleText-02" >Danh sách chi tiết sản phẩm</h1>
             </div>
+            <div class = "table_scroll">
+            <table class="table">                     
               <thead>
                 <tr>
-                  <th scope="col" style="text-align: center;">Hình ảnh</th>
-                  <th scope="col" style="text-align: center;">ID</th>
-                  <th scope="col" style="text-align: center;">Tên</th>
-                  <th scope="col" style="text-align: center;">Màu sắc</th>
-                  <th scope="col" style="text-align: center;">Kích cở</th>
-                  <th scope="col" style="text-align: center;">Số lượng tồn</th>                 
+                  <th>Hình ảnh</th>
+                  <th>ID</th>
+                  <th>Tên</th>
+                  <th>Màu sắc</th>
+                  <th>Kích cở</th>
+                  <th>Số lượng tồn</th>                 
                   
                 </tr>
               </thead>
@@ -61,23 +62,25 @@ class AjaxCTSP extends controller {
               {
                 $t=$t.'
              <tr> 
-                  <th style="text-align: center;" scope="row">
-                    <img weight= 300px height=400px src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
-                  </th>
-                  <th style="text-align: center;" scope="row">'. $row["MaChiTietSanPham"].'</th>
-                  <td style="text-align: center;">'.$row["TenSanPham"].'</td>
-                  <td style="text-align: center;">'. $row["TenMauSac"].'</td>
-                  <td style="text-align: center;">'. $row["TenKichCo"].'</td>
-                  <td style="text-align: center;">'. $row["SoLuongTon"].'</td>
                   <td>
+                    <img weight= 300px height=400px src="http://localhost/WebBanHangMoHinhMVC/public/img/'. $row["HinhAnh"].'" alt="">
+                  </td>
+                  <td>'. $row["MaChiTietSanPham"].'</td>
+                  <td>'.$row["TenSanPham"].'</td>
+                  <td>'. $row["TenMauSac"].'</td>
+                  <td>'. $row["TenKichCo"].'</td>
+                  <td>'. $row["SoLuongTon"].'</td>
+                  
               
                   
                 </tr>';
               }
             }
             $t=$t.'
-              </tbody>
-              </table>';
+                  </tbody>
+                </table>
+              </div>
+              ';
            }
            
            $data=json_encode(["kq"=>true,"echo"=>$t]);

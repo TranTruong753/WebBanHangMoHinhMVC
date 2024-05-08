@@ -4,22 +4,21 @@
   
 ?>
 <input type="hidden" id="mapn" value="<?php echo $mapn ;?> ">
-<table class="table">
-<style></style>
-<div style="text-align: center;">
-<h1 >Quản Lý Phiếu nhập</h1>
+<div>
+  <h1 >Quản Lý Phiếu nhập</h1>
 </div>
 <div class="search">
-  <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
+  <input type="text" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div>
+<table class="table">
   <thead>
     <tr>
-      <th scope="col" style="text-align: center;">Mã chi tiết sản phẩm</th>
-      <th scope="col" style="text-align: center;">Tên sản phẩm</th>
-      <th scope="col" style="text-align: center;">Số lượng</th>
-      <th scope="col" style="text-align: center;">Tiền nhập</th>
-      <th scope="col" style="text-align: center;">Thành tiền</th>
+      <th>Mã chi tiết sản phẩm</th>
+      <th>Tên sản phẩm</th>
+      <th>Số lượng</th>
+      <th>Tiền nhập</th>
+      <th>Thành tiền</th>
       
     </tr>
   </thead>

@@ -8,61 +8,77 @@
     
     
 ?>
-<form method="post">
+<h1 class = 'styleText-02' >Sửa Sản Phẩm</h1>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/SanPhamPage"> Quay về Trang Sản Phẩm></a>
+<form method="post" class="form_add">
 <?php
     if ($sanpham->num_rows > 0) {
         while ($row = $sanpham->fetch_assoc()) {
             echo '    
-            <label for="">Mã sản phẩm</label><br>
-            <input type="text" id="masanpham" value="'.$row['MaSanPham'].'"> <br>
+           <div class = "input-add_wrap">
+                <label class="styleText-04 label-add" for="">Mã sản phẩm</label>
+                <input class="input-add" type="text" id="masanpham" value="'.$row['MaSanPham'].'"> 
+           </div>
 
-            <label for="">Tên sản phẩm</label><br>
-            <input type="text" id="tensanpham" value="'.$row['TenSanPham'].'"> <br>
+           <div class = "input-add_wrap">
+                <label class="styleText-04 label-add" for="">Tên sản phẩm</label>
+                <input class="input-add" type="text" id="tensanpham" value="'.$row['TenSanPham'].'"> 
+           </div>
 
-            <label for="">Giá Nhập</label><br>
-            <input type="text" id="gianhap" value="'.$row['GiaNhap'].'"> <br>
+           <div class = "input-add_wrap">
+                <label class="styleText-04 label-add" for="">Giá Nhập</label>
+                <input class="input-add" type="text" id="gianhap" value="'.$row['GiaNhap'].'"> 
+           </div>
 
-            <label for="">Khuyến mãi</label> <br>
-            <select name="" id="khuyenmai"  class="">
-                <option  value="'.$row['MaKhuyenMai'].'" >'.$row['TenKhuyenMai'].'-'.$row['MucKhuyenMai'].'%</option>';
-                
-                if ($km->num_rows > 0) {
-                    while ($row1 = $km->fetch_assoc()) {
-                        if($row1['MaKhuyenMai']!=$row['MaKhuyenMai'])
-                            echo '<option  value="'.$row1['MaKhuyenMai'].'" >'.$row1['TenKhuyenMai'].'-'.$row1['MucKhuyenMai'].'%</option>';
+           <div class = "input-add_wrap">
+                <label for="">Khuyến mãi</label> 
+                <select name="" id="khuyenmai"  class="">
+                    <option  value="'.$row['MaKhuyenMai'].'" >'.$row['TenKhuyenMai'].'-'.$row['MucKhuyenMai'].'%</option>';
+                    
+                    if ($km->num_rows > 0) {
+                        while ($row1 = $km->fetch_assoc()) {
+                            if($row1['MaKhuyenMai']!=$row['MaKhuyenMai'])
+                                echo '<option  value="'.$row1['MaKhuyenMai'].'" >'.$row1['TenKhuyenMai'].'-'.$row1['MucKhuyenMai'].'%</option>';
+                        }
                     }
-                }
-            echo'    
-            </select><br>
+                echo'    
+                </select>
+           </div>
 
-            <label for="">Thể loại</label> <br>
-            <select name="" id="theloai"  class="">
-                <option  value="'.$row['MaTheLoai'].'" >'.$row['TenTheLoai'].'</option>';
-                
-                if ($theloai->num_rows > 0) {
-                    while ($row2 = $theloai->fetch_assoc()) {
-                        if($row2['MaTheLoai']!=$row['MaTheLoai'])
-                            echo '<option  value="'.$row2['MaTheLoai'].'" >'.$row2['TenTheLoai'].'</option>';
+            <div class = "input-add_wrap">
+                <label for="">Thể loại</label> <br>
+                <select name="" id="theloai"  class="">
+                    <option  value="'.$row['MaTheLoai'].'" >'.$row['TenTheLoai'].'</option>';
+                    
+                    if ($theloai->num_rows > 0) {
+                        while ($row2 = $theloai->fetch_assoc()) {
+                            if($row2['MaTheLoai']!=$row['MaTheLoai'])
+                                echo '<option  value="'.$row2['MaTheLoai'].'" >'.$row2['TenTheLoai'].'</option>';
+                        }
                     }
-                }
-                echo'
-                
-            </select><br>
+                    echo'
+                    
+                </select>
+            </div>
 
-            <label for="">Chất liệu</label> <br>
-            <select name="" id="chatlieu"  class="">
-                <option  value="'.$row['MaChatLieu'].'" >'.$row['TenChatLieu'].'</option>';
-            
-                if ($chatlieu->num_rows > 0) {
-                    while ($row3 = $chatlieu->fetch_assoc()) {
-                        if($row3['MaChatLieu']!=$row['MaChatLieu'])
-                            echo '<option  value="'.$row3['MaChatLieu'].'" >'.$row3['TenChatLieu'].'</option>';
+            <div class = "input-add_wrap">
+                <label for="">Chất liệu</label> <br>
+                <select name="" id="chatlieu"  class="">
+                    <option  value="'.$row['MaChatLieu'].'" >'.$row['TenChatLieu'].'</option>';
+                
+                    if ($chatlieu->num_rows > 0) {
+                        while ($row3 = $chatlieu->fetch_assoc()) {
+                            if($row3['MaChatLieu']!=$row['MaChatLieu'])
+                                echo '<option  value="'.$row3['MaChatLieu'].'" >'.$row3['TenChatLieu'].'</option>';
+                        }
                     }
-                }
-            echo'    
-            </select><br>
+                echo'    
+                </select>
+            </div>
         </form>
-        <button type = "button" onclick="updateSP()">Cập nhật</button>';
+        <div class = "input-add_wrap">
+            <button class = "btn" type = "button" onclick="updateSP()">Cập nhật</button>
+        </div>';
     }
     }
 ?>

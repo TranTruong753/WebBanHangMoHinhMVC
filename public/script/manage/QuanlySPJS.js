@@ -9,12 +9,27 @@ function addSP(){
     gianhap=document.getElementById("gianhap").value;
     tensanpham=document.getElementById("tensanpham").value;
     if(!tensanpham){
-        alert("Không được để trống tên sản phẩm");
+        // alert("Không được để trống tên sản phẩm");
+        swal({
+            title: "Lỗi! Không được để trống tên sản phẩm!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
     } else if(!gianhap){
-        alert("Không được để trống giá nhập");
+        // alert("Không được để trống giá nhập");
+        swal({
+            title: "Lỗi! Không được để trống giá nhập!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
     }
     else if(isNaN(gianhap)== true){
-        alert("Giá sản phẩm không hợp lý");
+        // alert("Giá sản phẩm không hợp lý");
+        swal({
+            title: "Lỗi! Giá sản phẩm không hợp lý!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
     }
     else {
       
@@ -23,9 +38,16 @@ function addSP(){
     var khuyenmai=document.getElementById("khuyenmai").value;
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/InsertSP",{masp : masanpham, tensp: tensanpham, gianhap: gianhap,machatlieu: machatlieu,
     matheloai : matheloai,khuyenmai:khuyenmai},function(data){
-        alert("Thêm thành công");
+        // alert("Thêm thành công");
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/SanPhamPage";
-                window.location.assign(url);
+        swal({
+          title: "Thêm thành công!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        }).then(function () {
+            window.location.assign(url);
+        })
+        // window.location.assign(url);
         //alert(data);
     });
     }
@@ -87,6 +109,48 @@ function XoaSP(ojt)
     } else {
         alert("Yêu cầu xóa đã hủy");
     }
+
+    // swal({
+    //   title: "Bạn có chắc?",
+    //   text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+    //   icon: "warning",
+    //   buttons: true,
+    //   dangerMode: true,
+    // })
+    // .then((willDelete) => {
+    //   var masp=ojt.id;
+    //     if (willDelete) {
+    //         $.ajax({
+    //             url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
+    //             type: 'post',
+    //             dataType: 'html',
+    //             data: {
+    //               masp : masp
+    //             },
+    //             success: function(data) {
+    //                 if(data.kq== true){
+    //                   swal("Dữ liệu đã xóa thành công!", 
+    //                   {
+    //                     icon: "success",
+    //                   });
+    //                 }
+    //                 else {
+    //                   swal("Dữ liệu đã xóa thất bại!", 
+    //                   {
+    //                     icon: "error",
+    //                   });
+    //                 }
+                  
+    //                 // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+    //                 loadTable(tmpKey,index,size)
+    //                 loadPhanTrang("sanpham",index,size,sql,tmpKey)
+
+    //             }
+    //         });
+    //     } else {
+    //         swal("Dữ liệu của bạn được an toàn!");
+    //     }
+    // });
     
   }
   function getArrange(ojt){
