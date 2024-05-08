@@ -78,8 +78,8 @@ function XoaSP(ojt)
             if(data.kq== true){
               alert("xoa thanh cong");
               
-              loadTable(tmpKey,index,size)
-              loadPhanTrang("sanpham",index,size,sql,tmpKey)
+              loadTable(tmpKey,index,size,arrange,properties)
+              loadPhanTrangtest("sanpham",index,size,sql,tmpKey)
             }
             else {alert("xoa that bai");}
           }
