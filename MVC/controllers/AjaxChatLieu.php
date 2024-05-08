@@ -2,8 +2,10 @@
 <?php
 class AjaxChatLieu extends controller{
     public $ChatLieuModel;
+    private $ChiTietQuyenModel;
     public function __construct(){
        $this->ChatLieuModel= $this->model("ChatLieuModel");
+       $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
     }
 
     public function DoiTrangThai(){
@@ -65,8 +67,13 @@ class AjaxChatLieu extends controller{
                 </label>  
                </td>
                <td style='text-align: center;'>
-               <!-- link  để chuyển sang trang nhóm quyền -->
-                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChatLieuPage,".$row['MaChatLieu']."'><i class='bx bxs-edit'></i></a>
+               <!-- link  để chuyển sang trang nhóm quyền -->";
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Chất Liệu'])==1)
+               {
+                $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaChatLieuPage,".$row['MaChatLieu']."'><i class='bx bxs-edit'></i></a>";
+               }
+                 
+               $html.="
                </td>
              </tr> ";
                

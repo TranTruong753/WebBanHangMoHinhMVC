@@ -4,12 +4,14 @@ class AjaxHoaDon extends controller{
     public $HoaDonModel;
     private $chitietspmodel;
     private $ChiTietHoaDonModel;
+    private $ChiTietQuyenModel;
     private $SanPhamModel;
     public function __construct(){
        $this->HoaDonModel= $this->model("HoaDonModel");
        $this->chitietspmodel = $this->model("chitietspmodel");
        $this->ChiTietHoaDonModel= $this->model("ChiTietHoaDonModel");
        $this->SanPhamModel=$this->model("SanPhamModel");
+       $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
     public function DoiTrangThai(){
@@ -114,8 +116,14 @@ class AjaxHoaDon extends controller{
                  
                </td>
                <td>
-               <!-- link  để chuyển sang trang nhóm quyền -->
-                 <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietHoaDonPage,".$row['MaHoaDon']."' title = 'chi tiết'><i class='bx bx-dots-horizontal-rounded'></i></a>
+               <!-- link  để chuyển sang trang nhóm quyền -->";
+               
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xem",$_SESSION["MaNhomQuyen"],$_SESSION["Hóa Đơn"])==1)
+               {
+                 $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietHoaDonPage,".$row['MaHoaDon']."' title = 'chi tiết'><i class='bx bx-dots-horizontal-rounded'></i></a>";
+               }
+                 
+               $html.="
                </td>
              </tr> ";
                

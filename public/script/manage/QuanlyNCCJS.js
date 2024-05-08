@@ -4,13 +4,38 @@ function addNCC(){
     var sodienthoai=document.getElementById("sodienthoai").value;
     var diachi=document.getElementById("diachi").value;
     if(!tennhacungcap){
-        alert("Không được để trống tên nhà cung cấp");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhaCungCap/InsertNCC",{tenncc: tennhacungcap,sdt: sodienthoai,dc: diachi},function(data){
-        alert(data);
+        // alert("Không được để trống tên nhà cung cấp");
+        swal({
+          title: "Lôi! Không được để trống tên nhà cung cấp",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "error",
+      })
+    }else {
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhaCungCap/InsertNCC",{tenncc: tennhacungcap,sdt: sodienthoai,dc: diachi},function(data){
+        // alert(data);
+        // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/NhaCungCapPage";
-                window.location.assign(url);
-    });
+        if(data.length == 8){
+                // alert(data);
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Thêm thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }    
+
+        // window.location.assign(url);
+      });
+    } 
+  
     }
   function UpdateNCC(){
       // var tenchatlieu=" ";
@@ -18,17 +43,46 @@ function addNCC(){
       var tennhacungcap=document.getElementById("tennhacungcap").value;
       var sodienthoai=document.getElementById("sodienthoai").value;
       var diachi=document.getElementById("diachi").value;
-      if(!tennhacungcap){
-          alert("Không được để trống tên màu sắc");
-      }
-      if(!checkPatternPhone(sodienthoai)){
-          alert("Số điện thoại không hợp lệ");
-      }
+      if(!tennhacungcap||!checkPatternPhone(sodienthoai)){
+        if(!tennhacungcap){
+          swal({
+              title: "Lôi! Không được để trống tên nhà cung cấp",
+              text: "Nhấn vào nút để tiếp tục!",
+              icon: "error",
+          })
+        }
+        if(!checkPatternPhone(sodienthoai)){
+            // alert("Số điện thoại không hợp lệ");
+            swal({
+              title: "Lôi! Số điện thoại không hợp lệ",
+              text: "Nhấn vào nút để tiếp tục!",
+              icon: "error",
+          })
+        }
+      }   
       else{
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhaCungCap/UpdateNCC",{mancc: manhacungcap,tenncc: tennhacungcap,sdt: sodienthoai,dc: diachi},function(data){
-          alert(data);
-          var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/NhaCungCapPage";
-                  window.location.assign(url);
+        // alert(data);
+        // alert(data.length);
+        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/NhaCungCapPage";
+        if(data.length == 8){
+                    // alert(data);
+                    swal({
+                        title: "Cập nhật thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    }).then(function () {
+                        window.location.assign(url);
+                    })
+                }else {
+                    swal({
+                        title: "Cập nhật thất bại!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "error",
+                    })
+                }
+
+        // window.location.assign(url);
       });
       }
 

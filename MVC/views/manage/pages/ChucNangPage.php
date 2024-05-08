@@ -1,39 +1,46 @@
-
-
 <div>
   <h1 class="styleText-01">Quản Lý Chức Năng</h1>
 </div>
 
-  <!-- <div style="text-align: start;">
+<!-- <div style="text-align: start;">
     <input type="text" id="txtSearch" style="min-width: 300px;" placeholder="Nhập mã hoặc tên chức năng">
     <input type="button" value="Tìm kiếm" onclick="btnSearch()">
     <input type="button" id="btnThem" onclick="DieuHuongSangTrangThem()" value="Thêm">
     <input type="button" id="btnRefresh" onclick="btnRefresh()" value="Làm tươi">
   </div> -->
 
-  <div class="search-wrap">
-    <div class="search">
-      <input type="text" class="input_search" id="txtSearch" placeholder="Nhập mã hoặc tên chức năng">
-      <label class="btn btn_search" for="btnSearch" onclick="btnSearch()">
-        <i class='bx bx-search'></i>
-        <input type="button" id="btnSearch" value="" hidden>
-      </label>
-    </div>
-    <!-- Nút sang form dữ liệu nhóm quyền  -->
-    <div class="block-wrap">
-      <label class="btn btn_reset" for="btnRefresh">
-        <i class='bx bx-reset'></i>
-        <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
-      </label>
-      <div class="btn btn_add"> 
-        <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuongSangTrangThem()" value="Thêm">
-      </div>
-    </div>
+<div class="search-wrap">
+  <div class="search">
+    <input type="text" class="input_search" id="txtSearch" placeholder="Nhập mã hoặc tên chức năng">
+    <label class="btn btn_search" for="btnSearch" onclick="btnSearch()">
+      <i class='bx bx-search'></i>
+      <input type="button" id="btnSearch" value="" hidden>
+    </label>
   </div>
+  <!-- Nút sang form dữ liệu nhóm quyền  -->
+  <div class="block-wrap">
+    <label class="btn btn_reset" for="btnRefresh">
+      <i class='bx bx-reset'></i>
+      <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
+    </label>
+    <?php
+    $ChiTietQuyenModel = $this->data['Data']['ChiTietQuyenModel'];
+    if ($ChiTietQuyenModel->KiemTraHanhDong("Thêm", $_SESSION['MaNhomQuyen'], $_SESSION['Chức Năng'])) {
+    ?>
+      <label for="dieuhuong" class="btn btn_add">
+        <i class='bx bx-plus'></i>
+        <input type="button" class="" onclick="DieuHuongSangTrangThem()" value="Thêm" id="dieuhuong">
+      </label>
+    <?php
+    }
+    ?>
 
 
-  
+  </div>
+</div>
+
+
+
 
 
 <table class="table">
@@ -57,8 +64,8 @@
 <!-- Java Script -->
 <script>
   var tmpKey = ""
-  var index =1;
-  var size=4;
+  var index = 1;
+  var size = 4;
   $(document).ready(function() {
     // alert($("#params").val());
     // $arrPhanTang = $("#params").val().split("/");
@@ -117,22 +124,22 @@
     var checkBox = document.getElementById(ma)
     // var result = confirm("Bạn có muốn đổi trạng thái?");
     // if (result == true) {
-      if (checkBox.checked == true) {
-        var trangThai = 1;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
-          // alert(data);
-        })
-      } else {
-        var trangThai = 0;
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/DoiTrangThai", {
-          ma: ma,
-          trangThai: trangThai
-        }, function(data) {
-          // alert(data);
-        })
+    if (checkBox.checked == true) {
+      var trangThai = 1;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
+    } else {
+      var trangThai = 0;
+      $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/DoiTrangThai", {
+        ma: ma,
+        trangThai: trangThai
+      }, function(data) {
+        // alert(data);
+      })
       // }
     }
     loadTable(index, size, tmpKey)
@@ -141,22 +148,71 @@
 
   function btnXoa(obj) {
     var MaChucNang = obj.id;
-    $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        MaChucNang: MaChucNang,
-      },
-      success: function(data) {
-        // alert(data);
-        if (data == 1) alert("Xóa chức năng thành công!")
-        else if (data == 0) alert("Xóa chức năng thất bại!");
-        else if (data == -1) alert("Chức năng đang được sử dụng!");
-      }
+    // $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     MaChucNang: MaChucNang,
+    //   },
+    //   success: function(data) {
+    //     // alert(data);
+    //     if (data == 1) alert("Xóa chức năng thành công!")
+    //     else if (data == 0) alert("Xóa chức năng thất bại!");
+    //     else if (data == -1) alert("Chức năng đang được sử dụng!");
+    //   }
+    // })
+    // loadTable(index, size, tmpKey)
+    // loadPhanTrang("chucnang", index, size, "", tmpKey)
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    loadTable(index, size, tmpKey)
-    loadPhanTrang("chucnang", index, size, "", tmpKey)
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChucNang/XoaDuLieu',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                  MaChucNang: MaChucNang,
+                },
+                success: function(data) {
+                 
+                  if(data == 1)
+                  {
+                    // alert("Cập nhật dữ liệu thành công!");
+                    swal({
+                        title: "Xóa thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    })
+                  }else if(data == -1){
+                    swal({
+                          title: "Lỗi! Chức năng đang được sử dụng!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }else{
+                    swal({
+                          title: "Lỗi! Xóa thất bại!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }
+                  
+                  // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                  loadTable(index, size, tmpKey)
+                  loadPhanTrang("chucnang", index, size, "", tmpKey)
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
   }
 
   function DieuHuongSangTrangThem() {

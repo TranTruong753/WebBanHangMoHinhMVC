@@ -716,7 +716,7 @@
                                 <img
                                     src="http://localhost/WebBanHangMoHinhMVC/public/img/footer-img.png"
                                     alt=""
-                                    class="footer__bottom-link"
+                                    class="footer__bottom-link"f
                                 />
                             </a>
                         </div>

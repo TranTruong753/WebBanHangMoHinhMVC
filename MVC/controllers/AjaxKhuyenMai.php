@@ -2,9 +2,10 @@
 
 class AjaxKhuyenMai extends controller{
     private $KhuyenMaiModel;
-
+    private $ChiTietQuyenModel;
     public function __construct() {
         $this->KhuyenMaiModel = $this->model("KhuyenMaiModel");
+        $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
     public function DoiTrangThai()
     {
@@ -80,9 +81,18 @@ class AjaxKhuyenMai extends controller{
                   <span class='slider round'></span>
                 </label>  
                 </td>
-                <td>
-                    <a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'><i class='bx bxs-edit'></i></a>
-                    <a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaKhuyenMai"] ."'><i class='bx bx-x'></i></a>
+                <td>";
+                if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Khuyến Mãi"])==1)
+                {
+                  $html.= " <a class = 'btn btn_delete' href='#' onclick='btnXoa(this)' id='".  $row["MaKhuyenMai"] ."'><i class='bx bx-x'></i></a>   ";
+                }
+                if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Khuyến Mãi"])==1)
+                {
+                  $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKhuyenMaiPage,".$row['MaKhuyenMai']."'><i class='bx bxs-edit'></i></a>";
+                }
+               
+                    
+                   $html.="
                 </td>
               </tr>";
             }

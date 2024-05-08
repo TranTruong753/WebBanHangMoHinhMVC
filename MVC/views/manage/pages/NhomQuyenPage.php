@@ -21,10 +21,17 @@ $PhanTrangModel = new PhanTrangModel();
         <i class='bx bx-reset'></i>
         <input type="button" id="btnRefresh" onclick="btnRefresh()" value="" hidden>
       </label>
-      <div class="btn btn_add"> 
+      <?php
+    if ($this->data['Data']['ChiTietQuyenModel']->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Nhóm Quyền']) == 1) {
+    ?>
+      <label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuong()" value="Thêm">
-      </div>
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm" id="dieuhuong">
+      </label>
+    <?php
+    }
+    ?>
+      
     </div>
   </div>
 
@@ -116,19 +123,67 @@ $PhanTrangModel = new PhanTrangModel();
   {
     var ma = obj.id;
 
-      $.ajax({
-      url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
-      type: 'post',
-      dataType: 'html',
-      data: {
-        ma: ma,
-      },
-      success: function(data) {
-        alert(data);
-      }
+    // $.ajax({
+    //   url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
+    //   type: 'post',
+    //   dataType: 'html',
+    //   data: {
+    //     ma: ma,
+    //   },
+    //   success: function(data) {
+    //     alert(data);
+    //   }
+    // })
+    // loadTable(tmpKey,index,size)
+    // loadPhanTrang("nhomquyen",index,size,"",tmpKey)
+    swal({
+        title: "Bạn có chắc?",
+        text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
     })
-    loadTable(tmpKey,index,size)
-    loadPhanTrang("nhomquyen",index,size,"",tmpKey)
+    .then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/XoaDuLieuNhomQuyen',
+                type: 'post',
+                dataType: 'html',
+                data: {
+                    ma: ma,
+                },
+                success: function(data) {
+                  if(data == 1)
+                  {
+                      // alert("Cập nhật dữ liệu thành công!");
+                    swal({
+                        title: "Xóa thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    })
+                  }else if(data == -1){
+                    swal({
+                          title: "Lỗi! Nhóm quyền đã được sử dụng!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }else{
+                    swal({
+                          title: "Lỗi! Xóa thất bại!",
+                          text: "Nhấn vào nút để tiếp tục!",
+                          icon: "error",
+                      })
+                  }
+                  
+                  // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                  loadTable(tmpKey, index, size);
+                  loadPhanTrang("nhomquyen", index, size, "", tmpKey);
+                }
+            });
+        } else {
+            swal("Dữ liệu của bạn được an toàn!");
+        }
+    });
   }
 
   function loadTable(key, index, size) {

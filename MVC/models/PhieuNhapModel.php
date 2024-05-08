@@ -5,7 +5,7 @@ class PhieuNhapModel extends DB{
         return $this->con->query($qr);
 
     }
-    public function getDanhSach($key,$pageIndex,$soLuong)
+    public function getDanhSach($key,$pageIndex,$soLuong,$arrange,$properties)
     {
         trim($key);
         // Kiểm tra đang ở trang
@@ -26,7 +26,7 @@ class PhieuNhapModel extends DB{
             on phieunhap.MaNhanVien= nhanvien.MaNhanVien  
             where concat(phieunhap.MaPhieuNhap,phieunhap.NgayNhap,nhacungcap.TenNhaCungCap,nhanvien.TenNhanVien) like '%$key%'"; 
 
-            $qr .= " ORDER BY MaPhieuNhap DESC";
+            $qr .= " ORDER BY $properties $arrange";
             $qr .= " LIMIT $batDau,$soLuong";
 
             // echo $qr;
@@ -37,7 +37,7 @@ class PhieuNhapModel extends DB{
             $qr .= " INNER JOIN nhacungcap 
             on phieunhap.MaNhaCungCap= nhacungcap.MaNhaCungCap INNER JOIN nhanvien  
             on phieunhap.MaNhanVien= nhanvien.MaNhanVien 
-             ORDER BY MaPhieuNhap DESC";
+            ORDER BY $properties $arrange";
             $qr .= " Limit $batDau,$soLuong";
             // echo $qr;
             return $this->con->query($qr);

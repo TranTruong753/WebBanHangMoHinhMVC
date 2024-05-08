@@ -117,10 +117,10 @@ $ChucNangModel = new ChucNangModel();
     <!-- button -->
   
     <!-- <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm"> -->
-    <div class="btn btn_add"> 
+    <label for="dieuhuong" class="btn btn_add"> 
       <i class='bx bx-plus'></i>
-      <input type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
-    </div>
+      <input id="dieuhuong" type="button" class="btnThem" onclick="ThemDuLieuChiTietQuyen()" value="Thêm">
+    </label>
  </div>
 
   <div class="search-wrap">
@@ -232,25 +232,70 @@ $ChucNangModel = new ChucNangModel();
         var arr = element.id.split("/")
         var MaNhomQuyen = arr[0];
         var MaChucNang = arr[1];
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietQuyen/XoaDuLieuChiTietQuyen", {
-          MaNhomQuyen: MaNhomQuyen,
-          MaChucNang: MaChucNang
-        }, function(data) {
-          if (data.length == 7) {
-            result = false;
-          }
+
+        // $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChiTietQuyen/XoaDuLieuChiTietQuyen", {
+        //   MaNhomQuyen: MaNhomQuyen,
+        //   MaChucNang: MaChucNang
+        // }, function(data) {
+        //   if (data.length == 7) {
+        //     result = false;
+        //   }
+        // })
+        swal({
+          title: "Bạn có chắc?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
         })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChiTietQuyen/XoaDuLieuChiTietQuyen',
+                    type: 'post',
+                    dataType: 'html',
+                    data: {
+                      MaNhomQuyen: MaNhomQuyen,
+                      MaChucNang: MaChucNang
+                    },
+                    success: function(data) {
+                      if (data.length == 7) {
+                          result = false;
+                          swal({
+                              title: "Lỗi! Xóa thất bại!",
+                              text: "Nhấn vào nút để tiếp tục!",
+                              icon: "error",
+                          })
+                      }
+                      else {
+                          swal({
+                              title: "Xóa thành công!",
+                              text: "Nhấn vào nút để tiếp tục!",
+                              icon: "success",
+                          })
+                      }
+
+                  // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                     loadTable(tmpKey, index, size);
+                     loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+                    }
+                });
+            } else {
+                swal("Dữ liệu của bạn được an toàn!");
+            }
+        });
+
       }
 
     });
-    if (result == false) {
-      alert("Xóa Dữ Liệu Thất Bại!");
-    } 
-    else {
-      alert("Xóa Dữ Liệu Thành công");
-      loadTable(tmpKey, index, size);
-      loadPhanTrang("chitietquyen", index, size, "", tmpKey);
-    }
+    // if (result == false) {
+    //   alert("Xóa Dữ Liệu Thất Bại!");
+    // } 
+    // else {
+    //   alert("Xóa Dữ Liệu Thành công");
+    //   loadTable(tmpKey, index, size);
+    //   loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+    // }
 
   }
 
@@ -292,17 +337,23 @@ $ChucNangModel = new ChucNangModel();
     if (MaNhomQuyen == '' || MaChucNang == '' || arr.length == 0) {
 
       var error = "";
-
+      var errorStr = "";
       if (MaNhomQuyen == '') {
-        error += " +Nhóm Quyền\n";
+        error += "  + Nhóm Quyền\n";
       }
       if (MaChucNang == '') {
-        error += " +Chức Năng\n";
+        error += "  + Chức Năng\n";
       }
       if (arr.length == 0) {
-        error += " +Hành Động\n"
+        error += "  + Hành Động\n"
       }
-      alert("Bạn Chưa Chọn \n" + error);
+      errorStr += error;
+      // alert("Bạn Chưa Chọn \n" + error);
+      swal({
+        title: "Lỗi! Bạn chưa chọn:",
+        text: errorStr + "\nNhấn vào nút để tiếp tục!",
+        icon: "error",
+      })
     } else {
 
       arr.forEach(element => {
@@ -321,12 +372,22 @@ $ChucNangModel = new ChucNangModel();
       })
 
       if (result == true) {
-        alert("Thêm Dữ Liệu Chi Tiết Quyền Thành Công!");
+        //alert("Thêm Dữ Liệu Chi Tiết Quyền Thành Công!");
+        swal({
+          title: "Thêm thành công!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        })
         // $.post("http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietQuyenPage")
         loadTable(tmpKey, index, size);
         loadPhanTrang("chitietquyen", index, size, "", tmpKey);
       } else {
-        alert("Thêm Dữ Liệu Chi Tiết Quyền Thất Bại!");
+        // alert("Thêm Dữ Liệu Chi Tiết Quyền Thất Bại!");
+        swal({
+          title: "Thêm thất bại!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "error",
+        })
       }
     }
 
@@ -351,29 +412,62 @@ $ChucNangModel = new ChucNangModel();
 
   function LuuDuLieuHanhDong() {
     var arrCheckboxHanhDong = document.querySelectorAll(".CheckBoxHanhDongTrongTable");
-    var result = confirm("Lưu các thay đổi?")
+  //  var result = confirm("Lưu các thay đổi?")
 
-    if (result == true) {
-      // console.log(arrCheckboxHanhDong);
-      arrCheckboxHanhDong.forEach(item => {
-        // console.log(item)
-        var arrId = item.id.split("/");
-        var MaNhomQuyen = arrId[0];
-        var MaChucNang = arrId[1];
-        var HanhDong = arrId[2];
+    // if (result == true) {
+    //   // console.log(arrCheckboxHanhDong);
+    //   arrCheckboxHanhDong.forEach(item => {
+    //     // console.log(item)
+    //     var arrId = item.id.split("/");
+    //     var MaNhomQuyen = arrId[0];
+    //     var MaChucNang = arrId[1];
+    //     var HanhDong = arrId[2];
 
 
-        if (item.checked == true) {
-          LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 1);
-        } else {
-          LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 0);
-        }
+    //     if (item.checked == true) {
+    //       LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 1);
+    //     } else {
+    //       LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 0);
+    //     }
 
-      })
-      alert("Lưu dữ thay đổi thành công")
-      loadTable(tmpKey, index, size);
-      loadPhanTrang("chitietquyen", index, size, "", tmpKey);
-    }
+    //   })
+    //   alert("Lưu dữ thay đổi thành công")
+    //   loadTable(tmpKey, index, size);
+    //   loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+    // }
+
+    swal("Bạn có muốn lưu các thay đổi??", {
+      buttons: ["Hủy", true],
+    })
+    .then((value) => {
+      if (value) {
+        // nếu true thì
+        arrCheckboxHanhDong.forEach(item => {
+          var arrId = item.id.split("/");
+          var MaNhomQuyen = arrId[0];
+          var MaChucNang = arrId[1];
+          var HanhDong = arrId[2];
+
+
+          if (item.checked == true) {
+            LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 1);
+          } else {
+            LuuDuLieuHanhDongCurrent(MaNhomQuyen, MaChucNang, HanhDong, 0);
+          }
+        })
+      
+        // alert("Lưu dữ thay đổi thành công")
+        swal({
+          title: "Lưu dữ thay đổi thành công!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        })
+        loadTable(tmpKey, index, size);
+        loadPhanTrang("chitietquyen", index, size, "", tmpKey);
+        
+      
+      }
+    });
   }
 </script>
 

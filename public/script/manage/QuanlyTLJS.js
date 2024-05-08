@@ -3,13 +3,36 @@ function addTL(){
     var machungloai=document.getElementById("machungloai").value;
     var tentheloai=document.getElementById("tentheloai").value;
     if(!tentheloai){
-        alert("Không được để trống tên thể loại");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxTheLoai/InsertTL",{macl:machungloai, tentl: tentheloai},function(data){
-        alert(data);
-        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
-                window.location.assign(url);
-    });
+        // alert("Không được để trống tên thể loại");
+        swal({
+            title: "Lôi! Không được để trống tên thể loại",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxTheLoai/InsertTL",{macl:machungloai, tentl: tentheloai},function(data){
+            alert(data);
+            var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
+            if(data.length == 6){
+                // alert(data);
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Thêm thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }    
+            // window.location.assign(url);
+        });
+    }
+  
     }
 
 function UpdateTL(){
@@ -18,13 +41,37 @@ function UpdateTL(){
     var machungloai=document.getElementById("machungloai").value;
     var tentheloai=document.getElementById("tentheloai").value;
     if(!tentheloai){
-        alert("Không được để trống tên thể loại");
-    }
+        // alert("Không được để trống tên thể loại");
+        swal({
+            title: "Lôi! Không được để trống tên thể loại",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxTheLoai/UpdateTL",{matl: matheloai,macl: machungloai,tentl: tentheloai},function(data){
-        alert(data);
-        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
-                window.location.assign(url);
-    });
+            // alert(data);
+            // alert(data.length);
+            var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
+            if(data.length == 6){
+                    // alert(data);
+                    swal({
+                        title: "Cập nhật thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "success",
+                    }).then(function () {
+                        window.location.assign(url);
+                    })
+                }else {
+                    swal({
+                        title: "Cập nhật thất bại!",
+                        text: "Nhấn vào nút để tiếp tục!",
+                        icon: "error",
+                    })
+                }
+            // window.location.assign(url);
+        });
+    }
+       
     
 
     }

@@ -1,25 +1,75 @@
 function addCL(){
     var tenchatlieu=document.getElementById("tenchatlieu").value;
     if(!tenchatlieu){
-        alert("Không được để trống tên chất liệu");
+        // alert("Không được để trống tên chất liệu");
+        swal({
+            title: "Lôi! Không được để trống tên chất liệu",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }else {
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/InsertCL",{tencl: tenchatlieu},
+        function(data){
+            var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/ChatLieuPage";
+            if(data.length == 8){
+                // alert(data);
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function () {
+                    window.location.assign(url);
+                })
+            }else {
+                swal({
+                    title: "Thêm thất bại!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                })
+            }
+            
+           
+           
+        });
     } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/InsertCL",{tencl: tenchatlieu},function(data){
-        alert(data);
-        var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/ChatLieuPage";
-                window.location.assign(url);
-    });
+   
     }
 function UpdateCL(){
     var machatlieu=document.getElementById("machatlieu").value;
     var tenchatlieu=document.getElementById("tenchatlieu").value;
     if(!tenchatlieu){
-        alert("Không được để trống tên chất liệu");
-    } 
-    $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/UpdateCL",{macl: machatlieu,tencl: tenchatlieu},function(data){
-        alert(data);
+        // alert("Không được để trống tên chất liệu");
+        swal({
+            title: "Lôi! Không được để trống tên chất liệu",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    } else {
+        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/UpdateCL",{macl: machatlieu,tencl: tenchatlieu},function(data){
+    //    alert(data.length);
+    //    alert(data);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/ChatLieuPage";
+        if(data.length == 8){
+            // alert(data);
+            swal({
+                title: "Cập nhật thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+            }).then(function () {
                 window.location.assign(url);
+            })
+        }else {
+            swal({
+                title: "Cập nhật thất bại!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+            })
+        }
+        
+              
     });
+    }
+    
     }
 
     var tmpKey = "";

@@ -75,8 +75,15 @@ if ($index == "Sửa") {
                     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/ThemDuLieunhomQuyen", {
                         TenNhomQuyen: TenNhomQuyen
                     }, function(data) {
-                        alert("Thêm Dữ Liệu Nhóm Quyền Thành Công");
-                        window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,8";
+                        // alert("Thêm Dữ Liệu Nhóm Quyền Thành Công");
+                        swal({
+                            title: "Thêm thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                         }).then(function(){
+                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage";
+                         })
+                       
 
                     })
 
@@ -106,15 +113,27 @@ if ($index == "Sửa") {
                     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/SuaDuLieuNhomQuyen",{MaNhomQuyen:MaNhomQuyen,TenNhomQuyen:TenNhomQuyen},function(data)
                     {
                         var result = data;
-                        alert("result: "+result.length);
+                        // alert("result: "+result.length);
                         if(result.length == 6)
                         {
-                            alert("Cập nhật dữ liệu nhóm quyền thành công!");
-                            window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage,1,8";
+                            // alert("Cập nhật dữ liệu nhóm quyền thành công!");
+                            swal({
+                                title: "Cập nhật thành công!",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "success",
+                            }).then(function(){
+                                window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage";
+                            })
+                           // window.location = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhomQuyenPage";
                         }
                         else
                         {
-                            alert("Cập nhật dữ liệu nhóm quyền thất bại!");
+                            // alert("Cập nhật dữ liệu nhóm quyền thất bại!");
+                            swal({
+                                title: "Cập nhật thất bại!",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "error",
+                            })
                         }
                     })
                 }

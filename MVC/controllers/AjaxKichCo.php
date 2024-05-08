@@ -1,8 +1,10 @@
 <?php
 class AjaxKichCo extends controller{
     public $KichCoModel;
+    private $ChiTietQuyenModel;
     public function __construct(){
        $this->KichCoModel= $this->model("KichCoModel");
+       $this->ChiTietQuyenModel = $this->model('ChiTietQuyenModel');
     }
 
     public function DoiTrangThai(){
@@ -64,10 +66,14 @@ public function getDanhSachKC()
                 </label>   
                </td>
                <td>
-               <!-- link  để chuyển sang trang nhóm quyền -->
+               <!-- link  để chuyển sang trang nhóm quyền -->";
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
+               {
+                $html.= "<a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKichCoPage,".$row['MaKichCo']."'><i class='bx bxs-edit'></i></a>";
+               }
                  
-                 <a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKichCoPage,".$row['MaKichCo']."'><i class='bx bxs-edit'></i></a>
-                
+                 
+                $html.="
                </td>
              </tr> ";
                

@@ -38,9 +38,9 @@ class AjaxChucNang extends controller {
         {
             if($this->ChucNangModel->update($maChucNang,$tenChucNang) == 1)
             {
-                echo 1;
-            }else echo 0;
-        }else echo -1;
+                echo '1';
+            }else echo '0';
+        }else echo '-1';
        
     }
 
@@ -51,9 +51,9 @@ class AjaxChucNang extends controller {
         {
             if($this->ChucNangModel->delete($maChucNang) == 1)
             {
-                echo 1;
-            }else echo 0;
-        }else echo -1;
+                echo '1';
+            }else echo '0';
+        }else echo '-1';
        
     }
 
@@ -82,6 +82,7 @@ class AjaxChucNang extends controller {
             {
                if($this->ChucNangModel->KiemTraChucNang($_SESSION['MaNhomQuyen'],$row["MaChucNang"])==1)
                {
+                $_SESSION[$row['TenChucNang']] = $row['MaChucNang'];
                 $json .= '"'.$row['TenChucNang'].'"';
                     $json .= ",";
                }
@@ -106,6 +107,7 @@ class AjaxChucNang extends controller {
     {
         while($row = $result->fetch_assoc())
         {
+            $_SESSION[$row['TenChucNang']] = $row["MaChucNang"];
             $render .= "
             <tr>
                 <td>". $row['MaChucNang'] ."</td>
@@ -121,11 +123,18 @@ class AjaxChucNang extends controller {
                         <span class='slider round'></span>
                     </label>  
                 </td>
-          <td style='text-align: center;'>
-       
-            <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>
-            <a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>
-             
+          <td>
+            <div class ='btn-wrap'>
+          ";
+
+          if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1)
+          {
+            $render .= " <a class = 'btn btn_delete' href='#0' onclick='btnXoa(this)' id='".$row["MaChucNang"]."'><i class='bx bx-x'></i></a>";
+          }
+          if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION["MaNhomQuyen"],$_SESSION["Chức Năng"])==1){
+            $render.="<a  class = 'btn btn_fix'href='http://localhost/WebBanHangMoHinhMVC/admin/default/SuaChucNangPage,".$row["MaChucNang"]."'><i class='bx bxs-edit'></i></a>";
+          }
+         $render.="  </div>  
           </td>
         </tr>
             ";

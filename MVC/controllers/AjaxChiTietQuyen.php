@@ -96,7 +96,10 @@ class AjaxChiTietQuyen extends controller
                 <td>
                     <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem'> -->
                     <div class='checkbox-wrapper-46'>
-                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem' type='checkbox'/>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem' type='checkbox'
+                        ";
+                        if ($this->ChiTietQuyenModel->KiemTraHanhDong('Xem',$row['MaNhomQuyen'], $row['MaChucNang'] )) $html .= "checked";
+                       $html.=" />
                         <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xem'>
                             <span>
                             <svg width='12px' height='10px' viewbox='0 0 12 10'>
@@ -106,13 +109,17 @@ class AjaxChiTietQuyen extends controller
                         </label>
                     </div>
                     ";
-                if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Xem')) $html .= "checked = 'checked'; >";
+                
                    $html.="
                 </td>                   
                 <td>
                     <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm'> --> 
                     <div class='checkbox-wrapper-46'>
-                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm' type='checkbox'/>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm' type='checkbox'
+                        
+                        ";
+                if ($this->ChiTietQuyenModel->KiemTraHanhDong( 'Thêm',$row['MaNhomQuyen'], $row['MaChucNang'])) $html .= " checked = 'checked' ";
+                        $html.="/>
                         <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Thêm'>
                             <span>
                             <svg width='12px' height='10px' viewbox='0 0 12 10'>
@@ -122,13 +129,14 @@ class AjaxChiTietQuyen extends controller
                         </label>
                     </div>
                     ";
-                if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Thêm')) $html .= " checked = 'checked' >";
                    $html.="
                 </td>
                 <td>
                     <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa'> --> 
                     <div class='checkbox-wrapper-46'>
-                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa' type='checkbox'/>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa' type='checkbox'";
+                if ($this->ChiTietQuyenModel->KiemTraHanhDong('Xóa',$row['MaNhomQuyen'], $row['MaChucNang']))  $html .= " checked = 'checked'"; 
+                        $html.="/>
                         <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Xóa'>
                             <span>
                             <svg width='12px' height='10px' viewbox='0 0 12 10'>
@@ -138,13 +146,16 @@ class AjaxChiTietQuyen extends controller
                         </label>
                     </div>
                     ";
-                if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Xóa'))  $html .= " checked = 'checked'>"; 
                     $html.="
                 </td>
                 <td>
                     <!-- <input class='CheckBoxHanhDongTrongTable' type='checkbox' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa'> --> 
                     <div class='checkbox-wrapper-46'>
-                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa' type='checkbox'/>
+                        <input class='inp-cbx CheckBoxHanhDongTrongTable' name='' id='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa' type='checkbox'
+                        
+                        ";
+                        if ($this->ChiTietQuyenModel->KiemTraHanhDong( 'Sửa',$row['MaNhomQuyen'], $row['MaChucNang'])) $html .= "checked = 'checked'";
+                        $html.="/>
                         <label class='cbx' for='" . $row['MaNhomQuyen'] . "/" . $row['MaChucNang'] . "/Sửa'>
                             <span>
                             <svg width='12px' height='10px' viewbox='0 0 12 10'>
@@ -154,7 +165,7 @@ class AjaxChiTietQuyen extends controller
                         </label>
                     </div>
                     ";
-                if ($this->ChiTietQuyenModel->KiemTraHanhDong($row['MaNhomQuyen'], $row['MaChucNang'], 'Sửa')) $html .= "checked = 'checked'>";
+                
                $html.="
                 </td>
                </tr>";

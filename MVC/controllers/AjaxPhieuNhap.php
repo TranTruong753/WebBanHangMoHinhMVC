@@ -6,12 +6,13 @@ class AjaxPhieuNhap extends controller {
     private $chitietspmodel;
     private $PhieuNhapModel;
     private $ChiTietPhieuNhapModel;
+    private $ChiTietQuyenModel;
     public function __construct() {
        $this->SanPhamModel = $this->model("SanPhamModel");
        $this->chitietspmodel = $this->model("chitietspmodel");
        $this->PhieuNhapModel = $this->model("PhieuNhapModel");
        $this->ChiTietPhieuNhapModel = $this->model("ChiTietPhieuNhapModel");
-
+       $this->ChiTietQuyenModel = $this->model("ChiTietQuyenModel");
     }
     
     public function getDanhSach()
@@ -19,11 +20,13 @@ class AjaxPhieuNhap extends controller {
         $key = $_POST['key'];
         $pageIndex = $_POST['index'];
         $numberItem = $_POST['size'];
+        $arrange= $_POST['arrange'];
+        $properties=$_POST['properties'];
 
         $html="";
-        if($this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem)->num_rows >0)
+        if($this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem,$arrange,$properties)->num_rows >0)
         {
-            $result=$this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem);
+            $result=$this->PhieuNhapModel->getDanhSach($key,$pageIndex,$numberItem,$arrange,$properties);
             while($row = $result->fetch_assoc())
             {
               $html .=  '<tr> 
@@ -33,10 +36,13 @@ class AjaxPhieuNhap extends controller {
               <td>'.$row["TenNhaCungCap"].'</td>
               <td>'.$row["TenNhanVien"].'</td>
               
-              <td style="text-align: center;">
-              
-                <a title = "chi tiết" class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'"><i class="bx bx-dots-horizontal-rounded" ></i></a> 
-             
+              <td style="text-align: center;">';
+
+              if($this->ChiTietQuyenModel->KiemTraHanhDong("Xem",$_SESSION['MaNhomQuyen'],$_SESSION['Nhập Hàng'])==1)
+              {
+                $html.= ' <a title = "chi tiết" class = "btn btn_fix" href="http://localhost/WebBanHangMoHinhMVC/Admin/default/ChiTietPhieuNhapPage,'.$row["MaPhieuNhap"].'"><i class="bx bx-dots-horizontal-rounded" ></i></a> ';
+              }
+              $html.='
               </td>
             </tr>';
             }
