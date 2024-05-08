@@ -4,12 +4,15 @@
     $pn=$data["DanhSach"]["PN"];
     $ncc=$data["DanhSach"]["NCC"];
     $dem=0;
+    $manv="";
     if ($pn->num_rows > 0) {
         while ($row = $pn->fetch_assoc()) {
                 $dem++;
         }
+    }   
+    if(isset($_SESSION['email'])){
+      $manv=$_SESSION['email'];
     }
-    
 ?>
 <h1 class = 'styleText-02' >Nhập hàng</h1>
 <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage"> Quay về trang quản lý nhập hàng></a>
@@ -71,7 +74,7 @@
   
      <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="thanhtien">Thành tiền</label> 
-        <input class='input-add' type="text" id="thanhtien" value="" disabled> 
+        <input class='input-add' type="text" id="thanhtien" value="0" disabled> 
      </div>
   
      <div class = "input-add_wrap">
@@ -81,7 +84,7 @@
   
      <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="nhanvien">Nhập Mã Nhân Viên</label> 
-        <input class='input-add' type="text" id="nhanvien" value=""> 
+        <input class='input-add' type="text" id="nhanvien" value="<?php echo $manv?>" readonly> 
      </div>
   
       
@@ -184,9 +187,9 @@
     var masp="";
     var mactsp="";
     $(document).ready(function(){
-        masp=$('#sanpham').val();
+        
         document.getElementById('mactsp').value=" ";        
-        gianhap(masp);  
+        //gianhap(masp);  
         //thay đổi sản phẩm      
         // $('#sanpham').on('change',(e)=>{
         //     e.preventDefault();
@@ -365,12 +368,19 @@ function XoaCTPN(ojt){
 }
 
 function Nhaphang(){
-  if(arr.length!=0){
+  var ncc=document.getElementById('ncc').value;
+  if(arr.length==0 ){
+    alert("Bạn chưa chọn sản phẩm để nhập hàng");
+  }
+  else if(ncc==""){
+    alert("Bạn chưa chọn nhà cung cấp");
+  }
+  else {
   var mapn=document.getElementById('mapn').value;
   var today = new Date();
   var ngaynhap = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   var tongtien=document.getElementById('tongtien').value;
-  var ncc=document.getElementById('ncc').value;
+
   var manv=document.getElementById('nhanvien').value;
   //alert(mapn+" "+ngaynhap+" "+tongtien+" "+ncc+" "+manv);
   //alert(JSON.stringify(arr));
@@ -387,18 +397,18 @@ function Nhaphang(){
       manv:manv
     },
     success: function(data) {
-      //alert(data);
-      alert("Nhap hang thanh cong");
-      var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
-             window.location.assign(url);
+      alert(data);
+      // alert("Nhap hang thanh cong");
+      // var url = "http://localhost/WebBanHangMoHinhMVC/admin/default/NhapHangPage";
+      //        window.location.assign(url);
     }
   })
 }
-else alert("Bạn chưa chọn sản phẩm để nhập hàng");
+
 }
 
 function change(ojt){
-  alert(ojt.id);
+  //alert(ojt.id);
   masp=ojt.id;
   index = 1;
   size = 4;
