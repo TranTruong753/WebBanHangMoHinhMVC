@@ -45,6 +45,25 @@ class AjaxHoaDon extends controller{
       
       
     }
+
+    public function getDanhSachThongKeTrong1KhoangThoiGian()
+    {
+      $top = $_POST['top'];
+      $start = $_POST['start'];
+      $end = $_POST['end'];
+
+      $result = $this->HoaDonModel->getDanhSachHoaDonTrong1KhoangThoiGian($top,$start,$end);
+
+      $render = "[";
+      for($i = 0 ; $i < count($result);$i++)
+      {
+        $render.= '["'.$result[$i][0].'",'.$result[$i][1].']';
+        if($i!= count($result)-1) $render.=",";
+      }
+      $render.="]";
+      // print_r('render'.$render);
+      echo $render;
+    }
     public function getDanhSachHD()
     {
          $key = $_POST['key'];

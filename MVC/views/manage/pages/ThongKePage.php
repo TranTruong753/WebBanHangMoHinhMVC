@@ -1,136 +1,128 @@
-<script src="https://www.gstatic.com/charts/loader.js"></script>
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<h1 class="styleText-02">Thống Kê</h1>
-
-<label for="select"></label>
-<select name="select" id="selectThongKe" onchange="changeSelectThongKe(this)">
-    <option value="Top5">Top 5 sản phẩm bán chạy nhất trong tháng</option>
-    <option value="">Thống kê theo Khoảng tgian</option>
-</select>
-<!-- <form method="post" action="process.php">
-    Từ ngày: <input type="date" name="tuNgay">
-    Đến ngày: <input type="date" name="denNgay">
-    <input type="submit" value="Submit">
-</form> -->
-
-<div id="content-chart">
+<body>
+<!-- <input type='text' id='txt'>
+<input type='button' value="oke" onclick='btn()'> -->
+<p><pre>Top <input type="text" class="top"> Sản Phẩm Bán Chạy Nhất</pre></p>
+<p><pre>Trong Khoảng <input type="date" class="start"> đến <input type="date" class="end"></pre></p>
+<p><pre id="x"></pre></p>
+<input type="button" value="Cập Nhật" onclick="btnCapNhat()">
+<div style="display: flex;">
+<div id="BieuDoCot" style="width:100%;max-width:700px"></div>
+<div id="BieuDoTron" style="width:100%;max-width:700px"></div>
 </div>
 
+<div
+id="myChart" style="width:100%; max-width:600px; height:500px;">
+</div>
+
+
 <script>
-    const RenderTop5Chart = `<style>
-    .main {
-        margin: auto;
-        text-align: center;
-    }
 
-    .row {}
+function btnCapNhat()
+{
+  var top =document.getElementsByClassName('top')[0].value;
+  // console.log("top: "+top);
 
-    .so-do-tron,.so-do-cot {
-        border: 5px solid black;
-    }
-</style>
+  var start = document.getElementsByClassName('start')[0].value;
+  // console.log('start: '+start);
 
-<div class="grid main">
-<h4>TOP 5 SẢN PHẨM BÁN CHẠY NHẤT TRONG THÁNG</h4>
+  var end = document.getElementsByClassName('end')[0].value;
+  // console.log('end  : '+end);
 
-    <div class="row">
-        <div class=" col l-7 so-do-cot" style="min-height: 50px; ">
-            <div id="so-do-cot" style="width:100%;  height:500px;"></div>
-        </div>
-        <div class="col l-5 so-do-tron" style=" min-height: 50px;">
-            <div id="so-do-tron" style="width:100%;  height:500px;">
-            </div>
-        </div>
-    </div>
+  getData(top,start,end);
+  // console.log("arr: "+arrThongKe);
 
-</div>`;
+}
 
-
-   
-
-    function renderTop5Chart() {
-        var arrThongKe = []
-        $.ajax({
-            url: "http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getDanhSachThongKeTrong1Thang",
+function getData(top,start,end)
+    {
+        var arr =  $.ajax({
+            url: "http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getDanhSachThongKeTrong1KhoangThoiGian",
             type: "post",
             dataType: "html",
-            data: {},
+            data: {
+              top:top,
+              start:start,
+              end:end
+            },
             success: function(data) {
-                console.log("trước")
-                console.log("data:" + data.trim());
-                console.log("xong")
+            console.log("dataSuccess:"+ data);
 
 
-                arrThongKe = JSON.parse(data.trim())
-                console.log("json:" + arrThongKe)
-                
+             arr = JSON.parse(data.trim())
+             var arrLabel=[]
+             var arrValue=[]
+             arr.forEach(item => {
+              arrLabel.push(item[0]);
+              arrValue.push(item[1]);
+             });
+             console.log("arrLabel: "+arrLabel);
+            // return json;
+            CapNhapBieuDoCot(arrLabel,arrValue)
+            CapNhatBieuDoTron(arrLabel,arrValue)
+
+            // arr.unshift(['Sản Phẩm','Số Lượng']);
+            // CapNhatBieuDoTron(arr);
 
             }
 
-        })
-        google.charts.load('current', {
-            'packages': ['corechart']
         });
-        google.charts.setOnLoadCallback(VeSoDoCot);
 
-        function VeSoDoCot() {
-
-            const data = google.visualization.arrayToDataTable(arrThongKe);
-
-            const options = {
-                title: 'SƠ ĐỒ CỘT'
-            };
-
-            const SoDoCot = new google.visualization.BarChart(document.getElementById('so-do-cot'));
-            SoDoCot.draw(data, options);
-        }
-
-        //sơ Đồ tròn
-
-
-
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(VeSoDoTron);
-
-        function VeSoDoTron() {
-            const data = google.visualization.arrayToDataTable(arrThongKe);
-
-            const options = {
-                title: 'SƠ ĐỒ BÁNH QUY',
-                is3D: true
-            };
-
-            const SoDoTron = new google.visualization.PieChart(document.getElementById('so-do-tron'));
-            SoDoTron.draw(data, options);
-        }
-        document.getElementById("content-chart").innerHTML = RenderTop5Chart;
-
-    }
-    $(document).ready(function() {
-        renderTop5Chart()
-    
-    })
-
-    document.addEventListener('DOMContentLoaded', () => {
-        renderTop5Chart()
-    })
-
-    function changeSelectThongKe(obj)
-    {
-        if(obj.value = "Top5")
-        {
-            renderTop5Chart();
-        }
-        else
-        {
-            document.getElementById("content-chart").innerHTML = "RenderTop5Chart";
-        }
+        // console.log("arr ngoài :" + arr)
+        // return arr;
     }
 
 
 
-    
+
+
+function CapNhapBieuDoCot(arrLabel,arrValue)
+{
+const data = [{
+  x:arrValue,
+  y:arrLabel,
+  type:"bar",
+  orientation:"h",
+  marker: {color:"rgba(255,0,0,0.6)"}
+}];
+
+const layout = {title:"World Wide Wine Production"};
+
+Plotly.newPlot("BieuDoCot", data, layout);
+}
+
+/////////////////////////////
+
+
+// google.charts.load('current', {'packages':['corechart']});
+// google.charts.setOnLoadCallback(CapNhatBieuDoTron);
+
+// function CapNhatBieuDoTron(data) {
+// const data = google.visualization.arrayToDataTable(data);
+
+// const options = {
+//   title:'World Wide Wine Production',
+//   is3D:true
+// };
+
+// const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+//   chart.draw(data, options);
+// }
+
+function CapNhatBieuDoTron(arrLabel,arrValue)
+{
+  
+const layout = {title:"World Wide Wine Production"};
+
+const data = [{labels:arrLabel, values:arrValue, type:"pie"}];
+
+Plotly.newPlot("BieuDoTron", data, layout);
+}
+
 </script>
-<!-- <script src="http://localhost/WebBanHangMoHinhMVC/public/script/admin/Top5SanPham.js"></script> -->
+
+</body>
+</html>

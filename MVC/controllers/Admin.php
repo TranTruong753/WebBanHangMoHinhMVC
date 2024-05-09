@@ -340,7 +340,7 @@ class Admin extends controller
             $this->data["Data"] = [];
         }
 
-        print_r($this->data); 
+        // print_r($this->data); 
 
         $this->view("manage/manage", $this->data);
     }
