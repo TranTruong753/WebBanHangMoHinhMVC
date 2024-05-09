@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mua hàng</title>
-    <!-- link icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-   
-</head>
 
 <?php 
     require('./MVC/views/trangchu/block/header.php');
@@ -86,7 +68,7 @@
 
     <div class="grid-container">
         <div class="grid-item item1">
-            <div class="menu__sub">
+            <!-- <div class="menu__sub">
                 <div class="container container__nav">
                     <ul class="menu__sub-list">
                         <li class="menu__sub-item">
@@ -96,8 +78,14 @@
                             <a class="menu__sub-link" href="#!">item 2</a>
                         </li>                      
                     </ul>
-                </div>
+                 
+                </div> -->
+                <?php 
+                    require('./MVC/views/trangchu/block/link.php');
+                ?>
             </div>       
+                            
+              
         </div>
         <div class="grid-item item3">
 
@@ -403,5 +391,4 @@
 
 </body>
 
-</html>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLon.js"></script>
