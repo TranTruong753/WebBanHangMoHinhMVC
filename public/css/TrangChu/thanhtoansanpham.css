@@ -274,6 +274,11 @@
     width: 100%;
 }
 
+.procedure__logo {
+    width: 25px;
+    
+}
+
 /* radio */
 .procedure-radio-wrap {
     display: flex;

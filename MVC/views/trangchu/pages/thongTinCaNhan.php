@@ -85,7 +85,7 @@
     
             <div class="user-row">
                 <div class="user-column">
-                    <label for="">Giới tính</label>
+                        <label for="">Giới tính</label>
                        <div class="user__radio-wrap">
                             <div class="radio-row">
                                 <input

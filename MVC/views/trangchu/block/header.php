@@ -102,6 +102,11 @@
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinChiTietSanPham.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/chitietsanpham.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinKhachHang.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinCaNhan.css">
         <!-- link js -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

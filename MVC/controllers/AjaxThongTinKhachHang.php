@@ -20,17 +20,34 @@ class AjaxThongTinKhachHang extends controller {
 
 // form khách hàng
     function updateKh(){
+      $checkSdt = false;
         $makh=$_POST['makh'];
         $ten=$_POST['ten'];
         $sdt=$_POST['sdt'];
         $gioitinh=$_POST['gioitinh'];
-        if($this->KhachHangModel->updateKh($makh,$sdt,$ten,$gioitinh)==true){
-            $_SESSION['Ten']=$ten;
-            echo 'true';
+        if($this->KhachHangModel->checkSdtTrung($sdt,$makh)){
+          $checkSdt = true;
+          
+        }else{
+          $checkSdt = false;
+          echo '-1';
         }
-        else {
-            echo 'false';
+        if($checkSdt){
+          if($this->KhachHangModel->updateKh($makh, $sdt, $ten, $gioitinh))
+          {
+              $_SESSION['Ten']=$ten;
+              echo "1";
+          }else echo "0";     
         }
+
+
+        // if($this->KhachHangModel->updateKh($makh,$sdt,$ten,$gioitinh)==true){
+        //     $_SESSION['Ten']=$ten;
+        //     echo 'true';
+        // }
+        // else {
+        //     echo 'false';
+        // }
     }
 
     // form admin

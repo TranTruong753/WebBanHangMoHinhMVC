@@ -197,3 +197,58 @@ input {
     -moz-transform: translateY(-100%) translateX(50%);
     transform: translateY(-100%) translateX(50%);
 } 
+
+
+/* radio */
+.user__radio-wrap {
+    margin-top: 8px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.user__raido-label {
+    position: relative;
+}
+
+.radio-row .user__radio-span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    transition: 0.4s;
+}
+
+.radio-row .user__radio-span::after {
+    opacity: 1;
+    position: absolute;
+    color: #fff;
+    content: "";
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    margin-bottom: 2px;
+}
+
+.user__radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user__radio-input[type='radio']:checked ~ .user__radio-label .user__radio-span {
+    background: var(--color-check-box);
+    border-color: var(--color-check-box);
+   
+}
+
+.user__radio-input[type='radio']:checked ~ .user__radio-label .user__radio-span::after {
+    opacity: 1;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+}

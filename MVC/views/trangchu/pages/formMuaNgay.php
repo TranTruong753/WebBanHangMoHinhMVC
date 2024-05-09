@@ -18,6 +18,9 @@
    
 </head>
 
+<?php 
+    require('./MVC/views/trangchu/block/header.php');
+?>
 <body>
     <nav class="nav-form__pay fixed">
         <div class="container container__nav">
@@ -110,7 +113,7 @@
                                 <div class="procedure-left__info table">
                                     
                                         <input class="procedure-left__info-input " type="tel" name="" id="sdt" placeholder="Nhập số điện thoại...">
-                                        <textarea class="procedure-left__info-textarea" name="" id="diachi" cols="30" rows="5" placeholder="Nhập địa chỉ của mày vào"></textarea>
+                                        <textarea class="procedure-left__info-textarea" name="" id="diachi" cols="30" rows="5" placeholder="Nhập địa chỉ của bạn"></textarea>
                                    
                                 </div>
                                                              
@@ -184,13 +187,13 @@
                                 </table>
                             </div>
                        </div>
-                       <div class="procedure-left__bottom table">
+                       <!-- <div class="procedure-left__bottom table">
                             <div class="procedure-wrap">
                                 <div class="procedure-left__header">
                                     <span>Giảm Trừ</span>
                                 </div>                             
                             </div>
-                       </div>
+                       </div> -->
                    </div>
                    <div class="procedure__main-right ">
                      <div class="procedure-right__top table">
@@ -216,9 +219,10 @@
                                         
                                         <label class="procedure__radio-label" for="atm"
                                             ><span class="procedure__radio-span"></span>                                               
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/logo-atm@3x.png" alt="">
                                             ATM card (Thẻ nội địa)
-                                            </label
-                                        >
+                                            
+                                        </label>
                                     </div>
                                     <div class="radio-row">
                                         <input
@@ -232,6 +236,7 @@
                                     
                                         <label class="procedure__radio-label" for="visa"
                                             ><span class="procedure__radio-span"></span>                                              
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/logo-visa-master-jcb@3x.png" alt="">
                                             Thẻ quốc tế (Visa, Master, JCB)</label
                                         >
                                     </div>
@@ -247,6 +252,7 @@
                                     
                                         <label class="procedure__radio-label" for="momo"
                                             ><span class="procedure__radio-span"></span>                                              
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/momo2.png" alt="">
                                             Thanh toán qua MoMo</label
                                         >
                                     </div>
@@ -262,6 +268,7 @@
                                         
                                         <label class="procedure__radio-label" for="shope"
                                             ><span class="procedure__radio-span"></span>
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/shopeePayLogoV2.png" alt="">
                                             Shopee Pay</label
                                         >
                                     </div>
