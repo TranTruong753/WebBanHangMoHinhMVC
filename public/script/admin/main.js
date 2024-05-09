@@ -89,3 +89,21 @@ function closeAllSelect(elmnt) {
 /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
+
+// đăng xuất
+function Logout(){    
+  $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/Logout",{},function(data){
+      
+      // alert("Dang xuat thanh cong")
+      // window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+
+      swal({
+          title: "Đăng xuất thành công!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+      }).then(function(){
+         window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+      })
+  });
+
+};
