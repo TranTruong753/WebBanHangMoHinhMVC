@@ -1,16 +1,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <?php
     $sanpham=$data["DanhSach"]["SP"];
-    $ctsp=$data["DanhSach"]["CTSP"];
+    //$ctsp=$data["DanhSach"]["CTSP"];
     $mausac=$data["DanhSach"]["MS"];
     $kichco=$data["DanhSach"]["KC"];
-    $dem=1;
-    if ($ctsp->num_rows > 0) {
-        while ($row = $ctsp->fetch_assoc()) {
-                $dem++;
-        }
-        $ctsp->data_seek(0);
-    }
+    $mactsp=$data["DanhSach"]["MACTSP"];
     $masp="";
     $tensp="";
     if ($sanpham->num_rows > 0) {
@@ -42,7 +36,7 @@
     
        <div class="input-add_wrap">
             <label class="styleText-04 label-add" for="mactsp" readonly>Ma chi tiet san pham</label>
-            <input class="input-add" type="text" id="mactsp" value="CTSP<?php echo $dem;?>" readonly> 
+            <input class="input-add" type="text" id="mactsp" value="<?php echo $mactsp;?>" readonly> 
        </div>
     
        <div class="input-add_wrap">

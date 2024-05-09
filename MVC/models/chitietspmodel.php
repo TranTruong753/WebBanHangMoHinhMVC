@@ -10,6 +10,20 @@ class chitietspmodel extends DB{
         
     }
 
+    public function layMaCTSPLonNhat()
+        {
+            $next_id_query = "SELECT MAX(RIGHT(MaChiTietSanPham, 1)) AS max_id FROM chitietsanpham";
+            $result = mysqli_query($this->con, $next_id_query);
+            $row = mysqli_fetch_assoc($result);
+            $max_id = $row['max_id'];
+
+            if ($max_id === null) {
+                return 'CTSP1'; // Nếu không có mã nào trong bảng
+            } else {
+                return 'CTSP' . sprintf('%01d', intval($max_id) + 1);
+            }
+        }
+
     public function Getanhchinhsp($masp){
         $qr = 'SELECT HinhAnh 
         FROM chitietsanpham where MaSanPham="'.$masp.'" and TrangThaiCTSP= 1 limit 1';

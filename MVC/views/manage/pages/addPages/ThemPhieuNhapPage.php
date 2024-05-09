@@ -3,13 +3,17 @@
     $sp=$data["DanhSach"]["SP"];
     $pn=$data["DanhSach"]["PN"];
     $ncc=$data["DanhSach"]["NCC"];
-    $dem=0;
+    $dem=1;
     $manv="";
     if ($pn->num_rows > 0) {
         while ($row = $pn->fetch_assoc()) {
                 $dem++;
         }
     }   
+    if($dem>=10){
+      $mapn="PN0".$dem;
+    }
+    else $mapn="PN00"+$dem;
     if(isset($_SESSION['email'])){
       $manv=$_SESSION['email'];
     }
@@ -21,7 +25,7 @@
   <form method="post" class="">
       <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="mapn">Mã Phiếu Nhập</label> 
-        <input class='input-add' type="text" id="mapn" value="PN00<?php echo $dem+1;?>" disabled> 
+        <input class='input-add' type="text" id="mapn" value="<?php echo $mapn;?>" disabled> 
       </div>
       <div class = "input-add_wrap">
         <label class='styleText-04 label-add' for="sanpham">Chọn Sản Phẩm</label>

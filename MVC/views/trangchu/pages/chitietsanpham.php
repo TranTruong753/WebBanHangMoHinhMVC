@@ -26,7 +26,7 @@
 ?>
     <div class="grid-container">
         <div class="grid-item item1">
-            <div class="menu__sub">
+            <!-- <div class="menu__sub">
                 <div class="container">
                     <ul class="menu__sub-list">
                         <li class="menu__sub-item">
@@ -49,7 +49,10 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
+            <?php 
+            require('./MVC/views/trangchu/block/link.php');
+            ?>
         </div>
 
         <div class="grid-item item3">
@@ -116,10 +119,12 @@
                                 if ($data['mausac']->num_rows > 0) {
                                     while ($row = $data['mausac']->fetch_assoc()) {
                                             echo  '
-                                                     <input class="content__input-radio" type="radio" onclick ="change()" name="mausac" id="'.$row['TenMauSac'].'" value="'.$row['MaMauSac'].'">
-                                                     <label class="content__input-label" for="'.$row['TenMauSac'].'">
-                                                    <span class="content__input-span" id="content__input-span" va></span>
-                                                    </label>
+                                                   <div class = "radio-row">
+                                                        <input class="content__input-radio user__radio-input" type="radio" onclick ="change()" name="mausac" id="'.$row['TenMauSac'].'" value="'.$row['MaMauSac'].'">
+                                                        <label class="user__radio-label" for="'.$row['TenMauSac'].'">
+                                                            <span class="user__radio-span" id="content__input-span"></span>
+                                                        </label>
+                                                   </div>
                                                      '.$row['TenMauSac'];
                                     }
                                 }

@@ -11,9 +11,9 @@ function QLThongTin(){
 }
 
 function updateKh(){
-    var makh = document.getElementById("userEmail").value;
-    var ten = document.getElementById("userName").value;
-    var sdt = document.getElementById("userPhone").value;
+    var makh = document.getElementById("userEmail").value.trim();
+    var ten = document.getElementById("userName").value.trim();
+    var sdt = document.getElementById("userPhone").value.trim();
     var radioButtons = document.getElementsByName("sex");
     var gioitinh="";
     // alert(makh+ten+sdt);
@@ -22,17 +22,37 @@ function updateKh(){
            gioitinh= radioButtons[i].value;
         }
     }
+    // alert(makh+ten+sdt+gioitinh);
     
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThongTinKhachHang/updateKh",{makh : makh,
     ten : ten,sdt : sdt, gioitinh: gioitinh},function(data){
         var result=data;
         // alert(typeof(result));
         // alert(result);
-        if(result.length == 6){
-            alert("Cập nhật thành công");
-            location.reload();     
+        if(result == 1){
+            // alert("Cập nhật thành công");
+            swal({
+                title: "Cập nhật thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+              }).then(function () {
+                location.reload();  
+            })
+               
+        }
+        else if(result == -1){
+            swal({
+                title: "Lỗi! số điện thoại trùng!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              })
         }
         else {
-            alert("mã khách hàng bị trùng");}
+            swal({
+                title: "Lỗi! cập nhật thất bại!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              })
+        }
     });
 }

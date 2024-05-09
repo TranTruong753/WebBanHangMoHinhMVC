@@ -31,8 +31,17 @@ function onclickbtn(){
 // đăng xuất
 function Logout(){    
     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxLogin/Logout",{},function(data){
-        alert("Dang xuat thanh cong")
-        window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+        
+        // alert("Dang xuat thanh cong")
+        // window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+
+        swal({
+            title: "Đăng xuất thành công!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "success",
+        }).then(function(){
+            window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+         })
     });
 
 };

@@ -137,17 +137,22 @@ function DeleteCTSP(ojt){
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/DeleteCTSP",
                 type: 'post',
-                dataType: 'html',
+                dataType: 'JSON',
                 data: {
                  
-        mactsp : mactsp
+               mactsp : mactsp
                 },
                 success: function(data) {
                     if(data.kq== true){
                       swal("Dữ liệu đã xóa thành công!", 
                       {
                         icon: "success",
+                      }).then(function(){
+                          // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey,index,size,arrange,properties)
+                      loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
                       });
+
                     }
                     else {
                       swal("Dữ liệu đã xóa thất bại!", 
@@ -156,9 +161,7 @@ function DeleteCTSP(ojt){
                       });
                     }
                   
-                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
-                    loadTable(tmpKey,index,size,arrange,properties)
-                    loadPhanTrang("chitietsanpham",index,size,sql,tmpKey)
+                  
 
                 }
             });

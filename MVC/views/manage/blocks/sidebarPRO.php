@@ -80,6 +80,7 @@
                     </ul>
             </div>
     </div>
+  
     <script>
             $(document).ready(function() {
                 // var element = document.getElementById("sidebar_menu_list");
@@ -165,9 +166,13 @@
                                     <i class='`+icon+`'></i>
                                     <span class="sidebar_text">`+item+`</span>
                                         </a>`;
-                                    }
+
+                                          }
+                                          
                                 
                                 );
+                        sidebbar += " <a href='#!' class='sidebar_link' onclick='Logout()'><i class='bx bx-log-out sidebar_icon'></i><span class='sidebar_text'>Đăng xuất</span></a>";
+                                 
                             document.getElementsByClassName("sidebar_menu_list")[0].innerHTML =sidebbar
 
                             }
@@ -178,4 +183,4 @@
 
             
     </script>
-    <script src="/public/script/admin/sidebarPRO.js"></script>
+    <!-- <script src="/public/script/admin/sidebarPRO.js"></script> -->

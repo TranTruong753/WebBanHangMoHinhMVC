@@ -66,6 +66,20 @@
         return false;
     }
 
+    public function layMaSPLonNhat()
+        {
+            $next_id_query = "SELECT MAX(RIGHT(MaSanPham, 3)) AS max_id FROM sanpham";
+            $result = mysqli_query($this->con, $next_id_query);
+            $row = mysqli_fetch_assoc($result);
+            $max_id = $row['max_id'];
+
+            if ($max_id === null) {
+                return 'SP001'; // Nếu không có mã nào trong bảng
+            } else {
+                return 'SP' . sprintf('%03d', intval($max_id) + 1);
+            }
+        }
+
     public function GetAllDanhSach($key,$pageIndex,$soLuong,$arrange,$properties)
     {
         trim($key);

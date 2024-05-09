@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mua hàng</title>
-    <!-- link icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-   
-</head>
-
+<?php 
+    require('./MVC/views/trangchu/block/header.php');
+?>
 <body>
     <nav class="nav-form__pay fixed">
         <div class="container container__nav">
@@ -83,7 +68,7 @@
 
     <div class="grid-container">
         <div class="grid-item item1">
-            <div class="menu__sub">
+            <!-- <div class="menu__sub">
                 <div class="container container__nav">
                     <ul class="menu__sub-list">
                         <li class="menu__sub-item">
@@ -93,8 +78,14 @@
                             <a class="menu__sub-link" href="#!">item 2</a>
                         </li>                      
                     </ul>
-                </div>
+                 
+                </div> -->
+                <?php 
+                    require('./MVC/views/trangchu/block/link.php');
+                ?>
             </div>       
+                            
+              
         </div>
         <div class="grid-item item3">
 
@@ -110,7 +101,7 @@
                                 <div class="procedure-left__info table">
                                     
                                         <input class="procedure-left__info-input " type="tel" name="" id="sdt" placeholder="Nhập số điện thoại...">
-                                        <textarea class="procedure-left__info-textarea" name="" id="diachi" cols="30" rows="5" placeholder="Nhập địa chỉ của mày vào"></textarea>
+                                        <textarea class="procedure-left__info-textarea" name="" id="diachi" cols="30" rows="5" placeholder="Nhập địa chỉ của bạn"></textarea>
                                    
                                 </div>
                                                              
@@ -184,13 +175,13 @@
                                 </table>
                             </div>
                        </div>
-                       <div class="procedure-left__bottom table">
+                       <!-- <div class="procedure-left__bottom table">
                             <div class="procedure-wrap">
                                 <div class="procedure-left__header">
                                     <span>Giảm Trừ</span>
                                 </div>                             
                             </div>
-                       </div>
+                       </div> -->
                    </div>
                    <div class="procedure__main-right ">
                      <div class="procedure-right__top table">
@@ -216,9 +207,10 @@
                                         
                                         <label class="procedure__radio-label" for="atm"
                                             ><span class="procedure__radio-span"></span>                                               
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/logo-atm@3x.png" alt="">
                                             ATM card (Thẻ nội địa)
-                                            </label
-                                        >
+                                            
+                                        </label>
                                     </div>
                                     <div class="radio-row">
                                         <input
@@ -232,6 +224,7 @@
                                     
                                         <label class="procedure__radio-label" for="visa"
                                             ><span class="procedure__radio-span"></span>                                              
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/logo-visa-master-jcb@3x.png" alt="">
                                             Thẻ quốc tế (Visa, Master, JCB)</label
                                         >
                                     </div>
@@ -247,6 +240,7 @@
                                     
                                         <label class="procedure__radio-label" for="momo"
                                             ><span class="procedure__radio-span"></span>                                              
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/momo2.png" alt="">
                                             Thanh toán qua MoMo</label
                                         >
                                     </div>
@@ -262,6 +256,7 @@
                                         
                                         <label class="procedure__radio-label" for="shope"
                                             ><span class="procedure__radio-span"></span>
+                                            <img class="procedure__logo" src="<?php echo Root ?>public/img/shopeePayLogoV2.png" alt="">
                                             Shopee Pay</label
                                         >
                                     </div>
@@ -396,5 +391,4 @@
 
 </body>
 
-</html>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLon.js"></script>

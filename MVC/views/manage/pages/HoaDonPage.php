@@ -86,7 +86,8 @@ function DoiTrangThaiHoaDon(obj) {
             ma: ma,
             trangThai: trangThai
         }, function(data) {
-            alert(data); // Hiển thị thông báo
+            // alert(data); // Hiển thị thông báo
+            location.reload();
         });
 
         // Đảm bảo chỉ một radio button được chọn
