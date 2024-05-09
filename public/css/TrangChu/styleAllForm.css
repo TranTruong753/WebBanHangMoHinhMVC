@@ -114,6 +114,10 @@ input {
 }
 
 /* link dưới navbar */
+.menu__sub {
+    padding: 10px 0;
+}
+
 
 .menu__sub-list {
     margin: 10px;
@@ -128,11 +132,14 @@ input {
 }
 
 .menu__sub-link {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
     position: relative;
     font-size: 1.6rem;
     color: var(--color-nav);
 }
-
+/* 
 .menu__sub-link::after {
     bottom: 0;
     top: 0;
@@ -143,7 +150,7 @@ input {
     width: 2px;
     background: #333;
     border-radius: 1px;
-}
+} */
 
 
 /* thông báo lỗi */

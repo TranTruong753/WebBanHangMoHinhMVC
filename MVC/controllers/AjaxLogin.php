@@ -36,9 +36,7 @@ class AjaxLogin extends controller{
         if ($resultKH->num_rows > 0) {
             while ($row = $resultKH->fetch_assoc()) {
                 $_SESSION['email']=$email;
-                $_SESSION['Ten']=$row['TenKhachHang'];
-                            
-                
+                $_SESSION['Ten']=$row['TenKhachHang'];                                          
                 echo "true";
            }
        } else if ($resultNV->num_rows > 0) {

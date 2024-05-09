@@ -60,10 +60,25 @@
 
             <ul class="info__wrap-column ">
                 <li>
-                    <a href="#!" onclick="QLThongTin()" class="btn btn-client">Thông tin cá nhân</a>
+                    <a href="#!" 
+                    <?php 
+                         if(strpos($_SESSION['email'], '@') !== false){ 
+                            echo 'onclick="QLThongTin()" ';
+                         }
+                    ?>
+                    
+                    
+                    class="btn btn-client">Thông tin cá nhân</a>
                 </li>
                 <li>
-                    <a href="#!" onclick="QLHoaDon()" class="btn btn-client">Quản lý đơn hàng</a>
+                    <a href="#!" 
+                    <?php 
+                         if(strpos($_SESSION['email'], '@') !== false){ 
+                            echo 'onclick="QLHoaDon()"  ';
+                         }
+                    ?>
+                    
+                    class="btn btn-client">Quản lý đơn hàng</a>
                 </li>
                 <!-- <li>
                     <a href="#!" class="btn btn-client">item1</a>
@@ -88,8 +103,10 @@
         <div class="info__client-right table">
             <div class="client-right__main" id="client-right__main">
                 <?php
-              
-                     require('./MVC/views/trangchu/pages/thongTinCaNhan.php');
+                    if(strpos($_SESSION['email'], '@') !== false){
+                        require('./MVC/views/trangchu/pages/thongTinCaNhan.php');
+                    }
+                    
                  ?>
                
             </div>

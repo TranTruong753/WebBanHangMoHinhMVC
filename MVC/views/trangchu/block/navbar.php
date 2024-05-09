@@ -175,7 +175,7 @@
                             </ul>       -->
 
                             <?php
-                                if(isset($_SESSION['email']) and isset($_SESSION['Ten'])){
+                                if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
                                     echo '
                                     <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">           
                                     <span >'.$_SESSION['Ten'].'</span>
