@@ -58,7 +58,7 @@ class AjaxPhieuNhap extends controller {
     $manv=$_POST['manv'];
     $donvinhap="del bt";
     
-    echo $mapn." ".$ngaynhap." ".$tongtien." ".$ncc." ".$manv;
+    //echo $mapn." ".$ngaynhap." ".$tongtien." ".$ncc." ".$manv;
     $this->PhieuNhapModel->InsertPN($mapn,$ngaynhap,$tongtien,$ncc,$manv);
     for($i=0;$i<count($arr);$i++){
       $this->ChiTietPhieuNhapModel->InsertCTPN($mapn,$arr[$i]['mactsp'],$donvinhap,$arr[$i]['sl'],$arr[$i]['gn'],$arr[$i]['tt']);

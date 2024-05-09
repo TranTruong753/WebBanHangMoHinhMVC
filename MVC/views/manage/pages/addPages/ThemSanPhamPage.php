@@ -2,7 +2,8 @@
 <?php
     $theloai=$data["DanhSach"]["TL"];
     $chatlieu=$data["DanhSach"]["CL"];
-    $sanpham=$data["DanhSach"]["SP"];
+    //$sanpham=$data["DanhSach"]["SP"];
+    $masp=$data["DanhSach"]["MASP"];
     $km=$data["DanhSach"]["KM"];
    
     $dem=0;
@@ -21,7 +22,7 @@
     
     <div class = "input-add_wrap">
         <label class="styleText-04 label-add" for="masanpham">Mã sản phẩm</label>
-        <input class="input-add" type="text" id="masanpham" value="SP00<?php echo $dem;?>"> 
+        <input class="input-add" type="text" id="masanpham" value="<?php echo $masp;?>"> 
     </div>
 
    <div class = "input-add_wrap">
