@@ -309,10 +309,10 @@ class Admin extends controller
         }
         else if ($this->pageName == "ThemPhieuNhapPage") {
             $sp=$this->model( "SanPhamModel")->getDanhSach();
-            $pn=$this->model( "PhieuNhapModel")->getAllPN();
+            $mapn=$this->model( "PhieuNhapModel")->layMaPNLonNhat();
             $ncc=$this->model( "NhaCungCapModel")->getDanhSach();
             $this->data["detail"] = "addPages/ThemPhieuNhapPage";
-            $this->data["Data"] = ["SP"=>$sp,"PN"=>$pn,"NCC"=>$ncc];
+            $this->data["Data"] = ["SP"=>$sp,"MAPN"=>$mapn,"NCC"=>$ncc];
         }
         else if ($this->pageName == "ChiTietPhieuNhapPage") {
             $manp=$this->params[1];

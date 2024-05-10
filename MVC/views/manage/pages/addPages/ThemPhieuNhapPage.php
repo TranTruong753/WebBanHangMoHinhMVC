@@ -1,19 +1,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <?php
     $sp=$data["DanhSach"]["SP"];
-    $pn=$data["DanhSach"]["PN"];
+    $mapn=$data["DanhSach"]["MAPN"];
     $ncc=$data["DanhSach"]["NCC"];
     $dem=1;
     $manv="";
-    if ($pn->num_rows > 0) {
-        while ($row = $pn->fetch_assoc()) {
-                $dem++;
-        }
-    }   
-    if($dem>=10){
-      $mapn="PN0".$dem;
-    }
-    else $mapn="PN00"+$dem;
     if(isset($_SESSION['email'])){
       $manv=$_SESSION['email'];
     }

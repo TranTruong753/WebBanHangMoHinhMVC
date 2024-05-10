@@ -5,6 +5,19 @@ class PhieuNhapModel extends DB{
         return $this->con->query($qr);
 
     }
+    public function layMaPNLonNhat()
+    {
+        $next_id_query = "SELECT MAX(RIGHT(MaPhieuNhap, 3)) AS max_id FROM phieunhap";
+        $result = mysqli_query($this->con, $next_id_query);
+        $row = mysqli_fetch_assoc($result);
+        $max_id = $row['max_id'];
+
+        if ($max_id === null) {
+            return 'PN001'; // Nếu không có mã nào trong bảng
+        } else {
+            return 'PN' . sprintf('%03d', intval($max_id) + 1);
+        }
+    }
     public function getDanhSach($key,$pageIndex,$soLuong,$arrange,$properties)
     {
         trim($key);
