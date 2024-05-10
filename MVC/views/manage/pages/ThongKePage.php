@@ -4,6 +4,7 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <body>
+  <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKeKinhDoanhPage">Thống kê kinh doanh của cửa hàng></a>
   <!-- <input type='text' id='txt'>
 <input type='button' value="oke" onclick='btn()'> -->
   <p>
@@ -37,11 +38,11 @@
 
       // Định dạng theo yyyy-MM-dd
       var formattedDate = year + '-' + month + '-' + day;
-      alert(formattedDate);
+      // alert(formattedDate);
       return formattedDate;
     }
     $(document).ready(function() {
-      getData(2, '2024-01-01', getDateNow());
+      getData(2, '2000-01-01', getDateNow());
     })
 
     function btnCapNhat() {
@@ -101,21 +102,17 @@
 
 
     function CapNhapBieuDoCot(arrLabel, arrValue) {
-      const data = [{
-        x: arrValue,
-        y: arrLabel,
-        type: "bar",
-        orientation: "h",
-        marker: {
-          color: "rgba(255,0,0,0.6)"
-        }
-      }];
+      
 
-      const layout = {
-        title: "Biểu đồ cột"
-      };
+const data = [{
+  x:arrLabel,
+  y:arrValue,
+  type:"bar"
+}];
 
-      Plotly.newPlot("BieuDoCot", data, layout);
+const layout = {title:"Biểu đồ cột"};
+
+Plotly.newPlot("BieuDoCot", data, layout);
     }
 
     /////////////////////////////
