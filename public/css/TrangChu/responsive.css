@@ -1,0 +1,136 @@
+/* PC */
+@media screen and (min-width: 992px) {
+   .hidden-pc {
+    display: none;
+   }
+}
+
+/* Tablet & mobile */
+@media screen and (max-width: 991px) {
+    .hidden-tablet {
+        display: none;
+    }
+
+    .nav__list {
+        /* grid-area: column01; */
+        display: none ;
+    }
+    .nav__link-logo {
+        grid-area: column02;
+    }
+    /* .search-form {
+        display: none;
+    } */
+
+    .nav__toggle {
+         grid-area: column01;
+    }
+
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.5s ease;
+    }
+
+    .menu-drawer {
+        position: fixed;
+        inset: 0 40% 0 0;
+        background: #fff;
+        z-index: 101;
+        padding: 0 0 60px 60px;
+        transform: translateX(-100%);
+        transition: 0.5s ease;
+    }
+
+    .menu-drawer .menu-list__table {
+        margin-top: 32px;
+    }
+
+    .menu-list__table .menu-link__table {
+        display: block;
+        padding: 14px 0;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .menu-list__table-sub {
+        padding-left: 20px;
+    }
+
+    .menu-list__table-sub span {
+        display: block;
+        padding: 5px 0;
+    }
+
+
+    .menu-checkbox:checked ~ .menu-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menu-checkbox:checked ~ .menu-drawer {
+        transform: translateX(0);
+    }
+
+    .menu-top__table {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 10px;
+    }
+
+    .label__checkbox {
+        padding: 10px;
+    }
+
+    .label__checkbox i {
+        font-size: 1.8rem;
+    }
+
+
+    /* đăng nhập / đăng xuất / user*/
+    .show-info__user{
+        width: 250px;
+        left: 30%;
+    }
+
+    /* .product__fashion {
+        display: none;
+    } */
+
+    /* sản phẩm */
+    .product__list {
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+    }
+
+    .product__img-wrap {
+        width: 100%;
+        min-width: 100%;
+    }
+    /* footer */
+    .footer__row-center {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__row {
+        padding: 20px 0;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+
+  
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+   
+}
+
+/* Mobile */
+@media screen and (max-width: 767.98px) {
+  
+}

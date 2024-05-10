@@ -18,7 +18,64 @@
 </head>
 
 <body> -->
-    
+    <!-- header mobile - table -->
+    <header class="mobile-header hidden-pc">
+        <input
+            type="checkbox"
+            name=""
+            id="menu-checkbox"
+            class="menu-checkbox"
+            hidden
+        />
+        <label for="menu-checkbox" class="menu-overlay"></label>
+
+        <div class="menu-drawer">
+          <div class="menu-top__table">
+                <a href="<?php echo Root ?>home/trangchu" class="">                      
+                    <img src="<?php echo Root ?>public/img/logo.png" alt="" class="nav-logo" />
+                 </a>
+
+                 <label for="menu-checkbox" class="label__checkbox">
+                    <i class="fa-solid fa-x"></i>
+                 </label>               
+            </div>
+            <ul class="menu-list__table">
+                <li>
+                    <a class="menu-link__table" href="">HÀNG MỚI VÈ</a>
+                </li>
+              
+
+                <?php   
+                    if ($data['CL']->num_rows > 0) {
+                        while ($row = $data['CL']->fetch_assoc()) {
+                            echo    '
+                            
+                        <li class=""  value="'.$row["MaChungLoai"].'">
+                            <a href="#!" class="menu-link__table" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
+                            <ul class="menu-list__table-sub">';
+                                
+                                if ($data['TL']->num_rows > 0) {
+                                    
+                                    while ($row1 = $data['TL']->fetch_assoc()) {
+                                        
+                                        if($row1["MaChungLoai"]==$row["MaChungLoai"]){
+                                            echo'
+                                            <li>
+                                                <span class="" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
+                                            </li>
+                                            ';
+                                        }
+                                        
+                                    }
+                                }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
+                            echo '</ul>
+                        </li>';
+                        }
+                    }
+                ?>
+            </ul>
+        </div>
+    </header>
     <!-- nav -->
     <nav class="fixed">
         <div class="container container__nav">
@@ -27,43 +84,46 @@
                 <a href="<?php echo Root ?>home/trangchu" class="nav__link-logo">
                     <img src="<?php echo Root ?>public/img/logo.png" alt="" class="nav-logo" />
                 </a>
-                <!-- <div class="nav__toggle nav__bars" id="nav-toggle">
-                        <i class="fa-solid fa-bars"></i>
-                        <i class="fa-solid fa-x"></i>
-                    </div> -->
+
+                <!-- table/mobile -->
+                <div class="hidden-pc nav__toggle nav__bars" id="nav-toggle">
+                        <label for="menu-checkbox"><i class="fa-solid fa-bars"></i></label>
+                        <!-- <i class="fa-solid fa-x"></i> -->
+                </div>
+
                 <!-- nav list -->
                 <ul class="nav__list">
                     <li class="nav__list-items">
                         <a href="#!" class="nav__item-link" onclick="getAllSP(this)" id ="hangmoi">HÀNG MỚI VÈ</a>
                     </li>
                     <?php   
-                            if ($data['CL']->num_rows > 0) {
-                                while ($row = $data['CL']->fetch_assoc()) {
-                                    echo    '
+                        if ($data['CL']->num_rows > 0) {
+                            while ($row = $data['CL']->fetch_assoc()) {
+                                echo    '
+                                
+                            <li class="nav__list-items"  value="'.$row["MaChungLoai"].'">
+                                <a href="#!" class="nav__item-link" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
+                                <ul class="sub-menu">';
                                     
-                                <li class="nav__list-items"  value="'.$row["MaChungLoai"].'">
-                                    <a href="#!" class="nav__item-link" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
-                                    <ul class="sub-menu">';
+                                    if ($data['TL']->num_rows > 0) {
                                         
-                                        if ($data['TL']->num_rows > 0) {
+                                        while ($row1 = $data['TL']->fetch_assoc()) {
                                             
-                                            while ($row1 = $data['TL']->fetch_assoc()) {
-                                                
-                                                if($row1["MaChungLoai"]==$row["MaChungLoai"]){
-                                                    echo'
-                                                    <li>
-                                                        <span class="sub-link" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
-                                                    </li>
-                                                    ';
-                                                }
-                                                
+                                            if($row1["MaChungLoai"]==$row["MaChungLoai"]){
+                                                echo'
+                                                <li>
+                                                    <span class="sub-link" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
+                                                </li>
+                                                ';
                                             }
-                                        }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
-                                    echo '</ul>
-                                </li>';
-                                }
+                                            
+                                        }
+                                    }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
+                                echo '</ul>
+                            </li>';
                             }
-                            ?>
+                        }
+                    ?>
                 </ul>
                 <!-- search -->
                 <!-- Search form -->
@@ -155,6 +215,7 @@
                     </div>
                     <!-- login logout -->
                     <div class="nav__right">
+                        <!-- pc // table-->
                         <div class="nav__right-wrap">
                             
                             <!-- <img class="nav__icon-user" src="<?php echo Root ?>public/img/user.png" alt="" id="">           
@@ -209,6 +270,8 @@
                             ?>
                             
                         </div>
+                        
+                    
                     </div>
                 </div>
             </div>
