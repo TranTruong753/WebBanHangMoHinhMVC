@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-
-<body>
     <?php
         // require('./MVC/views/trangchu/block/header.php');
         // require('./MVC/views/trangchu/block/navbar.php');
@@ -158,7 +144,3 @@
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
     
         
-
-</body>
-
-</html>

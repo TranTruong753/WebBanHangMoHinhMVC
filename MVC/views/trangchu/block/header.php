@@ -103,7 +103,7 @@
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/reset.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/styleAllForm.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
-       
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/login.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinChiTietSanPham.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/chitietsanpham.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css">
