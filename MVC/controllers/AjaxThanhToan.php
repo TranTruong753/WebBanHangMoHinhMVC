@@ -34,13 +34,8 @@ class AjaxThanhToan extends controller{
         $date=$_POST['date'];
         $pttt=$_POST['pttt'];
         $tongtien=$_POST['tongtien'];
-        $result=$this->HoaDonModel->GetAllHoaDon();
-        $dem=1;
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $dem++;
-            }
-        }
+        $mahd=$this->HoaDonModel->layMaHDLonNhat();
+        
         
         if($sdt==""){
             $resultKH=$this->KhachHangModel->TimKHbyID($makh);
@@ -50,7 +45,7 @@ class AjaxThanhToan extends controller{
                 }
             }
         }
-        $mahd='HD0'.$dem;
+        
         $this->HoaDonModel->InsertHoaDon($mahd,$date,$tongtien,$pttt,$makh,$sdt,$diachi);
 
 

@@ -36,6 +36,19 @@ class HoaDonModel extends DB
             return false;
         }
     }
+    public function layMaHDLonNhat()
+        {
+            $next_id_query = "SELECT MAX(RIGHT(MaHoaDon, 2)) AS max_id FROM hoadon";
+            $result = mysqli_query($this->con, $next_id_query);
+            $row = mysqli_fetch_assoc($result);
+            $max_id = $row['max_id'];
+
+            if ($max_id === null) {
+                return 'HD01'; // Nếu không có mã nào trong bảng
+            } else {
+                return 'HD' . sprintf('%02d', intval($max_id) + 1);
+            }
+        }
 
     public function updateTrangThai($ma, $trangThai)
     {
