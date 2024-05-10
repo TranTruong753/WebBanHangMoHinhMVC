@@ -16,9 +16,9 @@
   <pre id="x"></pre>
   </p>
   <input type="button" value="Cập Nhật" onclick="btnCapNhat()">
-  <div style="display: flex;">
-    <div id="BieuDoCot" style="width:100%;max-width:700px"></div>
-    <div id="BieuDoTron" style="width:100%;max-width:700px"></div>
+  <div style="display: flex; ">
+    <div id="BieuDoCot" style="width:100%;max-width:700px; "></div>
+    <div id="BieuDoTron" style="width:100%;max-width:700px; "></div>
   </div>
 
   <div id="myChart" style="width:100%; max-width:600px; height:500px;">
@@ -112,7 +112,7 @@
       }];
 
       const layout = {
-        title: "World Wide Wine Production"
+        title: "Biểu đồ cột"
       };
 
       Plotly.newPlot("BieuDoCot", data, layout);
@@ -139,7 +139,7 @@
     function CapNhatBieuDoTron(arrLabel, arrValue) {
 
       const layout = {
-        title: "World Wide Wine Production"
+        title: "Biểu đồ tròn"
       };
 
       const data = [{

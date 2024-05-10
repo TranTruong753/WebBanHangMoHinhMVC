@@ -91,15 +91,16 @@ class HoaDonModel extends DB
 
     public function getDanhSachHoaDonTrong1KhoangThoiGian($top, $start, $end)
     {
-        $qr = 'SELECT sp.TenSanPham, SUM(cthd.SoLuong) as total
+        $qr = 'SELECT cthd.*,sp.MaSanPham,sp.TenSanPham,SUM(cthd.SoLuong) as total
         FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp
-        WHERE NgayLap >= "' . $start . ' 00:00:01"
-        AND NgayLap <= "' . $end . ' 23:59:00"  
+        WHERE cthd.MaHoaDon = hd.MaHoaDon
         AND sp.MaSanPham = ctsp.MaSanPham
         AND cthd.MaChiTietSanPham = ctsp.MaChiTietSanPham
+        AND  NgayLap BETWEEN "'.$start.' 00:00:01"
+        AND "'.$end.' 23:59:00" 
         GROUP BY sp.MaSanPham
-        ORDER BY total DESC';
-        // LIMIT 0,' . $top;
+        ORDER BY total DESC
+		LIMIT 0,'.$top;
 
         $result = $this->con->query($qr);
         $arr = [];
