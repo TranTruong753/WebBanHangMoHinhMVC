@@ -181,6 +181,11 @@ class Admin extends controller
             $this->data["detail"] = "ThongKePage";
             $this->data["Data"]= [];
         }
+        else if($this->pageName== "ThongKeKinhDoanhPage")
+        {
+            $this->data["detail"] = "ThongKeKinhDoanhPage";
+            $this->data["Data"]= [];
+        }
         //page thêm
         else if ($this->pageName == "ThemKhuyenMaiPage") {
             $KhuyenMaiModel = $this->model( "KhuyenMaiModel");
@@ -341,6 +346,7 @@ class Admin extends controller
             $this->data["detail"] = "chartPages/Top5SanPham";
             $this->data["Data"] = [];
         }
+       
 
         // print_r($this->data); 
 
