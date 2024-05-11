@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thongTinSanPham</title>
-     <!-- link icon -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- link css -->
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinSanPham.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  
-</head>
-<body>
+
+
+   
     <header class="user__header ">
         <h2 class="client-title-01">Quản lý đơn hàng</h2>
     </header>
@@ -80,8 +67,16 @@
 
         
         </ul>
-     
+        
     </main>
-</body>
-</html>
+    <script>
+        $(document).ready(function() {
+            var element = document.querySelector(".info__client-right");
+            element.style.overflowY = "scroll";
+          
+
+            })
+
+      </script>
+
 <script src="<?php echo Root ?>public/script/TrangChu/QLHoaDonJS.js"></script>

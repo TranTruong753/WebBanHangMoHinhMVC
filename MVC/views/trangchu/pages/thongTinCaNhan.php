@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinCaNhan.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-</head>
-<body>
     <?php 
          if(!isset($userName)){
             $userName = $_SESSION['Ten'];
@@ -37,13 +27,14 @@
         
     ?>
 
+
     <header class="user__header ">
         <h2 class="client-title-01">Thông Tin Cá Nhân</h2>
     </header>
     <main >
         <form action="" method="POST" class="user__main" id="my_form">
             <div class="user-row">
-               <div class="user-column">
+                <div class="user-column">
                     <label for="userName" class="clinet-title-02">Nhập họ và tên</label>
                     <input type="text" name="userName" id="userName" 
                     <?php 
@@ -53,7 +44,7 @@
                     ?>
                     class="user__input">
                     <div id="error-message-user"></div>
-               </div>
+                </div>
             </div>
     
             <div class="user-row">
@@ -65,7 +56,7 @@
                             echo ' value="'.$userPhone.'" ';
                         }
                     ?>  
-                  
+                    
                     class="user__input">
                     <div id="error-message-phone"></div>
                 </div>
@@ -86,7 +77,7 @@
             <div class="user-row">
                 <div class="user-column">
                         <label for="">Giới tính</label>
-                       <div class="user__radio-wrap">
+                        <div class="user__radio-wrap">
                             <div class="radio-row">
                                 <input
                                     class="user__radio-input"
@@ -150,7 +141,7 @@
                                     </label
                                 >
                             </div>
-                       </div>
+                        </div>
                 </div>
                 <!-- <div class="user-column">
                     <label for="userDate">Ngày sinh</label>
@@ -159,12 +150,13 @@
             </div>
     
         </form>
-       
+        
             <button class="btn btn--primary btn-user" onclick="updateKh()" id="btn">Lưu chỉnh sửa</button>                       
             <!-- <a href="#!"class ="btn btn--primary btn-user" >Lưu chỉnh sửa</a>
-      -->
+        -->
     </main>
+    
+      
+
     <script src="<?php echo Root ?>public/script/TrangChu/QLThongTinKHJS.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/batLoiSuaThongTinKH.js"></script>
-</body>
-</html>

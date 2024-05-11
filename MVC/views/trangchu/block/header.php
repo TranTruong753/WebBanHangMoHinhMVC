@@ -109,6 +109,7 @@
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thanhtoansanpham.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinKhachHang.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinCaNhan.css">
+        <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/thongTinSanPham.css">
         <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/responsive.css">
     
         <!-- link js -->

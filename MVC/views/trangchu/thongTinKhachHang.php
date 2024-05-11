@@ -83,18 +83,19 @@
                 </li> -->
             </ul>
         </div>
+
         <div class="info__client-right table">
             <div class="client-right__main" id="client-right__main">
                 <?php
                     if(strpos($_SESSION['email'], '@') !== false){
                         require('./MVC/views/trangchu/pages/thongTinCaNhan.php');
                     }
-                    
-                 ?>
-               
+                            
+                ?>
             </div>
-
-        </div>   
+        </div>
+       
+      
    </div>
 </body>
 

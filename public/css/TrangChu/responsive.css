@@ -163,6 +163,28 @@
   .procedure-right__bottom {
     flex-grow: 1;
   }
+
+  /* thong tin khach hang */
+  .info__client-wrap {
+    column-gap: 10px;
+  }
+
+  .info__client-right {
+    height: 100%;
+  }
+
+  .user-row {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .user__header {
+    padding-bottom: 20px;
+  }
+
+  .user__main {
+    row-gap: 20px;
+  }
 }
 
 /* Tablet */
