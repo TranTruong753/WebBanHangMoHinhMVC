@@ -3,12 +3,12 @@
 <?php 
     require('./MVC/views/trangchu/block/header.php');
 ?>
-<body>
+
     <nav class="nav-form__pay fixed">
         <div class="container container__nav">
             <div class="nav-pay__inner">
                 <!-- logo -->
-                <a href="#" class="nav__link-logo">
+                <a href="#" class="nav__link-logo hidden-tablet">
                     <img src="<?php echo Root ?>public/img/logo.png" alt="MENSTYLE" class="nav-logo" />
                 </a>
                 <!-- thanh quy trình -->
@@ -52,7 +52,7 @@
                 </div>
 
                 <!-- thanh tiếp tục -->
-                <div class="nav-pay__next">
+                <div class="nav-pay__next hidden-tablet">
                     <a href="#!" class="pay__next-wrap">
                         <div class="pay__next-title">TIẾP TỤC MUA SẮM</div>
                         <div class="pay__next-icon">
@@ -389,6 +389,5 @@
     </dialog> -->
 
 
-</body>
 
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLon.js"></script>

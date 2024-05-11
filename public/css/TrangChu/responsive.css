@@ -144,6 +144,25 @@
   .swal-overlay {
     top:-40%;
   }
+
+  /* form mua ngay */
+  .procedure__main {
+    flex-direction: column;
+  }
+
+  .procedure__main-right  {
+    flex-direction: row;
+    column-gap: 20px;
+    width: 100%;
+  }
+
+  .procedure-right__top {
+    flex-grow: 1;
+  }
+
+  .procedure-right__bottom {
+    flex-grow: 1;
+  }
 }
 
 /* Tablet */
