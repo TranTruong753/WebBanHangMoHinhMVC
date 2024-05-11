@@ -53,7 +53,7 @@
                         <li class=""  value="'.$row["MaChungLoai"].'">
                             <a href="#!" class="menu-link__table" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
                             <ul class="menu-list__table-sub">';
-                                
+                                $data['TL']->data_seek(0);
                                 if ($data['TL']->num_rows > 0) {
                                     
                                     while ($row1 = $data['TL']->fetch_assoc()) {
@@ -67,7 +67,7 @@
                                         }
                                         
                                     }
-                                }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
+                                }; //đặt con trỏ lại vị trí cũ
                             echo '</ul>
                         </li>';
                         }
@@ -97,6 +97,7 @@
                         <a href="#!" class="nav__item-link" onclick="getAllSP(this)" id ="hangmoi">HÀNG MỚI VÈ</a>
                     </li>
                     <?php   
+                        $data['CL']->data_seek(0);
                         if ($data['CL']->num_rows > 0) {
                             while ($row = $data['CL']->fetch_assoc()) {
                                 echo    '
@@ -104,7 +105,7 @@
                             <li class="nav__list-items"  value="'.$row["MaChungLoai"].'">
                                 <a href="#!" class="nav__item-link" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
                                 <ul class="sub-menu">';
-                                    
+                                $data['TL']->data_seek(0);
                                     if ($data['TL']->num_rows > 0) {
                                         
                                         while ($row1 = $data['TL']->fetch_assoc()) {
@@ -118,7 +119,7 @@
                                             }
                                             
                                         }
-                                    }$data['TL']->data_seek(0); //đặt con trỏ lại vị trí cũ
+                                    }; //đặt con trỏ lại vị trí cũ
                                 echo '</ul>
                             </li>';
                             }
