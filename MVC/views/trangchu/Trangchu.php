@@ -42,7 +42,7 @@
                 <div class="container">
                     <!-- fashion - 01 -->
                     <section class="product__fashion">
-                        <p class="product__title product__title-left">THỜI TRANG HOT</p>
+                        <p class="product__title product__title-left">THỜI TRANG MỚI NHẤT</p>
                         <div class="product__list" id ="product__list">
 
                         <!-- nội dung của ajax -->
@@ -91,7 +91,7 @@
                 <div class="container">
                     <!-- fashion - 02 -->
                     <section class="product__fashion">
-                        <p class="product__title">THỜI TRANG MỚI NHẤT</p>
+                        <p class="product__title">THỜI TRANG HOT</p>
                         <div class="product__list">
                             <!-- item 01 -->
                             <section class="product__item">
