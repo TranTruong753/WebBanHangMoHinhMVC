@@ -4,7 +4,7 @@ var timkiem=  "";
 var Tensp= "";
 var tmpKey = "";
 var index = 1;
-var size = 4;
+var size = 8;
 var sqlCL="";
 var sqlTL="";
 var sqlbt="INNER JOIN sanpham on chitietsanpham.MaSanPham= sanpham.MaSanPham  where "+

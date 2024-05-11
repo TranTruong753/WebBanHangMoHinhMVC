@@ -252,3 +252,38 @@ input {
     border-left: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
 }
+
+/* css phân trang */
+
+.PhanTrang {
+    overflow: hidden;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 4px;
+  }
+  
+  .PhanTrang a {
+    display: block;
+    /* height: 24px; */
+    background: var(--color-btn);
+    color: #fff;
+    padding: 8px 10px;
+    transition: 0.4s;
+  }
+  
+  .PhanTrang a:not(.PhanTrang b a):hover {
+    text-shadow: 1px 0 0 currentColor;
+    transform: scale(1.1);
+  }
+  
+  
+  .PhanTrang b a {
+    display: block;
+    /* height: 24px; */
+    padding: 8px 10px;
+    font-weight: normal;
+    background-color: #ddd;
+    cursor: default;
+  }

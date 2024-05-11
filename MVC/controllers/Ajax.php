@@ -24,7 +24,7 @@ $this->GioHang= $this->model("GioHangModel");
         $pageIndex = 1;
         }
        
-        $html="";
+        $html="";       
         $tc = $this->TrangChuKHModel->getDanhSach($key,$pageIndex,$numberItem);
         if ($tc->num_rows > 0) {
             while ($row = $tc->fetch_assoc()) {
