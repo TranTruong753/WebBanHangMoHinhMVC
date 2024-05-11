@@ -35,10 +35,10 @@
                     </div>
                 </div>
                 <div class="client__product-detail-center">
-                <table class="table__product-detail table">
+                <table class="table__product-detail table hidden-mobile">
                     <!-- tiêu đề -->
                     <tr class="table table-title">
-                        <th style="text-align: left; padding-left:30px;">Sản phẩm</th>
+                        <th style="">Sản phẩm</th>
                         <th>Số lượng</th>
                         <th>Đơn giá</th>
                         <th>Tổng tính</th>
@@ -78,7 +78,35 @@
                 }
                   
             echo '
-            </table>
+            </table>';
+            
+            echo '<div class = "hidden-pc hidden-table info-product__mobile-wrap table">
+                   
+                ';
+            // mobile 
+            
+            $data['CTHD']->data_seek(0);
+            if ($data['CTHD']->num_rows > 0) {
+                while ($row = $data['CTHD']->fetch_assoc()) {
+                    echo '
+                    <div class = "line-product">
+                        <p class = "info-product__mobile-title " style ="color:red;     font-weight: 500;" > Sẩn phẩm: '.$row['TenSanPham'].'</p>
+                       <div class = "info-product__mobile">
+                            <p class = "info-product__mobile-title ">'.$row['TenKichCo'].'</p>
+                            <p class = "info-product__mobile-title ">Màu: '.$row['TenMauSac'].'</p>
+                            <p class = "info-product__mobile-title ">Số lượng: '.$row['SoLuong'].'</p>
+                       </div>
+                       <div class = "info-product__mobile">
+                            <p class = "info-product__mobile-title ">Thành tiền: '.number_format($row['ThanhTien'], 0, ',', '.').' VNĐ</p>
+                            <p class = "info-product__mobile-title " style ="color:red">Tổng: '.number_format($row['SoLuong']*$row['ThanhTien'], 0, ',', '.').' VNĐ</p>
+                        </div>
+                    </div>
+                    
+                    ';
+                }
+            }
+                
+        echo '   </div> 
         </div>
         <div class="client__product-detail-bottom">
            

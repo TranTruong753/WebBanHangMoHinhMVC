@@ -68,7 +68,7 @@
 
 .content__info-title,
 .content__info-price {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: bold;
     color: var(--color);
     line-height: 29px;

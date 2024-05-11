@@ -109,7 +109,7 @@
                                     <input type="radio" name="" id="red"> -->
                                 </div>
                                 
-                                <div class="content__input">
+                                <div class="content__input content__input0-mobile">
                                     <select id="content__input-select" onchange="changecount()" class="content__input-select">
                                         <option>Vui lòng chọn màu</option>
                                         <!-- <option value="sizeL">L</option>

@@ -14,7 +14,7 @@
                 <div class="login__title-wrap">
                         <h2 class="heading-title login__title">Đăng nhập</h2>
                         <p class="heading-desc login__desc"> Bạn chưa có tài khoản FM?
-                         <a href="#!">Đăng kí ngay</a>
+                         <a href="<?php echo Root ?>Dangki/dangki">Đăng kí ngay</a>
                         </p>
                 </div>
                 <form action="" class="login__form" method="post" autocapitalize="off" id="my_form">

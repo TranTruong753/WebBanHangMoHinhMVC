@@ -7,15 +7,14 @@
 
 /* Tablet & mobile */
 @media screen and (max-width: 991px) {
-    .hidden-tablet {
-        display: none;
-    }
-
+   
+  .separate {
+    border-top: 1.5px solid #ebebeb;
+  }
     .container__nav, .container {
-        max-width: 991px;
         --width-container: 100%;
         width: var(--width-container);
-        max-width: calc(100% - 48px);
+        max-width: calc(100% - 28px);
         margin: 0 auto;
     }
 
@@ -45,6 +44,7 @@
         visibility: hidden;
         transition: 0.5s ease;
     }
+    
 
     .menu-drawer {
         position: fixed;
@@ -122,6 +122,9 @@
         width: 100%;
         min-width: 100%;
     }
+
+   
+
     /* footer */
     .footer__row-center {
         grid-template-columns: 1fr 1fr;
@@ -185,14 +188,181 @@
   .user__main {
     row-gap: 20px;
   }
+
+  /* ct sp  */
+  .content__img-main  {
+    min-width: inherit;
+  }
 }
 
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 991px) {
-   
+  .hidden-tablet {
+    display: none;
+}
 }
 
 /* Mobile */
 @media screen and (max-width: 767.98px) {
+
+  .container__nav, .container {
+    /* max-width: 767px; */
+    --width-container: 100%;
+    width: var(--width-container);
+    max-width: calc(100% - 18px);
+    margin: 0 auto;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+
+  .nav__inner {
+    grid-template-columns: repeat(2, auto);
+    grid-template-areas: "column01 column02 ";
+  }
+
+  .nav__form, .nav__right , .footer__bottom{
+    display: none;
+  }
+
+  
+  .header {
+    display: none;
+  }
+
+  .menu-drawer {
+    inset: 0 0 0 0;
+    padding: 0 0 30px 30px;
+  }
+
+  .label__checkbox {
+    margin-bottom: 17px;
+    padding-right: 0;
+  }
+
+  /* menu bottom */
+  .menu-bottom {
+    margin-top: 20px;
+  }
+
+  .menu-bottom a {
+    padding-top: 14px;
+    font-weight: 500;
+    display: block;
+    color: #333;
+  }
+
+  /* nav login logout */
+  .user__mobile {
+    color: #333;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px 0 0 30% ;
+  }
+  
+  .user__mobile span {
+    font-size: 2.2rem;
+  }
+
+  .user__mobile  img {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* product */
+  .product__title{
+    font-size: 1.8rem;
+  }
+
+  .product__list {
+    grid-template-columns: 1fr;
+  }
+  
+  /* footer */
+  .footer__row {
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  .footer__row-center {
+    grid-template-columns: auto;
+    row-gap: 10px;
+  }
+
+  /* login page */
+  .login__main {
+    width: 100%;
+    padding: 10px;
+
+  }
+  .login__wrap {
+    padding: 0;
+  }
+
+  /* trang ct sp  */
+  .content__info-inner {
+    padding: 20px;
+  }
+
+  .content__info-title,
+  .content__info-price {
+      font-size: 1.8rem;
+    
+  }
+  .content__input0-mobile {
+    flex-direction: column;
+  }
+
+  /* trang thông tin kh */
+  .info__client-wrap {
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .btn-user {
+    --width-btn: 100%
+  }
+
+    
+  .client__product-detail-top  {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .info__client-right {
+    padding: 20px;
+  }
+
+  /* cthd thong tin kh */
+  .info-product__mobile-wrap {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .info-product__mobile {
+    margin-top: 10px;
+    column-gap: 10px;
+    display: flex;
+  }
+
+  .info-product__mobile-title  {
+    font-size: 1.4rem;
+  }
+
+  .line-product:not(.line-product:last-child) {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .client__product-detail-bottom {
+    margin-top: 10px;
+  }
+
+  
+
   
 }

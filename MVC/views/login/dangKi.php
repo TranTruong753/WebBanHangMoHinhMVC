@@ -12,7 +12,7 @@
                 <div class="login__title-wrap">
                         <h2 class="heading-title login__title">Đăng ký</h2>
                         <p class="heading-desc login__desc"> Bạn đã có tài khoản MENSTYLE?
-                         <a href="#!">Đăng nhập</a>
+                         <a href="<?php echo Root ?>DangNhap/dangNhap">Đăng nhập</a>
                         </p>
                 </div>
                 <form action="" class="login__form" method="" autocapitalize="off" id="my_form">

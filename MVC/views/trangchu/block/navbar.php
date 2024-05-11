@@ -31,14 +31,54 @@
 
         <div class="menu-drawer">
           <div class="menu-top__table">
-                <a href="<?php echo Root ?>home/trangchu" class="">                      
-                    <img src="<?php echo Root ?>public/img/logo.png" alt="" class="nav-logo" />
+                <a href="<?php echo Root ?>home/trangchu" class="hidden-mobile">                      
+                    <img src="<?php echo Root ?>public/img/logo.png" alt="" class="" />
                  </a>
+                 <!-- mobile -->
+                <?php 
+                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                       echo '
+                       <a name="user" id="'.$_SESSION['email'].'"  
+                       href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" 
+                       class="hidden-tablet user__mobile">
+                            <span >'.$_SESSION['Ten'].'</span>
+                            <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">    
+                       </a>
+                       ';
+                    }else {
+                        echo '
+                        <a href="'.Root.'home/trangchu" class="">                      
+                            <img src="'.Root.'public/img/logo.png" alt="" class="" />
+                        </a>';
+                    }
+                ?>
+                <!-- <a 
+                <?php 
+                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                        echo 'name="user" id="'.$_SESSION['email'].'"';
+                    }                 
+                    
+                ?>
+                href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" 
+                class="hidden-tablet user__mobile"
+                >
+                    <?php
+                        if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                            echo '
+                            <span >'.$_SESSION['Ten'].'</span>
+                            <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">    
+                            ';
+                        }
+                    ?>
+                </a> -->
+              
 
                  <label for="menu-checkbox" class="label__checkbox">
                     <i class="fa-solid fa-x"></i>
                  </label>               
             </div>
+
+            <span class="separate"></span>
             <ul class="menu-list__table">
                 <li>
                     <a class="menu-link__table" href="">HÀNG MỚI VÈ</a>
@@ -73,7 +113,26 @@
                         }
                     }
                 ?>
+
+               
             </ul>
+            <div class="menu-bottom">
+                <?php 
+                         if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                            echo '<a class="menu-link__table" href="#" onclick="Logout()">ĐĂNG XUẤT</a>';
+                         }else {
+                
+                            echo '
+                            
+                            <a class="menu-link__table" href="'; echo Root; echo 'DangNhap/dangNhap" 
+                            >Đăng nhập</a>
+                            
+                            
+                            <a class="menu-link__table" href="'; echo Root; echo 'Dangki/dangki" >Đăng ký</a>
+                            ';
+                         }
+                    ?>
+            </div>
         </div>
     </header>
     <!-- nav -->
