@@ -6,11 +6,13 @@ class Ajax extends controller{
 
     // Must have SayHi()
     public $TrangChuKHModel;
-public $GioHang;
+    public $GioHang;
+
     function __construct(){
         $this->TrangChuKHModel= $this->model("TrangChuKHModel");
-$this->GioHang= $this->model("GioHangModel");
+        $this->GioHang= $this->model("GioHangModel");
     }
+
     function GetAllSP(){
         
         if(isset($_POST['size'])){
@@ -19,7 +21,7 @@ $this->GioHang= $this->model("GioHangModel");
         $numberItem = $_POST['size'];
         }
         else {
-            $numberItem = 8;
+            $numberItem = 16;
             $key = "";
         $pageIndex = 1;
         }

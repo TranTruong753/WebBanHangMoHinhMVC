@@ -7,7 +7,7 @@ $(document).ready(function(){
 });
 function getAllSP(ojt){
     var chungloai = ojt.id;
-    alert
+    // alert
     var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/" + chungloai+"/none/none";
     window.location.assign(url);
 }
@@ -33,13 +33,16 @@ function showAlert() {
     var tensp=" ";
     var tensp =document.getElementById("search-form__input").value;
     if(tensp==""){
-        alert("Hãy nhập tên sản phẩm");
+        // alert("Hãy nhập tên sản phẩm");
+        swal({
+           text:"Hãy nhập tên sản phẩm"
+        })
     }
     else{
-    var Tensp=tensp.replaceAll(" ", "_");
-    
-    var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/none/none/"+Tensp;
-    window.location.assign(url);
+        var Tensp=tensp.replaceAll(" ", "_");
+        
+        var url = "http://localhost/WebBanHangMoHinhMVC/home/XuLyDanhMuc/none/none/"+Tensp;
+        window.location.assign(url);
     }
     
     };
