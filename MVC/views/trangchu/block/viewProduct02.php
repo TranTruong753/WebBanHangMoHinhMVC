@@ -1,4 +1,4 @@
-<section class="product">
+<section class="product hidden-tablet">
     <div class="container">
         <!-- fashion - 03 -->
         <section class="product__fashion">

@@ -58,6 +58,11 @@ input {
 }
 
 
+.container__nav {
+    --width-container: 1360px ;
+
+}
+
 .btn {
     --width-btn: 120px;
     cursor: pointer;

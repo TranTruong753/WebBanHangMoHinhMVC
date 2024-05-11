@@ -11,6 +11,16 @@
         display: none;
     }
 
+    .container__nav, .container {
+        max-width: 991px;
+        --width-container: 100%;
+        width: var(--width-container);
+        max-width: calc(100% - 48px);
+        margin: 0 auto;
+    }
+
+
+
     .nav__list {
         /* grid-area: column01; */
         display: none ;
@@ -122,7 +132,18 @@
         grid-template-columns: 2fr 1fr 1fr 1fr;
     }
 
-  
+  .content__img {
+    grid-template-columns: auto;
+  }
+
+  .content__img-main-wrap {
+    max-width: initial;
+  }
+
+  /* hiện thông báo */
+  .swal-overlay {
+    top:-40%;
+  }
 }
 
 /* Tablet */

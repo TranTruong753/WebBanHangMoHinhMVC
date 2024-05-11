@@ -39,7 +39,7 @@ button {
     font-size: inherit;
     font-family: inherit;
 }
-
+/* 
 .container {
     --width-container: 1255px;
     width: var(--width-container);
@@ -49,7 +49,7 @@ button {
 
 .container__nav {
     --width-container: 1360px !important;
-}
+} */
 
 /* Common */
 .fixed {

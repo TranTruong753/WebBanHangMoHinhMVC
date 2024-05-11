@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="menu__sub">
-        <div class="container">
+        <div class="container container__nav">
             <ul class="menu__sub-list">
                 <li class="menu__sub-item">
                     

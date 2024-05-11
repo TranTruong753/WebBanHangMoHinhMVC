@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chi tiết sản phẩm</title>
-    <!-- link icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- link css -->
-    <link rel="stylesheet" href="<?php echo Root ?>public/css/TrangChu/style.css">
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/reset.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/styleAllForm.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/style.css" />
-    <link rel="stylesheet" href="http://localhost/WebBanHangMoHinhMVC/public/css/TrangChu/chitietsanpham.css" />
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-
-<body>
     <?php 
 // require_once "./MVC/views/trangchu/block/header.php";
 // require('./MVC/views/trangchu/block/navbar.php');
@@ -51,14 +31,14 @@
                 </div>
             </div> -->
             <?php 
-            require('./MVC/views/trangchu/block/link.php');
+                require('./MVC/views/trangchu/block/link.php');
             ?>
         </div>
 
         <div class="grid-item item3">
             <div class="container">
                 <div class="content__img">
-                    <div class="content__img-list">
+                   
                             <?php
                             // if ($data['img']->num_rows > 0) {
                             //     while ($row = $data['img']->fetch_assoc()) {
@@ -67,7 +47,7 @@
                             //              alt="" class="content__img-item" onclick="changeLargeImage(\'http://localhost/WebBanHangMoHinhMVC/public/img/'.$row['HinhAnh'].'\')">';
                             //     }
                             // }
-                            echo '</div>';
+             
                             if ($data['imgmain']->num_rows > 0) {
                                 while ($row = $data['imgmain']->fetch_assoc()) {
                                         
@@ -78,24 +58,14 @@
                             }
                             ?>
                             
-                        <!-- <img src="http://localhost/WebBanHangMoHinhMVC/public/img/product03.jpg" alt="" class="content__img-item">
-                        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/product04.jpg" alt="" class="content__img-item">
-                        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/product05.jpg" alt="" class="content__img-item">
-                        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/product06.jpg" alt="" class="content__img-item">
-                        <img src="http://localhost/WebBanHangMoHinhMVC/public/img/product07.jpg" alt="" class="content__img-item"> -->
-                    <!-- </div>
-                    <div class="content__img-main-wrap"><img src="http://localhost/WebBanHangMoHinhMVC/public/img/product03.jpg" alt=""
-                            class="content__img-main">
-                    </div> -->
+                       
                     
                     <!-- <script>
                         function changeLargeImage(imageSrc) {
                             document.getElementById('largeImage').src = imageSrc;
                         }
                     </script> -->
-                    <script>
-                        
-                    </script>
+                  
                     <div class="content__info">
                         <div class="content__info-inner">
                             <!-- <h2 class="content__info-title">Áo Dài Cách Tân Nữ Lụa Tay Loe</h2>
@@ -178,8 +148,6 @@
             ?>
     </div>
     </div>
-</body>
 
-</html>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangJS.js"></script>

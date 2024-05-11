@@ -32,7 +32,7 @@
 
 .content__img {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto;
     column-gap: 10px;
 }
 
