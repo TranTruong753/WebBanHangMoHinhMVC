@@ -127,10 +127,13 @@
                                     <input type="number" name="" id="content__input-number" class="content__input-number" value="1"  min="1" >
                                 </div>
 
-                                <div class="content__input"><button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
+                                <div class="content__input">
+                                    <button onclick="addgiohang()" type="button" class="btn btn--primary">Thêm vào giỏ hàng</button>
                                 </div>
                                 
-                                <div class="content__input"><button onclick="muangay()" class="btn ">Mua ngay</button></div>
+                                <div class="content__input">
+                                    <button type="button" onclick="muangay()" class="btn ">Mua ngay</button>
+                                </div>
                             </form>
                         </div>
                     </div>

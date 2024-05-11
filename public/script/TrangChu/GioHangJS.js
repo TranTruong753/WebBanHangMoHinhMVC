@@ -122,9 +122,16 @@ function changecount(){
         var mactsp=ojt.id;
         //alert(mactsp);
         $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
-            alert("xóa thành công");
+            // alert("xóa thành công");
+            swal({
+                title: "Xóa thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+            }).then(function(){
+                 $("#cart-preview").html(data);
+            })
             
-            $("#cart-preview").html(data);
+            // $("#cart-preview").html(data);
             })
 
     }
@@ -159,16 +166,44 @@ function addgiohang() {
             $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GioHang",{makh : makh,
             masp: masp,mamausac : mamausac, makichco: makichco, sl: sl},function(data){
                 const jsonObject = JSON.parse(data);
-                alert("Thêm thanh công");
-                 $("#cart-preview").html(jsonObject.html);
+                // alert("Thêm thanh công");
+                //  $("#cart-preview").html(jsonObject.html);
+
+                swal({
+                    title: "Thêm thành công!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "success",
+                }).then(function(){
+                    $("#cart-preview").html(jsonObject.html);
+                })
+
                 })
         }
-        else if(mamausac=="")alert("bạn chưa chọn màu sắc");
-        else alert("Số lượng đã vượt quá số lượng tồn");
+        else if(mamausac==""){
+            // alert("bạn chưa chọn màu sắc");
+            swal({
+                title: "bạn chưa chọn màu sắc!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
+        else {
+            // alert("Số lượng đã vượt quá số lượng tồn");
+            swal({
+                title: "Số lượng đã vượt quá số lượng tồn!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
     }
-    else {
-        alert("Bạn chưa đăng nhập");
-    }
+        else {
+            // alert("Bạn chưa đăng nhập");
+            swal({
+                title: "Bạn chưa đăng nhập!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
     }
 function muangay(){
     const element = document.getElementsByName('content__info-title')[0];
@@ -201,15 +236,34 @@ function muangay(){
                 
                  $("#cart-preview").html(jsonObject.html);
                 
-                 var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/"+jsonObject.mactsp;
-        window.location.assign(url);
+                var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/"+jsonObject.mactsp;
+                window.location.assign(url);
                 })
         }
-        else if(mamausac=="")alert("bạn chưa chọn màu sắc");
-        else alert("Số lượng đã vượt quá số lượng tồn");
+        else if(mamausac==""){
+            // alert("bạn chưa chọn màu sắc");
+            swal({
+                title: "bạn chưa chọn màu sắc!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
+        else{
+            // alert("Số lượng đã vượt quá số lượng tồn");
+            swal({
+                title: "Số lượng đã vượt quá số lượng tồn!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        } 
+        
     }
     else {
-        alert("Bạn chưa đăng nhập");
+        swal({
+            title: "Bạn chưa đăng nhập!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "warning",
+        })
     }
 
 }                               
