@@ -99,7 +99,7 @@ class HoaDonModel extends DB
         AND  NgayLap BETWEEN "'.$start.' 00:00:01"
         AND "'.$end.' 23:59:00" 
         GROUP BY sp.MaSanPham
-        ORDER BY total ASC
+        ORDER BY total DESC
 		LIMIT 0,'.$top;
 
         $result = $this->con->query($qr);
