@@ -80,7 +80,7 @@
             echo '
             </table>';
             
-            echo '<div class = "hidden-pc hidden-table info-product__mobile-wrap table">
+            echo '<div class = "hidden-pc hidden-tablet info-product__mobile-wrap table">
                    
                 ';
             // mobile 
