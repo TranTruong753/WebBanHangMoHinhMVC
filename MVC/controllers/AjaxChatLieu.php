@@ -67,7 +67,8 @@ class AjaxChatLieu extends controller{
                 </label>  
                </td>
                <td style='text-align: center;'>
-               <!-- link  để chuyển sang trang nhóm quyền -->";
+               <!-- link  để chuyển sang trang nhóm quyền -->
+               <div class ='btn-wrap'>";
                if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Chất Liệu"])==1)
                {
                  $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaChatLieu"] ."'  ><i class='bx bx-x'></i></a>";
@@ -78,6 +79,7 @@ class AjaxChatLieu extends controller{
                }
                  
                $html.="
+                </div>
                </td>
              </tr> ";
                

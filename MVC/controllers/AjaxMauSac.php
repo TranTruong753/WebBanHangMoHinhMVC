@@ -65,7 +65,8 @@ class AjaxMauSac extends controller{
                 </label>  
                </td>
                <td style='text-align: center;'>
-               <!-- link  để chuyển sang trang nhóm quyền -->";
+               <!-- link  để chuyển sang trang nhóm quyền -->
+               <div class ='btn-wrap'>";
                if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Màu Sắc"])==1)
                {
                  $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaMauSac"] ."'  ><i class='bx bx-x'></i></a>";
@@ -75,6 +76,7 @@ class AjaxMauSac extends controller{
                 $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'><i class='bx bxs-edit'></i></a>";
                }
                  $html.="
+                 </div>
                </td>
              </tr> ";
                

@@ -74,7 +74,9 @@ class AjaxTheLoai extends controller
               </label>
                </td>
                <td>
-               <!-- link  để chuyển sang trang nhóm quyền -->";
+               <!-- link  để chuyển sang trang nhóm quyền -->
+               <div class ='btn-wrap'>";
+               
         if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Thể Loại"])==1)
         {
           $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaTheLoai"] ."'  ><i class='bx bx-x'></i></a>";
@@ -83,6 +85,7 @@ class AjaxTheLoai extends controller
           $html .= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTheLoaiPage," . $row['MaTheLoai'] . "'><i class='bx bxs-edit'></i></a>";
         }
         $html .= "  
+                </div>
                </td>
              </tr> ";
       }

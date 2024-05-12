@@ -66,7 +66,8 @@ public function getDanhSachKC()
                 </label>   
                </td>
                <td>
-               <!-- link  để chuyển sang trang nhóm quyền -->";
+               <!-- link  để chuyển sang trang nhóm quyền -->
+               <div class ='btn-wrap'>";
                if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Kích Cỡ"])==1)
                {
                  $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaKichCo"] ."'  ><i class='bx bx-x'></i></a>";
@@ -78,6 +79,7 @@ public function getDanhSachKC()
                  
                  
                 $html.="
+                </div>
                </td>
              </tr> ";
                
