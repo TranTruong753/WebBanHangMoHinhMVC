@@ -160,9 +160,11 @@ function DeleteCTSP(ojt){
                         icon: "error",
                       });
                     }
-                  
-                  
-
+                },error : function(data){
+                  swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
+                      {
+                        icon: "error",
+                      });
                 }
             });
         } else {
