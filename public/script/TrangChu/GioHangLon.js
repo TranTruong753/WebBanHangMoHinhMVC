@@ -28,10 +28,24 @@ function test(){
         else if(arr.length==0){
             alert("bạn chưa chọn sản phẩm");
         }
+        //if(sdt.length > 0){
+            
+
+        else if( sdt.length>0 && !checkPatternPhone(sdt) ){
+            swal({
+                title: "Số điện thoại không hợp lệ",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              })  ; 
+        }
         else{
             $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/thanhtoan",{arr: arr,sdt:sdt,diachi:diachi,date:date,pttt: pttt,tongtien: tongtien},function(data){
                 //$("#procedure-wrap").html(data);
-                 alert("Thanh toán thành công");
+                swal({
+                    title: "Thanh toán thành công",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                  })  ; 
                 var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
                 window.location.assign(url);
                 
@@ -52,7 +66,11 @@ function Delete(ojt){
     
     //alert(mactsp);
     $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/XoaGioHang",{mactsp: mactsp},function(data){
-    alert("xóa thành công");
+        swal({
+            title: "Xóa thành công",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+          })  ;
         //$("#cart-preview").html(data);
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/Delete",{ctspchoose:ctspchoose},function(data1){
         //alert(data);
@@ -101,3 +119,12 @@ $(document).ready(function() {
     clicka(id);
   
   })
+
+
+function checkPatternPhone(phone) {
+    var pattern = /^(0|\+?84)(3|5|7|8|9)[0-9]{8}$/;
+    return pattern.test(phone);
+}
+
+
+
