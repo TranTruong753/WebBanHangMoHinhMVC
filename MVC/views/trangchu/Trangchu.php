@@ -3,35 +3,37 @@
         <!-- hero -->
         <section class="hero">
             <div class="hero__inner">
-                <div class="hero__media">
-                    <i class="fa-solid fa-chevron-left hero-chevron-left"></i>
-                    <i class="fa-solid fa-chevron-right hero-chevron-right"></i>
-                    <div class="hero__media-item">
-                        <a href="#!" class="hero__media-link">
-                            <img
+                <div class="hero__media" >
+                    <i class="fa-solid fa-chevron-left hero-chevron-left" id="pre-hero" ></i>
+                    <i class="fa-solid fa-chevron-right hero-chevron-right" id="next-hero" ></i>
+                    <div class="hero__media-slide" id="slide-hero">
+                        <div class="hero__media-item item-hero">
+                            <a href="#!" class="hero__media-link">
+                                <img
+                                    src="http://localhost/WebBanHangMoHinhMVC/public/img/hero-img02.jpg"
+                                    alt=""
+                                    class="hero__img"
+                                />
+                            </a>
+                        </div>
+                        <div class="hero__media-item item-hero">
+                            <a href="#!" class="hero__media-link">
+                                <img
                                 src="http://localhost/WebBanHangMoHinhMVC/public/img/hero-img02.jpg"
-                                alt=""
-                                class="hero__img"
-                            />
-                        </a>
-                    </div>
-                    <div class="hero__media-item">
-                        <a href="#!" class="hero__media-link">
-                            <img
+                                  alt=""
+                                    class="hero__img"
+                                />
+                            </a>
+                        </div>
+                        <div class="hero__media-item item-hero">
+                            <a href="#!" class="hero__media-link">
+                                <img
                                 src="http://localhost/WebBanHangMoHinhMVC/public/img/hero-img02.jpg"
-                                alt=""
-                                class="hero__img"
-                            />
-                        </a>
-                    </div>
-                    <div class="hero__media-item">
-                        <a href="#!" class="hero__media-link">
-                            <img
-                                src="http://localhost/WebBanHangMoHinhMVC/public/img/hero-img02.jpg"
-                                alt=""
-                                class="hero__img"
-                            />
-                        </a>
+                                   alt=""
+                                    class="hero__img"
+                                />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

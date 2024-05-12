@@ -54,17 +54,48 @@ function showAlert() {
         }
     });
 
-    // document.getElementById('next').onclick = function(){
-    //     let slide = document.getElementById('slide');
-    //     let lists = document.querySelectorAll('.item');
-    //     slide.style.transform = 'translateX(-300px)'.
-    //         slide.appendChild(lists[0]);
+    document.getElementById('next-hero').onclick = function(){
+        let slide = document.getElementById('slide-hero');
+        let lists = document.querySelectorAll('.item-hero');
+     
+        // slide.appendChild(lists[0]);
+          // Thêm sự kiện transitionend vào slide
+        slide.addEventListener('transitionend', function() {
+            // Xóa sự kiện transitionend để tránh gọi nó nhiều lần
+            slide.removeEventListener('transitionend', arguments.callee);
+
+            // Sau khi transition kết thúc, thêm phần tử đầu tiên vào cuối danh sách
+            slide.appendChild(lists[0]);
+            
+            // Reset transform để slide quay lại vị trí ban đầu
+            slide.style.transition = 'none';
+            slide.style.transform = 'translateX(0)';
+            
+            // Kích hoạt lại transition để tạo hiệu ứng mượt mà
+            setTimeout(function() {
+                slide.style.transition = 'transform 0.5s ease';
+            });
+        });
+    
+        // Di chuyển slide sang trái
+        slide.style.transform = 'translateX(-100%)';
         
-      
+
+    }
+
+    
+    document.getElementById('pre-hero').onclick = function(){
+        let slide = document.getElementById('slide-hero');
+        let lists = document.querySelectorAll('.item-hero');
+        slide.prepend(lists[lists.length-1]);
+   
+   
+        
+
+    }
+
+
  
-
-    // }
-
     document.getElementById('next').onclick = function() {
         let slide = document.getElementById('slide');
         let lists = document.querySelectorAll('.item');
@@ -117,6 +148,33 @@ function showAlert() {
         // Di chuyển slide sang phải
         slide.style.transform = 'translateX(300px)';
     }
+
+    //  document.getElementById('next-hero').onclick = function() {
+    //     let slide = document.getElementById('slide-hero');
+    //     let lists = document.querySelectorAll('.item-hero');
+    
+    //     // Thêm sự kiện transitionend vào slide
+    //     slide.addEventListener('transitionend', function() {
+    //         // Xóa sự kiện transitionend để tránh gọi nó nhiều lần
+    //         slide.removeEventListener('transitionend', arguments.callee);
+    
+    //         // Sau khi transition kết thúc, thêm phần tử đầu tiên vào cuối danh sách
+    //         slide.appendChild(lists[0]);
+            
+    //         // Reset transform để slide quay lại vị trí ban đầu
+    //         slide.style.transition = 'none';
+    //         slide.style.transform = 'translateX(0)';
+            
+    //         // Kích hoạt lại transition để tạo hiệu ứng mượt mà
+    //         setTimeout(function() {
+    //             slide.style.transition = 'transform 0.5s ease';
+    //         });
+    //     });
+    
+    //     // Di chuyển slide sang trái
+    //     slide.style.transform = 'translateX(-100%)';
+    // }
+
     
 
 

@@ -476,12 +476,18 @@ button {
     transition: 0.4s;
 }
 
+.hero__media-slide {
+    display: flex;
+    transition: 0.4s;
+}
+
 .hero__media-item {
     width: 100%;
     flex-shrink: 0;
 }
 
 .hero__img {
+    object-fit: cover;
     display: block;
     width: 100%;
 }
