@@ -130,7 +130,7 @@ function XoaSP(ojt)
             $.ajax({
                 url: "http://localhost/WebBanHangMoHinhMVC/AjaxSanPham/DeleteSP",
                 type: 'post',
-                dataType: 'html',
+                dataType: 'JSON',
                 data: {
                   masp : masp
                 },
