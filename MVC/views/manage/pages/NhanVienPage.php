@@ -166,6 +166,7 @@ $PhanTrangModel = new PhanTrangModel();
                     ma: ma,
                 },
                 success: function(data) {
+                  if(data.kq== true){
                     swal("Dữ liệu đã xóa thành công!", {
                         icon: "success",
                     });
@@ -173,6 +174,12 @@ $PhanTrangModel = new PhanTrangModel();
                     loadTable(tmpKey, index, size);
 
                     loadPhanTrang("nhanvien", index, size, "", tmpKey);
+                  } else{
+                    swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
+                      {
+                        icon: "error",
+                      });
+                  }
 
                 }
             });

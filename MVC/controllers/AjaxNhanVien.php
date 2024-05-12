@@ -88,16 +88,25 @@
       $arr = [];
 
       //nếu tìm thấy tài khoản của nv trong DB bằng 1 thì xóa tk
-      if($this->NhanVienModel->kiemTraTaiKhoanNv($ma,$arr)==1) {
-        $this->NhanVienModel->xoaTaiKhoanNv($ma);
-      }
+    
 
 
       if($this->NhanVienModel->delete($ma)==1){
-        echo 'Xóa Nhân viên Thành Công!';
+        if($this->NhanVienModel->kiemTraTaiKhoanNv($ma,$arr)==1) {
+          $this->NhanVienModel->xoaTaiKhoanNv($ma);
+          $data=json_encode(["kq"=>true]);
+        }else{
+          $data=json_encode(["kq"=>true]);
+        }
+       
+        // echo 'Xóa Nhân viên Thành Công!';
       }else{
-        echo 'Xóa Nhân viên Thất bại!';
+        $data=json_encode(["kq"=>false]);
+       
+        // echo 'Xóa Nhân viên Thất bại!';
       }
+
+      echo $data;
   
    
     }
