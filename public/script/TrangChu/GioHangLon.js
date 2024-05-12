@@ -23,14 +23,35 @@ function test(){
             }
         }
         if(diachi==""){
-            alert("bạn chưa nhập địa chỉ");
+            // alert("bạn chưa nhập địa chỉ");
+             swal({
+                title: "bạn chưa nhập địa chỉ!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            }) 
         }
         else if(arr.length==0){
-            alert("bạn chưa chọn sản phẩm");
+            // alert("bạn chưa chọn sản phẩm");
+             swal({
+                title: "bạn chưa chọn sản phẩm!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            }) 
+        }else if(sdt.length==0){
+            swal({
+                title: "bạn chưa nhập số điện thoại!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              })  ; 
         }
-        //if(sdt.length > 0){
+        else if(sdt.length>10){
+            swal({
+                title: "Số điện thoại vượt quá 10 số!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              })  ; 
+        }
             
-
         else if( sdt.length>0 && !checkPatternPhone(sdt) ){
             swal({
                 title: "Số điện thoại không hợp lệ",
@@ -41,13 +62,16 @@ function test(){
         else{
             $.post("http://localhost/WebBanHangMoHinhMVC/AjaxThanhToan/thanhtoan",{arr: arr,sdt:sdt,diachi:diachi,date:date,pttt: pttt,tongtien: tongtien},function(data){
                 //$("#procedure-wrap").html(data);
+                var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
                 swal({
                     title: "Thanh toán thành công",
                     text: "Nhấn vào nút để tiếp tục!",
-                    icon: "error",
+                    icon: "success",
+                  }).then(function(){
+                  
+                    window.location.assign(url);
                   })  ; 
-                var url = "http://localhost/WebBanHangMoHinhMVC/Home/trangchu";
-                window.location.assign(url);
+               
                 
                 })
         }

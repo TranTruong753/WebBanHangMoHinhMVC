@@ -8,7 +8,7 @@
         <div class="container container__nav">
             <div class="nav-pay__inner">
                 <!-- logo -->
-                <a href="#" class="nav__link-logo hidden-tablet">
+                <a href="<?php echo Root ?>home/trangchu" class="nav__link-logo hidden-tablet">
                     <img src="<?php echo Root ?>public/img/logo.png" alt="MENSTYLE" class="nav-logo" />
                 </a>
                 <!-- thanh quy trình -->
@@ -390,6 +390,9 @@
 
 <script>
   // Lấy ra checkbox "Tất cả"
+
+
+
 var allProductCheckbox = document.getElementById("allProduct");
 
 // Lấy ra tất cả các checkbox khác
@@ -399,6 +402,8 @@ var otherCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(#all
 allProductCheckbox.addEventListener('change', function() {
     // Nếu checkbox "Tất cả" được chọn
     if (allProductCheckbox.checked) {
+        reset();
+        // alert(tongtien);
         // Lặp qua tất cả các checkbox khác và đánh dấu chúng
         otherCheckboxes.forEach(function(checkbox) {
             checkbox.checked = true;
@@ -414,6 +419,16 @@ allProductCheckbox.addEventListener('change', function() {
         });
     }
 });
+
+function reset(){
+    var tongtien = document.getElementById('tongtien').value;
+    tongtien = 0 ;
+    $("#tongtien").val(tongtien);
+    //alert($("#tongtien").val());
+    $("#hientongtien").html(tongtien.toLocaleString('vi-VN')+" VNĐ");
+    $("#thanhtien").val(thanhtien);
+    $("#hienthanhtien").html(thanhtien.toLocaleString('vi-VN')+" VNĐ");
+}
 
 </script>
 
