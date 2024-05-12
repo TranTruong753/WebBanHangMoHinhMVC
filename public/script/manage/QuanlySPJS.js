@@ -134,25 +134,34 @@ function XoaSP(ojt)
                 data: {
                   masp : masp
                 },
-                success: function(data) {
+                success: function(data) {                         
                   alert(data.kq);
                     if(data.kq== true){
-                      swal("Dữ liệu đã xóa thành công!", 
-                      {
+                      swal({
+                        title: "Dữ liệu đã xóa thành công!",
+                        text: "Nhấn vào nút để tiếp tục!",
                         icon: "success",
-                      });
+                      })  ;
                     }
                     else {
-                      swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
-                      {
+                      swal({
+                        title: "Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)!",
+                        text: "Nhấn vào nút để tiếp tục!",
                         icon: "error",
-                      });
+                      })  ;               
                     }
                   
                     // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
                     loadTable(tmpKey,index,size,arrange,properties)
                     loadPhanTrangtest("sanpham",index,size,sql,tmpKey)
 
+                },
+                error: function(data){
+                  swal({
+                    title: "Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)!",
+                    text: "Nhấn vào nút để tiếp tục!",
+                    icon: "error",
+                  })  ;  
                 }
             });
         } else {

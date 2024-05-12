@@ -168,18 +168,21 @@ $PhanTrangModel = new PhanTrangModel();
                 success: function(data) {
                   
                   if(data == true){
-                    swal("Dữ liệu đã xóa thành công!", {
-                        icon: "success",
-                    });
+                    swal({
+                            title: "Dữ liệu đã xóa thành công!",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "success",
+                    })               
                     // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
                     loadTable(tmpKey, index, size);
 
                     loadPhanTrang("nhanvien", index, size, "", tmpKey);
                   } else{
-                    swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
-                      {
-                        icon: "error",
-                      });
+                    swal({
+                            title: "Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)",
+                            text: "Nhấn vào nút để tiếp tục!",
+                            icon: "error",
+                    })                      
                   }
 
                 }
