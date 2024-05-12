@@ -169,14 +169,23 @@ $PhanTrangModel = new PhanTrangModel();
                     ma: ma,
                 },
                 success: function(data) {
-                    swal("Dữ liệu đã xóa thành công!", {
-                        icon: "success",
-                    });
-                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
-                    loadTable(tmpKey, index, size);
+                    if(data.kq== true){
+                      swal("Dữ liệu đã xóa thành công!", {
+                          icon: "success",
+                      });
+                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey, index, size);
 
-                    loadPhanTrang("khachhang", index, size, "", tmpKey);
+                      loadPhanTrang("khachhang", index, size, "", tmpKey);
 
+                    } else{
+                      swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
+                        {
+                          icon: "error",
+                        });
+                    }
+                   
+                   
                 }
             });
         } else {

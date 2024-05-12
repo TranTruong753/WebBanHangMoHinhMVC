@@ -116,13 +116,20 @@ class AjaxThongTinKhachHang extends controller {
       $arr = [];
      
       //nếu tìm thấy trạng thái trong DB bằng 1 thì xóa tk
-      if($this->KhachHangModel->kiemTraTrangThai($ma,$arr) == 1){
-        $this->KhachHangModel->xoaTaiKhoanKh($ma);
-      }
+     
     
 
-      if($this->KhachHangModel->delete($ma)==1) echo 'Xóa Khách hàng Thành Công!';
-      else echo 'Xóa Khách hàng Thất Bại!';
+      if($this->KhachHangModel->delete($ma)==1){
+        if($this->KhachHangModel->kiemTraTrangThai($ma,$arr) == 1){
+          $this->KhachHangModel->xoaTaiKhoanKh($ma);
+          $data=json_encode(["kq"=>true]);
+        }else{
+          $data=json_encode(["kq"=>true]);
+        }
+      }
+      else {
+        $data=json_encode(["kq"=>false]);
+      }
     }
 
 

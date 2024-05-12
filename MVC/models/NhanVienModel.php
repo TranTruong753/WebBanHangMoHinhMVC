@@ -98,10 +98,9 @@
             if(mysqli_query($this->con,$qr))
             {
                 return 1;
-            }else
-            {
-                return 0;
-            }
+            }           
+                 return 0;
+            
         }
 
         public function update($ma,$ten,$sdt,$cccd,$ngaySinh)

@@ -142,10 +142,9 @@ class KhachHangModel extends DB{
         if(mysqli_query($this->con,$qr))
         {
             return 1;
-        }else
-        {
-            return 0;
         }
+            return 0;
+        
     }
 
     public function kiemTraTrangThai($ma){
