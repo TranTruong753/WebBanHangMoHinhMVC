@@ -12,7 +12,7 @@ class chitietspmodel extends DB{
 
     public function layMaCTSPLonNhat()
         {
-            $next_id_query = "SELECT MAX(RIGHT(MaChiTietSanPham, 1)) AS max_id FROM chitietsanpham";
+            $next_id_query = "SELECT MAX(CAST(SUBSTRING(MaChiTietSanPham, 5) AS UNSIGNED)) AS max_id FROM chitietsanpham";
             $result = mysqli_query($this->con, $next_id_query);
             $row = mysqli_fetch_assoc($result);
             $max_id = $row['max_id'];
