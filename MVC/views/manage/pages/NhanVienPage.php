@@ -166,7 +166,8 @@ $PhanTrangModel = new PhanTrangModel();
                     ma: ma,
                 },
                 success: function(data) {
-                  if(data.kq== true){
+                  
+                  if(data == true){
                     swal("Dữ liệu đã xóa thành công!", {
                         icon: "success",
                     });

@@ -122,14 +122,16 @@ class AjaxThongTinKhachHang extends controller {
       if($this->KhachHangModel->delete($ma)==1){
         if($this->KhachHangModel->kiemTraTrangThai($ma,$arr) == 1){
           $this->KhachHangModel->xoaTaiKhoanKh($ma);
-          $data=json_encode(["kq"=>true]);
-        }else{
-          $data=json_encode(["kq"=>true]);
+          $data=true;
         }
+        $data=true;
+        
       }
       else {
-        $data=json_encode(["kq"=>false]);
+        $data=false;
       }
+
+      echo $data;
     }
 
 

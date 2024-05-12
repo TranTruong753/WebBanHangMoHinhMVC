@@ -135,6 +135,7 @@ function XoaSP(ojt)
                   masp : masp
                 },
                 success: function(data) {
+                  alert(data.kq);
                     if(data.kq== true){
                       swal("Dữ liệu đã xóa thành công!", 
                       {

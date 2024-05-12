@@ -94,14 +94,14 @@
       if($this->NhanVienModel->delete($ma)==1){
         if($this->NhanVienModel->kiemTraTaiKhoanNv($ma,$arr)==1) {
           $this->NhanVienModel->xoaTaiKhoanNv($ma);
-          $data=json_encode(["kq"=>true]);
-        }else{
-          $data=json_encode(["kq"=>true]);
+          $data=true;
         }
+          $data=true;
+        
        
         // echo 'Xóa Nhân viên Thành Công!';
       }else{
-        $data=json_encode(["kq"=>false]);
+        $data=false;
        
         // echo 'Xóa Nhân viên Thất bại!';
       }
