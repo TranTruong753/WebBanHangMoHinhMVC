@@ -98,9 +98,9 @@
             if(mysqli_query($this->con,$qr))
             {
                 return 1;
-            }else{
+            }
                 return 0;
-            }         
+                  
                
             
         }
