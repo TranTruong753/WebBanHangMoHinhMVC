@@ -1,0 +1,138 @@
+/* PC */
+@media screen and (min-width: 992px) {
+    .hidden-pc {
+     display: none;
+    }
+ }
+ 
+ /* Tablet & mobile */
+ @media screen and (max-width: 991px) {
+    
+   .separate {
+     border-top: 1.5px solid #ebebeb;
+   }
+     /* .container__nav, .container {
+         --width-container: 100%;
+         width: var(--width-container);
+         max-width: calc(100% - 28px);
+         margin: 0 auto;
+     } */
+
+     .all {
+        padding-left: 0px;
+        margin-left: 0px;
+        background-color: #fff;
+     }
+
+     .content {
+        padding: 0px 15px 10px;
+        height: 100vh;
+     }
+
+     .sidebar {
+        width: 40%;
+        z-index: 2;
+        transform: translateX(-100%);
+        transition: 0.4s;
+        padding: 40px 0.5rem 2rem;
+     }
+ 
+ 
+ 
+     .menu-overlay {
+         position: fixed;
+         inset: 0;
+         background: rgba(0, 0, 0, 0.3);
+         z-index: 1;
+         opacity: 0;
+         visibility: hidden;
+         transition: 0.5s ease;
+     }
+     
+     .header__table {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+      
+     }
+ 
+     .menu-drawer {
+         position: fixed;
+         inset: 0 40% 0 0;
+         background: #fff;
+         z-index: 101;
+         padding: 0 0 60px 60px;
+         transform: translateX(-100%);
+         transition: 0.5s ease;
+     }
+ 
+     .closeMenu__tablet {
+        position: absolute;
+        inset: 10px 10px auto auto;
+     }
+
+     .closeMenu__tablet i {
+        font-size: 24px;
+        color:#fff;
+     }
+     /* .menu-drawer .menu-list__table {
+         margin-top: 32px;
+     }
+ 
+     .menu-list__table .menu-link__table {
+         display: block;
+         padding: 14px 0;
+         color: #333;
+         font-weight: 500;
+     }
+ 
+     .menu-list__table-sub {
+         padding-left: 20px;
+     }
+ 
+     .menu-list__table-sub span {
+         display: block;
+         padding: 5px 0;
+     }
+ 
+ 
+     .menu-checkbox:checked ~ .menu-overlay {
+         opacity: 1;
+         visibility: visible;
+     }
+ 
+     .menu-checkbox:checked ~ .menu-drawer {
+         transform: translateX(0);
+     } */
+ 
+    
+   /* hiện thông báo */
+   .swal-overlay {
+     top:-40%;
+   }
+ 
+  
+ }
+ 
+ /* Tablet */
+ @media screen and (min-width: 768px) and (max-width: 991px) {
+   .hidden-tablet {
+     display: none;
+ }
+ }
+ 
+ /* Mobile */
+ @media screen and (max-width: 767.98px) {
+ 
+   
+ 
+   .hidden-mobile {
+     display: none;
+   }
+ 
+   
+   
+ 
+   
+ }
+ 

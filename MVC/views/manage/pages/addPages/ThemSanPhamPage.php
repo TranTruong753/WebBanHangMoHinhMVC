@@ -2,7 +2,7 @@
 <?php
     $theloai=$data["DanhSach"]["TL"];
     $chatlieu=$data["DanhSach"]["CL"];
-    //$sanpham=$data["DanhSach"]["SP"];
+    // $sanpham=$data["DanhSach"]["SP"];
     $masp=$data["DanhSach"]["MASP"];
     $km=$data["DanhSach"]["KM"];
    

@@ -47,7 +47,7 @@
                        ';
                     }else {
                         echo '
-                        <a href="'.Root.'home/trangchu" class="">                      
+                        <a class = "hidden-tablet" href="'.Root.'home/trangchu" class="">                      
                             <img src="'.Root.'public/img/logo.png" alt="" class="" />
                         </a>';
                     }

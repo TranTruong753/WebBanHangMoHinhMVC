@@ -1,6 +1,9 @@
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar " id="sidebar">
+        <label for="menu_admin" onclick="showMenu()" class="closeMenu__tablet hidden-pc"> 
+                <i class="fa-solid fa-x"></i>
+        </label>
             <div class="sidebar_content">
-                    <div class="sidebar_logo">
+                    <div class="sidebar_logo hidden-tablet">
                             <img src="<?php echo Root ?>public/img/logo.png" alt="" class="">
                     </div>
                     <ul class="sidebar_menu_list" id = "sidebar_menu_list">
@@ -87,7 +90,7 @@
                 // element.scrollTop = element.scrollHeight;
                 var div = document.getElementById('sidebar_menu_list');
                 // Thiết lập thuộc tính overflow của div thành auto
-                div.style.overflow = 'auto';
+         
                 loadSidebar();
             })
 
