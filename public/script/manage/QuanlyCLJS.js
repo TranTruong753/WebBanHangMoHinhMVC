@@ -3,7 +3,7 @@ function addCL(){
     if(!tenchatlieu){
         // alert("Không được để trống tên chất liệu");
         swal({
-            title: "Lôi! Không được để trống tên chất liệu",
+            title: "Lỗi! Không được để trống tên chất liệu",
             text: "Nhấn vào nút để tiếp tục!",
             icon: "error",
         })
@@ -11,7 +11,7 @@ function addCL(){
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/InsertCL",{tencl: tenchatlieu},
         function(data){
             var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/ChatLieuPage";
-            if(data.length == 8){
+            if(data.length >= 5){
                 // alert(data);
                 swal({
                     title: "Thêm thành công!",
@@ -26,10 +26,7 @@ function addCL(){
                     text: "Nhấn vào nút để tiếp tục!",
                     icon: "error",
                 })
-            }
-            
-           
-           
+            }         
         });
     } 
    
@@ -49,7 +46,7 @@ function UpdateCL(){
     //    alert(data.length);
     //    alert(data);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/ChatLieuPage";
-        if(data.length == 8){
+        if(data.length >= 5){
             // alert(data);
             swal({
                 title: "Cập nhật thành công!",
@@ -199,3 +196,40 @@ function UpdateCL(){
 
     loadPhanTrang("chatlieu", index, size, "", key);
     })
+
+    //Xử lý khi nhấn nút xóa
+    function btnXoa(obj)
+    {
+      var ma = obj.id;
+      swal({
+          title: "Bạn có chắc?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+              $.ajax({
+                  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxChatLieu/DeleteCL',
+                  type: 'post',
+                  dataType: 'html',
+                  data: {
+                      macl: ma,
+                  },
+                  success: function(data) {
+                      swal("Dữ liệu đã xóa thành công!", {
+                          icon: "success",
+                      });
+                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey, index, size);
+  
+                      loadPhanTrang("chatlieu", index, size, "", tmpKey);
+  
+                  }
+              });
+          } else {
+              swal("Dữ liệu của bạn được an toàn!");
+          }
+      });
+    }

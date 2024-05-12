@@ -37,6 +37,14 @@ class NhaCungCapModel extends DB
            return true;
         return false;
     }
+
+    public function DeleteNCC($mancc)
+    {
+        $qr = "DELETE FROM nhacungcap where MaNhaCungCap= '$mancc'";
+        if(mysqli_query($this->con,$qr))
+            return true;
+        return false;
+    }
     public function GettheoMaNhaCungCap($mancc){
         $qr = 'SELECT * FROM nhacungcap where MaNhaCungCap="'.$mancc.'"';
         $row=mysqli_query($this->con, $qr);

@@ -14,7 +14,7 @@ function addMS(){
         // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/MauSacPage";
         // window.location.assign(url);
-        if(data.length == 6){
+        if(data.length >= 5){
                 // alert(data);
                 swal({
                     title: "Thêm thành công!",
@@ -52,7 +52,7 @@ function UpdateMS(){
         // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/MauSacPage";
         // window.location.assign(url);
-        if(data.length == 6){
+        if(data.length >= 5){
                     // alert(data);
                     swal({
                         title: "Cập nhật thành công!",
@@ -200,3 +200,40 @@ function UpdateMS(){
 
     loadPhanTrang("mausac", index, size, "", key);
   })
+
+    //Xử lý khi nhấn nút xóa
+    function btnXoa(obj)
+    {
+      var ma = obj.id;
+      swal({
+          title: "Bạn có chắc?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+              $.ajax({
+                  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxMauSac/DeleteMS',
+                  type: 'post',
+                  dataType: 'html',
+                  data: {
+                      mams: ma,
+                  },
+                  success: function(data) {
+                      swal("Dữ liệu đã xóa thành công!", {
+                          icon: "success",
+                      });
+                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey, index, size);
+  
+                      loadPhanTrang("mausac", index, size, "", tmpKey);
+  
+                  }
+              });
+          } else {
+              swal("Dữ liệu của bạn được an toàn!");
+          }
+      });
+    }

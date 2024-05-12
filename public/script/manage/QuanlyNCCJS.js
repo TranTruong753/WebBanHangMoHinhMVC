@@ -15,7 +15,7 @@ function addNCC(){
         // alert(data);
         // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/NhaCungCapPage";
-        if(data.length == 8){
+        if(data.length >= 5){
                 // alert(data);
                 swal({
                     title: "Thêm thành công!",
@@ -65,7 +65,7 @@ function addNCC(){
         // alert(data);
         // alert(data.length);
         var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/NhaCungCapPage";
-        if(data.length == 8){
+        if(data.length >= 5){
                     // alert(data);
                     swal({
                         title: "Cập nhật thành công!",
@@ -220,3 +220,40 @@ function addNCC(){
       var pattern = /^(0|\+?84)(3|5|7|8|9)[0-9]{8}$/;
       return pattern.test(phone);
   }
+
+    //Xử lý khi nhấn nút xóa
+    function btnXoa(obj)
+    {
+      var ma = obj.id;
+      swal({
+          title: "Bạn có chắc?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+              $.ajax({
+                  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxNhaCungCap/DeleteNCC',
+                  type: 'post',
+                  dataType: 'html',
+                  data: {
+                      mancc: ma,
+                  },
+                  success: function(data) {
+                      swal("Dữ liệu đã xóa thành công!", {
+                          icon: "success",
+                      });
+                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey, index, size);
+  
+                      loadPhanTrang("nhacungcap", index, size, "", tmpKey);
+  
+                  }
+              });
+          } else {
+              swal("Dữ liệu của bạn được an toàn!");
+          }
+      });
+    }

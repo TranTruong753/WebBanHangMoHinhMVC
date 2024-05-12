@@ -37,7 +37,17 @@ class ChatLieuModel extends DB
            return true;
         return false;
     }
-
+    public function DeleteCL($macl)
+    {
+        $qr = "DELETE FROM chatlieu where MaChatLieu= '$macl'";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
     public function GettheoMaChatLieu($macl){
         $qr = 'SELECT * FROM chatlieu where MaChatLieu="'.$macl.'"';
         $row=mysqli_query($this->con, $qr);

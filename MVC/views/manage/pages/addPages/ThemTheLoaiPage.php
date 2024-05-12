@@ -3,7 +3,7 @@
     $chungloai=$data["DanhSach"]["CL"];
 ?>
 <h1 class = 'styleText-02' >Thêm thể loại</h1>
-<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/KichCoPage"> Trang quản lý kích cỡ></a>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/TheLoaiPage"> Trang quản lý thể loại></a>
 
 <form method="post" class="form_add">
     <div class="input-add_wrap">

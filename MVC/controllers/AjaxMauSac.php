@@ -30,6 +30,10 @@ class AjaxMauSac extends controller{
         }
         else echo "false";       
     }
+    public function DeleteMS(){
+      $mams=$_POST["mams"];
+      $this->MauSacModel->DeleteMS($mams);
+  }
 
     public function getDanhSachMS()
     {
@@ -62,7 +66,11 @@ class AjaxMauSac extends controller{
                </td>
                <td style='text-align: center;'>
                <!-- link  để chuyển sang trang nhóm quyền -->";
-               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Màu Sắc"])==1)
+               {
+                 $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaMauSac"] ."'  ><i class='bx bx-x'></i></a>";
+               }
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Màu Sắc'])==1)
                {
                 $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaMauSacPage,".$row['MaMauSac']."'><i class='bx bxs-edit'></i></a>";
                }

@@ -31,10 +31,10 @@ class AjaxKichCo extends controller{
         else echo "false";       
     }
 
-    // public function DeleteCL(){
-    //     $macl=$_POST["macl"];
-    //     $this->ChatLieuModel->DeleteCL($macl);
-    // }
+    public function DeleteKC(){
+        $makc=$_POST["makc"];
+        $this->KichCoModel->DeleteKC($makc);
+    }
 
 public function getDanhSachKC()
     {
@@ -67,6 +67,10 @@ public function getDanhSachKC()
                </td>
                <td>
                <!-- link  để chuyển sang trang nhóm quyền -->";
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Kích Cỡ"])==1)
+               {
+                 $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaKichCo"] ."'  ><i class='bx bx-x'></i></a>";
+               }
                if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
                {
                 $html.= "<a class ='btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaKichCoPage,".$row['MaKichCo']."'><i class='bx bxs-edit'></i></a>";

@@ -34,7 +34,17 @@ class AjaxTheLoai extends controller
       echo "true";
     } else echo "false";
   }
-
+  public function DeleteTL()
+  {
+    //được xóa khi trang thái bằng 0 trong DB
+      $matl = $_POST["matl"];
+      if($this->TheLoaiModel->DeleteTL($matl)){
+        echo 'Xóa thể loại Thành Công!';
+      }else{
+        echo 'Xóa thể loại Thất bại!';
+      }
+ 
+    }
   public function getDanhSachTL()
   {
     $key = $_POST['key'];
@@ -65,7 +75,10 @@ class AjaxTheLoai extends controller
                </td>
                <td>
                <!-- link  để chuyển sang trang nhóm quyền -->";
-
+        if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Thể Loại"])==1)
+        {
+          $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaTheLoai"] ."'  ><i class='bx bx-x'></i></a>";
+        }
         if ($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa", $_SESSION['MaNhomQuyen'], $_SESSION['Thể Loại'])) {
           $html .= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaTheLoaiPage," . $row['MaTheLoai'] . "'><i class='bx bxs-edit'></i></a>";
         }

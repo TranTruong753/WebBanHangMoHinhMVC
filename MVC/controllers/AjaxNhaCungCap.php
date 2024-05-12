@@ -36,6 +36,10 @@ class AjaxNhaCungCap extends controller{
         else echo "false";   
     }
 
+    public function DeleteNCC(){
+        $mancc=$_POST["mancc"];
+        $this->NhaCungCapModel->DeleteNCC($mancc);
+    }
     public function getDanhSachNCC()
     {
          $key = $_POST['key'];
@@ -69,7 +73,11 @@ class AjaxNhaCungCap extends controller{
                </td>
                <td>
                <!-- link  để chuyển sang trang nhóm quyền -->";
-               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Kích Cỡ'])==1)
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Xóa",$_SESSION["MaNhomQuyen"],$_SESSION["Nhà Cung Cấp"])==1)
+               {
+                 $html.= "<a class ='btn btn_delete' href='#' onclick='btnXoa(this)' id='".$row["MaNhaCungCap"] ."'  ><i class='bx bx-x'></i></a>";
+               }
+               if($this->ChiTietQuyenModel->KiemTraHanhDong("Sửa",$_SESSION['MaNhomQuyen'],$_SESSION['Nhà Cung Cấp'])==1)
                {
                 $html.= "<a class = 'btn btn_fix' href='http://localhost/WebBanHangMoHinhMVC/Admin/default/SuaNhaCungCapPage,".$row['MaNhaCungCap']."'><i class='bx bxs-edit'></i></a>";
                }

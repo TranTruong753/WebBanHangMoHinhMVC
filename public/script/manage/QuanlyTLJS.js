@@ -11,9 +11,8 @@ function addTL(){
         })
     }else {
         $.post("http://localhost/WebBanHangMoHinhMVC/AjaxTheLoai/InsertTL",{macl:machungloai, tentl: tentheloai},function(data){
-            alert(data);
             var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
-            if(data.length == 6){
+            if(data.length >= 5){
                 // alert(data);
                 swal({
                     title: "Thêm thành công!",
@@ -52,7 +51,7 @@ function UpdateTL(){
             // alert(data);
             // alert(data.length);
             var url = "http://localhost/WebBanHangMoHinhMVC/admin/container/TheLoaiPage";
-            if(data.length == 6){
+            if(data.length >= 5){
                     // alert(data);
                     swal({
                         title: "Cập nhật thành công!",
@@ -203,3 +202,40 @@ function UpdateTL(){
 
     loadPhanTrang("theloai", index, size, "", key);
     })
+
+    //Xử lý khi nhấn nút xóa
+    function btnXoa(obj)
+    {
+      var ma = obj.id;
+      swal({
+          title: "Bạn có chắc?",
+          text: "Sau khi xóa, bạn sẽ không thể khôi phục tập tin tưởng tượng này!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+          if (willDelete) {
+              $.ajax({
+                  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxTheLoai/DeleteTL',
+                  type: 'post',
+                  dataType: 'html',
+                  data: {
+                      matl: ma,
+                  },
+                  success: function(data) {
+                      swal("Dữ liệu đã xóa thành công!", {
+                          icon: "success",
+                      });
+                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                      loadTable(tmpKey, index, size);
+  
+                      loadPhanTrang("theloai", index, size, "", tmpKey);
+  
+                  }
+              });
+          } else {
+              swal("Dữ liệu của bạn được an toàn!");
+          }
+      });
+    }

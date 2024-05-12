@@ -37,6 +37,17 @@ class TheLoaiModel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+    public function DeleteTL($matl)
+    {
+        $qr = "DELETE FROM theloai where MaTheLoai= '$matl'";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
     public function getDanhSachTL($key,$pageIndex,$soLuong)
     {
         trim($key);

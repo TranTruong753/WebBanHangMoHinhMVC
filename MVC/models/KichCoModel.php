@@ -32,6 +32,17 @@ class KichCoModel extends DB{
            return true;
         return false;
     }
+    public function DeleteKC($makc)
+    {
+        $qr = "DELETE FROM kichco where MaKichCo= '$makc'";
+        if(mysqli_query($this->con,$qr))
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
+    }
     public function GettheoMaKichCo($makc){
         $qr = 'SELECT * FROM kichco where MaKichCo="'.$makc.'"';
         $row=mysqli_query($this->con, $qr);
