@@ -34,7 +34,12 @@ class AjaxChatLieu extends controller{
 
     public function DeleteCL(){
         $macl=$_POST["macl"];
-        $this->ChatLieuModel->DeleteCL($macl);
+        if($this->ChatLieuModel->DeleteCL($macl)==1){
+            $data=true;
+          }else{
+            $data=false;
+          }
+          echo $data;
     }
     public function getDanhSachCL()
     {

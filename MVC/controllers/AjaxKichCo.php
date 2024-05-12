@@ -33,7 +33,12 @@ class AjaxKichCo extends controller{
 
     public function DeleteKC(){
         $makc=$_POST["makc"];
-        $this->KichCoModel->DeleteKC($makc);
+        if($this->KichCoModel->DeleteKC($makc)==1){
+            $data=true;
+          }else{
+            $data=false;
+          }
+          echo $data;
     }
 
 public function getDanhSachKC()

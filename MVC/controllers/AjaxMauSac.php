@@ -32,7 +32,12 @@ class AjaxMauSac extends controller{
     }
     public function DeleteMS(){
       $mams=$_POST["mams"];
-      $this->MauSacModel->DeleteMS($mams);
+      if($this->MauSacModel->DeleteMS($mams)==1){
+        $data=true;
+      }else{
+        $data=false;
+      }
+      echo $data;
   }
 
     public function getDanhSachMS()

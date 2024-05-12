@@ -38,12 +38,12 @@ class AjaxTheLoai extends controller
   {
     //được xóa khi trang thái bằng 0 trong DB
       $matl = $_POST["matl"];
-      if($this->TheLoaiModel->DeleteTL($matl)){
-        echo 'Xóa thể loại Thành Công!';
+      if($this->TheLoaiModel->DeleteTL($matl)==1){
+        $data=true;
       }else{
-        echo 'Xóa thể loại Thất bại!';
+        $data=false;
       }
- 
+      echo $data;
     }
   public function getDanhSachTL()
   {

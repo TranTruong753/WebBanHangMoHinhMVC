@@ -36,8 +36,12 @@ class MauSacModel extends DB{
     {
         $qr = "DELETE FROM mausac where MaMauSac= '$mams'";
         if(mysqli_query($this->con,$qr))
-            return true;
-        return false;
+        {
+            return 1;
+        }else
+        {
+            return 0;
+        }
     }
     public function GettheoMaMauSac($mams){
         $qr = 'SELECT * FROM mausac where MaMauSac="'.$mams.'"';

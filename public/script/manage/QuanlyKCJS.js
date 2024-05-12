@@ -221,14 +221,23 @@ function UpdateKC(){
                       makc: ma,
                   },
                   success: function(data) {
-                      swal("Dữ liệu đã xóa thành công!", {
-                          icon: "success",
-                      });
-                      // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
-                      loadTable(tmpKey, index, size);
-  
-                      loadPhanTrang("kichco", index, size, "", tmpKey);
-  
+                    if(data == true){
+                        swal({
+                                title: "Dữ liệu đã xóa thành công!",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "success",
+                        })               
+                        // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                        loadTable(tmpKey, index, size);
+    
+                        loadPhanTrang("kichco", index, size, "", tmpKey);
+                      } else{
+                        swal({
+                                title: "Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "error",
+                        })                      
+                      }
                   }
               });
           } else {

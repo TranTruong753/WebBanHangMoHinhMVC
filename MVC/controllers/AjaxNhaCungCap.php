@@ -38,7 +38,12 @@ class AjaxNhaCungCap extends controller{
 
     public function DeleteNCC(){
         $mancc=$_POST["mancc"];
-        $this->NhaCungCapModel->DeleteNCC($mancc);
+        if($this->NhaCungCapModel->DeleteNCC($mancc)==1){
+          $data=true;
+        }else{
+          $data=false;
+        }
+        echo $data;
     }
     public function getDanhSachNCC()
     {
