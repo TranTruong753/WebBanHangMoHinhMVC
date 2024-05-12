@@ -107,15 +107,13 @@ class AjaxCTSP extends controller {
               if($this->chitietspmodel->DeleteCTSP($mactsp)){
                 $data=json_encode(["kq"=>true]);
                 echo $data;
-          //     }
-          //     else {
-          //       $data=json_encode(["kq"=>false,"sl"=>"cc"]);
-          //       echo $data;
-          //     }
-          //   }
-
-           }
-        }
+               }
+              else {
+                $data=json_encode(["kq"=>false]);
+                echo $data;
+              }
+         }
+        
       
         // else echo "false";
         

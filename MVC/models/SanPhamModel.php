@@ -68,7 +68,7 @@
 
     public function layMaSPLonNhat()
         {
-            $next_id_query = "SELECT MAX(RIGHT(MaSanPham, 3)) AS max_id FROM sanpham";
+            $next_id_query = "SELECT MAX(CAST(SUBSTRING(MaSanPham, 3) AS UNSIGNED)) AS max_id FROM sanpham ";
             $result = mysqli_query($this->con, $next_id_query);
             $row = mysqli_fetch_assoc($result);
             $max_id = $row['max_id'];

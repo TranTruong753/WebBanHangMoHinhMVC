@@ -142,7 +142,7 @@ function XoaSP(ojt)
                       });
                     }
                     else {
-                      swal("Dữ liệu đã xóa thất bại!", 
+                      swal("Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)", 
                       {
                         icon: "error",
                       });
