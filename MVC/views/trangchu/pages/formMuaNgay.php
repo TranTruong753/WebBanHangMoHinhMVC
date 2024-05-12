@@ -388,6 +388,33 @@
 
     </dialog> -->
 
+<script>
+  // Lấy ra checkbox "Tất cả"
+var allProductCheckbox = document.getElementById("allProduct");
 
+// Lấy ra tất cả các checkbox khác
+var otherCheckboxes = document.querySelectorAll('input[type="checkbox"]:not(#allProduct)');
+
+// Thêm sự kiện "change" cho checkbox "Tất cả"
+allProductCheckbox.addEventListener('change', function() {
+    // Nếu checkbox "Tất cả" được chọn
+    if (allProductCheckbox.checked) {
+        // Lặp qua tất cả các checkbox khác và đánh dấu chúng
+        otherCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = true;
+            // Kích hoạt sự kiện clicka
+            clicka(checkbox);
+        });
+    } else {
+        // Nếu checkbox "Tất cả" không được chọn, hủy đánh dấu các checkbox khác
+        otherCheckboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+            // Kích hoạt sự kiện clicka
+            clicka(checkbox);
+        });
+    }
+});
+
+</script>
 
 <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/GioHangLon.js"></script>
