@@ -191,7 +191,6 @@ $.ajax({
 // alert(tmpKey)
 loadPhanTrang("khuyenmai", index, size, sql, tmpKey);
 })
-<<<<<<< HEAD
 //Xử lý khi nhấn nút tìm kiếm
 $(document).on("click", "#btnSearch", function() {
  tmpKey = $("#txtFind").val();
@@ -215,8 +214,6 @@ $.ajax({
 })
 // xử lý số trang đã chọn
 loadPhanTrang("khuyenmai", index, size, "", key);
-=======
->>>>>>> b28b7f8210737b526e79f0806a85f5c48a026b12
 
     //Xử lý khi nhấn nút tìm kiếm
     $(document).on("click", "#btnSearch", function() {
