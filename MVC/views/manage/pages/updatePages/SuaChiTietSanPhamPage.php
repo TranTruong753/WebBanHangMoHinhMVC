@@ -3,12 +3,20 @@
     
     $ctsp=$data["DanhSach"]["CTSP"];
     $mausac=$data["DanhSach"]["MS"];
-    $kichco=$data["DanhSach"]["KC"];   
+    $kichco=$data["DanhSach"]["KC"];  
+    $maSp=''; 
 ?>
 <h1 class = 'styleText-02' >Sửa Chi Tiết Sản Phẩm</h1>
 <?php 
+if ($ctsp->num_rows > 0) {
+    while ($row = $ctsp->fetch_assoc()) {
+        $maSp = $row['MaSanPham'];
+    }
+    $ctsp->data_seek(0);
+    
+}
 ?>
-<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChiTietSanPhamPage"> Quay về Trang Chi Tiết Sản Phẩm></a>
+<a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ChiTietSanPhamPage,<?php echo $maSp ?>"> Quay về Trang Chi Tiết Sản Phẩm></a>
 
 
 <form id="submit_form" method="post" action="" class="form_add">

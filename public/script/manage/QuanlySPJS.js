@@ -59,12 +59,27 @@ function updateSP(){
     gianhap=document.getElementById("gianhap").value;
     tensanpham=document.getElementById("tensanpham").value;
     if(!tensanpham){
-        alert("Không được để trống tên sản phẩm");
+        //alert("Không được để trống tên sản phẩm");
+        swal({
+          title: "Không được để trống tên sản phẩm!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        })
     } else if(!gianhap){
-        alert("Không được để trống giá nhập");
+        //alert("Không được để trống giá nhập");
+        swal({
+          title: "Không được để trống giá nhập!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        })
     }
     else if(isNaN(gianhap)== true){
-        alert("Giá sản phẩm không hợp lý");
+        //alert("Giá sản phẩm không hợp lý");
+        swal({
+          title: "Giá sản phẩm không hợp lý!",
+          text: "Nhấn vào nút để tiếp tục!",
+          icon: "success",
+        })
     }
     else {
       
@@ -135,7 +150,7 @@ function XoaSP(ojt)
                   masp : masp
                 },
                 success: function(data) {                         
-                  alert(data.kq);
+                  //alert(data.kq);
                     if(data.kq== true){
                       swal({
                         title: "Dữ liệu đã xóa thành công!",
@@ -202,7 +217,7 @@ function XoaSP(ojt)
     loadPhanTrangtest("sanpham", index, size, sql, "");
 
   })
-  function Lamtuoi(){
+  function btnRefresh(){
 
     
     document.getElementById("txtFind").value = "";
@@ -211,8 +226,8 @@ function XoaSP(ojt)
       size = 4;
       arrange="ASC";
       properties="MaSanPham";
-      loadTable("", index, size,arrange,$properties)
-      loadPhanTrang("sanpham", index, size, sql, "");
+      loadTable("", index, size,arrange,properties)
+      loadPhanTrangtest("sanpham", index, size, sql, "");
   
   }
   function DoiTrangThaiSP(ojt){

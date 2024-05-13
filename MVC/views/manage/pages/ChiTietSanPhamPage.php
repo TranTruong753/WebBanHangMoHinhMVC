@@ -11,13 +11,13 @@
   <input type="text" id="txtFind" style="min-width: 300px;" placeholder="Tìm kiếm theo Mã hoặc tên nhóm quyền">
   <input type="button" id="btnSearch" value="Tìm Kiếm">
 </div> -->
-<!-- <input type="submit" id="<?php echo $masp?>"  onclick="DieuHuong(this)" value="Thêm"> -->
+<!-- <input type="submit" id=""  onclick="DieuHuong(this)" value="Thêm"> -->
 <!-- <input type="button"   onclick="Lamtuoi()" value="làm tươi"> -->
 <input type="hidden" id="masp"  value="<?php echo $masp?>">
 
 <div class="search-wrap">
     <div class="search">
-      <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên chi tiết sản phẩm">
+      <input type="text" class="input_search" id="txtFind" placeholder="">
       <label class="btn btn_search" for="btnSearch">
         <i class='bx bx-search'></i>
         <input type="button" id="btnSearch" value="" hidden>

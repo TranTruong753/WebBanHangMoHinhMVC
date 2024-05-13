@@ -132,8 +132,8 @@
               <th>Số lượng tồn
                 <button value="SoLuongTon" onclick="getArrange(this)">^</button>
               </th>
-              <th>Trạng thái</th>
-              <th>Thao tác</th>
+              <!-- <th>Trạng thái</th>
+              <th>Thao tác</th> -->
             </tr>
           </thead>
           
@@ -250,7 +250,7 @@ function gianhap(masp){
 }
 function loadTable(key, index, size,arrange,properties) {
   $.ajax({
-    url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSach",
+    url: "http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSachSPPN",
     type: "post",
     dataType: "html",
     data: {
@@ -272,7 +272,7 @@ $(document).on("click", "#btnSearch", function() {
   size = 4;
   tmpKey = key;
   $.ajax({
-    url: 'http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSach',
+    url: 'http://localhost/WebBanHangMoHinhMVC/AjaxCTSP/getDanhSachSPPN',
     type: 'post',
     dataType: 'html',
     data: {
@@ -299,6 +299,21 @@ function them(){
   sl=$("#soluong").val();
   gn=$("#gianhap").val();
   var tt=$("#thanhtien").val();
+  if(sl=="" || sl<1){
+    swal({
+    title: "Lỗi! Số lượng không hợp lệ!",
+    text: "Nhấn vào nút để tiếp tục!",
+    icon: "error",
+  })
+  }
+  else if(isNaN(gn) || gn<1){
+    swal({
+    title: "Lỗi! Giá nhập không hợp lệ!",
+    text: "Nhấn vào nút để tiếp tục!",
+    icon: "error",
+  })
+  }
+  else
   if(document.getElementById('mactsp').value!=" "){
   //Hàm này trả về phần tử đầu tiên trong mảng thỏa mãn điều kiện. Nếu tìm thấy, bạn cập nhật lại soluong
     const existingItem = arr.find(item => item.mactsp === mactsp);

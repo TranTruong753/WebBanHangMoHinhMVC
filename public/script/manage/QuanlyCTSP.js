@@ -206,10 +206,12 @@ function getArrange(ojt){
 function Lamtuoi(){
   document.getElementById("txtFind").value = "";
     tmpKey = "";
-      index = 1;
-      size = 4;
-      loadTable("", index, size)
-      loadPhanTrang("chitietsanpham", index, size, sql, "");
+    index = 1;
+    size = 4;
+    var arrange="ASC";
+    properties="MaChiTietSanPham";
+    loadTable("", index, size,arrange,properties);
+    loadPhanTrang("chitietsanpham", index, size, sql, "");
 }
 
 function DoiTrangThaiCTSP(ojt){

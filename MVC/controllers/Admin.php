@@ -222,8 +222,8 @@ class Admin extends controller
         }
         else if ($this->pageName == "ThemSanPhamPage") {
             //$NhomQuyenModel = $this->model( "ThemSanPhamPage");
-            $cl=$this->model( "ChatLieuModel")->getDanhSach();
-            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModel();
+            $cl=$this->model( "ChatLieuModel")->getDanhSachTT();
+            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModelTT();
             //$sp=$this->model( "SanPhamModel")->getDanhSach();
             $masp=$this->model( "SanPhamModel")->layMaSPLonNhat();
             $km=$this->model( "KhuyenMaiModel")->getAllKM();
@@ -299,16 +299,16 @@ class Admin extends controller
             $sp=$this->model( "SanPhamModel")->GetSP($masp);
             $ctsp=$this->model( "chitietspmodel")->GetAllCTSP();
             $dsctsp=$this->model( "chitietspmodel")->GetCTSPAdmin($masp);
-            $kc=$this->model( "KichCoModel")->GetDanhSach();
-            $ms=$this->model( "MauSacModel")->GetDanhSach();
+            $kc=$this->model( "KichCoModel")->GetDanhSachTT();
+            $ms=$this->model( "MauSacModel")->GetDanhSachTT();
             $this->data["detail"] = "addPages/ThemChiTietSanPhamPage";
             $this->data["Data"] = ["SP"=>$sp,"CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms,"DSCTSP"=>$dsctsp,"MACTSP"=>$mactsp];
         }
         else if ($this->pageName == "SuaChiTietSanPhamPage") {
             $mactsp=$this->params[1];
             $ctsp=$this->model( "chitietspmodel")->GettheoMactsp($mactsp);
-            $kc=$this->model( "KichCoModel")->GetDanhSach();
-            $ms=$this->model( "MauSacModel")->GetDanhSach();
+            $kc=$this->model( "KichCoModel")->GetDanhSachTT();
+            $ms=$this->model( "MauSacModel")->GetDanhSachTT();
             $this->data["detail"] = "updatePages/SuaChiTietSanPhamPage";
             $this->data["Data"] = ["CTSP"=>$ctsp,"KC"=>$kc,"MS"=>$ms];
         }
@@ -326,8 +326,8 @@ class Admin extends controller
         }
         else if ($this->pageName == "SuaSanPhamPage") {
             $masp=$this->params[1];
-            $cl=$this->model( "ChatLieuModel")->getDanhSach();
-            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModel();
+            $cl=$this->model( "ChatLieuModel")->getDanhSachTT();
+            $tl=$this->model( "TheLoaiModel")->GetTheLoaiModelTT();
             $sp=$this->model( "SanPhamModel")->GetSP($masp);
             $km=$this->model( "KhuyenMaiModel")->getAllKM();
             $this->data["detail"] = "updatePages/SuaSanPhamPage";

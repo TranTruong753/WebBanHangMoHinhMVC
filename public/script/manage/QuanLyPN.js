@@ -85,6 +85,16 @@ function loadTable(key, index, size,arrange,properties) {
     }
   })
 }
+function btnRefresh(){
+  document.getElementById("txtFind").value = "";
+  tmpKey = "";
+  index = 1;
+  size = 4;
+  arrange="ASC";
+  properties="MaPhieuNhap";
+  loadTable("", index, size,arrange,properties)
+  loadPhanTrang("phieunhap", index, size, sql, "");
+}
 
 
 //Xử llys sự kiện khi nhấn bào nút phân trang

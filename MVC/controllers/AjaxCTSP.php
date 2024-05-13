@@ -200,6 +200,43 @@ class AjaxCTSP extends controller {
     $this->chitietspmodel->updateTrangThai($mactsp,$trangThai);
 }
 
+public function getDanhSachSPPN()
+   {
+        $key = $_POST['key'];
+        $pageIndex = $_POST['index'];
+        $numberItem = $_POST['size'];
+        $masp=$_POST['masp'];
+        $arrange= $_POST['arrange'];
+        $properties=$_POST['properties'];
+        $html="";
+        
+       
+        if($this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp,$arrange,$properties)->num_rows >0)
+        {
+            $result=$this->chitietspmodel->getDanhSach($key,$pageIndex,$numberItem,$masp,$arrange,$properties);
+            while($row = $result->fetch_assoc())
+            {
+              $html .=  '<tr id="'.$row["MaChiTietSanPham"].'" onclick="loadID(this)"> 
+              <td>
+                <img  src="http://localhost/WebBanHangMoHinhMVC/public/img/'.$row["HinhAnh"].'" alt="">
+              </td>
+              <td>'.$row["MaChiTietSanPham"].'</td>
+              <td>'.$row["TenSanPham"].'</td>
+              <td>'.$row["TenMauSac"].'</td>
+              <td>'.$row["TenKichCo"].'</td>
+              <td>'.$row["SoLuongTon"].'</td>
+              <td>
+              
+              
+            </tr>';
+              
+            }
+
+            echo $html;
+        }
+        
+   }
+
 }
 
 ?>

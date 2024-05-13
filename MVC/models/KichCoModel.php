@@ -5,6 +5,12 @@ class KichCoModel extends DB{
         $row=mysqli_query($this->con, $qr);
         return $row;
     }
+
+    public function GetDanhSachTT(){
+        $qr = "SELECT * FROM kichco where TrangThai = 1";
+        $row=mysqli_query($this->con, $qr);
+        return $row;
+    }
     public function updateTrangThai($ma,$trangThai)
     {
       
