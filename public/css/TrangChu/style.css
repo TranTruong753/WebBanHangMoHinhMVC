@@ -172,6 +172,7 @@ button {
     text-shadow: 1px 0 0 currentColor;
 }
 
+
 .sub-menu {
     position: absolute;
     top: 32px;
@@ -433,6 +434,7 @@ button {
   }
 
   .cart__buy-btn {
+    cursor: pointer;
     padding: 0 17px;
     width: auto;
     max-height: 32px;

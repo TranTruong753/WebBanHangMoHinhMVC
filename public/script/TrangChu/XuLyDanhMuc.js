@@ -43,7 +43,7 @@ $(document).ready(function(){
     else {
       var key = Tensp;
       index = 1;
-      size = 4;
+      size = 8;
       tmpKey = key;
       $.ajax({
         url: 'http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP',
@@ -256,7 +256,7 @@ $(document).on("click", ".btnPhanTrangTL", function() {
 $(document).on("click", "#search-form__btn", function() {
   var key = $("#search-form__input").val();
   index = 1;
-  size = 4;
+  size = 8;
   tmpKey = key;
   $.ajax({
     url: 'http://localhost/WebBanHangMoHinhMVC/Ajax/GetAllSP',

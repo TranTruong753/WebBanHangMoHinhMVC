@@ -80,7 +80,7 @@
                             }
                             ?>
                             <div class="content__info-wrap">
-                                <p class="content__info-color" id= "content__info-color">Màu sắc :</p>
+                                <p class="content__info-color" id= "content__info-color">Màu sắc : </p>
                                 <span class="" id= "">Số lượng còn lại :</span> <span class="SoLuong" id= "SoLuong"></span>
                             </div>
                             <form action="" method="post">
@@ -111,7 +111,7 @@
                                 
                                 <div class="content__input content__input0-mobile">
                                     <select id="content__input-select" onchange="changecount()" class="content__input-select">
-                                        <option>Vui lòng chọn màu</option>
+                                        <option value="none">Vui lòng chọn màu</option>
                                         <!-- <option value="sizeL">L</option>
                                         <option value="sizeM">M</option> -->
                                         <!-- <?php

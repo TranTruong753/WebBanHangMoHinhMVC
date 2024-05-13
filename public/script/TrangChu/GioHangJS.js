@@ -49,7 +49,7 @@ const smallImages = document.querySelectorAll('.content__img-item');
     
         $.post("http://localhost/WebBanHangMoHinhMVC/Ajax/GetCount",{
             masp: masp,mamausac : mamausac, makichco: makichco},function(data){
-            $("#content__info-color").html("Màu sắc :"+tenmausac);   
+            $("#content__info-color").html("Màu sắc : "+tenmausac);   
             $("#SoLuong").html(data);
             soluong = data;
         })
@@ -111,10 +111,8 @@ function changecount(){
     // }
 //});
 
-    function thanhtoan() {
-        
-        
-        var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/none";
+    function thanhtoan() {              
+       var url = "http://localhost/WebBanHangMoHinhMVC/MuaHangController/Muahang/none";
         window.location.assign(url);
 
     }
@@ -157,6 +155,7 @@ function addgiohang() {
         
         const selectElement = document.getElementById("content__input-select");
         const makichco = selectElement.value;
+        // alert(makichco);
         
         const sl = document.getElementById('content__input-number').value;
         
@@ -183,6 +182,13 @@ function addgiohang() {
             // alert("bạn chưa chọn màu sắc");
             swal({
                 title: "bạn chưa chọn màu sắc!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
+        else if(makichco=="none"){
+            swal({
+                title: "bạn chưa chọn size!",
                 text: "Nhấn vào nút để tiếp tục!",
                 icon: "warning",
             })
@@ -244,6 +250,13 @@ function muangay(){
             // alert("bạn chưa chọn màu sắc");
             swal({
                 title: "bạn chưa chọn màu sắc!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
+        else if(makichco=="none"){
+            swal({
+                title: "bạn chưa chọn size!",
                 text: "Nhấn vào nút để tiếp tục!",
                 icon: "warning",
             })

@@ -53,7 +53,7 @@
 
                 <!-- thanh tiếp tục -->
                 <div class="nav-pay__next hidden-tablet">
-                    <a href="#!" class="pay__next-wrap">
+                    <a href="<?php echo Root ?>home/trangchu" class="pay__next-wrap">
                         <div class="pay__next-title">TIẾP TỤC MUA SẮM</div>
                         <div class="pay__next-icon">
                             <i class="fa-solid fa-arrow-right"></i>
