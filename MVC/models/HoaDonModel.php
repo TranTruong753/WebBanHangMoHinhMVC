@@ -152,4 +152,37 @@ class HoaDonModel extends DB
     // FROM hoadon as hd, chitiethoadon as cthd, sanpham as sp, chitietsanpham as ctsp
     // WHERE NgayLap BETWEEN DATE_SUB(CURDATE(), INTERVAL 1 MONTH) AND CURDATE()
     // ORDER BY total DESC
+
+
+    function DoanhThuTrong1Tuan($week) {
+        // Kết nối đến cơ sở dữ liệu
+        $conn = mysqli_connect("localhost", "username", "password", "database");
+    
+        // Kiểm tra kết nối
+        if (!$conn) {
+            die("Kết nối không thành công: " . mysqli_connect_error());
+        }
+    
+        // Xây dựng câu truy vấn SQL
+        $sql = "SELECT SUM(revenue_column) AS hoadon
+                FROM your_table_name 
+                WHERE YEAR(date_column) = YEAR(CURRENT_DATE()) 
+                AND MONTH(date_column) = MONTH(CURRENT_DATE()) 
+                AND WEEK(date_column) = $week";
+    
+        // Thực thi câu truy vấn
+        $result = mysqli_query($conn, $sql);
+    
+        // Kiểm tra kết quả và trả về doanh thu của tuần
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['weekly_revenue'];
+        } else {
+            return 0; // Nếu không có doanh thu trong tuần đó, trả về 0
+        }
+    
+        // Đóng kết nối
+        mysqli_close($conn);
+    }
+    
 }
