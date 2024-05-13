@@ -60,7 +60,7 @@ class HoaDonModel extends DB
         if (mysqli_query($this->con, $qr)) {
             echo "Đổi trạng thái thành công!";
         } else {
-            echo "Dổi trạng thái không thành công!";
+            echo "Đổi trạng thái không thành công!";
         }
     }
 
