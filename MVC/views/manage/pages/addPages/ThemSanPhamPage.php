@@ -6,12 +6,12 @@
     $masp=$data["DanhSach"]["MASP"];
     $km=$data["DanhSach"]["KM"];
    
-    $dem=0;
-    if ($sanpham->num_rows > 0) {
-        while ($row = $sanpham->fetch_assoc()) {
-                $dem++;
-        }
-    }
+    // $dem=0;
+    // if ($sanpham->num_rows > 0) {
+    //     while ($row = $sanpham->fetch_assoc()) {
+    //             $dem++;
+    //     }
+    // }
     
 ?>
 <h1 class = 'styleText-02' >Thêm Sản Phẩm</h1>
