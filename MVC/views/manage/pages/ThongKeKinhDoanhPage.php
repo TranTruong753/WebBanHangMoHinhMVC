@@ -8,16 +8,6 @@
   <h1 class = 'styleText-01' >Thống kê kinh doanh</h1>
   <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKePage">Thống kê sản phẩm bán chạy></a>
 
-<<<<<<< HEAD
-  <form id="form">
-    <label for="">Tháng: </label>
-    <input id="txtThangMonth" type="text">
-    <label for=""> Của Năm: </label>
-    <input id="txtNamMonth" type="text">
-    <input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">
-  </form>
-  <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-=======
 <div class="form_add">
    <div class="input-chart_wrap">
       <label  class="styleText-04 label-add" for="seletHinhThucThongKe">Hình Thức Thống Kê:</label> 
@@ -42,8 +32,7 @@
       </div>
     </form>
 </div>
-  <canvas id="myChart" class="form_chart-02 " style="width:100%;max-width:600px"></canvas>
->>>>>>> a34ce3071eb073202613ce674504d4cc18f1d19a
+  <canvas id="myChart" class="form_chart-02 " style="width:100%;max-width:1280px"></canvas>
 
 
   <script>
