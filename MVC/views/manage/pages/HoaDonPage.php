@@ -74,31 +74,73 @@ function DoiTrangThaiHoaDon(obj) {
     });
 
     if (selectedRadioButton === null) {
-        alert("Vui lòng chọn một trạng thái."); // Thông báo nếu không có radio button nào được chọn
+        // alert("Vui lòng chọn một trạng thái."); // Thông báo nếu không có radio button nào được chọn
+        swal({
+          
+          text: "Vui lòng chọn một trạng thái!",
+        
+        })     
         return;
     }
 
-    result = confirm("Bạn có muốn đổi trạng thái?");
+    // result = confirm("Bạn có muốn đổi trạng thái?");
 
-    if (result == true) {
-        // Gửi yêu cầu AJAX với trạng thái tương ứng
-        $.post("http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/DoiTrangThai", {
-            ma: ma,
-            trangThai: trangThai
-        }, function(data) {
-            // alert(data); // Hiển thị thông báo
-            location.reload();
-        });
+    // if (result == true) {
+    //     // Gửi yêu cầu AJAX với trạng thái tương ứng
+    //     $.post("http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/DoiTrangThai", {
+    //         ma: ma,
+    //         trangThai: trangThai
+    //     }, function(data) {
+    //         // alert(data); // Hiển thị thông báo
+    //         location.reload();
+    //     });
 
+    //     // Đảm bảo chỉ một radio button được chọn
+    //     radioButtons.forEach(function(radioButton) {
+    //         if (radioButton != selectedRadioButton) {
+    //             radioButton.checked = false;
+    //         }
+    //     });
+    // } else {
+    //     obj.checked = !obj.checked; // Đảo ngược trạng thái của radio button nếu người dùng không chấp nhận thay đổi
+    // }
+    swal({
+      title: "Thông báo",
+      text: "Bạn có muốn đổi trạng thái?!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            $.post("http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/DoiTrangThai", {
+                ma: ma,
+                trangThai: trangThai
+            }, function(data) {
+                // alert(data); // Hiển thị thông báo
+                swal({
+                  title: data,
+                  text: "Nhấn để tiếp tục!",
+                  icon: "success",              
+                }).then(function(){
+                  // location.reload();
+                  loadTable("", index, size)
+                  loadPhanTrang("hoadon", index, size, sql, "");
+                })
+               
+            });
+            
         // Đảm bảo chỉ một radio button được chọn
-        radioButtons.forEach(function(radioButton) {
-            if (radioButton != selectedRadioButton) {
-                radioButton.checked = false;
-            }
-        });
-    } else {
-        obj.checked = !obj.checked; // Đảo ngược trạng thái của radio button nếu người dùng không chấp nhận thay đổi
-    }
+          radioButtons.forEach(function(radioButton) {
+              if (radioButton != selectedRadioButton) {
+                  radioButton.checked = false;
+              }
+          });
+        } else {
+            obj.checked = !obj.checked; // Đảo ngược trạng thái của radio button nếu người dùng không chấp nhận thay đổi
+            swal("Bạn đã hủy đổi trạng thái!");
+        }
+    });
 }
 
 

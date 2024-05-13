@@ -258,7 +258,7 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 
 /* nút thêm */
@@ -551,7 +551,7 @@ body {
   margin: 40px 30px;
   padding: 20px 40px;
   border: 2px solid #2196F3;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .form_add-product {
@@ -574,6 +574,10 @@ body {
   margin-bottom: 7px;
 }
 
+.input-chart_wrap {
+  margin-bottom: 20px;
+}
+
 .input-add_wrap + .input-add_wrap{
   margin-top: 20px;
 }
@@ -592,6 +596,12 @@ body {
   height: 38px;
   border-radius: 8px;
   border: 2px solid #ddd;
+}
+
+.input-date_wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 
 .select-add {
@@ -707,6 +717,29 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* css thống kê */
+.form_chart {
+  display: flex;
+  border: 2px solid #2196F3;
+  border-radius: 4px;
+  margin: 40px 30px;
+
+}
+
+.form_chart-02 {
+  display: flex;
+  margin: 40px 30px;
+
+}
+
+.chart_column , .chart_round {
+
+  width:100%; 
+  /* max-width:600px; 
+  height: 100%; */
+  max-height:500px; 
 }
 
 

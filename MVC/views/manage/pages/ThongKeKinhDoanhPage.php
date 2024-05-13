@@ -5,14 +5,10 @@
 <body>
   <!-- <input type='text' id='txt'>
 <input type='button' value="oke" onclick='btn()'> -->
-  <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKePage">Thống kê sản phẩm bán chạy></a>
-  <br>
-  <pre><label for="seletHinhThucThongKe">Hình Thức Thống Kê:</label> <select onchange="changeSelect(this)" name="" id="seletHinhThucThongKe">
-    <option value="month">Thống kê theo tháng</option>
-    <option value="year">Thống kê theo năm</option>
-  </select>
-</pre>
+  <h1 class = 'styleText-01' >Thống kê kinh doanh</h1>
+  <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKePage">Thống kê sản phẩm bán chạy></a>
 
+<<<<<<< HEAD
   <form id="form">
     <label for="">Tháng: </label>
     <input id="txtThangMonth" type="text">
@@ -21,6 +17,33 @@
     <input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">
   </form>
   <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+=======
+<div class="form_add">
+   <div class="input-chart_wrap">
+      <label  class="styleText-04 label-add" for="seletHinhThucThongKe">Hình Thức Thống Kê:</label> 
+      <select class="input-add" onchange="changeSelect(this)" name="" id="seletHinhThucThongKe">
+        <option value="month">Thống kê theo tháng</option>
+        <option value="year">Thống kê theo năm</option>
+      </select>
+   </div>
+  
+  
+    <form id="form" class="">
+      <div class="input-add_wrap">
+        <label  class="styleText-04 label-add" for="txtThang">Tháng: </label>
+        <input class="input-add" id="txtThang" type="text" placeholder="Nhập tháng...">
+      </div>
+     <div class="input-add_wrap">
+        <label class="styleText-04 label-add" for="txtNam"> Của Năm: </label>
+        <input class="input-add" id="txtNam" type="text" placeholder="Nhập năm...">
+     </div>
+      <div class="input-add_wrap">
+        <button class="btn" type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">Cập nhật</button>
+      </div>
+    </form>
+</div>
+  <canvas id="myChart" class="form_chart-02 " style="width:100%;max-width:600px"></canvas>
+>>>>>>> a34ce3071eb073202613ce674504d4cc18f1d19a
 
 
   <script>
@@ -44,14 +67,29 @@
       var render = ``;
       valueSelected = obj.value;
       if (valueSelected == 'year') {
-        render = `<label for="">Năm: </label><input id="txtNamYear" type="text">
-      <input type="button" onclick="ThongKeTheoNam()" value="Cập Nhật">`;
+        render = `
+       <div class="input-add_wrap">
+          <label class="styleText-04 label-add" for="txtNamYear">Năm: </label>
+          <input class="input-add" id="txtNamYear" type="text" placeholder="Nhập năm...">
+       </div>
+      <div class="input-add_wrap">
+        <button class="btn" type="button" onclick="ThongKeTheoNam()" value="Cập Nhật">Cập Nhật</button>
+      </div>
+      `;
       } else if (valueSelected == 'month') {
-        render = `<label for="">Tháng: </label>
-        <input id="txtThangMonth" type="text">
-<label for=""> Của Năm: </label>
-<input id="txtNamMonth" type="text">
-<input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">`;
+        render = `
+       <div class="input-add_wrap">
+          <label  class="styleText-04 label-add" for="">Tháng: </label>
+          <input class="input-add" id="txtThangMonth" type="text" placeholder="Nhập tháng...">
+       </div>
+       <div class="input-add_wrap">
+          <label  class="styleText-04 label-add" for=""> Của Năm: </label>
+          <input class="input-add" id="txtNamMonth" type="text placeholder="Nhập năm...">
+       </div>
+      <div class="input-add_wrap">
+        <button class="btn" type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">Cập Nhật</button>
+      </div>
+`;
       }
       document.getElementById('form').innerHTML = render;
 
