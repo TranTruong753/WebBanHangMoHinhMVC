@@ -159,8 +159,7 @@ class HoaDonModel extends DB
         FROM hoadon as hd
         WHERE
         EXTRACT(MONTH FROM hd.NgayLap) = $month
-        AND EXTRACT(YEAR FROM hd.NgayLap) =$year
-        ORDER BY total";
+        AND EXTRACT(YEAR FROM hd.NgayLap) =$year";
         $result = $this->con->query($qr);
         $total=0;
     if($result->num_rows > 0 )
@@ -173,13 +172,12 @@ class HoaDonModel extends DB
     return $total;
     }
 
-    function getDoanhThuTrong1Tuan($month,$year) {
+    function getDoanhThuTrong1Tuan($week,$month,$year) {
         $qr = "SELECT SUM(hd.TongTien) as total
         FROM hoadon as hd
-        WHERE
-        EXTRACT(MONTH FROM hd.NgayLap) = $month
-        AND EXTRACT(YEAR FROM hd.NgayLap) =$year
-        ORDER BY total";
+        WHERE EXTRACT(WEEK FROM hd.NgayLap) = $week
+          AND EXTRACT(MONTH FROM hd.NgayLap) = $month
+          AND EXTRACT(YEAR FROM hd.NgayLap) = $year";
         $result = $this->con->query($qr);
         $total=0;
     if($result->num_rows > 0 )

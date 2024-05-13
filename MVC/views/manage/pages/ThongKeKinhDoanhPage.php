@@ -14,8 +14,10 @@
 </pre>
 
   <form id="form">
-    <label for="">Tháng: </label><input id="txtThang" type="text">
-    <label for=""> Của Năm: </label><input id="txtNam" type="text">
+    <label for="">Tháng: </label>
+    <input id="txtThangMonth" type="text">
+    <label for=""> Của Năm: </label>
+    <input id="txtNamMonth" type="text">
     <input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">
   </form>
   <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
@@ -45,8 +47,10 @@
         render = `<label for="">Năm: </label><input id="txtNamYear" type="text">
       <input type="button" onclick="ThongKeTheoNam()" value="Cập Nhật">`;
       } else if (valueSelected == 'month') {
-        render = `<label for="">Tháng: </label><input id="txtThangMonth" type="text">
-<label for=""> Của Năm: </label><input id="txtNamMonth" type="text">
+        render = `<label for="">Tháng: </label>
+        <input id="txtThangMonth" type="text">
+<label for=""> Của Năm: </label>
+<input id="txtNamMonth" type="text">
 <input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">`;
       }
       document.getElementById('form').innerHTML = render;
@@ -54,6 +58,30 @@
     }
 
     function ThongKeTheoThang() {
+      var month =document.getElementById('txtThangMonth').value;
+      var year =document.getElementById('txtNamMonth').value;
+      // alert(month+"/"+year)
+      $.ajax({
+        url:'http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getThongKeTrong1Thang',
+        type:'post',
+        dataType:'html',
+        data:{
+          month:month,
+          year:year
+        },
+        success:function(data){
+          console.log(data);
+          var arrLabel = [];
+          var arrValue = [];
+          var json =JSON.parse(data.trim());
+          json.forEach(item => {
+            arrLabel.push(item[0]);
+            arrValue.push(item[1]);
+          });
+          CapNhatBieuDo(arrLabel,arrValue);
+          
+        }
+      })
       CapNhatBieuDo(['Tháng 1'], [50])
     }
 
