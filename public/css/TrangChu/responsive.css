@@ -54,6 +54,7 @@
         padding: 0 0 60px 60px;
         transform: translateX(-100%);
         transition: 0.5s ease;
+        overflow-y: auto;
     }
 
     .menu-drawer .menu-list__table {
@@ -89,7 +90,7 @@
 
     .menu-top__table {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         padding-right: 10px;
     }
@@ -194,6 +195,18 @@
   .content__img-main  {
     min-width: inherit;
   }
+
+   /* menu bottom */
+   .menu-bottom {
+    margin-top: 20px;
+  }
+
+  .menu-bottom a {
+    padding-top: 14px;
+    font-weight: 500;
+    display: block;
+    color: #333;
+  }
 }
 
 /* Tablet */
@@ -234,7 +247,7 @@
 
   .menu-drawer {
     inset: 0 0 0 0;
-    padding: 0 0 30px 30px;
+    padding: 0 10px 30px 30px;
   }
 
   .label__checkbox {
@@ -242,17 +255,7 @@
     padding-right: 0;
   }
 
-  /* menu bottom */
-  .menu-bottom {
-    margin-top: 20px;
-  }
-
-  .menu-bottom a {
-    padding-top: 14px;
-    font-weight: 500;
-    display: block;
-    color: #333;
-  }
+ 
 
   /* nav login logout */
   .user__mobile {

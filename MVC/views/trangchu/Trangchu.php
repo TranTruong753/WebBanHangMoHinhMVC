@@ -4,8 +4,8 @@
         <section class="hero">
             <div class="hero__inner">
                 <div class="hero__media" >
-                    <i class="fa-solid fa-chevron-left hero-chevron-left" id="pre-hero" ></i>
-                    <i class="fa-solid fa-chevron-right hero-chevron-right" id="next-hero" ></i>
+                    <i class="fa-solid fa-chevron-left hero-chevron-left" id="pre-hero" onclick="preHero()"></i>
+                    <i class="fa-solid fa-chevron-right hero-chevron-right" id="next-hero" onclick="nextHero()" ></i>
                     <div class="hero__media-slide" id="slide-hero">
                         <div class="hero__media-item item-hero">
                             <a href="#!" class="hero__media-link">
@@ -226,11 +226,11 @@
                         <p class="product__title">THỜI TRANG BÁN CHẠY</p>
                         <div class="product__list-hot">
                         <i
-                                    class="fa-solid fa-chevron-left product-chevron-left" id="prev"
+                                    class="fa-solid fa-chevron-left product-chevron-left" id="prev" onclick="prev()"
                                 >
                                 </i>
                                 <i
-                                    class="fa-solid fa-chevron-right product-chevron-right" id="next"
+                                    class="fa-solid fa-chevron-right product-chevron-right" id="next" onclick="next()"
                                 >
                                 </i>
                             <div class="product__list-hot-chil" id="slide">
