@@ -7,7 +7,7 @@
 
 <div class="search-wrap">
   <div class="search">
-    <input type="text" class="input_search" id="txtFind" placeholder="">
+    <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo mã hoặc tên">
     <label class="btn btn_search" for="btnSearch">
       <i class='bx bx-search'></i>
       <input type="button" id="btnSearch" value="" hidden>

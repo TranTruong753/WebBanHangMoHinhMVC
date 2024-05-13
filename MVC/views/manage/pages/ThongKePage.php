@@ -4,22 +4,38 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <body>
-  <a href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKeKinhDoanhPage">Thống kê kinh doanh của cửa hàng></a>
+  <h1 class = 'styleText-01' >Quản lý thống kê</h1>
+  <a class="form-add__link" href="http://localhost/WebBanHangMoHinhMVC/admin/default/ThongKeKinhDoanhPage">Thống kê kinh doanh của cửa hàng></a>
   <!-- <input type='text' id='txt'>
 <input type='button' value="oke" onclick='btn()'> -->
-  <p>
-  <pre>Top <input type="text" class="top"> Sản Phẩm Bán Chạy Nhất</pre>
-  </p>
-  <p>
-  <pre>Trong Khoảng <input type="date" class="start"> đến <input type="date" class="end"></pre>
-  </p>
-  <p>
-  <pre id="x"></pre>
-  </p>
-  <input type="button" value="Cập Nhật" onclick="btnCapNhat()">
-  <div style="display: flex; ">
-    <div id="BieuDoCot" style="width:100%;max-width:700px; "></div>
-    <div id="BieuDoTron" style="width:100%;max-width:700px; "></div>
+ 
+ <div class="form_add">
+   <div  class="input-add_wrap input-date_wrap"> 
+      <label class="styleText-04 label-add" for="top">Top:</label>
+      <input class="input-add" id="top" type="text" class="top" placeholder="Top sản phẩm"> Sản Phẩm Bán Chạy Nhất</div>
+    
+   <div  class="input-add_wrap input-date_wrap">
+      <div class="input-date_wrap">
+        <label class="styleText-04 label-add">Trong Khoảng:</label><input class="input-add" id="start" type="date" class="start"> 
+      </div>
+     
+      <div class=" input-date_wrap">
+        <label class="styleText-04 label-add">đến:</label><input class="input-add" id="end" type="date" class="end">    
+      </div>
+     
+   </div>
+    <p>
+      <pre id="x"></pre>
+    </p>
+    
+    <div class="input-date_wrap input-add_wrap">
+      <button class="btn" type="button" value="Cập Nhật" onclick="btnCapNhat()">Cập Nhật</button>
+    </div>
+ </div>
+
+  <div class="form_chart">
+    <div class="chart_column" id="BieuDoCot"></div>
+    <div class="chart_round" id="BieuDoTron"></div>
   </div>
 
   <div id="myChart" style="width:100%; max-width:600px; height:500px;">
@@ -46,13 +62,13 @@
     })
 
     function btnCapNhat() {
-      var top = document.getElementsByClassName('top')[0].value;
+      var top = document.getElementById('top').value;
       // console.log("top: "+top);
 
-      var start = document.getElementsByClassName('start')[0].value;
+      var start = document.getElementById('start').value;
       // console.log('start: '+start);
 
-      var end = document.getElementsByClassName('end')[0].value;
+      var end = document.getElementById('end').value;
       // console.log('end  : '+end);
 
       getData(top, start, end);
