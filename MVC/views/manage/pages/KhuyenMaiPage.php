@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <!-- Tiêu Đề -->
 <div>
   <h1 class="styleText-01">Quản Lý Khuyến Mãi</h1>
@@ -20,14 +21,14 @@
       <?php
     if ($this->data['Data']['ChiTietQuyenModel']->KiemTraHanhDong('Thêm', $_SESSION['MaNhomQuyen'], $_SESSION['Khuyến Mãi']) == 1) {
     ?>
-       <label class="btn btn_add" for="dieuhuong"> 
+      <label for="dieuhuong" class="btn btn_add"> 
         <i class='bx bx-plus'></i>
-        <input type="button" class="" onclick="DieuHuong()" id="dieuhuong" value="Thêm">
+        <input type="button" class="" onclick="DieuHuong()" value="Thêm" id="dieuhuong">
       </label>
     <?php
     }
     ?>
-     
+      
     </div>
   </div>
 
@@ -54,12 +55,13 @@
 var tmpKey = "";
 var index  = 1;
 var size = 4;
-  
+var sql="";
+
 $(document).ready(function() {
     index = 1;
     size = 4;
     loadTable("", index, size)
-    loadPhanTrang("nhomquyen", index, size, "", "");
+    loadPhanTrang("khuyenmai", index, size, sql, "");
 
   })
 
@@ -99,12 +101,23 @@ function btnXoa(obj)
                     ma: ma,
                 },
                 success: function(data) {
-                    swal("Dữ liệu đã xóa thành công!", {
-                        icon: "success",
-                    });
-                    // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
-                    loadTable(tmpKey, index, size);
-                    loadPhanTrang("khuyenmai", index, size, "", tmpKey);
+                  if(data == true){
+                        swal({
+                                title: "Dữ liệu đã xóa thành công!",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "success",
+                        })               
+                        // Sau khi xóa thành công, gọi lại hàm loadTable và loadPhanTrang
+                        loadTable(tmpKey, index, size);
+    
+                        loadPhanTrang("khuyenmai", index, size, "", tmpKey);
+                      } else{
+                        swal({
+                                title: "Dữ liệu đã xóa thất bại!(Xung đột dữ liệu)",
+                                text: "Nhấn vào nút để tiếp tục!",
+                                icon: "error",
+                        })                      
+                      }
                 }
             });
         } else {
@@ -114,25 +127,6 @@ function btnXoa(obj)
     
   }
 
-function loadTable(key,index,size)
-{
-  $.ajax({
-    url:"http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSach",
-    type:"post",
-    dataType: "html",
-    data:{
-      key:key,
-      index:index,
-      size:size
-    },
-    success:function(data){
-      console.log(data)
-      $(".row_table").html(data);
-    }
-
-  })
-    
-}
  //hàm load phân trang 
  function loadPhanTrang(tableName, index, size, condition = "", key = "") {
     $.ajax({
@@ -153,6 +147,25 @@ function loadTable(key,index,size)
     })
   }
 
+  function loadTable(key,index,size)
+{
+  $.ajax({
+    url:"http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM",
+    type:"post",
+    dataType: "html",
+    data:{
+      key: tmpKey,
+      index: index,
+      size: size
+    },
+    success:function(data){
+      console.log(data)
+      $(".row_table").html(data);
+    }
+
+  })
+    
+}
 //Xử llys sự kiện khi nhấn bào nút phân trang
   $(document).on("click", ".btnPhanTrang", function() {
 
@@ -162,7 +175,7 @@ index = arr[0];
 size = arr[1];
 //xử lý thay đổi bảng khi nhấn vào phân trang
 $.ajax({
-  url: "http://localhost/WebBanHangMoHinhMVC/AjaxNhomQuyen/getDanhSach",
+  url: "http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM",
   type: "post",
   dataType: "html",
   data: {
@@ -176,32 +189,33 @@ $.ajax({
 })
 // xử lý số trang đã chọn
 // alert(tmpKey)
-loadPhanTrang("nhomquyen", index, size, "", tmpKey);
+loadPhanTrang("khuyenmai", index, size, sql, tmpKey);
 })
-//Xử lý khi nhấn nút tìm kiếm
-$(document).on("click", "#btnSearch", function() {
-var key = $("#txtFind").val();
-index = 1;
-size = 4;
-tmpKey = key;
-$.ajax({
-  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSach',
-  type: 'post',
-  dataType: 'html',
-  data: {
-    key: key,
-    index: index,
-    size: size,
-  },
-  success: function(data) {
-    console.log(data)
-    $(".row-table").html(data)
-  }
-})
-// xử lý số trang đã chọn
-loadPhanTrang("khuyenmai", index, size, "", key);
 
-})
+    //Xử lý khi nhấn nút tìm kiếm
+    $(document).on("click", "#btnSearch", function() {
+        var key = $("#txtFind").val();
+        index = 1;
+        size = 4;
+        tmpKey = key;
+        $.ajax({
+        url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
+        type: 'post',
+        dataType: 'html',
+        data: {
+            key: key,
+            index: index,
+            size: size,
+        },
+        success: function(data) {
+            console.log(data)
+            $(".row-table").html(data)
+        }
+        })
+        // xử lý số trang đã chọn
+        loadPhanTrang("khuyenmai", index, size, sql, key);
+    
+    })
 
 //xử lý sự kiện khi click vào nút làm tươi
 $(document).on("click", "#btnRefresh", function() {
@@ -212,7 +226,7 @@ size = 4;
 tmpKey = "";
 
 $.ajax({
-  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSach',
+  url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
   type: 'post',
   dataType: 'html',
   data: {

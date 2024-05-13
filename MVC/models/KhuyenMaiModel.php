@@ -10,8 +10,8 @@ class KhuyenMaiModel extends DB {
 
         if($key != "")
         {
-            $qr .= " WHERE concat(MaKhuyenMai,TenKhuyenMai,MucKhuyenMai)";
-            $qr .= " ORDER BY MaKhuyenMai DESC ";
+            $qr .= " WHERE concat(MaKhuyenMai,TenKhuyenMai) like '%$key%'";
+            $qr .= " ORDER BY MaKhuyenMai DESC";
             $qr .= " LIMIT $start,$size ";
 
             return $this->con->query($qr);
