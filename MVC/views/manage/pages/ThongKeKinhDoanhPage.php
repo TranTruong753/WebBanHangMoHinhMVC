@@ -60,7 +60,7 @@
     function ThongKeTheoThang() {
       var month =document.getElementById('txtThangMonth').value;
       var year =document.getElementById('txtNamMonth').value;
-      // alert(month+"/"+year)
+      // alert(month+"/"+year)g
       $.ajax({
         url:'http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getThongKeTrong1Thang',
         type:'post',
