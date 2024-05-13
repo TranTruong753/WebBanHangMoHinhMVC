@@ -73,6 +73,7 @@
 
     .menu-list__table-sub span {
         display: block;
+        cursor: pointer;
         padding: 5px 0;
     }
 
