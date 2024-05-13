@@ -54,7 +54,7 @@ function showAlert() {
         }
     });
 
-    document.getElementById('next-hero').onclick = function(){
+    function nextHero(){
         let slide = document.getElementById('slide-hero');
         let lists = document.querySelectorAll('.item-hero');
      
@@ -84,7 +84,7 @@ function showAlert() {
     }
 
     
-    document.getElementById('pre-hero').onclick = function(){
+    function preHero(){
         let slide = document.getElementById('slide-hero');
         let lists = document.querySelectorAll('.item-hero');
         slide.prepend(lists[lists.length-1]);
@@ -96,7 +96,7 @@ function showAlert() {
 
 
  
-    document.getElementById('next').onclick = function() {
+    function next() {
         let slide = document.getElementById('slide');
         let lists = document.querySelectorAll('.item');
     
@@ -122,7 +122,7 @@ function showAlert() {
         slide.style.transform = 'translateX(-300px)';
     }
 
-    document.getElementById('prev').onclick = function() {
+   function prev() {
         let slide = document.getElementById('slide');
         let lists = document.querySelectorAll('.item');
     

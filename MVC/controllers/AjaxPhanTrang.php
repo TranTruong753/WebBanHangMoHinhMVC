@@ -53,7 +53,7 @@ class AjaxPhanTrang extends controller{
             }
             if($table == "khuyenmai")
             {
-                $varibleEqual .= " MaKhuyenMai,TenKhuyenMai,MucKhuyenMai ";
+                $varibleEqual .= " MaKhuyenMai,TenKhuyenMai";
             }               
             if($table == 'phieunhap')
             {   //$masp=$_POST["masp"];

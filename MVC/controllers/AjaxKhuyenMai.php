@@ -47,14 +47,15 @@ class AjaxKhuyenMai extends controller{
     {
       //được xóa khi trang thái bằng 0 trong DB
         $ma = $_POST["ma"];
-        if($this->KhuyenMaiModel->delete($ma)){
-          echo 'Xóa tài khoản Thành Công!';
+        if($this->KhuyenMaiModel->delete($ma)==1){
+          $data=true;
         }else{
-          echo 'Xóa tài khoản Thất bại!';
+          $data=false;
         }
+        echo $data;
    
       }
-    public function getDanhSach() {
+    public function getDanhSachKM() {
         $key = $_POST["key"];
         $index = $_POST["index"];
         $size = $_POST["size"];

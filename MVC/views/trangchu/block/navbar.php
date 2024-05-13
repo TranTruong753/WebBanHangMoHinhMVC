@@ -77,50 +77,55 @@
                     <i class="fa-solid fa-x"></i>
                  </label>               
             </div>
+        
+            <!-- tìm kiếm mobile -->
+            <div class="hidden-tablet">
+                        
+            </div>
 
-            <span class="separate"></span>
-            <ul class="menu-list__table">
-                <li>
-                    <a class="menu-link__table" href="">HÀNG MỚI VÈ</a>
-                </li>
-              
+        <span class="separate"></span>
+        <ul class="menu-list__table">
+            <li>
+                <a class="menu-link__table" href="">HÀNG MỚI VÈ</a>
+            </li>
+            
 
-                <?php   
-                    if ($data['CL']->num_rows > 0) {
-                        while ($row = $data['CL']->fetch_assoc()) {
-                            echo    '
-                            
-                        <li class=""  value="'.$row["MaChungLoai"].'">
-                            <a href="#!" class="menu-link__table" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
-                            <ul class="menu-list__table-sub">';
-                                $data['TL']->data_seek(0);
-                                if ($data['TL']->num_rows > 0) {
+            <?php   
+                if ($data['CL']->num_rows > 0) {
+                    while ($row = $data['CL']->fetch_assoc()) {
+                        echo    '
+                        
+                    <li class=""  value="'.$row["MaChungLoai"].'">
+                        <a href="#!" class="menu-link__table" onclick="getSP(this)" id = "'.$row["MaChungLoai"].'">'.$row["TenChungLoai"].'</a>
+                        <ul class="menu-list__table-sub">';
+                            $data['TL']->data_seek(0);
+                            if ($data['TL']->num_rows > 0) {
+                                
+                                while ($row1 = $data['TL']->fetch_assoc()) {
                                     
-                                    while ($row1 = $data['TL']->fetch_assoc()) {
-                                        
-                                        if($row1["MaChungLoai"]==$row["MaChungLoai"]){
-                                            echo'
-                                            <li>
-                                                <span class="" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
-                                            </li>
-                                            ';
-                                        }
-                                        
+                                    if($row1["MaChungLoai"]==$row["MaChungLoai"]){
+                                        echo'
+                                        <li>
+                                            <span class="" onclick="getTL(this)" id = "'.$row1["MaTheLoai"].'">'.$row1["TenTheLoai"].'</span>
+                                        </li>
+                                        ';
                                     }
-                                }; //đặt con trỏ lại vị trí cũ
-                            echo '</ul>
-                        </li>';
-                        }
+                                    
+                                }
+                            }; //đặt con trỏ lại vị trí cũ
+                        echo '</ul>
+                    </li>';
                     }
-                ?>
+                }
+            ?>
 
-               
+            
             </ul>
             <div class="menu-bottom">
                 <?php 
-                         if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                            if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
                             echo '<a class="menu-link__table" href="#" onclick="Logout()">ĐĂNG XUẤT</a>';
-                         }else {
+                            }else {
                 
                             echo '
                             
@@ -130,7 +135,7 @@
                             
                             <a class="menu-link__table" href="'; echo Root; echo 'Dangki/dangki" >Đăng ký</a>
                             ';
-                         }
+                            }
                     ?>
             </div>
         </div>
@@ -193,17 +198,14 @@
                         <!-- Submit button -->
                         <button onclick="showAlert()" class="search-form__btn" id="search-form__btn" type="button">
                             
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                            <script>
-                                
-                            </script>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>                         
 
-                            <!-- Clear button -->
-                            <button type="reset" class="search-form__clear">
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </button>
-                        </form>
+                        <!-- Clear button -->
+                        <button type="reset" class="search-form__clear">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </button>
+                    </form>
                         <!-- <a href="#!" class="cart-shopping cart-btn">
                             <i class="fa-solid fa-cart-shopping"></i> -->
                             <!-- Cart preview -->
