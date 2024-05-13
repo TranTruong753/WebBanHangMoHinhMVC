@@ -180,7 +180,8 @@ loadPhanTrang("nhomquyen", index, size, "", tmpKey);
 })
 //Xử lý khi nhấn nút tìm kiếm
 $(document).on("click", "#btnSearch", function() {
-var key = $("#txtFind").val();
+ tmpKey = $("#txtFind").val();
+ var key =tmpKey;
 index = 1;
 size = 4;
 tmpKey = key;

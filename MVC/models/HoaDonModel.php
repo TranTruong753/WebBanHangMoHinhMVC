@@ -154,35 +154,42 @@ class HoaDonModel extends DB
     // ORDER BY total DESC
 
 
-    function DoanhThuTrong1Tuan($week) {
-        // Kết nối đến cơ sở dữ liệu
-        $conn = mysqli_connect("localhost", "username", "password", "database");
-    
-        // Kiểm tra kết nối
-        if (!$conn) {
-            die("Kết nối không thành công: " . mysqli_connect_error());
+    function getDoanhThuTrong1Thang($month,$year) {
+        $qr = "SELECT SUM(hd.TongTien) as total
+        FROM hoadon as hd
+        WHERE
+        EXTRACT(MONTH FROM hd.NgayLap) = $month
+        AND EXTRACT(YEAR FROM hd.NgayLap) =$year
+        ORDER BY total";
+        $result = $this->con->query($qr);
+        $total=0;
+    if($result->num_rows > 0 )
+    {
+        while($row = $result->fetch_assoc())
+        {
+            $total = $row['total'];
         }
-    
-        // Xây dựng câu truy vấn SQL
-        $sql = "SELECT SUM(revenue_column) AS hoadon
-                FROM your_table_name 
-                WHERE YEAR(date_column) = YEAR(CURRENT_DATE()) 
-                AND MONTH(date_column) = MONTH(CURRENT_DATE()) 
-                AND WEEK(date_column) = $week";
-    
-        // Thực thi câu truy vấn
-        $result = mysqli_query($conn, $sql);
-    
-        // Kiểm tra kết quả và trả về doanh thu của tuần
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            return $row['weekly_revenue'];
-        } else {
-            return 0; // Nếu không có doanh thu trong tuần đó, trả về 0
+    }
+    return $total;
+    }
+
+    function getDoanhThuTrong1Tuan($month,$year) {
+        $qr = "SELECT SUM(hd.TongTien) as total
+        FROM hoadon as hd
+        WHERE
+        EXTRACT(MONTH FROM hd.NgayLap) = $month
+        AND EXTRACT(YEAR FROM hd.NgayLap) =$year
+        ORDER BY total";
+        $result = $this->con->query($qr);
+        $total=0;
+    if($result->num_rows > 0 )
+    {
+        while($row = $result->fetch_assoc())
+        {
+            $total = $row['total'];
         }
-    
-        // Đóng kết nối
-        mysqli_close($conn);
+    }
+    return $total;
     }
     
 }

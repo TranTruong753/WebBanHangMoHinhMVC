@@ -42,11 +42,11 @@
       var render = ``;
       valueSelected = obj.value;
       if (valueSelected == 'year') {
-        render = `<label for="">Năm: </label><input id="txtNam" type="text">
+        render = `<label for="">Năm: </label><input id="txtNamYear" type="text">
       <input type="button" onclick="ThongKeTheoNam()" value="Cập Nhật">`;
       } else if (valueSelected == 'month') {
-        render = `<label for="">Tháng: </label><input id="txtThang" type="text">
-<label for=""> Của Năm: </label><input id="txtNam" type="text">
+        render = `<label for="">Tháng: </label><input id="txtThangMonth" type="text">
+<label for=""> Của Năm: </label><input id="txtNamMonth" type="text">
 <input type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">`;
       }
       document.getElementById('form').innerHTML = render;
@@ -58,11 +58,34 @@
     }
 
     function ThongKeTheoNam() {
-      CapNhatBieuDo(['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-        [100, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+      var year =document.getElementById('txtNamYear').value;
+      // alert(year);
+
+      $.ajax({
+        url:'http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getThongKeTrong1Nam',
+        type:'post',
+        dataType:'html',
+        data:{
+          year:year
+        },
+        success:function(data){
+          // alert(data);
+          var arrLabel = [];
+          var arrValue = [];
+          var json =JSON.parse(data.trim());
+          json.forEach(item => {
+            arrLabel.push(item[0]);
+            arrValue.push(item[1]);
+          });
+          CapNhatBieuDo(arrLabel,arrValue);
+          
+        }
+      })
+      // CapNhatBieuDo(['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+      //   [100, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     }
 
-    function CapNhatBieuDo(xValues, yValues, min, max) {
+    function CapNhatBieuDo(xValues, yValues) {
 
 
       new Chart("myChart", {
