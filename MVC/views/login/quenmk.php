@@ -12,7 +12,7 @@
         <div class="login__main">
            <div class="login__main-wrap">
                 <div class="login__title-wrap">
-                        <h2 class="heading-title login__title">Đăng nhập</h2>
+                        <h2 class="heading-title login__title">Quên mật khẩu</h2>
                         <p class="heading-desc login__desc"> Bạn chưa có tài khoản FM?
                          <a href="<?php echo Root ?>Dangki/dangki">Đăng kí ngay</a>
                         </p>
@@ -44,8 +44,10 @@
                             <input type="text" name="UserName" id="maotp" class="login__formInput" placeholder="Mã OTP..."  required>
                             <div id="error-message-user"></div>
                     </div>
+                    <div class="form-input-wrap form__save-wrap">
+                    </div>
                     <div class="login__form-wrap">
-                        <button type="button" onclick="onclickNext()" class="btn login-btn " id="btn_login">Next</button>
+                        <button type="button" onclick="onclickNext()" class="btn login-btn btn--primary ">Next</button>
                     </div>
                     <div class="form-input-wrap">
                             
@@ -62,7 +64,7 @@
                     <div class="form-input-wrap form__save-wrap">
                     </div>
                     <div class="login__form-wrap">
-                        <button type="button" onclick="onclickXacNhan()" class="btn login-btn " id="btn_login">Xác nhận</button>
+                        <button type="button" onclick="onclickXacNhan()" class="btn login-btn btn--noActivate" id="btn_login">Xác nhận</button>
                     </div>
                     <div class="login-line">
                         <hr class="crossline">
@@ -152,6 +154,6 @@
             return pattern.test(email);
         }
     </script> -->
-    <script src="<?php echo Root ?>public/script/TrangChu/batLoiDangNhap.js"></script>
+    <script src="<?php echo Root ?>public/script/TrangChu/batLoiQuenMk.js"></script>
     <script src="<?php echo Root ?>public/script/TrangChu/btnLogin.js"></script>
     <script src="http://localhost/WebBanHangMoHinhMVC/public/script/TrangChu/trangchu.js"></script>
