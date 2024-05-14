@@ -20,12 +20,10 @@
   
     <form id="form" class="">
       <div class="input-add_wrap">
-        <label  class="styleText-04 label-add" for="txtThang">Tháng: </label>
-        <input class="input-add" id="txtThang" type="text" placeholder="Nhập tháng...">
+       <pre> <label  class="styleText-04 label-add" for="txtThang">Tháng: </label><input class="input-add" id="txtThang" type="text" placeholder="Nhập tháng..."></pre>
       </div>
      <div class="input-add_wrap">
-        <label class="styleText-04 label-add" for="txtNam"> Của Năm: </label>
-        <input class="input-add" id="txtNam" type="text" placeholder="Nhập năm...">
+        <label class="styleText-04 label-add" for="txtNam"> Của Năm: </label><input class="input-add" id="txtNam" type="text" placeholder="Nhập năm...">
      </div>
       <div class="input-add_wrap">
         <button class="btn" type="button" onclick="ThongKeTheoThang()" value="Cập Nhật">Cập nhật</button>
@@ -87,8 +85,18 @@
     function ThongKeTheoThang() {
       var month =document.getElementById('txtThangMonth').value;
       var year =document.getElementById('txtNamMonth').value;
-      // alert(month+"/"+year)g
-      $.ajax({
+      if(parseInt(month) <= 0 || parseInt(year) <= 0)
+      {
+        swal({
+                title: "Tháng và năm phải lớn hơn 0!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+      }else
+      {
+        if(parseInt(month) >= 1 && parseInt(month) <=12)
+        {
+          $.ajax({
         url:'http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getThongKeTrong1Thang',
         type:'post',
         dataType:'html',
@@ -110,13 +118,25 @@
         }
       })
       CapNhatBieuDo(['Tháng 1'], [50])
+        }else
+        {
+          swal({
+                title: "Tháng nằm trong 1-12",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
+      }
+      // alert(month+"/"+year)g
+   
     }
 
     function ThongKeTheoNam() {
       var year =document.getElementById('txtNamYear').value;
       // alert(year);
-
-      $.ajax({
+      if(parseInt(year) > 0 )
+      {
+        $.ajax({
         url:'http://localhost/WebBanHangMoHinhMVC/AjaxHoaDon/getThongKeTrong1Nam',
         type:'post',
         dataType:'html',
@@ -136,6 +156,15 @@
           
         }
       })
+      }else
+      {
+        swal({
+                title: "Năm phải lớn hơn 0! ",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+      }
+     
       // CapNhatBieuDo(['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
       //   [100, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     }

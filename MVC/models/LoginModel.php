@@ -25,7 +25,8 @@ class LoginModel extends DB{
     public function TimTKKH($email,$mk){
         
         $qr ='SELECT * FROM taikhoan INNER JOIN khachhang on taikhoan.TenDangNhap=khachhang.MaKhachHang  
-        where (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
+        where (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")
+        AND taikhoan.TrangThai = 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
         
@@ -35,7 +36,8 @@ class LoginModel extends DB{
         
         $qr ='SELECT * FROM taikhoan  
         INNER JOIN nhanvien on taikhoan.TenDangNhap=nhanvien.MaNhanVien where
-        (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")';
+        (taikhoan.TenDangNhap="'.$email.'" and taikhoan.MatKhau="'.$mk.'")
+        AND taikhoan.TrangThai = 1';
         $row=mysqli_query($this->con, $qr);
         return $row;
         

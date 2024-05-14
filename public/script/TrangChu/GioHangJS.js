@@ -158,7 +158,8 @@ function addgiohang() {
         // alert(makichco);
         
         const sl = document.getElementById('content__input-number').value;
-        
+        if(parseInt(sl) >0)
+            {
         if( parseInt(sl)<= parseInt(slton)){
             
             //alert(1);
@@ -202,6 +203,15 @@ function addgiohang() {
             })
         }
     }
+    else
+    {
+        swal({
+            title: "Số lượng phải lớn hơn 0!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "warning",
+        })
+    }
+    }
         else {
             // alert("Bạn chưa đăng nhập");
             swal({
@@ -232,7 +242,9 @@ function muangay(){
         const makichco = selectElement.value;
         
         const sl = document.getElementById('content__input-number').value;
-        
+        // alert(sl)
+        if(parseInt(sl) > 0)
+            {
         if( parseInt(sl)<= parseInt(slton)){
             
             //alert(1);
@@ -269,6 +281,15 @@ function muangay(){
                 icon: "warning",
             })
         } 
+        }
+        else
+        {
+            swal({
+                title: "Số lượng phải lớn hơn 0!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+        }
         
     }
     else {

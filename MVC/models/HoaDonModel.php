@@ -96,6 +96,7 @@ class HoaDonModel extends DB
         WHERE cthd.MaHoaDon = hd.MaHoaDon
         AND sp.MaSanPham = ctsp.MaSanPham
         AND cthd.MaChiTietSanPham = ctsp.MaChiTietSanPham
+        AND hd.TrangThai = 2
         AND  NgayLap BETWEEN "'.$start.' 00:00:01"
         AND "'.$end.' 23:59:00" 
         GROUP BY sp.MaSanPham
@@ -157,9 +158,9 @@ class HoaDonModel extends DB
     function getDoanhThuTrong1Thang($month,$year) {
         $qr = "SELECT SUM(hd.TongTien) as total
         FROM hoadon as hd
-        WHERE
-        EXTRACT(MONTH FROM hd.NgayLap) = $month
-        AND EXTRACT(YEAR FROM hd.NgayLap) =$year";
+        WHERE EXTRACT(MONTH FROM hd.NgayLap) = $month
+        AND EXTRACT(YEAR FROM hd.NgayLap) =$year
+        AND hd.TrangThai = 2";
         $result = $this->con->query($qr);
         $total=0;
     if($result->num_rows > 0 )
@@ -177,7 +178,8 @@ class HoaDonModel extends DB
         FROM hoadon as hd
         WHERE EXTRACT(WEEK FROM hd.NgayLap) = $week
           AND EXTRACT(MONTH FROM hd.NgayLap) = $month
-          AND EXTRACT(YEAR FROM hd.NgayLap) = $year";
+          AND EXTRACT(YEAR FROM hd.NgayLap) = $year
+          ";
         $result = $this->con->query($qr);
         $total=0;
     if($result->num_rows > 0 )

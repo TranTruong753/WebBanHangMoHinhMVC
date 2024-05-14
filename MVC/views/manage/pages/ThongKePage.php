@@ -64,8 +64,9 @@
     function btnCapNhat() {
       var top = document.getElementById('top').value;
       // console.log("top: "+top);
-
-      var start = document.getElementById('start').value;
+      if(parseInt(top) > 0 )
+      {
+        var start = document.getElementById('start').value;
       // console.log('start: '+start);
 
       var end = document.getElementById('end').value;
@@ -73,6 +74,17 @@
 
       getData(top, start, end);
       // console.log("arr: "+arrThongKe);
+      }
+      else
+      {
+        swal({
+                title: "Top phải lớn hơn 0!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "warning",
+            })
+      }
+
+     
 
     }
 
