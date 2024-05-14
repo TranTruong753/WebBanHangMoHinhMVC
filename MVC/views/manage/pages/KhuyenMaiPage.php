@@ -9,7 +9,7 @@
     <input type="text" class="input_search" id="txtFind" placeholder="Tìm kiếm theo Mã hoặc Tên">
     <label class="btn btn_search" for="btnSearch">
       <i class='bx bx-search'></i>
-      <input type="button" id="btnSearch" value="" hidden>
+      <input type="button" id="btnSearch" onclick="btnSearch()" value="" hidden>
     </label>
   </div>
   <!-- Nút sang form dữ liệu nhóm quyền  -->
@@ -188,55 +188,46 @@
     // alert(tmpKey)
     loadPhanTrang("khuyenmai", index, size, sql, tmpKey);
   })
-  //Xử lý khi nhấn nút tìm kiếm
-  $(document).on("click", "#btnSearch", function() {
-        tmpKey = $("#txtFind").val();
+
+  function btnSearch()
+  {
+    tmpKey = $("#txtFind").val();
         var key = tmpKey;
         index = 1;
         size = 4;
-        tmpKey = key;
-        $.ajax({
-          url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
-          type: 'post',
-          dataType: 'html',
-          data: {
-            key: key,
-            index: index,
-            size: size,
-          },
-          success: function(data) {
-            console.log(data)
-            $(".row-table").html(data)
-          }
-        })
-      })
-      // xử lý số trang đã chọn
-      loadPhanTrang("khuyenmai", index, size, "", key);
+        loadTable(tmpKey, index, size)
+  }
+  //Xử lý khi nhấn nút tìm kiếm
+  // $(document).on("click", "#btnSearch", function() {
+       
+  //     })
+  //     // xử lý số trang đã chọn
+  //     loadPhanTrang("khuyenmai", index, size, "", key);
 
-      //Xử lý khi nhấn nút tìm kiếm
-      $(document).on("click", "#btnSearch", function() {
-        var key = $("#txtFind").val();
-        index = 1;
-        size = 4;
-        tmpKey = key;
-        $.ajax({
-          url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
-          type: 'post',
-          dataType: 'html',
-          data: {
-            key: key,
-            index: index,
-            size: size,
-          },
-          success: function(data) {
-            console.log(data)
-            $(".row-table").html(data)
-          }
-        })
-        // xử lý số trang đã chọn
-        loadPhanTrang("khuyenmai", index, size, sql, key);
+  //     //Xử lý khi nhấn nút tìm kiếm
+  //     $(document).on("click", "#btnSearch", function() {
+  //       var key = $("#txtFind").val();
+  //       index = 1;
+  //       size = 4;
+  //       tmpKey = key;
+  //       $.ajax({
+  //         url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
+  //         type: 'post',
+  //         dataType: 'html',
+  //         data: {
+  //           key: key,
+  //           index: index,
+  //           size: size,
+  //         },
+  //         success: function(data) {
+  //           console.log(data)
+  //           $(".row-table").html(data)
+  //         }
+  //       })
+  //       // xử lý số trang đã chọn
+  //       loadPhanTrang("khuyenmai", index, size, sql, key);
 
-      })
+  //     })
 
       //xử lý sự kiện khi click vào nút làm tươi
       $(document).on("click", "#btnRefresh", function() {
@@ -246,20 +237,7 @@
         size = 4;
         tmpKey = "";
 
-        $.ajax({
-          url: 'http://localhost/WebBanHangMoHinhMVC/AjaxKhuyenMai/getDanhSachKM',
-          type: 'post',
-          dataType: 'html',
-          data: {
-            key: key,
-            index: index,
-            size: size,
-          },
-          success: function(data) {
-            console.log(data)
-            $(".row-table").html(data)
-          }
-        })
+        loadTable(tmpKey, index, size)
 
         loadPhanTrang("khuyenmai", index, size, "", key);
       })
