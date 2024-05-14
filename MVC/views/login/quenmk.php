@@ -39,7 +39,7 @@
                                 <a href="#!" onclick="sentOTP()">Gửi OTP</a>
                     </div>
                     <div class="form-input-wrap">
-                            <input type="hidden" id="codeotp">
+                            <input type="hidden" id="codeotp" value="0">
                             <label class="login__formLabel" for="UserName">Nhập OTP<span class="importan">*</span></label>
                             <input type="text" name="UserName" id="maotp" class="login__formInput" placeholder="Mã OTP..."  required>
                             <div id="error-message-user"></div>
