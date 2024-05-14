@@ -1,7 +1,7 @@
 <?php
 
 // http://localhost/live/Home/Show/1/2
-
+require_once "./MVC/core/SentEmail.php";
 class AjaxLogin extends controller{
 
     // Must have SayHi()
@@ -55,6 +55,18 @@ class AjaxLogin extends controller{
             session_destroy();
         }
         
+    }
+    function SentOtp(){
+        $email=$_POST['email'];
+        $sent= new Email();
+        // $data= json_encode(["code"=>$sent->Sent($email),"kq"=>true]);
+        echo $sent->Sent($email);
+    }
+
+    function updatemk(){
+        $email=$_POST['email'];
+        $codePIN=$_POST['codePIN'];
+        echo $this->LoginModel->updatemk($email,$codePIN);
     }
 
 

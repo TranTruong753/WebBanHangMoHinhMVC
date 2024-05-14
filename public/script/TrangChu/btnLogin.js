@@ -88,3 +88,102 @@ function onclickbtnDN(){
     });
 
 };
+
+function sentOTP(){
+    var email=document.getElementById("email").value;
+    //alert(email);
+    $.ajax({
+        url: "http://localhost/WebBanHangMoHinhMVC/AjaxLogin/SentOtp",
+        type: "post",
+        dataType: "JSON",
+        data: {
+            email : email
+        },
+        success: function(data) {
+          //alert("gửi thành công");
+          swal({
+            title: "Gửi thành công!",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "success",
+        })
+        document.getElementById("codeotp").value=data;
+        //alert(document.getElementById("codeotp").value);
+          //$(".PhanTrang").html(data)
+        }
+    })
+}
+function onclickNext(){
+    //alert(1);
+    var codeotp= document.getElementById("codeotp").value;
+    var maotp= document.getElementById("maotp").value;
+    document.getElementById("email").readOnly=true;
+    if(codeotp!=maotp){
+        swal({
+            title: "Mã không hợp lệ",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }
+    else {
+        swal({
+            title: "Mã  hợp lệ",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "success",
+        }).then(function () {
+            document.getElementById("codePIN").readOnly=false;
+            document.getElementById("reCodePIN").readOnly=false;
+        })
+
+    };
+    //alert(codeotp+"-"+maotp);
+    //email.readOnly = true;
+    
+}
+
+function onclickXacNhan(){
+    var codePIN=document.getElementById("codePIN").value;
+    var reCodePIN=document.getElementById("reCodePIN").value;
+    var email=document.getElementById("email").value;
+    if(codePIN!=reCodePIN){
+        swal({
+            title: "reCodePIN không giống codePIN",
+            text: "Nhấn vào nút để tiếp tục!",
+            icon: "error",
+        })
+    }
+    else {
+        $.ajax({
+            url: "http://localhost/WebBanHangMoHinhMVC/AjaxLogin/updatemk",
+            type: "post",
+            dataType: "JSON",
+            data: {
+                email : email,
+                codePIN: codePIN
+            },
+            success: function(data) {
+              //alert(data);
+              swal({
+                title: "Cập nhật thành công!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "success",
+            }).then(function () {
+                window.location.assign("http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap");
+            })
+            
+            },
+            error: function(data){
+                //alert("cc");
+              swal({
+                title: "Email chưa được đăng kí!",
+                text: "Nhấn vào nút để tiếp tục!",
+                icon: "error",
+              }).then(function () {
+                document.getElementById("email").readOnly=false;
+            })  ;  
+            }
+        
+        })
+
+    };
+
+}

@@ -29,24 +29,40 @@
                             <div id="error-message-email"></div>
                             <!-- <div class="error-text">Lỗi!</div> -->
                     </div>
-                    <div class="form-input-wrap">
+                    <!-- <div class="form-input-wrap">
                             <label class="login__formLabel" for="">Mã PIN</label>
                             <input type="password" name="Password" id="Password" class="login__formInput" placeholder="Nhập mã PIN" required minlength="6" maxlength="6">
                             <div id="error-message-pin"></div>
-                    </div>
+                    </div> -->
                     <div class="error-wrap">
                                 <div class="error-text">Lỗi!</div>
-                                <a href="http://localhost/WebBanHangMoHinhMVC/Dangki/quenmk">Quên mã PIN</a>
+                                <a href="#!" onclick="sentOTP()">Gửi OTP</a>
                     </div>
-                    <div class="form-input-wrap form__save-wrap">
-                        <input type="checkbox" name="saveUser" id="saveUser" class="login__formCheckBox" hidden>
-                       
-                        <label class="login__formLabel login__formLabel-save" for="saveUser"> <span></span>
-                        Lưu thông tin đăng nhập</label>
-                        
+                    <div class="form-input-wrap">
+                            <input type="hidden" id="codeotp">
+                            <label class="login__formLabel" for="UserName">Nhập OTP<span class="importan">*</span></label>
+                            <input type="text" name="UserName" id="maotp" class="login__formInput" placeholder="Mã OTP..."  required>
+                            <div id="error-message-user"></div>
                     </div>
                     <div class="login__form-wrap">
-                        <button type="button" onclick="onclickbtnDN()" class="btn login-btn btn--noActivate" id="btn_login">Đăng nhập</button>
+                        <button type="button" onclick="onclickNext()" class="btn login-btn " id="btn_login">Next</button>
+                    </div>
+                    <div class="form-input-wrap">
+                            
+                            <label class="login__formLabel" for="codePIN">Nhập mã PIN <span class="importan">*</span></label>
+                            <input type="password" name="codePIN" id="codePIN" class="login__formInput" placeholder="Nhập mã PIN..."  minlength="6" maxlength="6" readonly   required>
+                            <div class="" id="error-message-pin"></div>
+                    </div>
+
+                    <div class="form-input-wrap">
+                            <label class="login__formLabel" for="reCodePIN">Nhập lại mã PIN <span class="importan">*</span></label>
+                            <input type="password" name="reCodePIN" id="reCodePIN" class="login__formInput error__rePass" placeholder="Nhập lại mã PIN..." minlength="6" readonly maxlength="6"   required>
+                            <div class="" id="error-message-repin"></div>
+                    </div>
+                    <div class="form-input-wrap form__save-wrap">
+                    </div>
+                    <div class="login__form-wrap">
+                        <button type="button" onclick="onclickXacNhan()" class="btn login-btn " id="btn_login">Xác nhận</button>
                     </div>
                     <div class="login-line">
                         <hr class="crossline">

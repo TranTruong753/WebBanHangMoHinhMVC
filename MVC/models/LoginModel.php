@@ -41,6 +41,23 @@ class LoginModel extends DB{
         
     }
 
+    public function updatemk($email,$mk){
+        
+        $qr = "UPDATE taikhoan set MatKhau='$mk' where TenDangNhap = '$email'";
+        if ($this->con->query($qr)) {
+            // Kiểm tra số lượng hàng bị ảnh hưởng
+            if ($this->con->affected_rows > 0) {
+                echo true; // Có ít nhất một hàng đã được cập nhật
+            } else {
+                echo false; // Không có hàng nào bị ảnh hưởng
+            }
+        } else {
+            echo false; // Truy vấn thất bại
+        }
+    
+        
+    }
+
 
 
     
