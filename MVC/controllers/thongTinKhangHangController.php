@@ -2,7 +2,7 @@
     class thongTinKhangHangController extends controller {
         function show(){  
             $makh="";
-            if(isset($_SESSION['email'])){
+            if (isset($_SESSION['email']) && $_SESSION['user'] == "KH") {
                 $makh=$_SESSION['email'];
                 $cl = $this->model("ChungLoaiModel");
                 $tl = $this->model("TheLoaiModel");

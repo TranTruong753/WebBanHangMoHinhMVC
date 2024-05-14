@@ -36,7 +36,7 @@
                  </a>
                  <!-- mobile -->
                 <?php 
-                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                        echo '
                        <a name="user" id="'.$_SESSION['email'].'"  
                        href="http://localhost/WebBanHangMoHinhMVC/thongTinKhangHangController/show" 
@@ -54,7 +54,7 @@
                 ?>
                 <!-- <a 
                 <?php 
-                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                    if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                         echo 'name="user" id="'.$_SESSION['email'].'"';
                     }                 
                     
@@ -63,7 +63,7 @@
                 class="hidden-tablet user__mobile"
                 >
                     <?php
-                        if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                        if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                             echo '
                             <span >'.$_SESSION['Ten'].'</span>
                             <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">    
@@ -123,7 +123,7 @@
             </ul>
             <div class="menu-bottom">
                 <?php 
-                            if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                            if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                             echo '<a class="menu-link__table" href="#" onclick="Logout()">ĐĂNG XUẤT</a>';
                             }else {
                 
@@ -298,7 +298,7 @@
                             </ul>       -->
 
                             <?php
-                                if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and strpos($_SESSION['email'], '@') !== false){
+                                if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                                     echo '
                                     <img class="nav__icon-user" src="http://localhost/WebBanHangMoHinhMVC/public/img/user.png" alt="" id="">           
                                     <span >'.$_SESSION['Ten'].'</span>

@@ -185,15 +185,33 @@ function XoaSP(ojt)
     });
     
   }
+  int = 1;
+  function changeIcon(classIcon,icon)
+  {
+    document.getElementsByClassName(classIcon)[0].innerHTML = icon;
+  }
   function getArrange(ojt){
     //alert(ojt.value);
     //arrange=ojt.value;
     properties=ojt.value;
+    var classIcon = properties+"-icon-order";
+    
+
     if(arrange=="DESC")
-      arrange="ASC"
-    else arrange="DESC"
+      {
+        arrange="ASC"
+        changeIcon(classIcon,"^")
+      }
+      
+    else 
+    {
+      arrange="DESC"
+      changeIcon(classIcon,"v")
+    }
     loadTable("", index, size,arrange,properties);
     loadPhanTrangtest("sanpham", index, size, sql, "");
+
+    
     
   }
 

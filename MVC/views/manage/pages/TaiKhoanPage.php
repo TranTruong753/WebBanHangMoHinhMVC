@@ -69,11 +69,11 @@ $PhanTrangModel = new PhanTrangModel();
 <script>
   var tmpKey = "";
   var index = 1;
-  var size = 8;
+  var size = 4;
   // load khi chạy trang
   $(document).ready(function() {
     index = 1;
-    size = 8;
+    size = 4;
     loadTable("", index, size)
     loadPhanTrang("taikhoan", index, size, "", "");
 

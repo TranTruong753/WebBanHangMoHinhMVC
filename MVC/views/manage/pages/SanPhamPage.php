@@ -48,20 +48,20 @@
     <tr>
       <th>
         ID
-        <button value="MaSanPham" onclick="getArrange(this)">^</button>
+        <button value="MaSanPham" class="MaSanPham-icon-order"  onclick="getArrange(this)">^</button>
       </th>
       
       <th>Tên
-      <button value="TenSanPham" onclick="getArrange(this)">^</button>
+      <button value="TenSanPham" class="TenSanPham-icon-order" onclick="getArrange(this)">^</button>
       </th>
       <th>Giá
-      <button value="GiaSanPham" onclick="getArrange(this)">^</button>
+      <button value="GiaSanPham" class="GiaSanPham-icon-order" onclick="getArrange(this)">^</button>
       </th>
       <th>Số lượng tồn
-      <button value="SoLuongTonSP" onclick="getArrange(this)">^</button>
+      <button value="SoLuongTonSP" class="SoLuongTonSP-icon-order" onclick="getArrange(this)">^</button>
       </th>
       <th>Giá nhập
-      <button value="GiaNhap" onclick="getArrange(this)">^</button>
+      <button value="GiaNhap" class="GiaNhap-icon-order" onclick="getArrange(this)">^</button>
       </th>
       <th>Khuyến mãi</th>
       <th>Thể Loại</th>
@@ -78,6 +78,7 @@
 <div class="PhanTrang">
 
 </div>
+
 <script>
   function DieuHuong()
   {

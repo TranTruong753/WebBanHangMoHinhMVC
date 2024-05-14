@@ -45,8 +45,10 @@
                 <li>
                     <a href="#!" 
                     <?php 
-                         if(strpos($_SESSION['email'], '@') !== false){ 
+                         if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                             echo 'onclick="QLThongTin()" ';
+                         }else{
+                            echo 'onclick="onclick="DieuHuongALL()"';
                          }
                     ?>
                     
@@ -56,8 +58,10 @@
                 <li>
                     <a href="#!" 
                     <?php 
-                         if(strpos($_SESSION['email'], '@') !== false){ 
+                         if(isset($_SESSION['email']) and isset($_SESSION['Ten']) and $_SESSION['user']=="KH"){
                             echo 'onclick="QLHoaDon()"  ';
+                         }else{
+                            echo 'onclick="DieuHuongALL()"';
                          }
                     ?>
                     
@@ -99,4 +103,11 @@
    </div>
 </body>
 
+<script>
+    function DieuHuongALL()
+    {
+        window.location = "http://localhost/WebBanHangMoHinhMVC/DangNhap/dangNhap";
+
+    }
+</script>
 <script src="<?php echo Root ?>public/script/TrangChu/QLThongTinKHJS.js"></script>

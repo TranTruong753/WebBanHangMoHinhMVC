@@ -29,6 +29,8 @@ class AjaxLogin extends controller{
     }
 
     function DangNhap(){
+        session_destroy();
+        session_start();
         $email=$_POST['email'];
         $mk=$_POST['mk'];
         $resultKH=$this->LoginModel->TimTKKH($email,$mk);
@@ -36,14 +38,16 @@ class AjaxLogin extends controller{
         if ($resultKH->num_rows > 0) {
             while ($row = $resultKH->fetch_assoc()) {
                 $_SESSION['email']=$email;
-                $_SESSION['Ten']=$row['TenKhachHang'];                                          
+                $_SESSION['Ten']=$row['TenKhachHang'];   
+                $_SESSION['user'] = "KH" ;                                       
                 echo "true";
            }
        } else if ($resultNV->num_rows > 0) {
                 while ($row = $resultNV->fetch_assoc()) {
                     $_SESSION['email']=$email;
                     $_SESSION['Ten']=$row['TenNhanVien'];
-                    $_SESSION['MaNhomQuyen']=  $row['MaNhomQuyen'];     
+                    $_SESSION['MaNhomQuyen']=  $row['MaNhomQuyen'];  
+                    $_SESSION['user'] = "NV" ;  
                     echo "NV";
                 }
     } else echo "false";
